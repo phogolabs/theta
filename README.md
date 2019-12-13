@@ -17,8 +17,7 @@ source (kinesis, sqs, dynamodb).
 ## Installation
 
 ```console
-$ go get -u github.com/phogolabs/stride
-$ go install github.com/phogolabs/stride/cmd/stride
+$ go get -u github.com/phogolabs/theta
 ```
 
 ## Contributing
