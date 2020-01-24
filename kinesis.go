@@ -167,8 +167,17 @@ type KinesisCollector struct {
 
 // CollectContextAsync handles the kinesis stream asyncronosly
 func (h *KinesisCollector) CollectContextAsync(ctx context.Context) error {
+	logger := log.GetContext(ctx)
 	ctx, h.Cancel = context.WithCancel(ctx)
-	go h.CollectContext(ctx)
+
+	go func() {
+		logger.Info("start collecting kinesis stream asyncronously")
+
+		if err := h.CollectContext(ctx); err != nil {
+			logger.WithError(err).Error("collecting kinesis stream failed")
+		}
+	}()
+
 	return nil
 }
 
