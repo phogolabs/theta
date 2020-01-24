@@ -136,3 +136,97 @@ var _ = Describe("KinesisDispatcher", func() {
 		})
 	})
 })
+
+var _ = Describe("KinesisCollector", func() {
+	var (
+		collector *theta.KinesisCollector
+		handler   *fake.EventHandler
+		event     *theta.EventArgs
+		scanner   *fake.KinesisScanner
+	)
+
+	NewKinesisRecord := func(data interface{}) theta.KinesisRecord {
+		buffer := &bytes.Buffer{}
+		Expect(json.NewEncoder(buffer).Encode(data)).To(Succeed())
+
+		return theta.KinesisRecord{
+			Data: buffer.Bytes(),
+		}
+	}
+
+	BeforeEach(func() {
+		event = &theta.EventArgs{
+			Event: &theta.Event{
+				ID:        "event-001",
+				Source:    "twilio",
+				Sender:    "members-api",
+				Name:      "member_created",
+				Timestamp: time.Now(),
+			},
+			Meta: theta.Metadata{},
+			Body: []byte("{}"),
+		}
+
+		handler = &fake.EventHandler{}
+
+		scanner = &fake.KinesisScanner{}
+		scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
+			row := NewKinesisRecord(event)
+			return fn(&row)
+		}
+
+		collector = &theta.KinesisCollector{
+			Scanner:      scanner,
+			EventHandler: handler,
+		}
+	})
+
+	It("handles a record successfully", func() {
+		Expect(collector.CollectContext(context.TODO())).To(Succeed())
+		Expect(scanner.ScanCallCount()).To(Equal(1))
+		Expect(handler.HandleContextCallCount()).To(Equal(1))
+
+		_, args := handler.HandleContextArgsForCall(0)
+		Expect(args.Event.ID).To(Equal("event-001"))
+	})
+
+	Context("when the event unmarshaling fails", func() {
+		BeforeEach(func() {
+			scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
+				row := &theta.KinesisRecord{
+					Data: []byte(`{"member_id":`),
+				}
+
+				return fn(row)
+			}
+		})
+
+		It("returns an error", func() {
+			Expect(collector.CollectContext(context.TODO())).To(MatchError("unexpected end of JSON input"))
+		})
+	})
+
+	Context("when the event validation fails", func() {
+		BeforeEach(func() {
+			scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
+				event.Event.ID = ""
+				row := NewKinesisRecord(event)
+				return fn(&row)
+			}
+		})
+
+		It("returns an error", func() {
+			Expect(collector.CollectContext(context.TODO())).To(MatchError("Key: 'EventArgs.Event.ID' Error:Field validation for 'ID' failed on the 'required' tag"))
+		})
+	})
+
+	Context("when the handler fails", func() {
+		BeforeEach(func() {
+			handler.HandleContextReturns(fmt.Errorf("oh no"))
+		})
+
+		It("returns an error", func() {
+			Expect(collector.CollectContext(context.TODO())).To(MatchError("oh no"))
+		})
+	})
+})

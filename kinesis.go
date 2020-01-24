@@ -11,6 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/aws/aws-sdk-go/service/kinesis/kinesisiface"
 	"github.com/aws/aws-xray-sdk-go/xray"
+	consumer "github.com/harlow/kinesis-consumer"
 	"github.com/phogolabs/log"
 )
 
@@ -140,4 +141,78 @@ func (d *KinesisDispatcher) HandleContext(ctx context.Context, args *EventArgs) 
 	logger.Info("dispatching event to kinesis")
 	_, err = d.Client.PutRecordWithContext(ctx, entry)
 	return err
+}
+
+type (
+	// KinesisRecord represents a strem record
+	KinesisRecord = consumer.Record
+
+	// KinesisScanFunc is a function executed on kinesis input stream
+	KinesisScanFunc = consumer.ScanFunc
+)
+
+//go:generate counterfeiter -fake-name KinesisScanner -o ./fake/kinesis_scanner.go . KinesisScanner
+
+// KinesisScanner scans kinesis stream
+type KinesisScanner interface {
+	Scan(ctx context.Context, fn KinesisScanFunc) error
+}
+
+// KinesisCollector handles kinesis stream
+type KinesisCollector struct {
+	Scanner      KinesisScanner
+	EventHandler EventHandler
+	Cancel       context.CancelFunc
+}
+
+// CollectContextAsync handles the kinesis stream asyncronosly
+func (h *KinesisCollector) CollectContextAsync(ctx context.Context) error {
+	ctx, h.Cancel = context.WithCancel(ctx)
+	go h.CollectContext(ctx)
+	return nil
+}
+
+// CollectContext handles the kinesis stream
+func (h *KinesisCollector) CollectContext(ctx context.Context) error {
+	return h.Scanner.Scan(ctx, func(record *KinesisRecord) error {
+		logger := log.GetContext(ctx).WithFields(
+			log.Map{
+				"kinesis_partition_key":   aws.StringValue(record.PartitionKey),
+				"kinesis_sequence_number": aws.StringValue(record.SequenceNumber),
+			},
+		)
+
+		args := &EventArgs{}
+
+		logger.Info("unmarshaling event")
+		if err := json.Unmarshal(record.Data, args); err != nil {
+			logger.WithError(err).Error("failed to unmarshal event")
+			return err
+		}
+
+		logger = log.WithFields(
+			log.Map{
+				"event_id":     args.Event.ID,
+				"event_name":   args.Event.Name,
+				"event_sender": args.Event.Sender,
+				"event_source": args.Event.Source,
+			},
+		)
+
+		ctx = log.SetContext(ctx, logger)
+
+		logger.Info("validating event")
+		if err := validation.StructCtx(ctx, args); err != nil {
+			logger.WithError(err).Error("failed to validate event")
+			return err
+		}
+
+		logger.Info("handling event")
+		if err := h.EventHandler.HandleContext(ctx, args); err != nil {
+			logger.WithError(err).Error("failed to handle event")
+			return err
+		}
+
+		return nil
+	})
 }
