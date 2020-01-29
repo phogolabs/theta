@@ -10,7 +10,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/aws/aws-sdk-go/service/kinesis/kinesisiface"
-	"github.com/aws/aws-xray-sdk-go/xray"
 	consumer "github.com/harlow/kinesis-consumer"
 	"github.com/phogolabs/log"
 )
@@ -106,7 +105,6 @@ func NewKinesisDispatcher(config *KinesisDispatcherConfig) *KinesisDispatcher {
 	}
 
 	client := kinesis.New(sess, cfg)
-	xray.AWS(client.Client)
 
 	return &KinesisDispatcher{
 		StreamName: config.StreamName,
