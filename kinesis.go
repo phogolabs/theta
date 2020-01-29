@@ -192,8 +192,8 @@ func NewKinesisCollector(config *KinesisCollectorConfig) *KinesisCollector {
 		}
 	}
 
+	// setup the client
 	client := kinesis.New(sess, cfg)
-	xray.AWS(client.Client)
 
 	// Set the options
 	options := []KinesisCollectorOption{}
