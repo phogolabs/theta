@@ -149,6 +149,9 @@ type (
 
 	// KinesisScanFunc is a function executed on kinesis input stream
 	KinesisScanFunc = consumer.ScanFunc
+
+	// KinesisCollectorOption represents a collector options
+	KinesisCollectorOption = consumer.Option
 )
 
 //go:generate counterfeiter -fake-name KinesisScanner -o ./fake/kinesis_scanner.go . KinesisScanner
@@ -158,11 +161,54 @@ type KinesisScanner interface {
 	Scan(ctx context.Context, fn KinesisScanFunc) error
 }
 
+// KinesisCollectorConfig represents the kinesis collector config
+type KinesisCollectorConfig struct {
+	RoleArn      string
+	Region       string
+	StreamName   string
+	Options      []KinesisCollectorOption
+	EventHandler EventHandler
+}
+
 // KinesisCollector handles kinesis stream
 type KinesisCollector struct {
 	Scanner      KinesisScanner
 	EventHandler EventHandler
 	Cancel       context.CancelFunc
+}
+
+// NewKinesisCollector creates a new collector to kinesis
+func NewKinesisCollector(config *KinesisCollectorConfig) *KinesisCollector {
+	sess := session.Must(session.NewSession(&aws.Config{
+		CredentialsChainVerboseErrors: aws.Bool(true),
+		Region:                        aws.String(config.Region),
+	}))
+
+	cfg := &aws.Config{}
+
+	if config.RoleArn != "" {
+		cfg = &aws.Config{
+			Credentials: stscreds.NewCredentials(sess, config.RoleArn),
+		}
+	}
+
+	client := kinesis.New(sess, cfg)
+	xray.AWS(client.Client)
+
+	// Set the options
+	options := []KinesisCollectorOption{}
+	options = append(options, consumer.WithClient(client))
+	options = append(options, config.Options...)
+
+	scanner, err := consumer.New(config.StreamName, options...)
+	if err != nil {
+		panic(err)
+	}
+
+	return &KinesisCollector{
+		Scanner:      scanner,
+		EventHandler: config.EventHandler,
+	}
 }
 
 // CollectContextAsync handles the kinesis stream asyncronosly
