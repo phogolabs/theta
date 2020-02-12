@@ -3,6 +3,7 @@ package theta
 import (
 	"context"
 	"encoding/json"
+	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-sdk-go/aws"
@@ -19,8 +20,32 @@ type KinesisHandler struct {
 	EventHandler EventHandler
 }
 
+// ServerHTTP serves a http request
+func (h *KinesisHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	var (
+		ctx    = r.Context()
+		logger = log.GetContext(ctx)
+	)
+
+	input := events.KinesisEvent{}
+
+	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+		logger.WithError(err).Error("failed to unmarshal event")
+
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	if err := h.HandleContext(ctx, input); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+}
+
 // HandleContext dispatches the event to the handler
-func (r *KinesisHandler) HandleContext(ctx context.Context, input events.KinesisEvent) error {
+func (h *KinesisHandler) HandleContext(ctx context.Context, input events.KinesisEvent) error {
 	for index, record := range input.Records {
 		logger := log.WithFields(
 			log.Map{
@@ -60,7 +85,7 @@ func (r *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 		}
 
 		logger.Info("handling event")
-		if err := r.EventHandler.HandleContext(ctx, args); err != nil {
+		if err := h.EventHandler.HandleContext(ctx, args); err != nil {
 			logger.WithError(err).Error("failed to handle event")
 			return err
 		}
