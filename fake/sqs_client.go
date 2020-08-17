@@ -393,6 +393,32 @@ type SQSClient struct {
 		result1 *sqs.ListDeadLetterSourceQueuesOutput
 		result2 error
 	}
+	ListDeadLetterSourceQueuesPagesStub        func(*sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool) error
+	listDeadLetterSourceQueuesPagesMutex       sync.RWMutex
+	listDeadLetterSourceQueuesPagesArgsForCall []struct {
+		arg1 *sqs.ListDeadLetterSourceQueuesInput
+		arg2 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
+	}
+	listDeadLetterSourceQueuesPagesReturns struct {
+		result1 error
+	}
+	listDeadLetterSourceQueuesPagesReturnsOnCall map[int]struct {
+		result1 error
+	}
+	ListDeadLetterSourceQueuesPagesWithContextStub        func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error
+	listDeadLetterSourceQueuesPagesWithContextMutex       sync.RWMutex
+	listDeadLetterSourceQueuesPagesWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *sqs.ListDeadLetterSourceQueuesInput
+		arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
+		arg4 []request.Option
+	}
+	listDeadLetterSourceQueuesPagesWithContextReturns struct {
+		result1 error
+	}
+	listDeadLetterSourceQueuesPagesWithContextReturnsOnCall map[int]struct {
+		result1 error
+	}
 	ListDeadLetterSourceQueuesRequestStub        func(*sqs.ListDeadLetterSourceQueuesInput) (*request.Request, *sqs.ListDeadLetterSourceQueuesOutput)
 	listDeadLetterSourceQueuesRequestMutex       sync.RWMutex
 	listDeadLetterSourceQueuesRequestArgsForCall []struct {
@@ -474,6 +500,32 @@ type SQSClient struct {
 	listQueuesReturnsOnCall map[int]struct {
 		result1 *sqs.ListQueuesOutput
 		result2 error
+	}
+	ListQueuesPagesStub        func(*sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool) error
+	listQueuesPagesMutex       sync.RWMutex
+	listQueuesPagesArgsForCall []struct {
+		arg1 *sqs.ListQueuesInput
+		arg2 func(*sqs.ListQueuesOutput, bool) bool
+	}
+	listQueuesPagesReturns struct {
+		result1 error
+	}
+	listQueuesPagesReturnsOnCall map[int]struct {
+		result1 error
+	}
+	ListQueuesPagesWithContextStub        func(context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error
+	listQueuesPagesWithContextMutex       sync.RWMutex
+	listQueuesPagesWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *sqs.ListQueuesInput
+		arg3 func(*sqs.ListQueuesOutput, bool) bool
+		arg4 []request.Option
+	}
+	listQueuesPagesWithContextReturns struct {
+		result1 error
+	}
+	listQueuesPagesWithContextReturnsOnCall map[int]struct {
+		result1 error
 	}
 	ListQueuesRequestStub        func(*sqs.ListQueuesInput) (*request.Request, *sqs.ListQueuesOutput)
 	listQueuesRequestMutex       sync.RWMutex
@@ -2617,6 +2669,130 @@ func (fake *SQSClient) ListDeadLetterSourceQueuesReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
+func (fake *SQSClient) ListDeadLetterSourceQueuesPages(arg1 *sqs.ListDeadLetterSourceQueuesInput, arg2 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool) error {
+	fake.listDeadLetterSourceQueuesPagesMutex.Lock()
+	ret, specificReturn := fake.listDeadLetterSourceQueuesPagesReturnsOnCall[len(fake.listDeadLetterSourceQueuesPagesArgsForCall)]
+	fake.listDeadLetterSourceQueuesPagesArgsForCall = append(fake.listDeadLetterSourceQueuesPagesArgsForCall, struct {
+		arg1 *sqs.ListDeadLetterSourceQueuesInput
+		arg2 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
+	}{arg1, arg2})
+	fake.recordInvocation("ListDeadLetterSourceQueuesPages", []interface{}{arg1, arg2})
+	fake.listDeadLetterSourceQueuesPagesMutex.Unlock()
+	if fake.ListDeadLetterSourceQueuesPagesStub != nil {
+		return fake.ListDeadLetterSourceQueuesPagesStub(arg1, arg2)
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	fakeReturns := fake.listDeadLetterSourceQueuesPagesReturns
+	return fakeReturns.result1
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesCallCount() int {
+	fake.listDeadLetterSourceQueuesPagesMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.RUnlock()
+	return len(fake.listDeadLetterSourceQueuesPagesArgsForCall)
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesCalls(stub func(*sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool) error) {
+	fake.listDeadLetterSourceQueuesPagesMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesStub = stub
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesArgsForCall(i int) (*sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool) {
+	fake.listDeadLetterSourceQueuesPagesMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.RUnlock()
+	argsForCall := fake.listDeadLetterSourceQueuesPagesArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesReturns(result1 error) {
+	fake.listDeadLetterSourceQueuesPagesMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesStub = nil
+	fake.listDeadLetterSourceQueuesPagesReturns = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesReturnsOnCall(i int, result1 error) {
+	fake.listDeadLetterSourceQueuesPagesMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesStub = nil
+	if fake.listDeadLetterSourceQueuesPagesReturnsOnCall == nil {
+		fake.listDeadLetterSourceQueuesPagesReturnsOnCall = make(map[int]struct {
+			result1 error
+		})
+	}
+	fake.listDeadLetterSourceQueuesPagesReturnsOnCall[i] = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContext(arg1 context.Context, arg2 *sqs.ListDeadLetterSourceQueuesInput, arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, arg4 ...request.Option) error {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
+	ret, specificReturn := fake.listDeadLetterSourceQueuesPagesWithContextReturnsOnCall[len(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall)]
+	fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall = append(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *sqs.ListDeadLetterSourceQueuesInput
+		arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
+		arg4 []request.Option
+	}{arg1, arg2, arg3, arg4})
+	fake.recordInvocation("ListDeadLetterSourceQueuesPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
+	if fake.ListDeadLetterSourceQueuesPagesWithContextStub != nil {
+		return fake.ListDeadLetterSourceQueuesPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	fakeReturns := fake.listDeadLetterSourceQueuesPagesWithContextReturns
+	return fakeReturns.result1
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContextCallCount() int {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.RUnlock()
+	return len(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall)
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContextCalls(stub func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error) {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesWithContextStub = stub
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContextArgsForCall(i int) (context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, []request.Option) {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.RUnlock()
+	argsForCall := fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContextReturns(result1 error) {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesWithContextStub = nil
+	fake.listDeadLetterSourceQueuesPagesWithContextReturns = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContextReturnsOnCall(i int, result1 error) {
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
+	fake.ListDeadLetterSourceQueuesPagesWithContextStub = nil
+	if fake.listDeadLetterSourceQueuesPagesWithContextReturnsOnCall == nil {
+		fake.listDeadLetterSourceQueuesPagesWithContextReturnsOnCall = make(map[int]struct {
+			result1 error
+		})
+	}
+	fake.listDeadLetterSourceQueuesPagesWithContextReturnsOnCall[i] = struct {
+		result1 error
+	}{result1}
+}
+
 func (fake *SQSClient) ListDeadLetterSourceQueuesRequest(arg1 *sqs.ListDeadLetterSourceQueuesInput) (*request.Request, *sqs.ListDeadLetterSourceQueuesOutput) {
 	fake.listDeadLetterSourceQueuesRequestMutex.Lock()
 	ret, specificReturn := fake.listDeadLetterSourceQueuesRequestReturnsOnCall[len(fake.listDeadLetterSourceQueuesRequestArgsForCall)]
@@ -2997,6 +3173,130 @@ func (fake *SQSClient) ListQueuesReturnsOnCall(i int, result1 *sqs.ListQueuesOut
 		result1 *sqs.ListQueuesOutput
 		result2 error
 	}{result1, result2}
+}
+
+func (fake *SQSClient) ListQueuesPages(arg1 *sqs.ListQueuesInput, arg2 func(*sqs.ListQueuesOutput, bool) bool) error {
+	fake.listQueuesPagesMutex.Lock()
+	ret, specificReturn := fake.listQueuesPagesReturnsOnCall[len(fake.listQueuesPagesArgsForCall)]
+	fake.listQueuesPagesArgsForCall = append(fake.listQueuesPagesArgsForCall, struct {
+		arg1 *sqs.ListQueuesInput
+		arg2 func(*sqs.ListQueuesOutput, bool) bool
+	}{arg1, arg2})
+	fake.recordInvocation("ListQueuesPages", []interface{}{arg1, arg2})
+	fake.listQueuesPagesMutex.Unlock()
+	if fake.ListQueuesPagesStub != nil {
+		return fake.ListQueuesPagesStub(arg1, arg2)
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	fakeReturns := fake.listQueuesPagesReturns
+	return fakeReturns.result1
+}
+
+func (fake *SQSClient) ListQueuesPagesCallCount() int {
+	fake.listQueuesPagesMutex.RLock()
+	defer fake.listQueuesPagesMutex.RUnlock()
+	return len(fake.listQueuesPagesArgsForCall)
+}
+
+func (fake *SQSClient) ListQueuesPagesCalls(stub func(*sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool) error) {
+	fake.listQueuesPagesMutex.Lock()
+	defer fake.listQueuesPagesMutex.Unlock()
+	fake.ListQueuesPagesStub = stub
+}
+
+func (fake *SQSClient) ListQueuesPagesArgsForCall(i int) (*sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool) {
+	fake.listQueuesPagesMutex.RLock()
+	defer fake.listQueuesPagesMutex.RUnlock()
+	argsForCall := fake.listQueuesPagesArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2
+}
+
+func (fake *SQSClient) ListQueuesPagesReturns(result1 error) {
+	fake.listQueuesPagesMutex.Lock()
+	defer fake.listQueuesPagesMutex.Unlock()
+	fake.ListQueuesPagesStub = nil
+	fake.listQueuesPagesReturns = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListQueuesPagesReturnsOnCall(i int, result1 error) {
+	fake.listQueuesPagesMutex.Lock()
+	defer fake.listQueuesPagesMutex.Unlock()
+	fake.ListQueuesPagesStub = nil
+	if fake.listQueuesPagesReturnsOnCall == nil {
+		fake.listQueuesPagesReturnsOnCall = make(map[int]struct {
+			result1 error
+		})
+	}
+	fake.listQueuesPagesReturnsOnCall[i] = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContext(arg1 context.Context, arg2 *sqs.ListQueuesInput, arg3 func(*sqs.ListQueuesOutput, bool) bool, arg4 ...request.Option) error {
+	fake.listQueuesPagesWithContextMutex.Lock()
+	ret, specificReturn := fake.listQueuesPagesWithContextReturnsOnCall[len(fake.listQueuesPagesWithContextArgsForCall)]
+	fake.listQueuesPagesWithContextArgsForCall = append(fake.listQueuesPagesWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *sqs.ListQueuesInput
+		arg3 func(*sqs.ListQueuesOutput, bool) bool
+		arg4 []request.Option
+	}{arg1, arg2, arg3, arg4})
+	fake.recordInvocation("ListQueuesPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
+	fake.listQueuesPagesWithContextMutex.Unlock()
+	if fake.ListQueuesPagesWithContextStub != nil {
+		return fake.ListQueuesPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	fakeReturns := fake.listQueuesPagesWithContextReturns
+	return fakeReturns.result1
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContextCallCount() int {
+	fake.listQueuesPagesWithContextMutex.RLock()
+	defer fake.listQueuesPagesWithContextMutex.RUnlock()
+	return len(fake.listQueuesPagesWithContextArgsForCall)
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContextCalls(stub func(context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error) {
+	fake.listQueuesPagesWithContextMutex.Lock()
+	defer fake.listQueuesPagesWithContextMutex.Unlock()
+	fake.ListQueuesPagesWithContextStub = stub
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContextArgsForCall(i int) (context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, []request.Option) {
+	fake.listQueuesPagesWithContextMutex.RLock()
+	defer fake.listQueuesPagesWithContextMutex.RUnlock()
+	argsForCall := fake.listQueuesPagesWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContextReturns(result1 error) {
+	fake.listQueuesPagesWithContextMutex.Lock()
+	defer fake.listQueuesPagesWithContextMutex.Unlock()
+	fake.ListQueuesPagesWithContextStub = nil
+	fake.listQueuesPagesWithContextReturns = struct {
+		result1 error
+	}{result1}
+}
+
+func (fake *SQSClient) ListQueuesPagesWithContextReturnsOnCall(i int, result1 error) {
+	fake.listQueuesPagesWithContextMutex.Lock()
+	defer fake.listQueuesPagesWithContextMutex.Unlock()
+	fake.ListQueuesPagesWithContextStub = nil
+	if fake.listQueuesPagesWithContextReturnsOnCall == nil {
+		fake.listQueuesPagesWithContextReturnsOnCall = make(map[int]struct {
+			result1 error
+		})
+	}
+	fake.listQueuesPagesWithContextReturnsOnCall[i] = struct {
+		result1 error
+	}{result1}
 }
 
 func (fake *SQSClient) ListQueuesRequest(arg1 *sqs.ListQueuesInput) (*request.Request, *sqs.ListQueuesOutput) {
@@ -4714,6 +5014,10 @@ func (fake *SQSClient) Invocations() map[string][][]interface{} {
 	defer fake.getQueueUrlWithContextMutex.RUnlock()
 	fake.listDeadLetterSourceQueuesMutex.RLock()
 	defer fake.listDeadLetterSourceQueuesMutex.RUnlock()
+	fake.listDeadLetterSourceQueuesPagesMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesMutex.RUnlock()
+	fake.listDeadLetterSourceQueuesPagesWithContextMutex.RLock()
+	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.RUnlock()
 	fake.listDeadLetterSourceQueuesRequestMutex.RLock()
 	defer fake.listDeadLetterSourceQueuesRequestMutex.RUnlock()
 	fake.listDeadLetterSourceQueuesWithContextMutex.RLock()
@@ -4726,6 +5030,10 @@ func (fake *SQSClient) Invocations() map[string][][]interface{} {
 	defer fake.listQueueTagsWithContextMutex.RUnlock()
 	fake.listQueuesMutex.RLock()
 	defer fake.listQueuesMutex.RUnlock()
+	fake.listQueuesPagesMutex.RLock()
+	defer fake.listQueuesPagesMutex.RUnlock()
+	fake.listQueuesPagesWithContextMutex.RLock()
+	defer fake.listQueuesPagesWithContextMutex.RUnlock()
 	fake.listQueuesRequestMutex.RLock()
 	defer fake.listQueuesRequestMutex.RUnlock()
 	fake.listQueuesWithContextMutex.RLock()
