@@ -3,6 +3,7 @@ package theta
 import (
 	"context"
 	"encoding/json"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -18,6 +19,7 @@ import (
 // KinesisHandler reacts on events
 type KinesisHandler struct {
 	EventHandler EventHandler
+	Unmarshal    UnmarshalFunc
 }
 
 // ServerHTTP serves a http request
@@ -27,9 +29,15 @@ func (h *KinesisHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		logger = log.GetContext(ctx)
 	)
 
+	data, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		logger.WithError(err).Error("failed to read body")
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+
 	input := events.KinesisEvent{}
 
-	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+	if err := h.Unmarshal(data, &input); err != nil {
 		logger.WithError(err).Error("failed to unmarshal event")
 
 		w.WriteHeader(http.StatusBadRequest)
@@ -59,10 +67,12 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 			},
 		)
 
-		args := &EventArgs{}
+		var (
+			args = &EventArgs{}
+		)
 
 		logger.Info("unmarshaling event")
-		if err := json.Unmarshal(record.Kinesis.Data, args); err != nil {
+		if err := h.unmarshal(record.Kinesis.Data, args); err != nil {
 			logger.WithError(err).Error("failed to unmarshal event")
 			return err
 		}
@@ -92,6 +102,14 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 	}
 
 	return nil
+}
+
+func (h *KinesisHandler) unmarshal(data []byte, obj interface{}) error {
+	if unmarshal := h.Unmarshal; unmarshal != nil {
+		return unmarshal(data, obj)
+	}
+
+	return json.Unmarshal(data, obj)
 }
 
 //go:generate counterfeiter -fake-name KinesisClient -o ./fake/kinesis_client.go . KinesisClient
@@ -196,6 +214,7 @@ type KinesisCollectorConfig struct {
 // KinesisCollector handles kinesis stream
 type KinesisCollector struct {
 	Scanner      KinesisScanner
+	Unmarshal    UnmarshalFunc
 	EventHandler EventHandler
 	Cancel       context.CancelFunc
 }
@@ -263,7 +282,7 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 		args := &EventArgs{}
 
 		logger.Info("unmarshaling event")
-		if err := json.Unmarshal(record.Data, args); err != nil {
+		if err := h.unmarshal(record.Data, args); err != nil {
 			logger.WithError(err).Error("failed to unmarshal event")
 			return err
 		}
@@ -293,4 +312,12 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 
 		return nil
 	})
+}
+
+func (h *KinesisCollector) unmarshal(data []byte, obj interface{}) error {
+	if unmarshal := h.Unmarshal; unmarshal != nil {
+		return unmarshal(data, obj)
+	}
+
+	return json.Unmarshal(data, obj)
 }

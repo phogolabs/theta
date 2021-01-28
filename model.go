@@ -60,3 +60,6 @@ func (m Metadata) Get(key string) string {
 
 	return ""
 }
+
+// UnmarshalFunc represents an unmarshal func
+type UnmarshalFunc func(data []byte, v interface{}) error
