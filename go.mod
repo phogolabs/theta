@@ -4,9 +4,11 @@ go 1.16
 
 require (
 	github.com/andybalholm/brotli v1.0.3 // indirect
+	github.com/apex/gateway v1.1.2
 	github.com/aws/aws-lambda-go v1.26.0
 	github.com/aws/aws-sdk-go v1.40.22
 	github.com/aws/aws-xray-sdk-go v1.6.0
+	github.com/go-chi/chi v1.5.4
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/harlow/kinesis-consumer v0.3.4
 	github.com/klauspost/compress v1.13.4 // indirect

@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
 	"github.com/phogolabs/theta"
 	"github.com/phogolabs/theta/fake"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("CompositeEventHandler", func() {
