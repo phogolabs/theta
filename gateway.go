@@ -64,11 +64,21 @@ func (h *GatewayHandler) mux() chi.Router {
 	return h.router
 }
 
+// AuthConfig represents an auth configuration.
+type GatewayHandlerAuthConfig struct {
+	Users []*GatewayHandlerAuthUserConfig
+}
+
+// GatewayHandlerAuthUserConfig represents an user configuration.
+type GatewayHandlerAuthUserConfig struct {
+	Name     string
+	Password string
+}
+
 // GatewayHandlerAuth represents a authentication handler
 type GatewayHandlerAuth struct {
 	// Credentials keeps a map of the registered credentials
-	// username:password
-	Credentials map[string]string
+	Config *GatewayHandlerAuthConfig
 }
 
 // HandleContext handles the authorization request
@@ -94,11 +104,11 @@ func (p *GatewayHandlerAuth) HandleContext(ctx context.Context, r events.APIGate
 
 	logger.Info("token authorization")
 
-	for username, password := range p.Credentials {
-		if username == tUsername && password == tPassword {
+	for _, user := range p.Config.Users {
+		if user.Name == tUsername && user.Password == tPassword {
 			logger.Info("token authorizion succeeded")
 			// create a policy
-			return p.policy(username, "Allow", "*"), nil
+			return p.policy(user.Name, "Allow", "*"), nil
 		}
 	}
 
