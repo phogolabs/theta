@@ -12,14 +12,19 @@ import (
 	"github.com/phogolabs/log"
 )
 
+// GatewayRoute represents a gateway route
+type GatewayRoute interface {
+	Mount(r chi.Router)
+}
+
 // GatewayHandler represents a webhook
 type GatewayHandler struct {
 	router chi.Router
 }
 
 // Group returns the router.
-func (h *GatewayHandler) Group(fn func(chi.Router)) {
-	h.mux().Group(fn)
+func (h *GatewayHandler) Mount(route GatewayRoute) {
+	route.Mount(h.mux())
 }
 
 // HandleContext handles the API Gateway Proxy Request
