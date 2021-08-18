@@ -3,6 +3,7 @@ package theta
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"gopkg.in/go-playground/validator.v9"
@@ -20,6 +21,8 @@ type EventHandler interface {
 	HandleContext(ctx context.Context, args *EventArgs) error
 }
 
+var _ EventHandler = CompositeEventHandler{}
+
 // CompositeEventHandler composes the event handler
 type CompositeEventHandler []EventHandler
 
@@ -31,6 +34,22 @@ func (h CompositeEventHandler) HandleContext(ctx context.Context, args *EventArg
 		}
 	}
 	return nil
+}
+
+var _ EventHandler = DictionaryEventHandler{}
+
+// DictionaryEventHandler represents a dictionary of event handler
+type DictionaryEventHandler map[string]EventHandler
+
+// HandleContext handles event
+func (h DictionaryEventHandler) HandleContext(ctx context.Context, args *EventArgs) error {
+	handler, ok := h[args.Event.Name]
+
+	if !ok {
+		return fmt.Errorf("event handler %v not found", args.Event.Name)
+	}
+
+	return handler.HandleContext(ctx, args)
 }
 
 // EventArgs is the actual event
