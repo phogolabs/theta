@@ -84,5 +84,5 @@ func (m Metadata) Get(key string) string {
 
 // EventDecoder represents an event decoder
 type EventDecoder interface {
-	Decode(interface{}) error
+	Decode([]byte, interface{}) error
 }

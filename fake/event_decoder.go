@@ -8,10 +8,11 @@ import (
 )
 
 type EventDecoder struct {
-	DecodeStub        func(interface{}) error
+	DecodeStub        func([]byte, interface{}) error
 	decodeMutex       sync.RWMutex
 	decodeArgsForCall []struct {
-		arg1 interface{}
+		arg1 []byte
+		arg2 interface{}
 	}
 	decodeReturns struct {
 		result1 error
@@ -23,16 +24,22 @@ type EventDecoder struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *EventDecoder) Decode(arg1 interface{}) error {
+func (fake *EventDecoder) Decode(arg1 []byte, arg2 interface{}) error {
+	var arg1Copy []byte
+	if arg1 != nil {
+		arg1Copy = make([]byte, len(arg1))
+		copy(arg1Copy, arg1)
+	}
 	fake.decodeMutex.Lock()
 	ret, specificReturn := fake.decodeReturnsOnCall[len(fake.decodeArgsForCall)]
 	fake.decodeArgsForCall = append(fake.decodeArgsForCall, struct {
-		arg1 interface{}
-	}{arg1})
-	fake.recordInvocation("Decode", []interface{}{arg1})
+		arg1 []byte
+		arg2 interface{}
+	}{arg1Copy, arg2})
+	fake.recordInvocation("Decode", []interface{}{arg1Copy, arg2})
 	fake.decodeMutex.Unlock()
 	if fake.DecodeStub != nil {
-		return fake.DecodeStub(arg1)
+		return fake.DecodeStub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
@@ -47,17 +54,17 @@ func (fake *EventDecoder) DecodeCallCount() int {
 	return len(fake.decodeArgsForCall)
 }
 
-func (fake *EventDecoder) DecodeCalls(stub func(interface{}) error) {
+func (fake *EventDecoder) DecodeCalls(stub func([]byte, interface{}) error) {
 	fake.decodeMutex.Lock()
 	defer fake.decodeMutex.Unlock()
 	fake.DecodeStub = stub
 }
 
-func (fake *EventDecoder) DecodeArgsForCall(i int) interface{} {
+func (fake *EventDecoder) DecodeArgsForCall(i int) ([]byte, interface{}) {
 	fake.decodeMutex.RLock()
 	defer fake.decodeMutex.RUnlock()
 	argsForCall := fake.decodeArgsForCall[i]
-	return argsForCall.arg1
+	return argsForCall.arg1, argsForCall.arg2
 }
 
 func (fake *EventDecoder) DecodeReturns(result1 error) {

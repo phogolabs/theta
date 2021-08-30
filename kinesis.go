@@ -107,13 +107,12 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 }
 
 func (h *KinesisHandler) decode(data []byte, obj interface{}) error {
-	decoder := h.EventDecoder
-
-	if decoder == nil {
-		decoder = json.NewDecoder(bytes.NewBuffer(data))
+	if decoder := h.EventDecoder; decoder == nil {
+		reader := bytes.NewBuffer(data)
+		return json.NewDecoder(reader).Decode(obj)
 	}
 
-	return decoder.Decode(obj)
+	return h.EventDecoder.Decode(data, obj)
 }
 
 //go:generate counterfeiter -fake-name KinesisClient -o ./fake/kinesis_client.go . KinesisClient
@@ -319,11 +318,10 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 }
 
 func (h *KinesisCollector) decode(data []byte, obj interface{}) error {
-	decoder := h.EventDecoder
-
-	if decoder == nil {
-		decoder = json.NewDecoder(bytes.NewBuffer(data))
+	if decoder := h.EventDecoder; decoder == nil {
+		reader := bytes.NewBuffer(data)
+		return json.NewDecoder(reader).Decode(obj)
 	}
 
-	return decoder.Decode(obj)
+	return h.EventDecoder.Decode(data, obj)
 }
