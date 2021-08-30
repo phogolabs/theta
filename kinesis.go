@@ -1,6 +1,7 @@
 package theta
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"io/ioutil"
@@ -19,7 +20,7 @@ import (
 // KinesisHandler reacts on events
 type KinesisHandler struct {
 	EventHandler EventHandler
-	Unmarshal    UnmarshalFunc
+	EventDecoder EventDecoder
 }
 
 // ServerHTTP serves a http request
@@ -37,7 +38,7 @@ func (h *KinesisHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	input := events.KinesisEvent{}
 
-	if err := h.Unmarshal(data, &input); err != nil {
+	if err := h.decode(data, &input); err != nil {
 		logger.WithError(err).Error("failed to unmarshal event")
 
 		w.WriteHeader(http.StatusBadRequest)
@@ -71,9 +72,10 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 			args = &EventArgs{}
 		)
 
-		logger.Info("unmarshaling event")
-		if err := h.unmarshal(record.Kinesis.Data, args); err != nil {
-			logger.WithError(err).Error("failed to unmarshal event")
+		logger.Info("decode event")
+
+		if err := h.decode(record.Kinesis.Data, args); err != nil {
+			logger.WithError(err).Error("decode event failure")
 			return err
 		}
 
@@ -88,15 +90,15 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 
 		ctx = log.SetContext(ctx, logger)
 
-		logger.Info("validating event")
+		logger.Info("validate event")
 		if err := validation.StructCtx(ctx, args); err != nil {
-			logger.WithError(err).Error("failed to validate event")
+			logger.WithError(err).Error("validate event failure")
 			return err
 		}
 
-		logger.Info("handling event")
+		logger.Info("handle event")
 		if err := h.EventHandler.HandleContext(ctx, args); err != nil {
-			logger.WithError(err).Error("failed to handle event")
+			logger.WithError(err).Error("handle event failure")
 			return err
 		}
 	}
@@ -104,12 +106,14 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 	return nil
 }
 
-func (h *KinesisHandler) unmarshal(data []byte, obj interface{}) error {
-	if unmarshal := h.Unmarshal; unmarshal != nil {
-		return unmarshal(data, obj)
+func (h *KinesisHandler) decode(data []byte, obj interface{}) error {
+	decoder := h.EventDecoder
+
+	if decoder == nil {
+		decoder = json.NewDecoder(bytes.NewBuffer(data))
 	}
 
-	return json.Unmarshal(data, obj)
+	return decoder.Decode(obj)
 }
 
 //go:generate counterfeiter -fake-name KinesisClient -o ./fake/kinesis_client.go . KinesisClient
@@ -214,8 +218,8 @@ type KinesisCollectorConfig struct {
 // KinesisCollector handles kinesis stream
 type KinesisCollector struct {
 	Scanner      KinesisScanner
-	Unmarshal    UnmarshalFunc
 	EventHandler EventHandler
+	EventDecoder EventDecoder
 	Cancel       context.CancelFunc
 }
 
@@ -281,9 +285,9 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 
 		args := &EventArgs{}
 
-		logger.Info("unmarshaling event")
-		if err := h.unmarshal(record.Data, args); err != nil {
-			logger.WithError(err).Error("failed to unmarshal event")
+		logger.Info("decode event")
+		if err := h.decode(record.Data, args); err != nil {
+			logger.WithError(err).Error("decode event failure")
 			return err
 		}
 
@@ -300,13 +304,13 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 
 		logger.Info("validating event")
 		if err := validation.StructCtx(ctx, args); err != nil {
-			logger.WithError(err).Error("failed to validate event")
+			logger.WithError(err).Error("validate event failure")
 			return err
 		}
 
-		logger.Info("handling event")
+		logger.Info("handle event")
 		if err := h.EventHandler.HandleContext(ctx, args); err != nil {
-			logger.WithError(err).Error("failed to handle event")
+			logger.WithError(err).Error("handle event failure")
 			return err
 		}
 
@@ -314,10 +318,12 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 	})
 }
 
-func (h *KinesisCollector) unmarshal(data []byte, obj interface{}) error {
-	if unmarshal := h.Unmarshal; unmarshal != nil {
-		return unmarshal(data, obj)
+func (h *KinesisCollector) decode(data []byte, obj interface{}) error {
+	decoder := h.EventDecoder
+
+	if decoder == nil {
+		decoder = json.NewDecoder(bytes.NewBuffer(data))
 	}
 
-	return json.Unmarshal(data, obj)
+	return decoder.Decode(obj)
 }

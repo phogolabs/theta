@@ -202,7 +202,7 @@ var _ = Describe("KinesisCollector", func() {
 		})
 
 		It("returns an error", func() {
-			Expect(collector.CollectContext(context.TODO())).To(MatchError("unexpected end of JSON input"))
+			Expect(collector.CollectContext(context.TODO())).To(MatchError("unexpected EOF"))
 		})
 	})
 

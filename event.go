@@ -80,5 +80,9 @@ func (m Metadata) Get(key string) string {
 	return ""
 }
 
-// UnmarshalFunc represents an unmarshal func
-type UnmarshalFunc func(data []byte, v interface{}) error
+//go:generate counterfeiter -fake-name EventDecoder -o ./fake/event_decoder.go . EventDecoder
+
+// EventDecoder represents an event decoder
+type EventDecoder interface {
+	Decode(interface{}) error
+}
