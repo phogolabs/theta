@@ -13,24 +13,25 @@ import (
 
 // DynamoHandler creates commands and dispatch them
 type DynamoHandler struct {
+	EventEncoder EventEncoder
 	EventHandler EventHandler
 }
 
 // HandleContext dispatches the command to the executor
 func (r *DynamoHandler) HandleContext(ctx context.Context, input events.DynamoDBEvent) error {
+
 	for index, record := range input.Records {
 		logger := log.WithFields(
 			log.Map{
-				"dynamo_record_index": index,
 				"dynamo_event":        record.EventID,
 				"dynamo_event_name":   record.EventName,
 				"dynamo_source":       record.EventSource,
 				"dynamo_source_arn":   record.EventSourceArn,
+				"dynamo_record_index": index,
 			},
 		)
 
 		logger.Info("unmarshaling event")
-
 		attributes := make(map[string]interface{})
 
 		for k, v := range record.Change.NewImage {
@@ -64,7 +65,7 @@ func (r *DynamoHandler) HandleContext(ctx context.Context, input events.DynamoDB
 			}
 		}
 
-		body, err := json.Marshal(attributes)
+		body, err := r.encode(attributes)
 		if err != nil {
 			logger.WithError(err).Error("failed to marshal attributes")
 			return err
@@ -102,4 +103,12 @@ func (r *DynamoHandler) event(record events.DynamoDBEventRecord) string {
 	)
 
 	return strings.ToLower(event)
+}
+
+func (r *DynamoHandler) encode(obj interface{}) ([]byte, error) {
+	if encoder := r.EventEncoder; encoder == nil {
+		return json.Marshal(obj)
+	}
+
+	return r.EventEncoder.Encode(obj)
 }

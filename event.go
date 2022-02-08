@@ -86,3 +86,10 @@ func (m Metadata) Get(key string) string {
 type EventDecoder interface {
 	Decode([]byte, interface{}) error
 }
+
+//go:generate counterfeiter -fake-name EventEncoder -o ./fake/event_encoder.go . EventEncoder
+
+// EventEncoder represents an event decoder
+type EventEncoder interface {
+	Encode(interface{}) ([]byte, error)
+}
