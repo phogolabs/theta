@@ -19,7 +19,6 @@ type DynamoHandler struct {
 
 // HandleContext dispatches the command to the executor
 func (r *DynamoHandler) HandleContext(ctx context.Context, input events.DynamoDBEvent) error {
-
 	for index, record := range input.Records {
 		logger := log.WithFields(
 			log.Map{
@@ -31,41 +30,13 @@ func (r *DynamoHandler) HandleContext(ctx context.Context, input events.DynamoDB
 			},
 		)
 
-		logger.Info("unmarshaling event")
-		attributes := make(map[string]interface{})
+		logger.Info("convert a record as map")
+		// encode the map
+		obj := r.create(record.Change.NewImage)
 
-		for k, v := range record.Change.NewImage {
-			switch v.DataType() {
-			case events.DataTypeBinary:
-				attributes[k] = v.Binary()
-			case events.DataTypeBoolean:
-				attributes[k] = v.Boolean()
-			case events.DataTypeBinarySet:
-				attributes[k] = v.BinarySet()
-			case events.DataTypeList:
-				attributes[k] = v.List()
-			case events.DataTypeMap:
-				attributes[k] = v.Map()
-			case events.DataTypeNumber:
-				if value, err := v.Integer(); err == nil {
-					attributes[k] = value
-				} else if value, err := v.Float(); err == nil {
-					attributes[k] = value
-				} else {
-					attributes[k] = v.Number()
-				}
-			case events.DataTypeNumberSet:
-				attributes[k] = v.NumberSet()
-			case events.DataTypeNull:
-				//TODO: skip
-			case events.DataTypeString:
-				attributes[k] = v.String()
-			case events.DataTypeStringSet:
-				attributes[k] = v.StringSet()
-			}
-		}
-
-		body, err := r.encode(attributes)
+		logger.Info("marshaling attributes")
+		// encode the event
+		body, err := r.encode(obj)
 		if err != nil {
 			logger.WithError(err).Error("failed to marshal attributes")
 			return err
@@ -103,6 +74,43 @@ func (r *DynamoHandler) event(record events.DynamoDBEventRecord) string {
 	)
 
 	return strings.ToLower(event)
+}
+
+func (r *DynamoHandler) create(input map[string]events.DynamoDBAttributeValue) map[string]interface{} {
+	attributes := make(map[string]interface{})
+
+	for k, v := range input {
+		switch v.DataType() {
+		case events.DataTypeBinary:
+			attributes[k] = v.Binary()
+		case events.DataTypeBoolean:
+			attributes[k] = v.Boolean()
+		case events.DataTypeBinarySet:
+			attributes[k] = v.BinarySet()
+		case events.DataTypeList:
+			attributes[k] = v.List()
+		case events.DataTypeMap:
+			attributes[k] = r.create(v.Map())
+		case events.DataTypeNumber:
+			if value, err := v.Integer(); err == nil {
+				attributes[k] = value
+			} else if value, err := v.Float(); err == nil {
+				attributes[k] = value
+			} else {
+				attributes[k] = v.Number()
+			}
+		case events.DataTypeNumberSet:
+			attributes[k] = v.NumberSet()
+		case events.DataTypeNull:
+			//TODO: skip
+		case events.DataTypeString:
+			attributes[k] = v.String()
+		case events.DataTypeStringSet:
+			attributes[k] = v.StringSet()
+		}
+	}
+
+	return attributes
 }
 
 func (r *DynamoHandler) encode(obj interface{}) ([]byte, error) {
