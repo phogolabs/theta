@@ -33,15 +33,16 @@ func (fake *KinesisScanner) Scan(arg1 context.Context, arg2 consumer.ScanFunc) e
 		arg1 context.Context
 		arg2 consumer.ScanFunc
 	}{arg1, arg2})
+	stub := fake.ScanStub
+	fakeReturns := fake.scanReturns
 	fake.recordInvocation("Scan", []interface{}{arg1, arg2})
 	fake.scanMutex.Unlock()
-	if fake.ScanStub != nil {
-		return fake.ScanStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.scanReturns
 	return fakeReturns.result1
 }
 

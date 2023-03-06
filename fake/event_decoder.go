@@ -36,15 +36,16 @@ func (fake *EventDecoder) Decode(arg1 []byte, arg2 interface{}) error {
 		arg1 []byte
 		arg2 interface{}
 	}{arg1Copy, arg2})
+	stub := fake.DecodeStub
+	fakeReturns := fake.decodeReturns
 	fake.recordInvocation("Decode", []interface{}{arg1Copy, arg2})
 	fake.decodeMutex.Unlock()
-	if fake.DecodeStub != nil {
-		return fake.DecodeStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.decodeReturns
 	return fakeReturns.result1
 }
 

@@ -32,15 +32,16 @@ func (fake *EventHandler) HandleContext(arg1 context.Context, arg2 *theta.EventA
 		arg1 context.Context
 		arg2 *theta.EventArgs
 	}{arg1, arg2})
+	stub := fake.HandleContextStub
+	fakeReturns := fake.handleContextReturns
 	fake.recordInvocation("HandleContext", []interface{}{arg1, arg2})
 	fake.handleContextMutex.Unlock()
-	if fake.HandleContextStub != nil {
-		return fake.HandleContextStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.handleContextReturns
 	return fakeReturns.result1
 }
 

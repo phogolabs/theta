@@ -893,15 +893,16 @@ func (fake *SQSClient) AddPermission(arg1 *sqs.AddPermissionInput) (*sqs.AddPerm
 	fake.addPermissionArgsForCall = append(fake.addPermissionArgsForCall, struct {
 		arg1 *sqs.AddPermissionInput
 	}{arg1})
+	stub := fake.AddPermissionStub
+	fakeReturns := fake.addPermissionReturns
 	fake.recordInvocation("AddPermission", []interface{}{arg1})
 	fake.addPermissionMutex.Unlock()
-	if fake.AddPermissionStub != nil {
-		return fake.AddPermissionStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addPermissionReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -956,15 +957,16 @@ func (fake *SQSClient) AddPermissionRequest(arg1 *sqs.AddPermissionInput) (*requ
 	fake.addPermissionRequestArgsForCall = append(fake.addPermissionRequestArgsForCall, struct {
 		arg1 *sqs.AddPermissionInput
 	}{arg1})
+	stub := fake.AddPermissionRequestStub
+	fakeReturns := fake.addPermissionRequestReturns
 	fake.recordInvocation("AddPermissionRequest", []interface{}{arg1})
 	fake.addPermissionRequestMutex.Unlock()
-	if fake.AddPermissionRequestStub != nil {
-		return fake.AddPermissionRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addPermissionRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1021,15 +1023,16 @@ func (fake *SQSClient) AddPermissionWithContext(arg1 context.Context, arg2 *sqs.
 		arg2 *sqs.AddPermissionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.AddPermissionWithContextStub
+	fakeReturns := fake.addPermissionWithContextReturns
 	fake.recordInvocation("AddPermissionWithContext", []interface{}{arg1, arg2, arg3})
 	fake.addPermissionWithContextMutex.Unlock()
-	if fake.AddPermissionWithContextStub != nil {
-		return fake.AddPermissionWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addPermissionWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1084,15 +1087,16 @@ func (fake *SQSClient) ChangeMessageVisibility(arg1 *sqs.ChangeMessageVisibility
 	fake.changeMessageVisibilityArgsForCall = append(fake.changeMessageVisibilityArgsForCall, struct {
 		arg1 *sqs.ChangeMessageVisibilityInput
 	}{arg1})
+	stub := fake.ChangeMessageVisibilityStub
+	fakeReturns := fake.changeMessageVisibilityReturns
 	fake.recordInvocation("ChangeMessageVisibility", []interface{}{arg1})
 	fake.changeMessageVisibilityMutex.Unlock()
-	if fake.ChangeMessageVisibilityStub != nil {
-		return fake.ChangeMessageVisibilityStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1147,15 +1151,16 @@ func (fake *SQSClient) ChangeMessageVisibilityBatch(arg1 *sqs.ChangeMessageVisib
 	fake.changeMessageVisibilityBatchArgsForCall = append(fake.changeMessageVisibilityBatchArgsForCall, struct {
 		arg1 *sqs.ChangeMessageVisibilityBatchInput
 	}{arg1})
+	stub := fake.ChangeMessageVisibilityBatchStub
+	fakeReturns := fake.changeMessageVisibilityBatchReturns
 	fake.recordInvocation("ChangeMessageVisibilityBatch", []interface{}{arg1})
 	fake.changeMessageVisibilityBatchMutex.Unlock()
-	if fake.ChangeMessageVisibilityBatchStub != nil {
-		return fake.ChangeMessageVisibilityBatchStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityBatchReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1210,15 +1215,16 @@ func (fake *SQSClient) ChangeMessageVisibilityBatchRequest(arg1 *sqs.ChangeMessa
 	fake.changeMessageVisibilityBatchRequestArgsForCall = append(fake.changeMessageVisibilityBatchRequestArgsForCall, struct {
 		arg1 *sqs.ChangeMessageVisibilityBatchInput
 	}{arg1})
+	stub := fake.ChangeMessageVisibilityBatchRequestStub
+	fakeReturns := fake.changeMessageVisibilityBatchRequestReturns
 	fake.recordInvocation("ChangeMessageVisibilityBatchRequest", []interface{}{arg1})
 	fake.changeMessageVisibilityBatchRequestMutex.Unlock()
-	if fake.ChangeMessageVisibilityBatchRequestStub != nil {
-		return fake.ChangeMessageVisibilityBatchRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityBatchRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1275,15 +1281,16 @@ func (fake *SQSClient) ChangeMessageVisibilityBatchWithContext(arg1 context.Cont
 		arg2 *sqs.ChangeMessageVisibilityBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ChangeMessageVisibilityBatchWithContextStub
+	fakeReturns := fake.changeMessageVisibilityBatchWithContextReturns
 	fake.recordInvocation("ChangeMessageVisibilityBatchWithContext", []interface{}{arg1, arg2, arg3})
 	fake.changeMessageVisibilityBatchWithContextMutex.Unlock()
-	if fake.ChangeMessageVisibilityBatchWithContextStub != nil {
-		return fake.ChangeMessageVisibilityBatchWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityBatchWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1338,15 +1345,16 @@ func (fake *SQSClient) ChangeMessageVisibilityRequest(arg1 *sqs.ChangeMessageVis
 	fake.changeMessageVisibilityRequestArgsForCall = append(fake.changeMessageVisibilityRequestArgsForCall, struct {
 		arg1 *sqs.ChangeMessageVisibilityInput
 	}{arg1})
+	stub := fake.ChangeMessageVisibilityRequestStub
+	fakeReturns := fake.changeMessageVisibilityRequestReturns
 	fake.recordInvocation("ChangeMessageVisibilityRequest", []interface{}{arg1})
 	fake.changeMessageVisibilityRequestMutex.Unlock()
-	if fake.ChangeMessageVisibilityRequestStub != nil {
-		return fake.ChangeMessageVisibilityRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1403,15 +1411,16 @@ func (fake *SQSClient) ChangeMessageVisibilityWithContext(arg1 context.Context, 
 		arg2 *sqs.ChangeMessageVisibilityInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ChangeMessageVisibilityWithContextStub
+	fakeReturns := fake.changeMessageVisibilityWithContextReturns
 	fake.recordInvocation("ChangeMessageVisibilityWithContext", []interface{}{arg1, arg2, arg3})
 	fake.changeMessageVisibilityWithContextMutex.Unlock()
-	if fake.ChangeMessageVisibilityWithContextStub != nil {
-		return fake.ChangeMessageVisibilityWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.changeMessageVisibilityWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1466,15 +1475,16 @@ func (fake *SQSClient) CreateQueue(arg1 *sqs.CreateQueueInput) (*sqs.CreateQueue
 	fake.createQueueArgsForCall = append(fake.createQueueArgsForCall, struct {
 		arg1 *sqs.CreateQueueInput
 	}{arg1})
+	stub := fake.CreateQueueStub
+	fakeReturns := fake.createQueueReturns
 	fake.recordInvocation("CreateQueue", []interface{}{arg1})
 	fake.createQueueMutex.Unlock()
-	if fake.CreateQueueStub != nil {
-		return fake.CreateQueueStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createQueueReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1529,15 +1539,16 @@ func (fake *SQSClient) CreateQueueRequest(arg1 *sqs.CreateQueueInput) (*request.
 	fake.createQueueRequestArgsForCall = append(fake.createQueueRequestArgsForCall, struct {
 		arg1 *sqs.CreateQueueInput
 	}{arg1})
+	stub := fake.CreateQueueRequestStub
+	fakeReturns := fake.createQueueRequestReturns
 	fake.recordInvocation("CreateQueueRequest", []interface{}{arg1})
 	fake.createQueueRequestMutex.Unlock()
-	if fake.CreateQueueRequestStub != nil {
-		return fake.CreateQueueRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createQueueRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1594,15 +1605,16 @@ func (fake *SQSClient) CreateQueueWithContext(arg1 context.Context, arg2 *sqs.Cr
 		arg2 *sqs.CreateQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.CreateQueueWithContextStub
+	fakeReturns := fake.createQueueWithContextReturns
 	fake.recordInvocation("CreateQueueWithContext", []interface{}{arg1, arg2, arg3})
 	fake.createQueueWithContextMutex.Unlock()
-	if fake.CreateQueueWithContextStub != nil {
-		return fake.CreateQueueWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createQueueWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1657,15 +1669,16 @@ func (fake *SQSClient) DeleteMessage(arg1 *sqs.DeleteMessageInput) (*sqs.DeleteM
 	fake.deleteMessageArgsForCall = append(fake.deleteMessageArgsForCall, struct {
 		arg1 *sqs.DeleteMessageInput
 	}{arg1})
+	stub := fake.DeleteMessageStub
+	fakeReturns := fake.deleteMessageReturns
 	fake.recordInvocation("DeleteMessage", []interface{}{arg1})
 	fake.deleteMessageMutex.Unlock()
-	if fake.DeleteMessageStub != nil {
-		return fake.DeleteMessageStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1720,15 +1733,16 @@ func (fake *SQSClient) DeleteMessageBatch(arg1 *sqs.DeleteMessageBatchInput) (*s
 	fake.deleteMessageBatchArgsForCall = append(fake.deleteMessageBatchArgsForCall, struct {
 		arg1 *sqs.DeleteMessageBatchInput
 	}{arg1})
+	stub := fake.DeleteMessageBatchStub
+	fakeReturns := fake.deleteMessageBatchReturns
 	fake.recordInvocation("DeleteMessageBatch", []interface{}{arg1})
 	fake.deleteMessageBatchMutex.Unlock()
-	if fake.DeleteMessageBatchStub != nil {
-		return fake.DeleteMessageBatchStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageBatchReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1783,15 +1797,16 @@ func (fake *SQSClient) DeleteMessageBatchRequest(arg1 *sqs.DeleteMessageBatchInp
 	fake.deleteMessageBatchRequestArgsForCall = append(fake.deleteMessageBatchRequestArgsForCall, struct {
 		arg1 *sqs.DeleteMessageBatchInput
 	}{arg1})
+	stub := fake.DeleteMessageBatchRequestStub
+	fakeReturns := fake.deleteMessageBatchRequestReturns
 	fake.recordInvocation("DeleteMessageBatchRequest", []interface{}{arg1})
 	fake.deleteMessageBatchRequestMutex.Unlock()
-	if fake.DeleteMessageBatchRequestStub != nil {
-		return fake.DeleteMessageBatchRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageBatchRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1848,15 +1863,16 @@ func (fake *SQSClient) DeleteMessageBatchWithContext(arg1 context.Context, arg2 
 		arg2 *sqs.DeleteMessageBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DeleteMessageBatchWithContextStub
+	fakeReturns := fake.deleteMessageBatchWithContextReturns
 	fake.recordInvocation("DeleteMessageBatchWithContext", []interface{}{arg1, arg2, arg3})
 	fake.deleteMessageBatchWithContextMutex.Unlock()
-	if fake.DeleteMessageBatchWithContextStub != nil {
-		return fake.DeleteMessageBatchWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageBatchWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1911,15 +1927,16 @@ func (fake *SQSClient) DeleteMessageRequest(arg1 *sqs.DeleteMessageInput) (*requ
 	fake.deleteMessageRequestArgsForCall = append(fake.deleteMessageRequestArgsForCall, struct {
 		arg1 *sqs.DeleteMessageInput
 	}{arg1})
+	stub := fake.DeleteMessageRequestStub
+	fakeReturns := fake.deleteMessageRequestReturns
 	fake.recordInvocation("DeleteMessageRequest", []interface{}{arg1})
 	fake.deleteMessageRequestMutex.Unlock()
-	if fake.DeleteMessageRequestStub != nil {
-		return fake.DeleteMessageRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1976,15 +1993,16 @@ func (fake *SQSClient) DeleteMessageWithContext(arg1 context.Context, arg2 *sqs.
 		arg2 *sqs.DeleteMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DeleteMessageWithContextStub
+	fakeReturns := fake.deleteMessageWithContextReturns
 	fake.recordInvocation("DeleteMessageWithContext", []interface{}{arg1, arg2, arg3})
 	fake.deleteMessageWithContextMutex.Unlock()
-	if fake.DeleteMessageWithContextStub != nil {
-		return fake.DeleteMessageWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteMessageWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2039,15 +2057,16 @@ func (fake *SQSClient) DeleteQueue(arg1 *sqs.DeleteQueueInput) (*sqs.DeleteQueue
 	fake.deleteQueueArgsForCall = append(fake.deleteQueueArgsForCall, struct {
 		arg1 *sqs.DeleteQueueInput
 	}{arg1})
+	stub := fake.DeleteQueueStub
+	fakeReturns := fake.deleteQueueReturns
 	fake.recordInvocation("DeleteQueue", []interface{}{arg1})
 	fake.deleteQueueMutex.Unlock()
-	if fake.DeleteQueueStub != nil {
-		return fake.DeleteQueueStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteQueueReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2102,15 +2121,16 @@ func (fake *SQSClient) DeleteQueueRequest(arg1 *sqs.DeleteQueueInput) (*request.
 	fake.deleteQueueRequestArgsForCall = append(fake.deleteQueueRequestArgsForCall, struct {
 		arg1 *sqs.DeleteQueueInput
 	}{arg1})
+	stub := fake.DeleteQueueRequestStub
+	fakeReturns := fake.deleteQueueRequestReturns
 	fake.recordInvocation("DeleteQueueRequest", []interface{}{arg1})
 	fake.deleteQueueRequestMutex.Unlock()
-	if fake.DeleteQueueRequestStub != nil {
-		return fake.DeleteQueueRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteQueueRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2167,15 +2187,16 @@ func (fake *SQSClient) DeleteQueueWithContext(arg1 context.Context, arg2 *sqs.De
 		arg2 *sqs.DeleteQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DeleteQueueWithContextStub
+	fakeReturns := fake.deleteQueueWithContextReturns
 	fake.recordInvocation("DeleteQueueWithContext", []interface{}{arg1, arg2, arg3})
 	fake.deleteQueueWithContextMutex.Unlock()
-	if fake.DeleteQueueWithContextStub != nil {
-		return fake.DeleteQueueWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteQueueWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2230,15 +2251,16 @@ func (fake *SQSClient) GetQueueAttributes(arg1 *sqs.GetQueueAttributesInput) (*s
 	fake.getQueueAttributesArgsForCall = append(fake.getQueueAttributesArgsForCall, struct {
 		arg1 *sqs.GetQueueAttributesInput
 	}{arg1})
+	stub := fake.GetQueueAttributesStub
+	fakeReturns := fake.getQueueAttributesReturns
 	fake.recordInvocation("GetQueueAttributes", []interface{}{arg1})
 	fake.getQueueAttributesMutex.Unlock()
-	if fake.GetQueueAttributesStub != nil {
-		return fake.GetQueueAttributesStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueAttributesReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2293,15 +2315,16 @@ func (fake *SQSClient) GetQueueAttributesRequest(arg1 *sqs.GetQueueAttributesInp
 	fake.getQueueAttributesRequestArgsForCall = append(fake.getQueueAttributesRequestArgsForCall, struct {
 		arg1 *sqs.GetQueueAttributesInput
 	}{arg1})
+	stub := fake.GetQueueAttributesRequestStub
+	fakeReturns := fake.getQueueAttributesRequestReturns
 	fake.recordInvocation("GetQueueAttributesRequest", []interface{}{arg1})
 	fake.getQueueAttributesRequestMutex.Unlock()
-	if fake.GetQueueAttributesRequestStub != nil {
-		return fake.GetQueueAttributesRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueAttributesRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2358,15 +2381,16 @@ func (fake *SQSClient) GetQueueAttributesWithContext(arg1 context.Context, arg2 
 		arg2 *sqs.GetQueueAttributesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.GetQueueAttributesWithContextStub
+	fakeReturns := fake.getQueueAttributesWithContextReturns
 	fake.recordInvocation("GetQueueAttributesWithContext", []interface{}{arg1, arg2, arg3})
 	fake.getQueueAttributesWithContextMutex.Unlock()
-	if fake.GetQueueAttributesWithContextStub != nil {
-		return fake.GetQueueAttributesWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueAttributesWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2421,15 +2445,16 @@ func (fake *SQSClient) GetQueueUrl(arg1 *sqs.GetQueueUrlInput) (*sqs.GetQueueUrl
 	fake.getQueueUrlArgsForCall = append(fake.getQueueUrlArgsForCall, struct {
 		arg1 *sqs.GetQueueUrlInput
 	}{arg1})
+	stub := fake.GetQueueUrlStub
+	fakeReturns := fake.getQueueUrlReturns
 	fake.recordInvocation("GetQueueUrl", []interface{}{arg1})
 	fake.getQueueUrlMutex.Unlock()
-	if fake.GetQueueUrlStub != nil {
-		return fake.GetQueueUrlStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueUrlReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2484,15 +2509,16 @@ func (fake *SQSClient) GetQueueUrlRequest(arg1 *sqs.GetQueueUrlInput) (*request.
 	fake.getQueueUrlRequestArgsForCall = append(fake.getQueueUrlRequestArgsForCall, struct {
 		arg1 *sqs.GetQueueUrlInput
 	}{arg1})
+	stub := fake.GetQueueUrlRequestStub
+	fakeReturns := fake.getQueueUrlRequestReturns
 	fake.recordInvocation("GetQueueUrlRequest", []interface{}{arg1})
 	fake.getQueueUrlRequestMutex.Unlock()
-	if fake.GetQueueUrlRequestStub != nil {
-		return fake.GetQueueUrlRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueUrlRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2549,15 +2575,16 @@ func (fake *SQSClient) GetQueueUrlWithContext(arg1 context.Context, arg2 *sqs.Ge
 		arg2 *sqs.GetQueueUrlInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.GetQueueUrlWithContextStub
+	fakeReturns := fake.getQueueUrlWithContextReturns
 	fake.recordInvocation("GetQueueUrlWithContext", []interface{}{arg1, arg2, arg3})
 	fake.getQueueUrlWithContextMutex.Unlock()
-	if fake.GetQueueUrlWithContextStub != nil {
-		return fake.GetQueueUrlWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getQueueUrlWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2612,15 +2639,16 @@ func (fake *SQSClient) ListDeadLetterSourceQueues(arg1 *sqs.ListDeadLetterSource
 	fake.listDeadLetterSourceQueuesArgsForCall = append(fake.listDeadLetterSourceQueuesArgsForCall, struct {
 		arg1 *sqs.ListDeadLetterSourceQueuesInput
 	}{arg1})
+	stub := fake.ListDeadLetterSourceQueuesStub
+	fakeReturns := fake.listDeadLetterSourceQueuesReturns
 	fake.recordInvocation("ListDeadLetterSourceQueues", []interface{}{arg1})
 	fake.listDeadLetterSourceQueuesMutex.Unlock()
-	if fake.ListDeadLetterSourceQueuesStub != nil {
-		return fake.ListDeadLetterSourceQueuesStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listDeadLetterSourceQueuesReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2676,15 +2704,16 @@ func (fake *SQSClient) ListDeadLetterSourceQueuesPages(arg1 *sqs.ListDeadLetterS
 		arg1 *sqs.ListDeadLetterSourceQueuesInput
 		arg2 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
 	}{arg1, arg2})
+	stub := fake.ListDeadLetterSourceQueuesPagesStub
+	fakeReturns := fake.listDeadLetterSourceQueuesPagesReturns
 	fake.recordInvocation("ListDeadLetterSourceQueuesPages", []interface{}{arg1, arg2})
 	fake.listDeadLetterSourceQueuesPagesMutex.Unlock()
-	if fake.ListDeadLetterSourceQueuesPagesStub != nil {
-		return fake.ListDeadLetterSourceQueuesPagesStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listDeadLetterSourceQueuesPagesReturns
 	return fakeReturns.result1
 }
 
@@ -2739,15 +2768,16 @@ func (fake *SQSClient) ListDeadLetterSourceQueuesPagesWithContext(arg1 context.C
 		arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
 		arg4 []request.Option
 	}{arg1, arg2, arg3, arg4})
+	stub := fake.ListDeadLetterSourceQueuesPagesWithContextStub
+	fakeReturns := fake.listDeadLetterSourceQueuesPagesWithContextReturns
 	fake.recordInvocation("ListDeadLetterSourceQueuesPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
 	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
-	if fake.ListDeadLetterSourceQueuesPagesWithContextStub != nil {
-		return fake.ListDeadLetterSourceQueuesPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3, arg4...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listDeadLetterSourceQueuesPagesWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -2799,15 +2829,16 @@ func (fake *SQSClient) ListDeadLetterSourceQueuesRequest(arg1 *sqs.ListDeadLette
 	fake.listDeadLetterSourceQueuesRequestArgsForCall = append(fake.listDeadLetterSourceQueuesRequestArgsForCall, struct {
 		arg1 *sqs.ListDeadLetterSourceQueuesInput
 	}{arg1})
+	stub := fake.ListDeadLetterSourceQueuesRequestStub
+	fakeReturns := fake.listDeadLetterSourceQueuesRequestReturns
 	fake.recordInvocation("ListDeadLetterSourceQueuesRequest", []interface{}{arg1})
 	fake.listDeadLetterSourceQueuesRequestMutex.Unlock()
-	if fake.ListDeadLetterSourceQueuesRequestStub != nil {
-		return fake.ListDeadLetterSourceQueuesRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listDeadLetterSourceQueuesRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2864,15 +2895,16 @@ func (fake *SQSClient) ListDeadLetterSourceQueuesWithContext(arg1 context.Contex
 		arg2 *sqs.ListDeadLetterSourceQueuesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListDeadLetterSourceQueuesWithContextStub
+	fakeReturns := fake.listDeadLetterSourceQueuesWithContextReturns
 	fake.recordInvocation("ListDeadLetterSourceQueuesWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listDeadLetterSourceQueuesWithContextMutex.Unlock()
-	if fake.ListDeadLetterSourceQueuesWithContextStub != nil {
-		return fake.ListDeadLetterSourceQueuesWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listDeadLetterSourceQueuesWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2927,15 +2959,16 @@ func (fake *SQSClient) ListQueueTags(arg1 *sqs.ListQueueTagsInput) (*sqs.ListQue
 	fake.listQueueTagsArgsForCall = append(fake.listQueueTagsArgsForCall, struct {
 		arg1 *sqs.ListQueueTagsInput
 	}{arg1})
+	stub := fake.ListQueueTagsStub
+	fakeReturns := fake.listQueueTagsReturns
 	fake.recordInvocation("ListQueueTags", []interface{}{arg1})
 	fake.listQueueTagsMutex.Unlock()
-	if fake.ListQueueTagsStub != nil {
-		return fake.ListQueueTagsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueueTagsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2990,15 +3023,16 @@ func (fake *SQSClient) ListQueueTagsRequest(arg1 *sqs.ListQueueTagsInput) (*requ
 	fake.listQueueTagsRequestArgsForCall = append(fake.listQueueTagsRequestArgsForCall, struct {
 		arg1 *sqs.ListQueueTagsInput
 	}{arg1})
+	stub := fake.ListQueueTagsRequestStub
+	fakeReturns := fake.listQueueTagsRequestReturns
 	fake.recordInvocation("ListQueueTagsRequest", []interface{}{arg1})
 	fake.listQueueTagsRequestMutex.Unlock()
-	if fake.ListQueueTagsRequestStub != nil {
-		return fake.ListQueueTagsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueueTagsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3055,15 +3089,16 @@ func (fake *SQSClient) ListQueueTagsWithContext(arg1 context.Context, arg2 *sqs.
 		arg2 *sqs.ListQueueTagsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListQueueTagsWithContextStub
+	fakeReturns := fake.listQueueTagsWithContextReturns
 	fake.recordInvocation("ListQueueTagsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listQueueTagsWithContextMutex.Unlock()
-	if fake.ListQueueTagsWithContextStub != nil {
-		return fake.ListQueueTagsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueueTagsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3118,15 +3153,16 @@ func (fake *SQSClient) ListQueues(arg1 *sqs.ListQueuesInput) (*sqs.ListQueuesOut
 	fake.listQueuesArgsForCall = append(fake.listQueuesArgsForCall, struct {
 		arg1 *sqs.ListQueuesInput
 	}{arg1})
+	stub := fake.ListQueuesStub
+	fakeReturns := fake.listQueuesReturns
 	fake.recordInvocation("ListQueues", []interface{}{arg1})
 	fake.listQueuesMutex.Unlock()
-	if fake.ListQueuesStub != nil {
-		return fake.ListQueuesStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueuesReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3182,15 +3218,16 @@ func (fake *SQSClient) ListQueuesPages(arg1 *sqs.ListQueuesInput, arg2 func(*sqs
 		arg1 *sqs.ListQueuesInput
 		arg2 func(*sqs.ListQueuesOutput, bool) bool
 	}{arg1, arg2})
+	stub := fake.ListQueuesPagesStub
+	fakeReturns := fake.listQueuesPagesReturns
 	fake.recordInvocation("ListQueuesPages", []interface{}{arg1, arg2})
 	fake.listQueuesPagesMutex.Unlock()
-	if fake.ListQueuesPagesStub != nil {
-		return fake.ListQueuesPagesStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listQueuesPagesReturns
 	return fakeReturns.result1
 }
 
@@ -3245,15 +3282,16 @@ func (fake *SQSClient) ListQueuesPagesWithContext(arg1 context.Context, arg2 *sq
 		arg3 func(*sqs.ListQueuesOutput, bool) bool
 		arg4 []request.Option
 	}{arg1, arg2, arg3, arg4})
+	stub := fake.ListQueuesPagesWithContextStub
+	fakeReturns := fake.listQueuesPagesWithContextReturns
 	fake.recordInvocation("ListQueuesPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
 	fake.listQueuesPagesWithContextMutex.Unlock()
-	if fake.ListQueuesPagesWithContextStub != nil {
-		return fake.ListQueuesPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3, arg4...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listQueuesPagesWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -3305,15 +3343,16 @@ func (fake *SQSClient) ListQueuesRequest(arg1 *sqs.ListQueuesInput) (*request.Re
 	fake.listQueuesRequestArgsForCall = append(fake.listQueuesRequestArgsForCall, struct {
 		arg1 *sqs.ListQueuesInput
 	}{arg1})
+	stub := fake.ListQueuesRequestStub
+	fakeReturns := fake.listQueuesRequestReturns
 	fake.recordInvocation("ListQueuesRequest", []interface{}{arg1})
 	fake.listQueuesRequestMutex.Unlock()
-	if fake.ListQueuesRequestStub != nil {
-		return fake.ListQueuesRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueuesRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3370,15 +3409,16 @@ func (fake *SQSClient) ListQueuesWithContext(arg1 context.Context, arg2 *sqs.Lis
 		arg2 *sqs.ListQueuesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListQueuesWithContextStub
+	fakeReturns := fake.listQueuesWithContextReturns
 	fake.recordInvocation("ListQueuesWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listQueuesWithContextMutex.Unlock()
-	if fake.ListQueuesWithContextStub != nil {
-		return fake.ListQueuesWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listQueuesWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3433,15 +3473,16 @@ func (fake *SQSClient) PurgeQueue(arg1 *sqs.PurgeQueueInput) (*sqs.PurgeQueueOut
 	fake.purgeQueueArgsForCall = append(fake.purgeQueueArgsForCall, struct {
 		arg1 *sqs.PurgeQueueInput
 	}{arg1})
+	stub := fake.PurgeQueueStub
+	fakeReturns := fake.purgeQueueReturns
 	fake.recordInvocation("PurgeQueue", []interface{}{arg1})
 	fake.purgeQueueMutex.Unlock()
-	if fake.PurgeQueueStub != nil {
-		return fake.PurgeQueueStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.purgeQueueReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3496,15 +3537,16 @@ func (fake *SQSClient) PurgeQueueRequest(arg1 *sqs.PurgeQueueInput) (*request.Re
 	fake.purgeQueueRequestArgsForCall = append(fake.purgeQueueRequestArgsForCall, struct {
 		arg1 *sqs.PurgeQueueInput
 	}{arg1})
+	stub := fake.PurgeQueueRequestStub
+	fakeReturns := fake.purgeQueueRequestReturns
 	fake.recordInvocation("PurgeQueueRequest", []interface{}{arg1})
 	fake.purgeQueueRequestMutex.Unlock()
-	if fake.PurgeQueueRequestStub != nil {
-		return fake.PurgeQueueRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.purgeQueueRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3561,15 +3603,16 @@ func (fake *SQSClient) PurgeQueueWithContext(arg1 context.Context, arg2 *sqs.Pur
 		arg2 *sqs.PurgeQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.PurgeQueueWithContextStub
+	fakeReturns := fake.purgeQueueWithContextReturns
 	fake.recordInvocation("PurgeQueueWithContext", []interface{}{arg1, arg2, arg3})
 	fake.purgeQueueWithContextMutex.Unlock()
-	if fake.PurgeQueueWithContextStub != nil {
-		return fake.PurgeQueueWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.purgeQueueWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3624,15 +3667,16 @@ func (fake *SQSClient) ReceiveMessage(arg1 *sqs.ReceiveMessageInput) (*sqs.Recei
 	fake.receiveMessageArgsForCall = append(fake.receiveMessageArgsForCall, struct {
 		arg1 *sqs.ReceiveMessageInput
 	}{arg1})
+	stub := fake.ReceiveMessageStub
+	fakeReturns := fake.receiveMessageReturns
 	fake.recordInvocation("ReceiveMessage", []interface{}{arg1})
 	fake.receiveMessageMutex.Unlock()
-	if fake.ReceiveMessageStub != nil {
-		return fake.ReceiveMessageStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.receiveMessageReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3687,15 +3731,16 @@ func (fake *SQSClient) ReceiveMessageRequest(arg1 *sqs.ReceiveMessageInput) (*re
 	fake.receiveMessageRequestArgsForCall = append(fake.receiveMessageRequestArgsForCall, struct {
 		arg1 *sqs.ReceiveMessageInput
 	}{arg1})
+	stub := fake.ReceiveMessageRequestStub
+	fakeReturns := fake.receiveMessageRequestReturns
 	fake.recordInvocation("ReceiveMessageRequest", []interface{}{arg1})
 	fake.receiveMessageRequestMutex.Unlock()
-	if fake.ReceiveMessageRequestStub != nil {
-		return fake.ReceiveMessageRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.receiveMessageRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3752,15 +3797,16 @@ func (fake *SQSClient) ReceiveMessageWithContext(arg1 context.Context, arg2 *sqs
 		arg2 *sqs.ReceiveMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ReceiveMessageWithContextStub
+	fakeReturns := fake.receiveMessageWithContextReturns
 	fake.recordInvocation("ReceiveMessageWithContext", []interface{}{arg1, arg2, arg3})
 	fake.receiveMessageWithContextMutex.Unlock()
-	if fake.ReceiveMessageWithContextStub != nil {
-		return fake.ReceiveMessageWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.receiveMessageWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3815,15 +3861,16 @@ func (fake *SQSClient) RemovePermission(arg1 *sqs.RemovePermissionInput) (*sqs.R
 	fake.removePermissionArgsForCall = append(fake.removePermissionArgsForCall, struct {
 		arg1 *sqs.RemovePermissionInput
 	}{arg1})
+	stub := fake.RemovePermissionStub
+	fakeReturns := fake.removePermissionReturns
 	fake.recordInvocation("RemovePermission", []interface{}{arg1})
 	fake.removePermissionMutex.Unlock()
-	if fake.RemovePermissionStub != nil {
-		return fake.RemovePermissionStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removePermissionReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3878,15 +3925,16 @@ func (fake *SQSClient) RemovePermissionRequest(arg1 *sqs.RemovePermissionInput) 
 	fake.removePermissionRequestArgsForCall = append(fake.removePermissionRequestArgsForCall, struct {
 		arg1 *sqs.RemovePermissionInput
 	}{arg1})
+	stub := fake.RemovePermissionRequestStub
+	fakeReturns := fake.removePermissionRequestReturns
 	fake.recordInvocation("RemovePermissionRequest", []interface{}{arg1})
 	fake.removePermissionRequestMutex.Unlock()
-	if fake.RemovePermissionRequestStub != nil {
-		return fake.RemovePermissionRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removePermissionRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3943,15 +3991,16 @@ func (fake *SQSClient) RemovePermissionWithContext(arg1 context.Context, arg2 *s
 		arg2 *sqs.RemovePermissionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.RemovePermissionWithContextStub
+	fakeReturns := fake.removePermissionWithContextReturns
 	fake.recordInvocation("RemovePermissionWithContext", []interface{}{arg1, arg2, arg3})
 	fake.removePermissionWithContextMutex.Unlock()
-	if fake.RemovePermissionWithContextStub != nil {
-		return fake.RemovePermissionWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removePermissionWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4006,15 +4055,16 @@ func (fake *SQSClient) SendMessage(arg1 *sqs.SendMessageInput) (*sqs.SendMessage
 	fake.sendMessageArgsForCall = append(fake.sendMessageArgsForCall, struct {
 		arg1 *sqs.SendMessageInput
 	}{arg1})
+	stub := fake.SendMessageStub
+	fakeReturns := fake.sendMessageReturns
 	fake.recordInvocation("SendMessage", []interface{}{arg1})
 	fake.sendMessageMutex.Unlock()
-	if fake.SendMessageStub != nil {
-		return fake.SendMessageStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4069,15 +4119,16 @@ func (fake *SQSClient) SendMessageBatch(arg1 *sqs.SendMessageBatchInput) (*sqs.S
 	fake.sendMessageBatchArgsForCall = append(fake.sendMessageBatchArgsForCall, struct {
 		arg1 *sqs.SendMessageBatchInput
 	}{arg1})
+	stub := fake.SendMessageBatchStub
+	fakeReturns := fake.sendMessageBatchReturns
 	fake.recordInvocation("SendMessageBatch", []interface{}{arg1})
 	fake.sendMessageBatchMutex.Unlock()
-	if fake.SendMessageBatchStub != nil {
-		return fake.SendMessageBatchStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageBatchReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4132,15 +4183,16 @@ func (fake *SQSClient) SendMessageBatchRequest(arg1 *sqs.SendMessageBatchInput) 
 	fake.sendMessageBatchRequestArgsForCall = append(fake.sendMessageBatchRequestArgsForCall, struct {
 		arg1 *sqs.SendMessageBatchInput
 	}{arg1})
+	stub := fake.SendMessageBatchRequestStub
+	fakeReturns := fake.sendMessageBatchRequestReturns
 	fake.recordInvocation("SendMessageBatchRequest", []interface{}{arg1})
 	fake.sendMessageBatchRequestMutex.Unlock()
-	if fake.SendMessageBatchRequestStub != nil {
-		return fake.SendMessageBatchRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageBatchRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4197,15 +4249,16 @@ func (fake *SQSClient) SendMessageBatchWithContext(arg1 context.Context, arg2 *s
 		arg2 *sqs.SendMessageBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.SendMessageBatchWithContextStub
+	fakeReturns := fake.sendMessageBatchWithContextReturns
 	fake.recordInvocation("SendMessageBatchWithContext", []interface{}{arg1, arg2, arg3})
 	fake.sendMessageBatchWithContextMutex.Unlock()
-	if fake.SendMessageBatchWithContextStub != nil {
-		return fake.SendMessageBatchWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageBatchWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4260,15 +4313,16 @@ func (fake *SQSClient) SendMessageRequest(arg1 *sqs.SendMessageInput) (*request.
 	fake.sendMessageRequestArgsForCall = append(fake.sendMessageRequestArgsForCall, struct {
 		arg1 *sqs.SendMessageInput
 	}{arg1})
+	stub := fake.SendMessageRequestStub
+	fakeReturns := fake.sendMessageRequestReturns
 	fake.recordInvocation("SendMessageRequest", []interface{}{arg1})
 	fake.sendMessageRequestMutex.Unlock()
-	if fake.SendMessageRequestStub != nil {
-		return fake.SendMessageRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4325,15 +4379,16 @@ func (fake *SQSClient) SendMessageWithContext(arg1 context.Context, arg2 *sqs.Se
 		arg2 *sqs.SendMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.SendMessageWithContextStub
+	fakeReturns := fake.sendMessageWithContextReturns
 	fake.recordInvocation("SendMessageWithContext", []interface{}{arg1, arg2, arg3})
 	fake.sendMessageWithContextMutex.Unlock()
-	if fake.SendMessageWithContextStub != nil {
-		return fake.SendMessageWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.sendMessageWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4388,15 +4443,16 @@ func (fake *SQSClient) SetQueueAttributes(arg1 *sqs.SetQueueAttributesInput) (*s
 	fake.setQueueAttributesArgsForCall = append(fake.setQueueAttributesArgsForCall, struct {
 		arg1 *sqs.SetQueueAttributesInput
 	}{arg1})
+	stub := fake.SetQueueAttributesStub
+	fakeReturns := fake.setQueueAttributesReturns
 	fake.recordInvocation("SetQueueAttributes", []interface{}{arg1})
 	fake.setQueueAttributesMutex.Unlock()
-	if fake.SetQueueAttributesStub != nil {
-		return fake.SetQueueAttributesStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.setQueueAttributesReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4451,15 +4507,16 @@ func (fake *SQSClient) SetQueueAttributesRequest(arg1 *sqs.SetQueueAttributesInp
 	fake.setQueueAttributesRequestArgsForCall = append(fake.setQueueAttributesRequestArgsForCall, struct {
 		arg1 *sqs.SetQueueAttributesInput
 	}{arg1})
+	stub := fake.SetQueueAttributesRequestStub
+	fakeReturns := fake.setQueueAttributesRequestReturns
 	fake.recordInvocation("SetQueueAttributesRequest", []interface{}{arg1})
 	fake.setQueueAttributesRequestMutex.Unlock()
-	if fake.SetQueueAttributesRequestStub != nil {
-		return fake.SetQueueAttributesRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.setQueueAttributesRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4516,15 +4573,16 @@ func (fake *SQSClient) SetQueueAttributesWithContext(arg1 context.Context, arg2 
 		arg2 *sqs.SetQueueAttributesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.SetQueueAttributesWithContextStub
+	fakeReturns := fake.setQueueAttributesWithContextReturns
 	fake.recordInvocation("SetQueueAttributesWithContext", []interface{}{arg1, arg2, arg3})
 	fake.setQueueAttributesWithContextMutex.Unlock()
-	if fake.SetQueueAttributesWithContextStub != nil {
-		return fake.SetQueueAttributesWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.setQueueAttributesWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4579,15 +4637,16 @@ func (fake *SQSClient) TagQueue(arg1 *sqs.TagQueueInput) (*sqs.TagQueueOutput, e
 	fake.tagQueueArgsForCall = append(fake.tagQueueArgsForCall, struct {
 		arg1 *sqs.TagQueueInput
 	}{arg1})
+	stub := fake.TagQueueStub
+	fakeReturns := fake.tagQueueReturns
 	fake.recordInvocation("TagQueue", []interface{}{arg1})
 	fake.tagQueueMutex.Unlock()
-	if fake.TagQueueStub != nil {
-		return fake.TagQueueStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.tagQueueReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4642,15 +4701,16 @@ func (fake *SQSClient) TagQueueRequest(arg1 *sqs.TagQueueInput) (*request.Reques
 	fake.tagQueueRequestArgsForCall = append(fake.tagQueueRequestArgsForCall, struct {
 		arg1 *sqs.TagQueueInput
 	}{arg1})
+	stub := fake.TagQueueRequestStub
+	fakeReturns := fake.tagQueueRequestReturns
 	fake.recordInvocation("TagQueueRequest", []interface{}{arg1})
 	fake.tagQueueRequestMutex.Unlock()
-	if fake.TagQueueRequestStub != nil {
-		return fake.TagQueueRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.tagQueueRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4707,15 +4767,16 @@ func (fake *SQSClient) TagQueueWithContext(arg1 context.Context, arg2 *sqs.TagQu
 		arg2 *sqs.TagQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.TagQueueWithContextStub
+	fakeReturns := fake.tagQueueWithContextReturns
 	fake.recordInvocation("TagQueueWithContext", []interface{}{arg1, arg2, arg3})
 	fake.tagQueueWithContextMutex.Unlock()
-	if fake.TagQueueWithContextStub != nil {
-		return fake.TagQueueWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.tagQueueWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4770,15 +4831,16 @@ func (fake *SQSClient) UntagQueue(arg1 *sqs.UntagQueueInput) (*sqs.UntagQueueOut
 	fake.untagQueueArgsForCall = append(fake.untagQueueArgsForCall, struct {
 		arg1 *sqs.UntagQueueInput
 	}{arg1})
+	stub := fake.UntagQueueStub
+	fakeReturns := fake.untagQueueReturns
 	fake.recordInvocation("UntagQueue", []interface{}{arg1})
 	fake.untagQueueMutex.Unlock()
-	if fake.UntagQueueStub != nil {
-		return fake.UntagQueueStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.untagQueueReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4833,15 +4895,16 @@ func (fake *SQSClient) UntagQueueRequest(arg1 *sqs.UntagQueueInput) (*request.Re
 	fake.untagQueueRequestArgsForCall = append(fake.untagQueueRequestArgsForCall, struct {
 		arg1 *sqs.UntagQueueInput
 	}{arg1})
+	stub := fake.UntagQueueRequestStub
+	fakeReturns := fake.untagQueueRequestReturns
 	fake.recordInvocation("UntagQueueRequest", []interface{}{arg1})
 	fake.untagQueueRequestMutex.Unlock()
-	if fake.UntagQueueRequestStub != nil {
-		return fake.UntagQueueRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.untagQueueRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4898,15 +4961,16 @@ func (fake *SQSClient) UntagQueueWithContext(arg1 context.Context, arg2 *sqs.Unt
 		arg2 *sqs.UntagQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.UntagQueueWithContextStub
+	fakeReturns := fake.untagQueueWithContextReturns
 	fake.recordInvocation("UntagQueueWithContext", []interface{}{arg1, arg2, arg3})
 	fake.untagQueueWithContextMutex.Unlock()
-	if fake.UntagQueueWithContextStub != nil {
-		return fake.UntagQueueWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.untagQueueWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 

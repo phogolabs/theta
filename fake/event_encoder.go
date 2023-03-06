@@ -31,15 +31,16 @@ func (fake *EventEncoder) Encode(arg1 interface{}) ([]byte, error) {
 	fake.encodeArgsForCall = append(fake.encodeArgsForCall, struct {
 		arg1 interface{}
 	}{arg1})
+	stub := fake.EncodeStub
+	fakeReturns := fake.encodeReturns
 	fake.recordInvocation("Encode", []interface{}{arg1})
 	fake.encodeMutex.Unlock()
-	if fake.EncodeStub != nil {
-		return fake.EncodeStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.encodeReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 

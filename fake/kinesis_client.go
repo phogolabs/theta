@@ -1237,6 +1237,47 @@ type KinesisClient struct {
 		result1 *kinesis.UpdateShardCountOutput
 		result2 error
 	}
+	UpdateStreamModeStub        func(*kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error)
+	updateStreamModeMutex       sync.RWMutex
+	updateStreamModeArgsForCall []struct {
+		arg1 *kinesis.UpdateStreamModeInput
+	}
+	updateStreamModeReturns struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}
+	updateStreamModeReturnsOnCall map[int]struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}
+	UpdateStreamModeRequestStub        func(*kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput)
+	updateStreamModeRequestMutex       sync.RWMutex
+	updateStreamModeRequestArgsForCall []struct {
+		arg1 *kinesis.UpdateStreamModeInput
+	}
+	updateStreamModeRequestReturns struct {
+		result1 *request.Request
+		result2 *kinesis.UpdateStreamModeOutput
+	}
+	updateStreamModeRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kinesis.UpdateStreamModeOutput
+	}
+	UpdateStreamModeWithContextStub        func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)
+	updateStreamModeWithContextMutex       sync.RWMutex
+	updateStreamModeWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *kinesis.UpdateStreamModeInput
+		arg3 []request.Option
+	}
+	updateStreamModeWithContextReturns struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}
+	updateStreamModeWithContextReturnsOnCall map[int]struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}
 	WaitUntilStreamExistsStub        func(*kinesis.DescribeStreamInput) error
 	waitUntilStreamExistsMutex       sync.RWMutex
 	waitUntilStreamExistsArgsForCall []struct {
@@ -1295,15 +1336,16 @@ func (fake *KinesisClient) AddTagsToStream(arg1 *kinesis.AddTagsToStreamInput) (
 	fake.addTagsToStreamArgsForCall = append(fake.addTagsToStreamArgsForCall, struct {
 		arg1 *kinesis.AddTagsToStreamInput
 	}{arg1})
+	stub := fake.AddTagsToStreamStub
+	fakeReturns := fake.addTagsToStreamReturns
 	fake.recordInvocation("AddTagsToStream", []interface{}{arg1})
 	fake.addTagsToStreamMutex.Unlock()
-	if fake.AddTagsToStreamStub != nil {
-		return fake.AddTagsToStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addTagsToStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1358,15 +1400,16 @@ func (fake *KinesisClient) AddTagsToStreamRequest(arg1 *kinesis.AddTagsToStreamI
 	fake.addTagsToStreamRequestArgsForCall = append(fake.addTagsToStreamRequestArgsForCall, struct {
 		arg1 *kinesis.AddTagsToStreamInput
 	}{arg1})
+	stub := fake.AddTagsToStreamRequestStub
+	fakeReturns := fake.addTagsToStreamRequestReturns
 	fake.recordInvocation("AddTagsToStreamRequest", []interface{}{arg1})
 	fake.addTagsToStreamRequestMutex.Unlock()
-	if fake.AddTagsToStreamRequestStub != nil {
-		return fake.AddTagsToStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addTagsToStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1423,15 +1466,16 @@ func (fake *KinesisClient) AddTagsToStreamWithContext(arg1 context.Context, arg2
 		arg2 *kinesis.AddTagsToStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.AddTagsToStreamWithContextStub
+	fakeReturns := fake.addTagsToStreamWithContextReturns
 	fake.recordInvocation("AddTagsToStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.addTagsToStreamWithContextMutex.Unlock()
-	if fake.AddTagsToStreamWithContextStub != nil {
-		return fake.AddTagsToStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.addTagsToStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1486,15 +1530,16 @@ func (fake *KinesisClient) CreateStream(arg1 *kinesis.CreateStreamInput) (*kines
 	fake.createStreamArgsForCall = append(fake.createStreamArgsForCall, struct {
 		arg1 *kinesis.CreateStreamInput
 	}{arg1})
+	stub := fake.CreateStreamStub
+	fakeReturns := fake.createStreamReturns
 	fake.recordInvocation("CreateStream", []interface{}{arg1})
 	fake.createStreamMutex.Unlock()
-	if fake.CreateStreamStub != nil {
-		return fake.CreateStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1549,15 +1594,16 @@ func (fake *KinesisClient) CreateStreamRequest(arg1 *kinesis.CreateStreamInput) 
 	fake.createStreamRequestArgsForCall = append(fake.createStreamRequestArgsForCall, struct {
 		arg1 *kinesis.CreateStreamInput
 	}{arg1})
+	stub := fake.CreateStreamRequestStub
+	fakeReturns := fake.createStreamRequestReturns
 	fake.recordInvocation("CreateStreamRequest", []interface{}{arg1})
 	fake.createStreamRequestMutex.Unlock()
-	if fake.CreateStreamRequestStub != nil {
-		return fake.CreateStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1614,15 +1660,16 @@ func (fake *KinesisClient) CreateStreamWithContext(arg1 context.Context, arg2 *k
 		arg2 *kinesis.CreateStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.CreateStreamWithContextStub
+	fakeReturns := fake.createStreamWithContextReturns
 	fake.recordInvocation("CreateStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.createStreamWithContextMutex.Unlock()
-	if fake.CreateStreamWithContextStub != nil {
-		return fake.CreateStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.createStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1677,15 +1724,16 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriod(arg1 *kinesis.DecreaseS
 	fake.decreaseStreamRetentionPeriodArgsForCall = append(fake.decreaseStreamRetentionPeriodArgsForCall, struct {
 		arg1 *kinesis.DecreaseStreamRetentionPeriodInput
 	}{arg1})
+	stub := fake.DecreaseStreamRetentionPeriodStub
+	fakeReturns := fake.decreaseStreamRetentionPeriodReturns
 	fake.recordInvocation("DecreaseStreamRetentionPeriod", []interface{}{arg1})
 	fake.decreaseStreamRetentionPeriodMutex.Unlock()
-	if fake.DecreaseStreamRetentionPeriodStub != nil {
-		return fake.DecreaseStreamRetentionPeriodStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.decreaseStreamRetentionPeriodReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1740,15 +1788,16 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequest(arg1 *kinesis.De
 	fake.decreaseStreamRetentionPeriodRequestArgsForCall = append(fake.decreaseStreamRetentionPeriodRequestArgsForCall, struct {
 		arg1 *kinesis.DecreaseStreamRetentionPeriodInput
 	}{arg1})
+	stub := fake.DecreaseStreamRetentionPeriodRequestStub
+	fakeReturns := fake.decreaseStreamRetentionPeriodRequestReturns
 	fake.recordInvocation("DecreaseStreamRetentionPeriodRequest", []interface{}{arg1})
 	fake.decreaseStreamRetentionPeriodRequestMutex.Unlock()
-	if fake.DecreaseStreamRetentionPeriodRequestStub != nil {
-		return fake.DecreaseStreamRetentionPeriodRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.decreaseStreamRetentionPeriodRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1805,15 +1854,16 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 context
 		arg2 *kinesis.DecreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DecreaseStreamRetentionPeriodWithContextStub
+	fakeReturns := fake.decreaseStreamRetentionPeriodWithContextReturns
 	fake.recordInvocation("DecreaseStreamRetentionPeriodWithContext", []interface{}{arg1, arg2, arg3})
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Unlock()
-	if fake.DecreaseStreamRetentionPeriodWithContextStub != nil {
-		return fake.DecreaseStreamRetentionPeriodWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.decreaseStreamRetentionPeriodWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1868,15 +1918,16 @@ func (fake *KinesisClient) DeleteStream(arg1 *kinesis.DeleteStreamInput) (*kines
 	fake.deleteStreamArgsForCall = append(fake.deleteStreamArgsForCall, struct {
 		arg1 *kinesis.DeleteStreamInput
 	}{arg1})
+	stub := fake.DeleteStreamStub
+	fakeReturns := fake.deleteStreamReturns
 	fake.recordInvocation("DeleteStream", []interface{}{arg1})
 	fake.deleteStreamMutex.Unlock()
-	if fake.DeleteStreamStub != nil {
-		return fake.DeleteStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1931,15 +1982,16 @@ func (fake *KinesisClient) DeleteStreamRequest(arg1 *kinesis.DeleteStreamInput) 
 	fake.deleteStreamRequestArgsForCall = append(fake.deleteStreamRequestArgsForCall, struct {
 		arg1 *kinesis.DeleteStreamInput
 	}{arg1})
+	stub := fake.DeleteStreamRequestStub
+	fakeReturns := fake.deleteStreamRequestReturns
 	fake.recordInvocation("DeleteStreamRequest", []interface{}{arg1})
 	fake.deleteStreamRequestMutex.Unlock()
-	if fake.DeleteStreamRequestStub != nil {
-		return fake.DeleteStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -1996,15 +2048,16 @@ func (fake *KinesisClient) DeleteStreamWithContext(arg1 context.Context, arg2 *k
 		arg2 *kinesis.DeleteStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DeleteStreamWithContextStub
+	fakeReturns := fake.deleteStreamWithContextReturns
 	fake.recordInvocation("DeleteStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.deleteStreamWithContextMutex.Unlock()
-	if fake.DeleteStreamWithContextStub != nil {
-		return fake.DeleteStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deleteStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2059,15 +2112,16 @@ func (fake *KinesisClient) DeregisterStreamConsumer(arg1 *kinesis.DeregisterStre
 	fake.deregisterStreamConsumerArgsForCall = append(fake.deregisterStreamConsumerArgsForCall, struct {
 		arg1 *kinesis.DeregisterStreamConsumerInput
 	}{arg1})
+	stub := fake.DeregisterStreamConsumerStub
+	fakeReturns := fake.deregisterStreamConsumerReturns
 	fake.recordInvocation("DeregisterStreamConsumer", []interface{}{arg1})
 	fake.deregisterStreamConsumerMutex.Unlock()
-	if fake.DeregisterStreamConsumerStub != nil {
-		return fake.DeregisterStreamConsumerStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deregisterStreamConsumerReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2122,15 +2176,16 @@ func (fake *KinesisClient) DeregisterStreamConsumerRequest(arg1 *kinesis.Deregis
 	fake.deregisterStreamConsumerRequestArgsForCall = append(fake.deregisterStreamConsumerRequestArgsForCall, struct {
 		arg1 *kinesis.DeregisterStreamConsumerInput
 	}{arg1})
+	stub := fake.DeregisterStreamConsumerRequestStub
+	fakeReturns := fake.deregisterStreamConsumerRequestReturns
 	fake.recordInvocation("DeregisterStreamConsumerRequest", []interface{}{arg1})
 	fake.deregisterStreamConsumerRequestMutex.Unlock()
-	if fake.DeregisterStreamConsumerRequestStub != nil {
-		return fake.DeregisterStreamConsumerRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deregisterStreamConsumerRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2187,15 +2242,16 @@ func (fake *KinesisClient) DeregisterStreamConsumerWithContext(arg1 context.Cont
 		arg2 *kinesis.DeregisterStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DeregisterStreamConsumerWithContextStub
+	fakeReturns := fake.deregisterStreamConsumerWithContextReturns
 	fake.recordInvocation("DeregisterStreamConsumerWithContext", []interface{}{arg1, arg2, arg3})
 	fake.deregisterStreamConsumerWithContextMutex.Unlock()
-	if fake.DeregisterStreamConsumerWithContextStub != nil {
-		return fake.DeregisterStreamConsumerWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.deregisterStreamConsumerWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2250,15 +2306,16 @@ func (fake *KinesisClient) DescribeLimits(arg1 *kinesis.DescribeLimitsInput) (*k
 	fake.describeLimitsArgsForCall = append(fake.describeLimitsArgsForCall, struct {
 		arg1 *kinesis.DescribeLimitsInput
 	}{arg1})
+	stub := fake.DescribeLimitsStub
+	fakeReturns := fake.describeLimitsReturns
 	fake.recordInvocation("DescribeLimits", []interface{}{arg1})
 	fake.describeLimitsMutex.Unlock()
-	if fake.DescribeLimitsStub != nil {
-		return fake.DescribeLimitsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeLimitsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2313,15 +2370,16 @@ func (fake *KinesisClient) DescribeLimitsRequest(arg1 *kinesis.DescribeLimitsInp
 	fake.describeLimitsRequestArgsForCall = append(fake.describeLimitsRequestArgsForCall, struct {
 		arg1 *kinesis.DescribeLimitsInput
 	}{arg1})
+	stub := fake.DescribeLimitsRequestStub
+	fakeReturns := fake.describeLimitsRequestReturns
 	fake.recordInvocation("DescribeLimitsRequest", []interface{}{arg1})
 	fake.describeLimitsRequestMutex.Unlock()
-	if fake.DescribeLimitsRequestStub != nil {
-		return fake.DescribeLimitsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeLimitsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2378,15 +2436,16 @@ func (fake *KinesisClient) DescribeLimitsWithContext(arg1 context.Context, arg2 
 		arg2 *kinesis.DescribeLimitsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DescribeLimitsWithContextStub
+	fakeReturns := fake.describeLimitsWithContextReturns
 	fake.recordInvocation("DescribeLimitsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.describeLimitsWithContextMutex.Unlock()
-	if fake.DescribeLimitsWithContextStub != nil {
-		return fake.DescribeLimitsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeLimitsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2441,15 +2500,16 @@ func (fake *KinesisClient) DescribeStream(arg1 *kinesis.DescribeStreamInput) (*k
 	fake.describeStreamArgsForCall = append(fake.describeStreamArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamInput
 	}{arg1})
+	stub := fake.DescribeStreamStub
+	fakeReturns := fake.describeStreamReturns
 	fake.recordInvocation("DescribeStream", []interface{}{arg1})
 	fake.describeStreamMutex.Unlock()
-	if fake.DescribeStreamStub != nil {
-		return fake.DescribeStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2504,15 +2564,16 @@ func (fake *KinesisClient) DescribeStreamConsumer(arg1 *kinesis.DescribeStreamCo
 	fake.describeStreamConsumerArgsForCall = append(fake.describeStreamConsumerArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamConsumerInput
 	}{arg1})
+	stub := fake.DescribeStreamConsumerStub
+	fakeReturns := fake.describeStreamConsumerReturns
 	fake.recordInvocation("DescribeStreamConsumer", []interface{}{arg1})
 	fake.describeStreamConsumerMutex.Unlock()
-	if fake.DescribeStreamConsumerStub != nil {
-		return fake.DescribeStreamConsumerStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamConsumerReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2567,15 +2628,16 @@ func (fake *KinesisClient) DescribeStreamConsumerRequest(arg1 *kinesis.DescribeS
 	fake.describeStreamConsumerRequestArgsForCall = append(fake.describeStreamConsumerRequestArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamConsumerInput
 	}{arg1})
+	stub := fake.DescribeStreamConsumerRequestStub
+	fakeReturns := fake.describeStreamConsumerRequestReturns
 	fake.recordInvocation("DescribeStreamConsumerRequest", []interface{}{arg1})
 	fake.describeStreamConsumerRequestMutex.Unlock()
-	if fake.DescribeStreamConsumerRequestStub != nil {
-		return fake.DescribeStreamConsumerRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamConsumerRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2632,15 +2694,16 @@ func (fake *KinesisClient) DescribeStreamConsumerWithContext(arg1 context.Contex
 		arg2 *kinesis.DescribeStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DescribeStreamConsumerWithContextStub
+	fakeReturns := fake.describeStreamConsumerWithContextReturns
 	fake.recordInvocation("DescribeStreamConsumerWithContext", []interface{}{arg1, arg2, arg3})
 	fake.describeStreamConsumerWithContextMutex.Unlock()
-	if fake.DescribeStreamConsumerWithContextStub != nil {
-		return fake.DescribeStreamConsumerWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamConsumerWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2696,15 +2759,16 @@ func (fake *KinesisClient) DescribeStreamPages(arg1 *kinesis.DescribeStreamInput
 		arg1 *kinesis.DescribeStreamInput
 		arg2 func(*kinesis.DescribeStreamOutput, bool) bool
 	}{arg1, arg2})
+	stub := fake.DescribeStreamPagesStub
+	fakeReturns := fake.describeStreamPagesReturns
 	fake.recordInvocation("DescribeStreamPages", []interface{}{arg1, arg2})
 	fake.describeStreamPagesMutex.Unlock()
-	if fake.DescribeStreamPagesStub != nil {
-		return fake.DescribeStreamPagesStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.describeStreamPagesReturns
 	return fakeReturns.result1
 }
 
@@ -2759,15 +2823,16 @@ func (fake *KinesisClient) DescribeStreamPagesWithContext(arg1 context.Context, 
 		arg3 func(*kinesis.DescribeStreamOutput, bool) bool
 		arg4 []request.Option
 	}{arg1, arg2, arg3, arg4})
+	stub := fake.DescribeStreamPagesWithContextStub
+	fakeReturns := fake.describeStreamPagesWithContextReturns
 	fake.recordInvocation("DescribeStreamPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
 	fake.describeStreamPagesWithContextMutex.Unlock()
-	if fake.DescribeStreamPagesWithContextStub != nil {
-		return fake.DescribeStreamPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3, arg4...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.describeStreamPagesWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -2819,15 +2884,16 @@ func (fake *KinesisClient) DescribeStreamRequest(arg1 *kinesis.DescribeStreamInp
 	fake.describeStreamRequestArgsForCall = append(fake.describeStreamRequestArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamInput
 	}{arg1})
+	stub := fake.DescribeStreamRequestStub
+	fakeReturns := fake.describeStreamRequestReturns
 	fake.recordInvocation("DescribeStreamRequest", []interface{}{arg1})
 	fake.describeStreamRequestMutex.Unlock()
-	if fake.DescribeStreamRequestStub != nil {
-		return fake.DescribeStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2882,15 +2948,16 @@ func (fake *KinesisClient) DescribeStreamSummary(arg1 *kinesis.DescribeStreamSum
 	fake.describeStreamSummaryArgsForCall = append(fake.describeStreamSummaryArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamSummaryInput
 	}{arg1})
+	stub := fake.DescribeStreamSummaryStub
+	fakeReturns := fake.describeStreamSummaryReturns
 	fake.recordInvocation("DescribeStreamSummary", []interface{}{arg1})
 	fake.describeStreamSummaryMutex.Unlock()
-	if fake.DescribeStreamSummaryStub != nil {
-		return fake.DescribeStreamSummaryStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamSummaryReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -2945,15 +3012,16 @@ func (fake *KinesisClient) DescribeStreamSummaryRequest(arg1 *kinesis.DescribeSt
 	fake.describeStreamSummaryRequestArgsForCall = append(fake.describeStreamSummaryRequestArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamSummaryInput
 	}{arg1})
+	stub := fake.DescribeStreamSummaryRequestStub
+	fakeReturns := fake.describeStreamSummaryRequestReturns
 	fake.recordInvocation("DescribeStreamSummaryRequest", []interface{}{arg1})
 	fake.describeStreamSummaryRequestMutex.Unlock()
-	if fake.DescribeStreamSummaryRequestStub != nil {
-		return fake.DescribeStreamSummaryRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamSummaryRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3010,15 +3078,16 @@ func (fake *KinesisClient) DescribeStreamSummaryWithContext(arg1 context.Context
 		arg2 *kinesis.DescribeStreamSummaryInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DescribeStreamSummaryWithContextStub
+	fakeReturns := fake.describeStreamSummaryWithContextReturns
 	fake.recordInvocation("DescribeStreamSummaryWithContext", []interface{}{arg1, arg2, arg3})
 	fake.describeStreamSummaryWithContextMutex.Unlock()
-	if fake.DescribeStreamSummaryWithContextStub != nil {
-		return fake.DescribeStreamSummaryWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamSummaryWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3075,15 +3144,16 @@ func (fake *KinesisClient) DescribeStreamWithContext(arg1 context.Context, arg2 
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DescribeStreamWithContextStub
+	fakeReturns := fake.describeStreamWithContextReturns
 	fake.recordInvocation("DescribeStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.describeStreamWithContextMutex.Unlock()
-	if fake.DescribeStreamWithContextStub != nil {
-		return fake.DescribeStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.describeStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3138,15 +3208,16 @@ func (fake *KinesisClient) DisableEnhancedMonitoring(arg1 *kinesis.DisableEnhanc
 	fake.disableEnhancedMonitoringArgsForCall = append(fake.disableEnhancedMonitoringArgsForCall, struct {
 		arg1 *kinesis.DisableEnhancedMonitoringInput
 	}{arg1})
+	stub := fake.DisableEnhancedMonitoringStub
+	fakeReturns := fake.disableEnhancedMonitoringReturns
 	fake.recordInvocation("DisableEnhancedMonitoring", []interface{}{arg1})
 	fake.disableEnhancedMonitoringMutex.Unlock()
-	if fake.DisableEnhancedMonitoringStub != nil {
-		return fake.DisableEnhancedMonitoringStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.disableEnhancedMonitoringReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3201,15 +3272,16 @@ func (fake *KinesisClient) DisableEnhancedMonitoringRequest(arg1 *kinesis.Disabl
 	fake.disableEnhancedMonitoringRequestArgsForCall = append(fake.disableEnhancedMonitoringRequestArgsForCall, struct {
 		arg1 *kinesis.DisableEnhancedMonitoringInput
 	}{arg1})
+	stub := fake.DisableEnhancedMonitoringRequestStub
+	fakeReturns := fake.disableEnhancedMonitoringRequestReturns
 	fake.recordInvocation("DisableEnhancedMonitoringRequest", []interface{}{arg1})
 	fake.disableEnhancedMonitoringRequestMutex.Unlock()
-	if fake.DisableEnhancedMonitoringRequestStub != nil {
-		return fake.DisableEnhancedMonitoringRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.disableEnhancedMonitoringRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3266,15 +3338,16 @@ func (fake *KinesisClient) DisableEnhancedMonitoringWithContext(arg1 context.Con
 		arg2 *kinesis.DisableEnhancedMonitoringInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.DisableEnhancedMonitoringWithContextStub
+	fakeReturns := fake.disableEnhancedMonitoringWithContextReturns
 	fake.recordInvocation("DisableEnhancedMonitoringWithContext", []interface{}{arg1, arg2, arg3})
 	fake.disableEnhancedMonitoringWithContextMutex.Unlock()
-	if fake.DisableEnhancedMonitoringWithContextStub != nil {
-		return fake.DisableEnhancedMonitoringWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.disableEnhancedMonitoringWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3329,15 +3402,16 @@ func (fake *KinesisClient) EnableEnhancedMonitoring(arg1 *kinesis.EnableEnhanced
 	fake.enableEnhancedMonitoringArgsForCall = append(fake.enableEnhancedMonitoringArgsForCall, struct {
 		arg1 *kinesis.EnableEnhancedMonitoringInput
 	}{arg1})
+	stub := fake.EnableEnhancedMonitoringStub
+	fakeReturns := fake.enableEnhancedMonitoringReturns
 	fake.recordInvocation("EnableEnhancedMonitoring", []interface{}{arg1})
 	fake.enableEnhancedMonitoringMutex.Unlock()
-	if fake.EnableEnhancedMonitoringStub != nil {
-		return fake.EnableEnhancedMonitoringStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.enableEnhancedMonitoringReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3392,15 +3466,16 @@ func (fake *KinesisClient) EnableEnhancedMonitoringRequest(arg1 *kinesis.EnableE
 	fake.enableEnhancedMonitoringRequestArgsForCall = append(fake.enableEnhancedMonitoringRequestArgsForCall, struct {
 		arg1 *kinesis.EnableEnhancedMonitoringInput
 	}{arg1})
+	stub := fake.EnableEnhancedMonitoringRequestStub
+	fakeReturns := fake.enableEnhancedMonitoringRequestReturns
 	fake.recordInvocation("EnableEnhancedMonitoringRequest", []interface{}{arg1})
 	fake.enableEnhancedMonitoringRequestMutex.Unlock()
-	if fake.EnableEnhancedMonitoringRequestStub != nil {
-		return fake.EnableEnhancedMonitoringRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.enableEnhancedMonitoringRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3457,15 +3532,16 @@ func (fake *KinesisClient) EnableEnhancedMonitoringWithContext(arg1 context.Cont
 		arg2 *kinesis.EnableEnhancedMonitoringInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.EnableEnhancedMonitoringWithContextStub
+	fakeReturns := fake.enableEnhancedMonitoringWithContextReturns
 	fake.recordInvocation("EnableEnhancedMonitoringWithContext", []interface{}{arg1, arg2, arg3})
 	fake.enableEnhancedMonitoringWithContextMutex.Unlock()
-	if fake.EnableEnhancedMonitoringWithContextStub != nil {
-		return fake.EnableEnhancedMonitoringWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.enableEnhancedMonitoringWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3520,15 +3596,16 @@ func (fake *KinesisClient) GetRecords(arg1 *kinesis.GetRecordsInput) (*kinesis.G
 	fake.getRecordsArgsForCall = append(fake.getRecordsArgsForCall, struct {
 		arg1 *kinesis.GetRecordsInput
 	}{arg1})
+	stub := fake.GetRecordsStub
+	fakeReturns := fake.getRecordsReturns
 	fake.recordInvocation("GetRecords", []interface{}{arg1})
 	fake.getRecordsMutex.Unlock()
-	if fake.GetRecordsStub != nil {
-		return fake.GetRecordsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getRecordsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3583,15 +3660,16 @@ func (fake *KinesisClient) GetRecordsRequest(arg1 *kinesis.GetRecordsInput) (*re
 	fake.getRecordsRequestArgsForCall = append(fake.getRecordsRequestArgsForCall, struct {
 		arg1 *kinesis.GetRecordsInput
 	}{arg1})
+	stub := fake.GetRecordsRequestStub
+	fakeReturns := fake.getRecordsRequestReturns
 	fake.recordInvocation("GetRecordsRequest", []interface{}{arg1})
 	fake.getRecordsRequestMutex.Unlock()
-	if fake.GetRecordsRequestStub != nil {
-		return fake.GetRecordsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getRecordsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3648,15 +3726,16 @@ func (fake *KinesisClient) GetRecordsWithContext(arg1 context.Context, arg2 *kin
 		arg2 *kinesis.GetRecordsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.GetRecordsWithContextStub
+	fakeReturns := fake.getRecordsWithContextReturns
 	fake.recordInvocation("GetRecordsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.getRecordsWithContextMutex.Unlock()
-	if fake.GetRecordsWithContextStub != nil {
-		return fake.GetRecordsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getRecordsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3711,15 +3790,16 @@ func (fake *KinesisClient) GetShardIterator(arg1 *kinesis.GetShardIteratorInput)
 	fake.getShardIteratorArgsForCall = append(fake.getShardIteratorArgsForCall, struct {
 		arg1 *kinesis.GetShardIteratorInput
 	}{arg1})
+	stub := fake.GetShardIteratorStub
+	fakeReturns := fake.getShardIteratorReturns
 	fake.recordInvocation("GetShardIterator", []interface{}{arg1})
 	fake.getShardIteratorMutex.Unlock()
-	if fake.GetShardIteratorStub != nil {
-		return fake.GetShardIteratorStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getShardIteratorReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3774,15 +3854,16 @@ func (fake *KinesisClient) GetShardIteratorRequest(arg1 *kinesis.GetShardIterato
 	fake.getShardIteratorRequestArgsForCall = append(fake.getShardIteratorRequestArgsForCall, struct {
 		arg1 *kinesis.GetShardIteratorInput
 	}{arg1})
+	stub := fake.GetShardIteratorRequestStub
+	fakeReturns := fake.getShardIteratorRequestReturns
 	fake.recordInvocation("GetShardIteratorRequest", []interface{}{arg1})
 	fake.getShardIteratorRequestMutex.Unlock()
-	if fake.GetShardIteratorRequestStub != nil {
-		return fake.GetShardIteratorRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getShardIteratorRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3839,15 +3920,16 @@ func (fake *KinesisClient) GetShardIteratorWithContext(arg1 context.Context, arg
 		arg2 *kinesis.GetShardIteratorInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.GetShardIteratorWithContextStub
+	fakeReturns := fake.getShardIteratorWithContextReturns
 	fake.recordInvocation("GetShardIteratorWithContext", []interface{}{arg1, arg2, arg3})
 	fake.getShardIteratorWithContextMutex.Unlock()
-	if fake.GetShardIteratorWithContextStub != nil {
-		return fake.GetShardIteratorWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.getShardIteratorWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3902,15 +3984,16 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriod(arg1 *kinesis.IncreaseS
 	fake.increaseStreamRetentionPeriodArgsForCall = append(fake.increaseStreamRetentionPeriodArgsForCall, struct {
 		arg1 *kinesis.IncreaseStreamRetentionPeriodInput
 	}{arg1})
+	stub := fake.IncreaseStreamRetentionPeriodStub
+	fakeReturns := fake.increaseStreamRetentionPeriodReturns
 	fake.recordInvocation("IncreaseStreamRetentionPeriod", []interface{}{arg1})
 	fake.increaseStreamRetentionPeriodMutex.Unlock()
-	if fake.IncreaseStreamRetentionPeriodStub != nil {
-		return fake.IncreaseStreamRetentionPeriodStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.increaseStreamRetentionPeriodReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -3965,15 +4048,16 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequest(arg1 *kinesis.In
 	fake.increaseStreamRetentionPeriodRequestArgsForCall = append(fake.increaseStreamRetentionPeriodRequestArgsForCall, struct {
 		arg1 *kinesis.IncreaseStreamRetentionPeriodInput
 	}{arg1})
+	stub := fake.IncreaseStreamRetentionPeriodRequestStub
+	fakeReturns := fake.increaseStreamRetentionPeriodRequestReturns
 	fake.recordInvocation("IncreaseStreamRetentionPeriodRequest", []interface{}{arg1})
 	fake.increaseStreamRetentionPeriodRequestMutex.Unlock()
-	if fake.IncreaseStreamRetentionPeriodRequestStub != nil {
-		return fake.IncreaseStreamRetentionPeriodRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.increaseStreamRetentionPeriodRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4030,15 +4114,16 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 context
 		arg2 *kinesis.IncreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.IncreaseStreamRetentionPeriodWithContextStub
+	fakeReturns := fake.increaseStreamRetentionPeriodWithContextReturns
 	fake.recordInvocation("IncreaseStreamRetentionPeriodWithContext", []interface{}{arg1, arg2, arg3})
 	fake.increaseStreamRetentionPeriodWithContextMutex.Unlock()
-	if fake.IncreaseStreamRetentionPeriodWithContextStub != nil {
-		return fake.IncreaseStreamRetentionPeriodWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.increaseStreamRetentionPeriodWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4093,15 +4178,16 @@ func (fake *KinesisClient) ListShards(arg1 *kinesis.ListShardsInput) (*kinesis.L
 	fake.listShardsArgsForCall = append(fake.listShardsArgsForCall, struct {
 		arg1 *kinesis.ListShardsInput
 	}{arg1})
+	stub := fake.ListShardsStub
+	fakeReturns := fake.listShardsReturns
 	fake.recordInvocation("ListShards", []interface{}{arg1})
 	fake.listShardsMutex.Unlock()
-	if fake.ListShardsStub != nil {
-		return fake.ListShardsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listShardsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4156,15 +4242,16 @@ func (fake *KinesisClient) ListShardsRequest(arg1 *kinesis.ListShardsInput) (*re
 	fake.listShardsRequestArgsForCall = append(fake.listShardsRequestArgsForCall, struct {
 		arg1 *kinesis.ListShardsInput
 	}{arg1})
+	stub := fake.ListShardsRequestStub
+	fakeReturns := fake.listShardsRequestReturns
 	fake.recordInvocation("ListShardsRequest", []interface{}{arg1})
 	fake.listShardsRequestMutex.Unlock()
-	if fake.ListShardsRequestStub != nil {
-		return fake.ListShardsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listShardsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4221,15 +4308,16 @@ func (fake *KinesisClient) ListShardsWithContext(arg1 context.Context, arg2 *kin
 		arg2 *kinesis.ListShardsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListShardsWithContextStub
+	fakeReturns := fake.listShardsWithContextReturns
 	fake.recordInvocation("ListShardsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listShardsWithContextMutex.Unlock()
-	if fake.ListShardsWithContextStub != nil {
-		return fake.ListShardsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listShardsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4284,15 +4372,16 @@ func (fake *KinesisClient) ListStreamConsumers(arg1 *kinesis.ListStreamConsumers
 	fake.listStreamConsumersArgsForCall = append(fake.listStreamConsumersArgsForCall, struct {
 		arg1 *kinesis.ListStreamConsumersInput
 	}{arg1})
+	stub := fake.ListStreamConsumersStub
+	fakeReturns := fake.listStreamConsumersReturns
 	fake.recordInvocation("ListStreamConsumers", []interface{}{arg1})
 	fake.listStreamConsumersMutex.Unlock()
-	if fake.ListStreamConsumersStub != nil {
-		return fake.ListStreamConsumersStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamConsumersReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4348,15 +4437,16 @@ func (fake *KinesisClient) ListStreamConsumersPages(arg1 *kinesis.ListStreamCons
 		arg1 *kinesis.ListStreamConsumersInput
 		arg2 func(*kinesis.ListStreamConsumersOutput, bool) bool
 	}{arg1, arg2})
+	stub := fake.ListStreamConsumersPagesStub
+	fakeReturns := fake.listStreamConsumersPagesReturns
 	fake.recordInvocation("ListStreamConsumersPages", []interface{}{arg1, arg2})
 	fake.listStreamConsumersPagesMutex.Unlock()
-	if fake.ListStreamConsumersPagesStub != nil {
-		return fake.ListStreamConsumersPagesStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listStreamConsumersPagesReturns
 	return fakeReturns.result1
 }
 
@@ -4411,15 +4501,16 @@ func (fake *KinesisClient) ListStreamConsumersPagesWithContext(arg1 context.Cont
 		arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool
 		arg4 []request.Option
 	}{arg1, arg2, arg3, arg4})
+	stub := fake.ListStreamConsumersPagesWithContextStub
+	fakeReturns := fake.listStreamConsumersPagesWithContextReturns
 	fake.recordInvocation("ListStreamConsumersPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
 	fake.listStreamConsumersPagesWithContextMutex.Unlock()
-	if fake.ListStreamConsumersPagesWithContextStub != nil {
-		return fake.ListStreamConsumersPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3, arg4...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listStreamConsumersPagesWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -4471,15 +4562,16 @@ func (fake *KinesisClient) ListStreamConsumersRequest(arg1 *kinesis.ListStreamCo
 	fake.listStreamConsumersRequestArgsForCall = append(fake.listStreamConsumersRequestArgsForCall, struct {
 		arg1 *kinesis.ListStreamConsumersInput
 	}{arg1})
+	stub := fake.ListStreamConsumersRequestStub
+	fakeReturns := fake.listStreamConsumersRequestReturns
 	fake.recordInvocation("ListStreamConsumersRequest", []interface{}{arg1})
 	fake.listStreamConsumersRequestMutex.Unlock()
-	if fake.ListStreamConsumersRequestStub != nil {
-		return fake.ListStreamConsumersRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamConsumersRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4536,15 +4628,16 @@ func (fake *KinesisClient) ListStreamConsumersWithContext(arg1 context.Context, 
 		arg2 *kinesis.ListStreamConsumersInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListStreamConsumersWithContextStub
+	fakeReturns := fake.listStreamConsumersWithContextReturns
 	fake.recordInvocation("ListStreamConsumersWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listStreamConsumersWithContextMutex.Unlock()
-	if fake.ListStreamConsumersWithContextStub != nil {
-		return fake.ListStreamConsumersWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamConsumersWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4599,15 +4692,16 @@ func (fake *KinesisClient) ListStreams(arg1 *kinesis.ListStreamsInput) (*kinesis
 	fake.listStreamsArgsForCall = append(fake.listStreamsArgsForCall, struct {
 		arg1 *kinesis.ListStreamsInput
 	}{arg1})
+	stub := fake.ListStreamsStub
+	fakeReturns := fake.listStreamsReturns
 	fake.recordInvocation("ListStreams", []interface{}{arg1})
 	fake.listStreamsMutex.Unlock()
-	if fake.ListStreamsStub != nil {
-		return fake.ListStreamsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4663,15 +4757,16 @@ func (fake *KinesisClient) ListStreamsPages(arg1 *kinesis.ListStreamsInput, arg2
 		arg1 *kinesis.ListStreamsInput
 		arg2 func(*kinesis.ListStreamsOutput, bool) bool
 	}{arg1, arg2})
+	stub := fake.ListStreamsPagesStub
+	fakeReturns := fake.listStreamsPagesReturns
 	fake.recordInvocation("ListStreamsPages", []interface{}{arg1, arg2})
 	fake.listStreamsPagesMutex.Unlock()
-	if fake.ListStreamsPagesStub != nil {
-		return fake.ListStreamsPagesStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listStreamsPagesReturns
 	return fakeReturns.result1
 }
 
@@ -4726,15 +4821,16 @@ func (fake *KinesisClient) ListStreamsPagesWithContext(arg1 context.Context, arg
 		arg3 func(*kinesis.ListStreamsOutput, bool) bool
 		arg4 []request.Option
 	}{arg1, arg2, arg3, arg4})
+	stub := fake.ListStreamsPagesWithContextStub
+	fakeReturns := fake.listStreamsPagesWithContextReturns
 	fake.recordInvocation("ListStreamsPagesWithContext", []interface{}{arg1, arg2, arg3, arg4})
 	fake.listStreamsPagesWithContextMutex.Unlock()
-	if fake.ListStreamsPagesWithContextStub != nil {
-		return fake.ListStreamsPagesWithContextStub(arg1, arg2, arg3, arg4...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3, arg4...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.listStreamsPagesWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -4786,15 +4882,16 @@ func (fake *KinesisClient) ListStreamsRequest(arg1 *kinesis.ListStreamsInput) (*
 	fake.listStreamsRequestArgsForCall = append(fake.listStreamsRequestArgsForCall, struct {
 		arg1 *kinesis.ListStreamsInput
 	}{arg1})
+	stub := fake.ListStreamsRequestStub
+	fakeReturns := fake.listStreamsRequestReturns
 	fake.recordInvocation("ListStreamsRequest", []interface{}{arg1})
 	fake.listStreamsRequestMutex.Unlock()
-	if fake.ListStreamsRequestStub != nil {
-		return fake.ListStreamsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4851,15 +4948,16 @@ func (fake *KinesisClient) ListStreamsWithContext(arg1 context.Context, arg2 *ki
 		arg2 *kinesis.ListStreamsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListStreamsWithContextStub
+	fakeReturns := fake.listStreamsWithContextReturns
 	fake.recordInvocation("ListStreamsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listStreamsWithContextMutex.Unlock()
-	if fake.ListStreamsWithContextStub != nil {
-		return fake.ListStreamsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listStreamsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4914,15 +5012,16 @@ func (fake *KinesisClient) ListTagsForStream(arg1 *kinesis.ListTagsForStreamInpu
 	fake.listTagsForStreamArgsForCall = append(fake.listTagsForStreamArgsForCall, struct {
 		arg1 *kinesis.ListTagsForStreamInput
 	}{arg1})
+	stub := fake.ListTagsForStreamStub
+	fakeReturns := fake.listTagsForStreamReturns
 	fake.recordInvocation("ListTagsForStream", []interface{}{arg1})
 	fake.listTagsForStreamMutex.Unlock()
-	if fake.ListTagsForStreamStub != nil {
-		return fake.ListTagsForStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listTagsForStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -4977,15 +5076,16 @@ func (fake *KinesisClient) ListTagsForStreamRequest(arg1 *kinesis.ListTagsForStr
 	fake.listTagsForStreamRequestArgsForCall = append(fake.listTagsForStreamRequestArgsForCall, struct {
 		arg1 *kinesis.ListTagsForStreamInput
 	}{arg1})
+	stub := fake.ListTagsForStreamRequestStub
+	fakeReturns := fake.listTagsForStreamRequestReturns
 	fake.recordInvocation("ListTagsForStreamRequest", []interface{}{arg1})
 	fake.listTagsForStreamRequestMutex.Unlock()
-	if fake.ListTagsForStreamRequestStub != nil {
-		return fake.ListTagsForStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listTagsForStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5042,15 +5142,16 @@ func (fake *KinesisClient) ListTagsForStreamWithContext(arg1 context.Context, ar
 		arg2 *kinesis.ListTagsForStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.ListTagsForStreamWithContextStub
+	fakeReturns := fake.listTagsForStreamWithContextReturns
 	fake.recordInvocation("ListTagsForStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.listTagsForStreamWithContextMutex.Unlock()
-	if fake.ListTagsForStreamWithContextStub != nil {
-		return fake.ListTagsForStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.listTagsForStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5105,15 +5206,16 @@ func (fake *KinesisClient) MergeShards(arg1 *kinesis.MergeShardsInput) (*kinesis
 	fake.mergeShardsArgsForCall = append(fake.mergeShardsArgsForCall, struct {
 		arg1 *kinesis.MergeShardsInput
 	}{arg1})
+	stub := fake.MergeShardsStub
+	fakeReturns := fake.mergeShardsReturns
 	fake.recordInvocation("MergeShards", []interface{}{arg1})
 	fake.mergeShardsMutex.Unlock()
-	if fake.MergeShardsStub != nil {
-		return fake.MergeShardsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.mergeShardsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5168,15 +5270,16 @@ func (fake *KinesisClient) MergeShardsRequest(arg1 *kinesis.MergeShardsInput) (*
 	fake.mergeShardsRequestArgsForCall = append(fake.mergeShardsRequestArgsForCall, struct {
 		arg1 *kinesis.MergeShardsInput
 	}{arg1})
+	stub := fake.MergeShardsRequestStub
+	fakeReturns := fake.mergeShardsRequestReturns
 	fake.recordInvocation("MergeShardsRequest", []interface{}{arg1})
 	fake.mergeShardsRequestMutex.Unlock()
-	if fake.MergeShardsRequestStub != nil {
-		return fake.MergeShardsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.mergeShardsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5233,15 +5336,16 @@ func (fake *KinesisClient) MergeShardsWithContext(arg1 context.Context, arg2 *ki
 		arg2 *kinesis.MergeShardsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.MergeShardsWithContextStub
+	fakeReturns := fake.mergeShardsWithContextReturns
 	fake.recordInvocation("MergeShardsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.mergeShardsWithContextMutex.Unlock()
-	if fake.MergeShardsWithContextStub != nil {
-		return fake.MergeShardsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.mergeShardsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5296,15 +5400,16 @@ func (fake *KinesisClient) PutRecord(arg1 *kinesis.PutRecordInput) (*kinesis.Put
 	fake.putRecordArgsForCall = append(fake.putRecordArgsForCall, struct {
 		arg1 *kinesis.PutRecordInput
 	}{arg1})
+	stub := fake.PutRecordStub
+	fakeReturns := fake.putRecordReturns
 	fake.recordInvocation("PutRecord", []interface{}{arg1})
 	fake.putRecordMutex.Unlock()
-	if fake.PutRecordStub != nil {
-		return fake.PutRecordStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5359,15 +5464,16 @@ func (fake *KinesisClient) PutRecordRequest(arg1 *kinesis.PutRecordInput) (*requ
 	fake.putRecordRequestArgsForCall = append(fake.putRecordRequestArgsForCall, struct {
 		arg1 *kinesis.PutRecordInput
 	}{arg1})
+	stub := fake.PutRecordRequestStub
+	fakeReturns := fake.putRecordRequestReturns
 	fake.recordInvocation("PutRecordRequest", []interface{}{arg1})
 	fake.putRecordRequestMutex.Unlock()
-	if fake.PutRecordRequestStub != nil {
-		return fake.PutRecordRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5424,15 +5530,16 @@ func (fake *KinesisClient) PutRecordWithContext(arg1 context.Context, arg2 *kine
 		arg2 *kinesis.PutRecordInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.PutRecordWithContextStub
+	fakeReturns := fake.putRecordWithContextReturns
 	fake.recordInvocation("PutRecordWithContext", []interface{}{arg1, arg2, arg3})
 	fake.putRecordWithContextMutex.Unlock()
-	if fake.PutRecordWithContextStub != nil {
-		return fake.PutRecordWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5487,15 +5594,16 @@ func (fake *KinesisClient) PutRecords(arg1 *kinesis.PutRecordsInput) (*kinesis.P
 	fake.putRecordsArgsForCall = append(fake.putRecordsArgsForCall, struct {
 		arg1 *kinesis.PutRecordsInput
 	}{arg1})
+	stub := fake.PutRecordsStub
+	fakeReturns := fake.putRecordsReturns
 	fake.recordInvocation("PutRecords", []interface{}{arg1})
 	fake.putRecordsMutex.Unlock()
-	if fake.PutRecordsStub != nil {
-		return fake.PutRecordsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordsReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5550,15 +5658,16 @@ func (fake *KinesisClient) PutRecordsRequest(arg1 *kinesis.PutRecordsInput) (*re
 	fake.putRecordsRequestArgsForCall = append(fake.putRecordsRequestArgsForCall, struct {
 		arg1 *kinesis.PutRecordsInput
 	}{arg1})
+	stub := fake.PutRecordsRequestStub
+	fakeReturns := fake.putRecordsRequestReturns
 	fake.recordInvocation("PutRecordsRequest", []interface{}{arg1})
 	fake.putRecordsRequestMutex.Unlock()
-	if fake.PutRecordsRequestStub != nil {
-		return fake.PutRecordsRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordsRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5615,15 +5724,16 @@ func (fake *KinesisClient) PutRecordsWithContext(arg1 context.Context, arg2 *kin
 		arg2 *kinesis.PutRecordsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.PutRecordsWithContextStub
+	fakeReturns := fake.putRecordsWithContextReturns
 	fake.recordInvocation("PutRecordsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.putRecordsWithContextMutex.Unlock()
-	if fake.PutRecordsWithContextStub != nil {
-		return fake.PutRecordsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.putRecordsWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5678,15 +5788,16 @@ func (fake *KinesisClient) RegisterStreamConsumer(arg1 *kinesis.RegisterStreamCo
 	fake.registerStreamConsumerArgsForCall = append(fake.registerStreamConsumerArgsForCall, struct {
 		arg1 *kinesis.RegisterStreamConsumerInput
 	}{arg1})
+	stub := fake.RegisterStreamConsumerStub
+	fakeReturns := fake.registerStreamConsumerReturns
 	fake.recordInvocation("RegisterStreamConsumer", []interface{}{arg1})
 	fake.registerStreamConsumerMutex.Unlock()
-	if fake.RegisterStreamConsumerStub != nil {
-		return fake.RegisterStreamConsumerStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.registerStreamConsumerReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5741,15 +5852,16 @@ func (fake *KinesisClient) RegisterStreamConsumerRequest(arg1 *kinesis.RegisterS
 	fake.registerStreamConsumerRequestArgsForCall = append(fake.registerStreamConsumerRequestArgsForCall, struct {
 		arg1 *kinesis.RegisterStreamConsumerInput
 	}{arg1})
+	stub := fake.RegisterStreamConsumerRequestStub
+	fakeReturns := fake.registerStreamConsumerRequestReturns
 	fake.recordInvocation("RegisterStreamConsumerRequest", []interface{}{arg1})
 	fake.registerStreamConsumerRequestMutex.Unlock()
-	if fake.RegisterStreamConsumerRequestStub != nil {
-		return fake.RegisterStreamConsumerRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.registerStreamConsumerRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5806,15 +5918,16 @@ func (fake *KinesisClient) RegisterStreamConsumerWithContext(arg1 context.Contex
 		arg2 *kinesis.RegisterStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.RegisterStreamConsumerWithContextStub
+	fakeReturns := fake.registerStreamConsumerWithContextReturns
 	fake.recordInvocation("RegisterStreamConsumerWithContext", []interface{}{arg1, arg2, arg3})
 	fake.registerStreamConsumerWithContextMutex.Unlock()
-	if fake.RegisterStreamConsumerWithContextStub != nil {
-		return fake.RegisterStreamConsumerWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.registerStreamConsumerWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5869,15 +5982,16 @@ func (fake *KinesisClient) RemoveTagsFromStream(arg1 *kinesis.RemoveTagsFromStre
 	fake.removeTagsFromStreamArgsForCall = append(fake.removeTagsFromStreamArgsForCall, struct {
 		arg1 *kinesis.RemoveTagsFromStreamInput
 	}{arg1})
+	stub := fake.RemoveTagsFromStreamStub
+	fakeReturns := fake.removeTagsFromStreamReturns
 	fake.recordInvocation("RemoveTagsFromStream", []interface{}{arg1})
 	fake.removeTagsFromStreamMutex.Unlock()
-	if fake.RemoveTagsFromStreamStub != nil {
-		return fake.RemoveTagsFromStreamStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removeTagsFromStreamReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5932,15 +6046,16 @@ func (fake *KinesisClient) RemoveTagsFromStreamRequest(arg1 *kinesis.RemoveTagsF
 	fake.removeTagsFromStreamRequestArgsForCall = append(fake.removeTagsFromStreamRequestArgsForCall, struct {
 		arg1 *kinesis.RemoveTagsFromStreamInput
 	}{arg1})
+	stub := fake.RemoveTagsFromStreamRequestStub
+	fakeReturns := fake.removeTagsFromStreamRequestReturns
 	fake.recordInvocation("RemoveTagsFromStreamRequest", []interface{}{arg1})
 	fake.removeTagsFromStreamRequestMutex.Unlock()
-	if fake.RemoveTagsFromStreamRequestStub != nil {
-		return fake.RemoveTagsFromStreamRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removeTagsFromStreamRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -5997,15 +6112,16 @@ func (fake *KinesisClient) RemoveTagsFromStreamWithContext(arg1 context.Context,
 		arg2 *kinesis.RemoveTagsFromStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.RemoveTagsFromStreamWithContextStub
+	fakeReturns := fake.removeTagsFromStreamWithContextReturns
 	fake.recordInvocation("RemoveTagsFromStreamWithContext", []interface{}{arg1, arg2, arg3})
 	fake.removeTagsFromStreamWithContextMutex.Unlock()
-	if fake.RemoveTagsFromStreamWithContextStub != nil {
-		return fake.RemoveTagsFromStreamWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.removeTagsFromStreamWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6060,15 +6176,16 @@ func (fake *KinesisClient) SplitShard(arg1 *kinesis.SplitShardInput) (*kinesis.S
 	fake.splitShardArgsForCall = append(fake.splitShardArgsForCall, struct {
 		arg1 *kinesis.SplitShardInput
 	}{arg1})
+	stub := fake.SplitShardStub
+	fakeReturns := fake.splitShardReturns
 	fake.recordInvocation("SplitShard", []interface{}{arg1})
 	fake.splitShardMutex.Unlock()
-	if fake.SplitShardStub != nil {
-		return fake.SplitShardStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.splitShardReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6123,15 +6240,16 @@ func (fake *KinesisClient) SplitShardRequest(arg1 *kinesis.SplitShardInput) (*re
 	fake.splitShardRequestArgsForCall = append(fake.splitShardRequestArgsForCall, struct {
 		arg1 *kinesis.SplitShardInput
 	}{arg1})
+	stub := fake.SplitShardRequestStub
+	fakeReturns := fake.splitShardRequestReturns
 	fake.recordInvocation("SplitShardRequest", []interface{}{arg1})
 	fake.splitShardRequestMutex.Unlock()
-	if fake.SplitShardRequestStub != nil {
-		return fake.SplitShardRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.splitShardRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6188,15 +6306,16 @@ func (fake *KinesisClient) SplitShardWithContext(arg1 context.Context, arg2 *kin
 		arg2 *kinesis.SplitShardInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.SplitShardWithContextStub
+	fakeReturns := fake.splitShardWithContextReturns
 	fake.recordInvocation("SplitShardWithContext", []interface{}{arg1, arg2, arg3})
 	fake.splitShardWithContextMutex.Unlock()
-	if fake.SplitShardWithContextStub != nil {
-		return fake.SplitShardWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.splitShardWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6251,15 +6370,16 @@ func (fake *KinesisClient) StartStreamEncryption(arg1 *kinesis.StartStreamEncryp
 	fake.startStreamEncryptionArgsForCall = append(fake.startStreamEncryptionArgsForCall, struct {
 		arg1 *kinesis.StartStreamEncryptionInput
 	}{arg1})
+	stub := fake.StartStreamEncryptionStub
+	fakeReturns := fake.startStreamEncryptionReturns
 	fake.recordInvocation("StartStreamEncryption", []interface{}{arg1})
 	fake.startStreamEncryptionMutex.Unlock()
-	if fake.StartStreamEncryptionStub != nil {
-		return fake.StartStreamEncryptionStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.startStreamEncryptionReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6314,15 +6434,16 @@ func (fake *KinesisClient) StartStreamEncryptionRequest(arg1 *kinesis.StartStrea
 	fake.startStreamEncryptionRequestArgsForCall = append(fake.startStreamEncryptionRequestArgsForCall, struct {
 		arg1 *kinesis.StartStreamEncryptionInput
 	}{arg1})
+	stub := fake.StartStreamEncryptionRequestStub
+	fakeReturns := fake.startStreamEncryptionRequestReturns
 	fake.recordInvocation("StartStreamEncryptionRequest", []interface{}{arg1})
 	fake.startStreamEncryptionRequestMutex.Unlock()
-	if fake.StartStreamEncryptionRequestStub != nil {
-		return fake.StartStreamEncryptionRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.startStreamEncryptionRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6379,15 +6500,16 @@ func (fake *KinesisClient) StartStreamEncryptionWithContext(arg1 context.Context
 		arg2 *kinesis.StartStreamEncryptionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.StartStreamEncryptionWithContextStub
+	fakeReturns := fake.startStreamEncryptionWithContextReturns
 	fake.recordInvocation("StartStreamEncryptionWithContext", []interface{}{arg1, arg2, arg3})
 	fake.startStreamEncryptionWithContextMutex.Unlock()
-	if fake.StartStreamEncryptionWithContextStub != nil {
-		return fake.StartStreamEncryptionWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.startStreamEncryptionWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6442,15 +6564,16 @@ func (fake *KinesisClient) StopStreamEncryption(arg1 *kinesis.StopStreamEncrypti
 	fake.stopStreamEncryptionArgsForCall = append(fake.stopStreamEncryptionArgsForCall, struct {
 		arg1 *kinesis.StopStreamEncryptionInput
 	}{arg1})
+	stub := fake.StopStreamEncryptionStub
+	fakeReturns := fake.stopStreamEncryptionReturns
 	fake.recordInvocation("StopStreamEncryption", []interface{}{arg1})
 	fake.stopStreamEncryptionMutex.Unlock()
-	if fake.StopStreamEncryptionStub != nil {
-		return fake.StopStreamEncryptionStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.stopStreamEncryptionReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6505,15 +6628,16 @@ func (fake *KinesisClient) StopStreamEncryptionRequest(arg1 *kinesis.StopStreamE
 	fake.stopStreamEncryptionRequestArgsForCall = append(fake.stopStreamEncryptionRequestArgsForCall, struct {
 		arg1 *kinesis.StopStreamEncryptionInput
 	}{arg1})
+	stub := fake.StopStreamEncryptionRequestStub
+	fakeReturns := fake.stopStreamEncryptionRequestReturns
 	fake.recordInvocation("StopStreamEncryptionRequest", []interface{}{arg1})
 	fake.stopStreamEncryptionRequestMutex.Unlock()
-	if fake.StopStreamEncryptionRequestStub != nil {
-		return fake.StopStreamEncryptionRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.stopStreamEncryptionRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6570,15 +6694,16 @@ func (fake *KinesisClient) StopStreamEncryptionWithContext(arg1 context.Context,
 		arg2 *kinesis.StopStreamEncryptionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.StopStreamEncryptionWithContextStub
+	fakeReturns := fake.stopStreamEncryptionWithContextReturns
 	fake.recordInvocation("StopStreamEncryptionWithContext", []interface{}{arg1, arg2, arg3})
 	fake.stopStreamEncryptionWithContextMutex.Unlock()
-	if fake.StopStreamEncryptionWithContextStub != nil {
-		return fake.StopStreamEncryptionWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.stopStreamEncryptionWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6633,15 +6758,16 @@ func (fake *KinesisClient) SubscribeToShard(arg1 *kinesis.SubscribeToShardInput)
 	fake.subscribeToShardArgsForCall = append(fake.subscribeToShardArgsForCall, struct {
 		arg1 *kinesis.SubscribeToShardInput
 	}{arg1})
+	stub := fake.SubscribeToShardStub
+	fakeReturns := fake.subscribeToShardReturns
 	fake.recordInvocation("SubscribeToShard", []interface{}{arg1})
 	fake.subscribeToShardMutex.Unlock()
-	if fake.SubscribeToShardStub != nil {
-		return fake.SubscribeToShardStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.subscribeToShardReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6696,15 +6822,16 @@ func (fake *KinesisClient) SubscribeToShardRequest(arg1 *kinesis.SubscribeToShar
 	fake.subscribeToShardRequestArgsForCall = append(fake.subscribeToShardRequestArgsForCall, struct {
 		arg1 *kinesis.SubscribeToShardInput
 	}{arg1})
+	stub := fake.SubscribeToShardRequestStub
+	fakeReturns := fake.subscribeToShardRequestReturns
 	fake.recordInvocation("SubscribeToShardRequest", []interface{}{arg1})
 	fake.subscribeToShardRequestMutex.Unlock()
-	if fake.SubscribeToShardRequestStub != nil {
-		return fake.SubscribeToShardRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.subscribeToShardRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6761,15 +6888,16 @@ func (fake *KinesisClient) SubscribeToShardWithContext(arg1 context.Context, arg
 		arg2 *kinesis.SubscribeToShardInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.SubscribeToShardWithContextStub
+	fakeReturns := fake.subscribeToShardWithContextReturns
 	fake.recordInvocation("SubscribeToShardWithContext", []interface{}{arg1, arg2, arg3})
 	fake.subscribeToShardWithContextMutex.Unlock()
-	if fake.SubscribeToShardWithContextStub != nil {
-		return fake.SubscribeToShardWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.subscribeToShardWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6824,15 +6952,16 @@ func (fake *KinesisClient) UpdateShardCount(arg1 *kinesis.UpdateShardCountInput)
 	fake.updateShardCountArgsForCall = append(fake.updateShardCountArgsForCall, struct {
 		arg1 *kinesis.UpdateShardCountInput
 	}{arg1})
+	stub := fake.UpdateShardCountStub
+	fakeReturns := fake.updateShardCountReturns
 	fake.recordInvocation("UpdateShardCount", []interface{}{arg1})
 	fake.updateShardCountMutex.Unlock()
-	if fake.UpdateShardCountStub != nil {
-		return fake.UpdateShardCountStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.updateShardCountReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6887,15 +7016,16 @@ func (fake *KinesisClient) UpdateShardCountRequest(arg1 *kinesis.UpdateShardCoun
 	fake.updateShardCountRequestArgsForCall = append(fake.updateShardCountRequestArgsForCall, struct {
 		arg1 *kinesis.UpdateShardCountInput
 	}{arg1})
+	stub := fake.UpdateShardCountRequestStub
+	fakeReturns := fake.updateShardCountRequestReturns
 	fake.recordInvocation("UpdateShardCountRequest", []interface{}{arg1})
 	fake.updateShardCountRequestMutex.Unlock()
-	if fake.UpdateShardCountRequestStub != nil {
-		return fake.UpdateShardCountRequestStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.updateShardCountRequestReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -6952,15 +7082,16 @@ func (fake *KinesisClient) UpdateShardCountWithContext(arg1 context.Context, arg
 		arg2 *kinesis.UpdateShardCountInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
+	stub := fake.UpdateShardCountWithContextStub
+	fakeReturns := fake.updateShardCountWithContextReturns
 	fake.recordInvocation("UpdateShardCountWithContext", []interface{}{arg1, arg2, arg3})
 	fake.updateShardCountWithContextMutex.Unlock()
-	if fake.UpdateShardCountWithContextStub != nil {
-		return fake.UpdateShardCountWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
 	}
-	fakeReturns := fake.updateShardCountWithContextReturns
 	return fakeReturns.result1, fakeReturns.result2
 }
 
@@ -7009,21 +7140,216 @@ func (fake *KinesisClient) UpdateShardCountWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
+func (fake *KinesisClient) UpdateStreamMode(arg1 *kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error) {
+	fake.updateStreamModeMutex.Lock()
+	ret, specificReturn := fake.updateStreamModeReturnsOnCall[len(fake.updateStreamModeArgsForCall)]
+	fake.updateStreamModeArgsForCall = append(fake.updateStreamModeArgsForCall, struct {
+		arg1 *kinesis.UpdateStreamModeInput
+	}{arg1})
+	stub := fake.UpdateStreamModeStub
+	fakeReturns := fake.updateStreamModeReturns
+	fake.recordInvocation("UpdateStreamMode", []interface{}{arg1})
+	fake.updateStreamModeMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *KinesisClient) UpdateStreamModeCallCount() int {
+	fake.updateStreamModeMutex.RLock()
+	defer fake.updateStreamModeMutex.RUnlock()
+	return len(fake.updateStreamModeArgsForCall)
+}
+
+func (fake *KinesisClient) UpdateStreamModeCalls(stub func(*kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error)) {
+	fake.updateStreamModeMutex.Lock()
+	defer fake.updateStreamModeMutex.Unlock()
+	fake.UpdateStreamModeStub = stub
+}
+
+func (fake *KinesisClient) UpdateStreamModeArgsForCall(i int) *kinesis.UpdateStreamModeInput {
+	fake.updateStreamModeMutex.RLock()
+	defer fake.updateStreamModeMutex.RUnlock()
+	argsForCall := fake.updateStreamModeArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *KinesisClient) UpdateStreamModeReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+	fake.updateStreamModeMutex.Lock()
+	defer fake.updateStreamModeMutex.Unlock()
+	fake.UpdateStreamModeStub = nil
+	fake.updateStreamModeReturns = struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *KinesisClient) UpdateStreamModeReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+	fake.updateStreamModeMutex.Lock()
+	defer fake.updateStreamModeMutex.Unlock()
+	fake.UpdateStreamModeStub = nil
+	if fake.updateStreamModeReturnsOnCall == nil {
+		fake.updateStreamModeReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.UpdateStreamModeOutput
+			result2 error
+		})
+	}
+	fake.updateStreamModeReturnsOnCall[i] = struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequest(arg1 *kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput) {
+	fake.updateStreamModeRequestMutex.Lock()
+	ret, specificReturn := fake.updateStreamModeRequestReturnsOnCall[len(fake.updateStreamModeRequestArgsForCall)]
+	fake.updateStreamModeRequestArgsForCall = append(fake.updateStreamModeRequestArgsForCall, struct {
+		arg1 *kinesis.UpdateStreamModeInput
+	}{arg1})
+	stub := fake.UpdateStreamModeRequestStub
+	fakeReturns := fake.updateStreamModeRequestReturns
+	fake.recordInvocation("UpdateStreamModeRequest", []interface{}{arg1})
+	fake.updateStreamModeRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequestCallCount() int {
+	fake.updateStreamModeRequestMutex.RLock()
+	defer fake.updateStreamModeRequestMutex.RUnlock()
+	return len(fake.updateStreamModeRequestArgsForCall)
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequestCalls(stub func(*kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput)) {
+	fake.updateStreamModeRequestMutex.Lock()
+	defer fake.updateStreamModeRequestMutex.Unlock()
+	fake.UpdateStreamModeRequestStub = stub
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequestArgsForCall(i int) *kinesis.UpdateStreamModeInput {
+	fake.updateStreamModeRequestMutex.RLock()
+	defer fake.updateStreamModeRequestMutex.RUnlock()
+	argsForCall := fake.updateStreamModeRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequestReturns(result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
+	fake.updateStreamModeRequestMutex.Lock()
+	defer fake.updateStreamModeRequestMutex.Unlock()
+	fake.UpdateStreamModeRequestStub = nil
+	fake.updateStreamModeRequestReturns = struct {
+		result1 *request.Request
+		result2 *kinesis.UpdateStreamModeOutput
+	}{result1, result2}
+}
+
+func (fake *KinesisClient) UpdateStreamModeRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
+	fake.updateStreamModeRequestMutex.Lock()
+	defer fake.updateStreamModeRequestMutex.Unlock()
+	fake.UpdateStreamModeRequestStub = nil
+	if fake.updateStreamModeRequestReturnsOnCall == nil {
+		fake.updateStreamModeRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kinesis.UpdateStreamModeOutput
+		})
+	}
+	fake.updateStreamModeRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kinesis.UpdateStreamModeOutput
+	}{result1, result2}
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContext(arg1 context.Context, arg2 *kinesis.UpdateStreamModeInput, arg3 ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
+	fake.updateStreamModeWithContextMutex.Lock()
+	ret, specificReturn := fake.updateStreamModeWithContextReturnsOnCall[len(fake.updateStreamModeWithContextArgsForCall)]
+	fake.updateStreamModeWithContextArgsForCall = append(fake.updateStreamModeWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *kinesis.UpdateStreamModeInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.UpdateStreamModeWithContextStub
+	fakeReturns := fake.updateStreamModeWithContextReturns
+	fake.recordInvocation("UpdateStreamModeWithContext", []interface{}{arg1, arg2, arg3})
+	fake.updateStreamModeWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContextCallCount() int {
+	fake.updateStreamModeWithContextMutex.RLock()
+	defer fake.updateStreamModeWithContextMutex.RUnlock()
+	return len(fake.updateStreamModeWithContextArgsForCall)
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContextCalls(stub func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)) {
+	fake.updateStreamModeWithContextMutex.Lock()
+	defer fake.updateStreamModeWithContextMutex.Unlock()
+	fake.UpdateStreamModeWithContextStub = stub
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateStreamModeInput, []request.Option) {
+	fake.updateStreamModeWithContextMutex.RLock()
+	defer fake.updateStreamModeWithContextMutex.RUnlock()
+	argsForCall := fake.updateStreamModeWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContextReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+	fake.updateStreamModeWithContextMutex.Lock()
+	defer fake.updateStreamModeWithContextMutex.Unlock()
+	fake.UpdateStreamModeWithContextStub = nil
+	fake.updateStreamModeWithContextReturns = struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *KinesisClient) UpdateStreamModeWithContextReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+	fake.updateStreamModeWithContextMutex.Lock()
+	defer fake.updateStreamModeWithContextMutex.Unlock()
+	fake.UpdateStreamModeWithContextStub = nil
+	if fake.updateStreamModeWithContextReturnsOnCall == nil {
+		fake.updateStreamModeWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.UpdateStreamModeOutput
+			result2 error
+		})
+	}
+	fake.updateStreamModeWithContextReturnsOnCall[i] = struct {
+		result1 *kinesis.UpdateStreamModeOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *KinesisClient) WaitUntilStreamExists(arg1 *kinesis.DescribeStreamInput) error {
 	fake.waitUntilStreamExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamExistsReturnsOnCall[len(fake.waitUntilStreamExistsArgsForCall)]
 	fake.waitUntilStreamExistsArgsForCall = append(fake.waitUntilStreamExistsArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamInput
 	}{arg1})
+	stub := fake.WaitUntilStreamExistsStub
+	fakeReturns := fake.waitUntilStreamExistsReturns
 	fake.recordInvocation("WaitUntilStreamExists", []interface{}{arg1})
 	fake.waitUntilStreamExistsMutex.Unlock()
-	if fake.WaitUntilStreamExistsStub != nil {
-		return fake.WaitUntilStreamExistsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.waitUntilStreamExistsReturns
 	return fakeReturns.result1
 }
 
@@ -7077,15 +7403,16 @@ func (fake *KinesisClient) WaitUntilStreamExistsWithContext(arg1 context.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}{arg1, arg2, arg3})
+	stub := fake.WaitUntilStreamExistsWithContextStub
+	fakeReturns := fake.waitUntilStreamExistsWithContextReturns
 	fake.recordInvocation("WaitUntilStreamExistsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.waitUntilStreamExistsWithContextMutex.Unlock()
-	if fake.WaitUntilStreamExistsWithContextStub != nil {
-		return fake.WaitUntilStreamExistsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.waitUntilStreamExistsWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -7137,15 +7464,16 @@ func (fake *KinesisClient) WaitUntilStreamNotExists(arg1 *kinesis.DescribeStream
 	fake.waitUntilStreamNotExistsArgsForCall = append(fake.waitUntilStreamNotExistsArgsForCall, struct {
 		arg1 *kinesis.DescribeStreamInput
 	}{arg1})
+	stub := fake.WaitUntilStreamNotExistsStub
+	fakeReturns := fake.waitUntilStreamNotExistsReturns
 	fake.recordInvocation("WaitUntilStreamNotExists", []interface{}{arg1})
 	fake.waitUntilStreamNotExistsMutex.Unlock()
-	if fake.WaitUntilStreamNotExistsStub != nil {
-		return fake.WaitUntilStreamNotExistsStub(arg1)
+	if stub != nil {
+		return stub(arg1)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.waitUntilStreamNotExistsReturns
 	return fakeReturns.result1
 }
 
@@ -7199,15 +7527,16 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsWithContext(arg1 context.Cont
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}{arg1, arg2, arg3})
+	stub := fake.WaitUntilStreamNotExistsWithContextStub
+	fakeReturns := fake.waitUntilStreamNotExistsWithContextReturns
 	fake.recordInvocation("WaitUntilStreamNotExistsWithContext", []interface{}{arg1, arg2, arg3})
 	fake.waitUntilStreamNotExistsWithContextMutex.Unlock()
-	if fake.WaitUntilStreamNotExistsWithContextStub != nil {
-		return fake.WaitUntilStreamNotExistsWithContextStub(arg1, arg2, arg3...)
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.waitUntilStreamNotExistsWithContextReturns
 	return fakeReturns.result1
 }
 
@@ -7436,6 +7765,12 @@ func (fake *KinesisClient) Invocations() map[string][][]interface{} {
 	defer fake.updateShardCountRequestMutex.RUnlock()
 	fake.updateShardCountWithContextMutex.RLock()
 	defer fake.updateShardCountWithContextMutex.RUnlock()
+	fake.updateStreamModeMutex.RLock()
+	defer fake.updateStreamModeMutex.RUnlock()
+	fake.updateStreamModeRequestMutex.RLock()
+	defer fake.updateStreamModeRequestMutex.RUnlock()
+	fake.updateStreamModeWithContextMutex.RLock()
+	defer fake.updateStreamModeWithContextMutex.RUnlock()
 	fake.waitUntilStreamExistsMutex.RLock()
 	defer fake.waitUntilStreamExistsMutex.RUnlock()
 	fake.waitUntilStreamExistsWithContextMutex.RLock()
