@@ -7,20 +7,20 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/phogolabs/theta"
-	"github.com/phogolabs/theta/fake"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	. "github.com/phogolabs/theta/fake"
 )
 
 var _ = Describe("DynamoHandler", func() {
 	var (
 		reactor *theta.DynamoHandler
-		handler *fake.EventHandler
+		handler *FakeEventHandler
 	)
 
 	BeforeEach(func() {
-		handler = &fake.EventHandler{}
+		handler = &FakeEventHandler{}
 		reactor = &theta.DynamoHandler{
 			EventHandler: handler,
 		}

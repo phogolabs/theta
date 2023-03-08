@@ -70,7 +70,7 @@ func (r *SQSHandler) HandleContext(ctx context.Context, input events.SQSEvent) e
 	return nil
 }
 
-//go:generate counterfeiter -fake-name SQSClient -o ./fake/sqs_client.go . SQSClient
+//counterfeiter:generate -o ./fake/sqs_client.go . SQSClient
 
 // SQSClient creates a new client
 type SQSClient = sqsiface.SQSAPI

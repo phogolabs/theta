@@ -11,17 +11,17 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/phogolabs/theta"
-	"github.com/phogolabs/theta/fake"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	. "github.com/phogolabs/theta/fake"
 )
 
 var _ = Describe("SQSHandler", func() {
 	var (
 		reactor *theta.SQSHandler
 		event   *theta.EventArgs
-		handler *fake.EventHandler
+		handler *FakeEventHandler
 	)
 
 	BeforeEach(func() {
@@ -37,7 +37,7 @@ var _ = Describe("SQSHandler", func() {
 			Body: []byte("{}"),
 		}
 
-		handler = &fake.EventHandler{}
+		handler = &FakeEventHandler{}
 		reactor = &theta.SQSHandler{
 			EventHandler: handler,
 		}
@@ -104,11 +104,11 @@ var _ = Describe("SQSHandler", func() {
 // 	var (
 // 		command    *domain.CommandArgs
 // 		dispatcher *domain.SQSCommandDispatcher
-// 		client     *fake.SQSClient
+// 		client     *FakeSQSClient
 // 	)
 
 // 	BeforeEach(func() {
-// 		client = &fake.SQSClient{}
+// 		client = &FakeSQSClient{}
 
 // 		dispatcher = &domain.SQSCommandDispatcher{
 // 			QueueURL: "http://example.com",
@@ -171,7 +171,7 @@ var _ = Describe("SQSDispatcher", func() {
 	var (
 		eventArgs *theta.EventArgs
 		handler   *theta.SQSDispatcher
-		client    *fake.SQSClient
+		client    *FakeSQSClient
 	)
 
 	BeforeEach(func() {
@@ -179,7 +179,7 @@ var _ = Describe("SQSDispatcher", func() {
 			Event: &theta.Event{ID: "event-001"},
 		}
 
-		client = &fake.SQSClient{}
+		client = &FakeSQSClient{}
 		handler = &theta.SQSDispatcher{
 			QueueURL: "http://example.com",
 			Client:   client,

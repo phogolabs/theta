@@ -68,9 +68,7 @@ func (h *KinesisHandler) HandleContext(ctx context.Context, input events.Kinesis
 			},
 		)
 
-		var (
-			args = &EventArgs{}
-		)
+		args := &EventArgs{}
 
 		logger.Info("decode event")
 
@@ -115,7 +113,7 @@ func (h *KinesisHandler) decode(data []byte, obj interface{}) error {
 	return h.EventDecoder.Decode(data, obj)
 }
 
-//go:generate counterfeiter -fake-name KinesisClient -o ./fake/kinesis_client.go . KinesisClient
+//counterfeiter:generate  -o ./fake/kinesis_client.go . KinesisClient
 
 // KinesisClient creates a new client
 type KinesisClient = kinesisiface.KinesisAPI
@@ -198,7 +196,7 @@ type (
 	KinesisCollectorOption = consumer.Option
 )
 
-//go:generate counterfeiter -fake-name KinesisScanner -o ./fake/kinesis_scanner.go . KinesisScanner
+//counterfeiter:generate -o ./fake/kinesis_scanner.go . KinesisScanner
 
 // KinesisScanner scans kinesis stream
 type KinesisScanner interface {

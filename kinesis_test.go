@@ -8,18 +8,19 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/phogolabs/theta"
-	"github.com/phogolabs/theta/fake"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	. "github.com/phogolabs/theta/fake"
 )
 
 var _ = Describe("KinesisHandler", func() {
 	var (
 		reactor *theta.KinesisHandler
 		event   *theta.EventArgs
-		handler *fake.EventHandler
+		handler *FakeEventHandler
 	)
 
 	BeforeEach(func() {
@@ -35,7 +36,7 @@ var _ = Describe("KinesisHandler", func() {
 			Body: []byte("{}"),
 		}
 
-		handler = &fake.EventHandler{}
+		handler = &FakeEventHandler{}
 		reactor = &theta.KinesisHandler{
 			EventHandler: handler,
 		}
@@ -98,7 +99,7 @@ var _ = Describe("KinesisDispatcher", func() {
 	var (
 		eventArgs *theta.EventArgs
 		handler   *theta.KinesisDispatcher
-		client    *fake.KinesisClient
+		client    *FakeKinesisClient
 	)
 
 	BeforeEach(func() {
@@ -106,7 +107,7 @@ var _ = Describe("KinesisDispatcher", func() {
 			Event: &theta.Event{ID: "event-001"},
 		}
 
-		client = &fake.KinesisClient{}
+		client = &FakeKinesisClient{}
 		handler = &theta.KinesisDispatcher{
 			StreamName: "events",
 			Client:     client,
@@ -140,9 +141,9 @@ var _ = Describe("KinesisDispatcher", func() {
 var _ = Describe("KinesisCollector", func() {
 	var (
 		collector *theta.KinesisCollector
-		handler   *fake.EventHandler
+		handler   *FakeEventHandler
 		event     *theta.EventArgs
-		scanner   *fake.KinesisScanner
+		scanner   *FakeKinesisScanner
 	)
 
 	NewKinesisRecord := func(data interface{}) theta.KinesisRecord {
@@ -150,7 +151,9 @@ var _ = Describe("KinesisCollector", func() {
 		Expect(json.NewEncoder(buffer).Encode(data)).To(Succeed())
 
 		return theta.KinesisRecord{
-			Data: buffer.Bytes(),
+			Record: &kinesis.Record{
+				Data: buffer.Bytes(),
+			},
 		}
 	}
 
@@ -167,9 +170,9 @@ var _ = Describe("KinesisCollector", func() {
 			Body: []byte("{}"),
 		}
 
-		handler = &fake.EventHandler{}
+		handler = &FakeEventHandler{}
 
-		scanner = &fake.KinesisScanner{}
+		scanner = &FakeKinesisScanner{}
 		scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
 			row := NewKinesisRecord(event)
 			return fn(&row)
@@ -194,7 +197,9 @@ var _ = Describe("KinesisCollector", func() {
 		BeforeEach(func() {
 			scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
 				row := &theta.KinesisRecord{
-					Data: []byte(`{"member_id":`),
+					Record: &kinesis.Record{
+						Data: []byte(`{"member_id":`),
+					},
 				}
 
 				return fn(row)

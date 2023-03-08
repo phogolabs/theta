@@ -9,11 +9,11 @@ import (
 	"gopkg.in/go-playground/validator.v9"
 )
 
-var (
-	validation = validator.New()
-)
+//go:generate counterfeiter -generate
 
-//go:generate counterfeiter -fake-name EventHandler -o ./fake/event_handler.go . EventHandler
+var validation = validator.New()
+
+//counterfeiter:generate -o ./fake/event_handler.go . EventHandler
 
 // EventHandler represents the event's handler
 type EventHandler interface {
@@ -80,14 +80,14 @@ func (m Metadata) Get(key string) string {
 	return ""
 }
 
-//go:generate counterfeiter -fake-name EventDecoder -o ./fake/event_decoder.go . EventDecoder
+//counterfeiter:generate -o ./fake/event_decoder.go . EventDecoder
 
 // EventDecoder represents an event decoder
 type EventDecoder interface {
 	Decode([]byte, interface{}) error
 }
 
-//go:generate counterfeiter -fake-name EventEncoder -o ./fake/event_encoder.go . EventEncoder
+//counterfeiter:generate -o ./fake/event_encoder.go . EventEncoder
 
 // EventEncoder represents an event decoder
 type EventEncoder interface {

@@ -9,7 +9,7 @@ import (
 	"github.com/phogolabs/theta"
 )
 
-type KinesisScanner struct {
+type FakeKinesisScanner struct {
 	ScanStub        func(context.Context, consumer.ScanFunc) error
 	scanMutex       sync.RWMutex
 	scanArgsForCall []struct {
@@ -26,7 +26,7 @@ type KinesisScanner struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *KinesisScanner) Scan(arg1 context.Context, arg2 consumer.ScanFunc) error {
+func (fake *FakeKinesisScanner) Scan(arg1 context.Context, arg2 consumer.ScanFunc) error {
 	fake.scanMutex.Lock()
 	ret, specificReturn := fake.scanReturnsOnCall[len(fake.scanArgsForCall)]
 	fake.scanArgsForCall = append(fake.scanArgsForCall, struct {
@@ -46,26 +46,26 @@ func (fake *KinesisScanner) Scan(arg1 context.Context, arg2 consumer.ScanFunc) e
 	return fakeReturns.result1
 }
 
-func (fake *KinesisScanner) ScanCallCount() int {
+func (fake *FakeKinesisScanner) ScanCallCount() int {
 	fake.scanMutex.RLock()
 	defer fake.scanMutex.RUnlock()
 	return len(fake.scanArgsForCall)
 }
 
-func (fake *KinesisScanner) ScanCalls(stub func(context.Context, consumer.ScanFunc) error) {
+func (fake *FakeKinesisScanner) ScanCalls(stub func(context.Context, consumer.ScanFunc) error) {
 	fake.scanMutex.Lock()
 	defer fake.scanMutex.Unlock()
 	fake.ScanStub = stub
 }
 
-func (fake *KinesisScanner) ScanArgsForCall(i int) (context.Context, consumer.ScanFunc) {
+func (fake *FakeKinesisScanner) ScanArgsForCall(i int) (context.Context, consumer.ScanFunc) {
 	fake.scanMutex.RLock()
 	defer fake.scanMutex.RUnlock()
 	argsForCall := fake.scanArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *KinesisScanner) ScanReturns(result1 error) {
+func (fake *FakeKinesisScanner) ScanReturns(result1 error) {
 	fake.scanMutex.Lock()
 	defer fake.scanMutex.Unlock()
 	fake.ScanStub = nil
@@ -74,7 +74,7 @@ func (fake *KinesisScanner) ScanReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisScanner) ScanReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisScanner) ScanReturnsOnCall(i int, result1 error) {
 	fake.scanMutex.Lock()
 	defer fake.scanMutex.Unlock()
 	fake.ScanStub = nil
@@ -88,7 +88,7 @@ func (fake *KinesisScanner) ScanReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisScanner) Invocations() map[string][][]interface{} {
+func (fake *FakeKinesisScanner) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.scanMutex.RLock()
@@ -100,7 +100,7 @@ func (fake *KinesisScanner) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *KinesisScanner) recordInvocation(key string, args []interface{}) {
+func (fake *FakeKinesisScanner) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -112,4 +112,4 @@ func (fake *KinesisScanner) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ theta.KinesisScanner = new(KinesisScanner)
+var _ theta.KinesisScanner = new(FakeKinesisScanner)

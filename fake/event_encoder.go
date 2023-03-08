@@ -7,7 +7,7 @@ import (
 	"github.com/phogolabs/theta"
 )
 
-type EventEncoder struct {
+type FakeEventEncoder struct {
 	EncodeStub        func(interface{}) ([]byte, error)
 	encodeMutex       sync.RWMutex
 	encodeArgsForCall []struct {
@@ -25,7 +25,7 @@ type EventEncoder struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *EventEncoder) Encode(arg1 interface{}) ([]byte, error) {
+func (fake *FakeEventEncoder) Encode(arg1 interface{}) ([]byte, error) {
 	fake.encodeMutex.Lock()
 	ret, specificReturn := fake.encodeReturnsOnCall[len(fake.encodeArgsForCall)]
 	fake.encodeArgsForCall = append(fake.encodeArgsForCall, struct {
@@ -44,26 +44,26 @@ func (fake *EventEncoder) Encode(arg1 interface{}) ([]byte, error) {
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *EventEncoder) EncodeCallCount() int {
+func (fake *FakeEventEncoder) EncodeCallCount() int {
 	fake.encodeMutex.RLock()
 	defer fake.encodeMutex.RUnlock()
 	return len(fake.encodeArgsForCall)
 }
 
-func (fake *EventEncoder) EncodeCalls(stub func(interface{}) ([]byte, error)) {
+func (fake *FakeEventEncoder) EncodeCalls(stub func(interface{}) ([]byte, error)) {
 	fake.encodeMutex.Lock()
 	defer fake.encodeMutex.Unlock()
 	fake.EncodeStub = stub
 }
 
-func (fake *EventEncoder) EncodeArgsForCall(i int) interface{} {
+func (fake *FakeEventEncoder) EncodeArgsForCall(i int) interface{} {
 	fake.encodeMutex.RLock()
 	defer fake.encodeMutex.RUnlock()
 	argsForCall := fake.encodeArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *EventEncoder) EncodeReturns(result1 []byte, result2 error) {
+func (fake *FakeEventEncoder) EncodeReturns(result1 []byte, result2 error) {
 	fake.encodeMutex.Lock()
 	defer fake.encodeMutex.Unlock()
 	fake.EncodeStub = nil
@@ -73,7 +73,7 @@ func (fake *EventEncoder) EncodeReturns(result1 []byte, result2 error) {
 	}{result1, result2}
 }
 
-func (fake *EventEncoder) EncodeReturnsOnCall(i int, result1 []byte, result2 error) {
+func (fake *FakeEventEncoder) EncodeReturnsOnCall(i int, result1 []byte, result2 error) {
 	fake.encodeMutex.Lock()
 	defer fake.encodeMutex.Unlock()
 	fake.EncodeStub = nil
@@ -89,7 +89,7 @@ func (fake *EventEncoder) EncodeReturnsOnCall(i int, result1 []byte, result2 err
 	}{result1, result2}
 }
 
-func (fake *EventEncoder) Invocations() map[string][][]interface{} {
+func (fake *FakeEventEncoder) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.encodeMutex.RLock()
@@ -101,7 +101,7 @@ func (fake *EventEncoder) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *EventEncoder) recordInvocation(key string, args []interface{}) {
+func (fake *FakeEventEncoder) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -113,4 +113,4 @@ func (fake *EventEncoder) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ theta.EventEncoder = new(EventEncoder)
+var _ theta.EventEncoder = new(FakeEventEncoder)

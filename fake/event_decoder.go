@@ -7,7 +7,7 @@ import (
 	"github.com/phogolabs/theta"
 )
 
-type EventDecoder struct {
+type FakeEventDecoder struct {
 	DecodeStub        func([]byte, interface{}) error
 	decodeMutex       sync.RWMutex
 	decodeArgsForCall []struct {
@@ -24,7 +24,7 @@ type EventDecoder struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *EventDecoder) Decode(arg1 []byte, arg2 interface{}) error {
+func (fake *FakeEventDecoder) Decode(arg1 []byte, arg2 interface{}) error {
 	var arg1Copy []byte
 	if arg1 != nil {
 		arg1Copy = make([]byte, len(arg1))
@@ -49,26 +49,26 @@ func (fake *EventDecoder) Decode(arg1 []byte, arg2 interface{}) error {
 	return fakeReturns.result1
 }
 
-func (fake *EventDecoder) DecodeCallCount() int {
+func (fake *FakeEventDecoder) DecodeCallCount() int {
 	fake.decodeMutex.RLock()
 	defer fake.decodeMutex.RUnlock()
 	return len(fake.decodeArgsForCall)
 }
 
-func (fake *EventDecoder) DecodeCalls(stub func([]byte, interface{}) error) {
+func (fake *FakeEventDecoder) DecodeCalls(stub func([]byte, interface{}) error) {
 	fake.decodeMutex.Lock()
 	defer fake.decodeMutex.Unlock()
 	fake.DecodeStub = stub
 }
 
-func (fake *EventDecoder) DecodeArgsForCall(i int) ([]byte, interface{}) {
+func (fake *FakeEventDecoder) DecodeArgsForCall(i int) ([]byte, interface{}) {
 	fake.decodeMutex.RLock()
 	defer fake.decodeMutex.RUnlock()
 	argsForCall := fake.decodeArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *EventDecoder) DecodeReturns(result1 error) {
+func (fake *FakeEventDecoder) DecodeReturns(result1 error) {
 	fake.decodeMutex.Lock()
 	defer fake.decodeMutex.Unlock()
 	fake.DecodeStub = nil
@@ -77,7 +77,7 @@ func (fake *EventDecoder) DecodeReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *EventDecoder) DecodeReturnsOnCall(i int, result1 error) {
+func (fake *FakeEventDecoder) DecodeReturnsOnCall(i int, result1 error) {
 	fake.decodeMutex.Lock()
 	defer fake.decodeMutex.Unlock()
 	fake.DecodeStub = nil
@@ -91,7 +91,7 @@ func (fake *EventDecoder) DecodeReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *EventDecoder) Invocations() map[string][][]interface{} {
+func (fake *FakeEventDecoder) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.decodeMutex.RLock()
@@ -103,7 +103,7 @@ func (fake *EventDecoder) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *EventDecoder) recordInvocation(key string, args []interface{}) {
+func (fake *FakeEventDecoder) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -115,4 +115,4 @@ func (fake *EventDecoder) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ theta.EventDecoder = new(EventDecoder)
+var _ theta.EventDecoder = new(FakeEventDecoder)

@@ -8,7 +8,7 @@ import (
 	"github.com/phogolabs/theta"
 )
 
-type EventHandler struct {
+type FakeEventHandler struct {
 	HandleContextStub        func(context.Context, *theta.EventArgs) error
 	handleContextMutex       sync.RWMutex
 	handleContextArgsForCall []struct {
@@ -25,7 +25,7 @@ type EventHandler struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *EventHandler) HandleContext(arg1 context.Context, arg2 *theta.EventArgs) error {
+func (fake *FakeEventHandler) HandleContext(arg1 context.Context, arg2 *theta.EventArgs) error {
 	fake.handleContextMutex.Lock()
 	ret, specificReturn := fake.handleContextReturnsOnCall[len(fake.handleContextArgsForCall)]
 	fake.handleContextArgsForCall = append(fake.handleContextArgsForCall, struct {
@@ -45,26 +45,26 @@ func (fake *EventHandler) HandleContext(arg1 context.Context, arg2 *theta.EventA
 	return fakeReturns.result1
 }
 
-func (fake *EventHandler) HandleContextCallCount() int {
+func (fake *FakeEventHandler) HandleContextCallCount() int {
 	fake.handleContextMutex.RLock()
 	defer fake.handleContextMutex.RUnlock()
 	return len(fake.handleContextArgsForCall)
 }
 
-func (fake *EventHandler) HandleContextCalls(stub func(context.Context, *theta.EventArgs) error) {
+func (fake *FakeEventHandler) HandleContextCalls(stub func(context.Context, *theta.EventArgs) error) {
 	fake.handleContextMutex.Lock()
 	defer fake.handleContextMutex.Unlock()
 	fake.HandleContextStub = stub
 }
 
-func (fake *EventHandler) HandleContextArgsForCall(i int) (context.Context, *theta.EventArgs) {
+func (fake *FakeEventHandler) HandleContextArgsForCall(i int) (context.Context, *theta.EventArgs) {
 	fake.handleContextMutex.RLock()
 	defer fake.handleContextMutex.RUnlock()
 	argsForCall := fake.handleContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *EventHandler) HandleContextReturns(result1 error) {
+func (fake *FakeEventHandler) HandleContextReturns(result1 error) {
 	fake.handleContextMutex.Lock()
 	defer fake.handleContextMutex.Unlock()
 	fake.HandleContextStub = nil
@@ -73,7 +73,7 @@ func (fake *EventHandler) HandleContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *EventHandler) HandleContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeEventHandler) HandleContextReturnsOnCall(i int, result1 error) {
 	fake.handleContextMutex.Lock()
 	defer fake.handleContextMutex.Unlock()
 	fake.HandleContextStub = nil
@@ -87,7 +87,7 @@ func (fake *EventHandler) HandleContextReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *EventHandler) Invocations() map[string][][]interface{} {
+func (fake *FakeEventHandler) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.handleContextMutex.RLock()
@@ -99,7 +99,7 @@ func (fake *EventHandler) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *EventHandler) recordInvocation(key string, args []interface{}) {
+func (fake *FakeEventHandler) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -111,4 +111,4 @@ func (fake *EventHandler) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ theta.EventHandler = new(EventHandler)
+var _ theta.EventHandler = new(FakeEventHandler)

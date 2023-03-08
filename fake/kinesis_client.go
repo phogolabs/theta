@@ -10,7 +10,7 @@ import (
 	"github.com/phogolabs/theta"
 )
 
-type KinesisClient struct {
+type FakeKinesisClient struct {
 	AddTagsToStreamStub        func(*kinesis.AddTagsToStreamInput) (*kinesis.AddTagsToStreamOutput, error)
 	addTagsToStreamMutex       sync.RWMutex
 	addTagsToStreamArgsForCall []struct {
@@ -1330,7 +1330,7 @@ type KinesisClient struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *KinesisClient) AddTagsToStream(arg1 *kinesis.AddTagsToStreamInput) (*kinesis.AddTagsToStreamOutput, error) {
+func (fake *FakeKinesisClient) AddTagsToStream(arg1 *kinesis.AddTagsToStreamInput) (*kinesis.AddTagsToStreamOutput, error) {
 	fake.addTagsToStreamMutex.Lock()
 	ret, specificReturn := fake.addTagsToStreamReturnsOnCall[len(fake.addTagsToStreamArgsForCall)]
 	fake.addTagsToStreamArgsForCall = append(fake.addTagsToStreamArgsForCall, struct {
@@ -1349,26 +1349,26 @@ func (fake *KinesisClient) AddTagsToStream(arg1 *kinesis.AddTagsToStreamInput) (
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) AddTagsToStreamCallCount() int {
+func (fake *FakeKinesisClient) AddTagsToStreamCallCount() int {
 	fake.addTagsToStreamMutex.RLock()
 	defer fake.addTagsToStreamMutex.RUnlock()
 	return len(fake.addTagsToStreamArgsForCall)
 }
 
-func (fake *KinesisClient) AddTagsToStreamCalls(stub func(*kinesis.AddTagsToStreamInput) (*kinesis.AddTagsToStreamOutput, error)) {
+func (fake *FakeKinesisClient) AddTagsToStreamCalls(stub func(*kinesis.AddTagsToStreamInput) (*kinesis.AddTagsToStreamOutput, error)) {
 	fake.addTagsToStreamMutex.Lock()
 	defer fake.addTagsToStreamMutex.Unlock()
 	fake.AddTagsToStreamStub = stub
 }
 
-func (fake *KinesisClient) AddTagsToStreamArgsForCall(i int) *kinesis.AddTagsToStreamInput {
+func (fake *FakeKinesisClient) AddTagsToStreamArgsForCall(i int) *kinesis.AddTagsToStreamInput {
 	fake.addTagsToStreamMutex.RLock()
 	defer fake.addTagsToStreamMutex.RUnlock()
 	argsForCall := fake.addTagsToStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) AddTagsToStreamReturns(result1 *kinesis.AddTagsToStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) AddTagsToStreamReturns(result1 *kinesis.AddTagsToStreamOutput, result2 error) {
 	fake.addTagsToStreamMutex.Lock()
 	defer fake.addTagsToStreamMutex.Unlock()
 	fake.AddTagsToStreamStub = nil
@@ -1378,7 +1378,7 @@ func (fake *KinesisClient) AddTagsToStreamReturns(result1 *kinesis.AddTagsToStre
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) AddTagsToStreamReturnsOnCall(i int, result1 *kinesis.AddTagsToStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) AddTagsToStreamReturnsOnCall(i int, result1 *kinesis.AddTagsToStreamOutput, result2 error) {
 	fake.addTagsToStreamMutex.Lock()
 	defer fake.addTagsToStreamMutex.Unlock()
 	fake.AddTagsToStreamStub = nil
@@ -1394,7 +1394,7 @@ func (fake *KinesisClient) AddTagsToStreamReturnsOnCall(i int, result1 *kinesis.
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequest(arg1 *kinesis.AddTagsToStreamInput) (*request.Request, *kinesis.AddTagsToStreamOutput) {
+func (fake *FakeKinesisClient) AddTagsToStreamRequest(arg1 *kinesis.AddTagsToStreamInput) (*request.Request, *kinesis.AddTagsToStreamOutput) {
 	fake.addTagsToStreamRequestMutex.Lock()
 	ret, specificReturn := fake.addTagsToStreamRequestReturnsOnCall[len(fake.addTagsToStreamRequestArgsForCall)]
 	fake.addTagsToStreamRequestArgsForCall = append(fake.addTagsToStreamRequestArgsForCall, struct {
@@ -1413,26 +1413,26 @@ func (fake *KinesisClient) AddTagsToStreamRequest(arg1 *kinesis.AddTagsToStreamI
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) AddTagsToStreamRequestCallCount() int {
 	fake.addTagsToStreamRequestMutex.RLock()
 	defer fake.addTagsToStreamRequestMutex.RUnlock()
 	return len(fake.addTagsToStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequestCalls(stub func(*kinesis.AddTagsToStreamInput) (*request.Request, *kinesis.AddTagsToStreamOutput)) {
+func (fake *FakeKinesisClient) AddTagsToStreamRequestCalls(stub func(*kinesis.AddTagsToStreamInput) (*request.Request, *kinesis.AddTagsToStreamOutput)) {
 	fake.addTagsToStreamRequestMutex.Lock()
 	defer fake.addTagsToStreamRequestMutex.Unlock()
 	fake.AddTagsToStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequestArgsForCall(i int) *kinesis.AddTagsToStreamInput {
+func (fake *FakeKinesisClient) AddTagsToStreamRequestArgsForCall(i int) *kinesis.AddTagsToStreamInput {
 	fake.addTagsToStreamRequestMutex.RLock()
 	defer fake.addTagsToStreamRequestMutex.RUnlock()
 	argsForCall := fake.addTagsToStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequestReturns(result1 *request.Request, result2 *kinesis.AddTagsToStreamOutput) {
+func (fake *FakeKinesisClient) AddTagsToStreamRequestReturns(result1 *request.Request, result2 *kinesis.AddTagsToStreamOutput) {
 	fake.addTagsToStreamRequestMutex.Lock()
 	defer fake.addTagsToStreamRequestMutex.Unlock()
 	fake.AddTagsToStreamRequestStub = nil
@@ -1442,7 +1442,7 @@ func (fake *KinesisClient) AddTagsToStreamRequestReturns(result1 *request.Reques
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) AddTagsToStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.AddTagsToStreamOutput) {
+func (fake *FakeKinesisClient) AddTagsToStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.AddTagsToStreamOutput) {
 	fake.addTagsToStreamRequestMutex.Lock()
 	defer fake.addTagsToStreamRequestMutex.Unlock()
 	fake.AddTagsToStreamRequestStub = nil
@@ -1458,7 +1458,7 @@ func (fake *KinesisClient) AddTagsToStreamRequestReturnsOnCall(i int, result1 *r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContext(arg1 context.Context, arg2 *kinesis.AddTagsToStreamInput, arg3 ...request.Option) (*kinesis.AddTagsToStreamOutput, error) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContext(arg1 context.Context, arg2 *kinesis.AddTagsToStreamInput, arg3 ...request.Option) (*kinesis.AddTagsToStreamOutput, error) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.addTagsToStreamWithContextReturnsOnCall[len(fake.addTagsToStreamWithContextArgsForCall)]
 	fake.addTagsToStreamWithContextArgsForCall = append(fake.addTagsToStreamWithContextArgsForCall, struct {
@@ -1479,26 +1479,26 @@ func (fake *KinesisClient) AddTagsToStreamWithContext(arg1 context.Context, arg2
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextCallCount() int {
 	fake.addTagsToStreamWithContextMutex.RLock()
 	defer fake.addTagsToStreamWithContextMutex.RUnlock()
 	return len(fake.addTagsToStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContextCalls(stub func(context.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextCalls(stub func(context.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	defer fake.addTagsToStreamWithContextMutex.Unlock()
 	fake.AddTagsToStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContextArgsForCall(i int) (context.Context, *kinesis.AddTagsToStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextArgsForCall(i int) (context.Context, *kinesis.AddTagsToStreamInput, []request.Option) {
 	fake.addTagsToStreamWithContextMutex.RLock()
 	defer fake.addTagsToStreamWithContextMutex.RUnlock()
 	argsForCall := fake.addTagsToStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContextReturns(result1 *kinesis.AddTagsToStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextReturns(result1 *kinesis.AddTagsToStreamOutput, result2 error) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	defer fake.addTagsToStreamWithContextMutex.Unlock()
 	fake.AddTagsToStreamWithContextStub = nil
@@ -1508,7 +1508,7 @@ func (fake *KinesisClient) AddTagsToStreamWithContextReturns(result1 *kinesis.Ad
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) AddTagsToStreamWithContextReturnsOnCall(i int, result1 *kinesis.AddTagsToStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextReturnsOnCall(i int, result1 *kinesis.AddTagsToStreamOutput, result2 error) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	defer fake.addTagsToStreamWithContextMutex.Unlock()
 	fake.AddTagsToStreamWithContextStub = nil
@@ -1524,7 +1524,7 @@ func (fake *KinesisClient) AddTagsToStreamWithContextReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStream(arg1 *kinesis.CreateStreamInput) (*kinesis.CreateStreamOutput, error) {
+func (fake *FakeKinesisClient) CreateStream(arg1 *kinesis.CreateStreamInput) (*kinesis.CreateStreamOutput, error) {
 	fake.createStreamMutex.Lock()
 	ret, specificReturn := fake.createStreamReturnsOnCall[len(fake.createStreamArgsForCall)]
 	fake.createStreamArgsForCall = append(fake.createStreamArgsForCall, struct {
@@ -1543,26 +1543,26 @@ func (fake *KinesisClient) CreateStream(arg1 *kinesis.CreateStreamInput) (*kines
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) CreateStreamCallCount() int {
+func (fake *FakeKinesisClient) CreateStreamCallCount() int {
 	fake.createStreamMutex.RLock()
 	defer fake.createStreamMutex.RUnlock()
 	return len(fake.createStreamArgsForCall)
 }
 
-func (fake *KinesisClient) CreateStreamCalls(stub func(*kinesis.CreateStreamInput) (*kinesis.CreateStreamOutput, error)) {
+func (fake *FakeKinesisClient) CreateStreamCalls(stub func(*kinesis.CreateStreamInput) (*kinesis.CreateStreamOutput, error)) {
 	fake.createStreamMutex.Lock()
 	defer fake.createStreamMutex.Unlock()
 	fake.CreateStreamStub = stub
 }
 
-func (fake *KinesisClient) CreateStreamArgsForCall(i int) *kinesis.CreateStreamInput {
+func (fake *FakeKinesisClient) CreateStreamArgsForCall(i int) *kinesis.CreateStreamInput {
 	fake.createStreamMutex.RLock()
 	defer fake.createStreamMutex.RUnlock()
 	argsForCall := fake.createStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) CreateStreamReturns(result1 *kinesis.CreateStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) CreateStreamReturns(result1 *kinesis.CreateStreamOutput, result2 error) {
 	fake.createStreamMutex.Lock()
 	defer fake.createStreamMutex.Unlock()
 	fake.CreateStreamStub = nil
@@ -1572,7 +1572,7 @@ func (fake *KinesisClient) CreateStreamReturns(result1 *kinesis.CreateStreamOutp
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStreamReturnsOnCall(i int, result1 *kinesis.CreateStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) CreateStreamReturnsOnCall(i int, result1 *kinesis.CreateStreamOutput, result2 error) {
 	fake.createStreamMutex.Lock()
 	defer fake.createStreamMutex.Unlock()
 	fake.CreateStreamStub = nil
@@ -1588,7 +1588,7 @@ func (fake *KinesisClient) CreateStreamReturnsOnCall(i int, result1 *kinesis.Cre
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStreamRequest(arg1 *kinesis.CreateStreamInput) (*request.Request, *kinesis.CreateStreamOutput) {
+func (fake *FakeKinesisClient) CreateStreamRequest(arg1 *kinesis.CreateStreamInput) (*request.Request, *kinesis.CreateStreamOutput) {
 	fake.createStreamRequestMutex.Lock()
 	ret, specificReturn := fake.createStreamRequestReturnsOnCall[len(fake.createStreamRequestArgsForCall)]
 	fake.createStreamRequestArgsForCall = append(fake.createStreamRequestArgsForCall, struct {
@@ -1607,26 +1607,26 @@ func (fake *KinesisClient) CreateStreamRequest(arg1 *kinesis.CreateStreamInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) CreateStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) CreateStreamRequestCallCount() int {
 	fake.createStreamRequestMutex.RLock()
 	defer fake.createStreamRequestMutex.RUnlock()
 	return len(fake.createStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) CreateStreamRequestCalls(stub func(*kinesis.CreateStreamInput) (*request.Request, *kinesis.CreateStreamOutput)) {
+func (fake *FakeKinesisClient) CreateStreamRequestCalls(stub func(*kinesis.CreateStreamInput) (*request.Request, *kinesis.CreateStreamOutput)) {
 	fake.createStreamRequestMutex.Lock()
 	defer fake.createStreamRequestMutex.Unlock()
 	fake.CreateStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) CreateStreamRequestArgsForCall(i int) *kinesis.CreateStreamInput {
+func (fake *FakeKinesisClient) CreateStreamRequestArgsForCall(i int) *kinesis.CreateStreamInput {
 	fake.createStreamRequestMutex.RLock()
 	defer fake.createStreamRequestMutex.RUnlock()
 	argsForCall := fake.createStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) CreateStreamRequestReturns(result1 *request.Request, result2 *kinesis.CreateStreamOutput) {
+func (fake *FakeKinesisClient) CreateStreamRequestReturns(result1 *request.Request, result2 *kinesis.CreateStreamOutput) {
 	fake.createStreamRequestMutex.Lock()
 	defer fake.createStreamRequestMutex.Unlock()
 	fake.CreateStreamRequestStub = nil
@@ -1636,7 +1636,7 @@ func (fake *KinesisClient) CreateStreamRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.CreateStreamOutput) {
+func (fake *FakeKinesisClient) CreateStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.CreateStreamOutput) {
 	fake.createStreamRequestMutex.Lock()
 	defer fake.createStreamRequestMutex.Unlock()
 	fake.CreateStreamRequestStub = nil
@@ -1652,7 +1652,7 @@ func (fake *KinesisClient) CreateStreamRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStreamWithContext(arg1 context.Context, arg2 *kinesis.CreateStreamInput, arg3 ...request.Option) (*kinesis.CreateStreamOutput, error) {
+func (fake *FakeKinesisClient) CreateStreamWithContext(arg1 context.Context, arg2 *kinesis.CreateStreamInput, arg3 ...request.Option) (*kinesis.CreateStreamOutput, error) {
 	fake.createStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.createStreamWithContextReturnsOnCall[len(fake.createStreamWithContextArgsForCall)]
 	fake.createStreamWithContextArgsForCall = append(fake.createStreamWithContextArgsForCall, struct {
@@ -1673,26 +1673,26 @@ func (fake *KinesisClient) CreateStreamWithContext(arg1 context.Context, arg2 *k
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) CreateStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) CreateStreamWithContextCallCount() int {
 	fake.createStreamWithContextMutex.RLock()
 	defer fake.createStreamWithContextMutex.RUnlock()
 	return len(fake.createStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) CreateStreamWithContextCalls(stub func(context.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)) {
+func (fake *FakeKinesisClient) CreateStreamWithContextCalls(stub func(context.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)) {
 	fake.createStreamWithContextMutex.Lock()
 	defer fake.createStreamWithContextMutex.Unlock()
 	fake.CreateStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) CreateStreamWithContextArgsForCall(i int) (context.Context, *kinesis.CreateStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) CreateStreamWithContextArgsForCall(i int) (context.Context, *kinesis.CreateStreamInput, []request.Option) {
 	fake.createStreamWithContextMutex.RLock()
 	defer fake.createStreamWithContextMutex.RUnlock()
 	argsForCall := fake.createStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) CreateStreamWithContextReturns(result1 *kinesis.CreateStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) CreateStreamWithContextReturns(result1 *kinesis.CreateStreamOutput, result2 error) {
 	fake.createStreamWithContextMutex.Lock()
 	defer fake.createStreamWithContextMutex.Unlock()
 	fake.CreateStreamWithContextStub = nil
@@ -1702,7 +1702,7 @@ func (fake *KinesisClient) CreateStreamWithContextReturns(result1 *kinesis.Creat
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) CreateStreamWithContextReturnsOnCall(i int, result1 *kinesis.CreateStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) CreateStreamWithContextReturnsOnCall(i int, result1 *kinesis.CreateStreamOutput, result2 error) {
 	fake.createStreamWithContextMutex.Lock()
 	defer fake.createStreamWithContextMutex.Unlock()
 	fake.CreateStreamWithContextStub = nil
@@ -1718,7 +1718,7 @@ func (fake *KinesisClient) CreateStreamWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriod(arg1 *kinesis.DecreaseStreamRetentionPeriodInput) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriod(arg1 *kinesis.DecreaseStreamRetentionPeriodInput) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
 	fake.decreaseStreamRetentionPeriodMutex.Lock()
 	ret, specificReturn := fake.decreaseStreamRetentionPeriodReturnsOnCall[len(fake.decreaseStreamRetentionPeriodArgsForCall)]
 	fake.decreaseStreamRetentionPeriodArgsForCall = append(fake.decreaseStreamRetentionPeriodArgsForCall, struct {
@@ -1737,26 +1737,26 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriod(arg1 *kinesis.DecreaseS
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodCallCount() int {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodCallCount() int {
 	fake.decreaseStreamRetentionPeriodMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodMutex.RUnlock()
 	return len(fake.decreaseStreamRetentionPeriodArgsForCall)
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodCalls(stub func(*kinesis.DecreaseStreamRetentionPeriodInput) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodCalls(stub func(*kinesis.DecreaseStreamRetentionPeriodInput) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
 	fake.decreaseStreamRetentionPeriodMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodStub = stub
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodArgsForCall(i int) *kinesis.DecreaseStreamRetentionPeriodInput {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodArgsForCall(i int) *kinesis.DecreaseStreamRetentionPeriodInput {
 	fake.decreaseStreamRetentionPeriodMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodMutex.RUnlock()
 	argsForCall := fake.decreaseStreamRetentionPeriodArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodReturns(result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodReturns(result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.decreaseStreamRetentionPeriodMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodStub = nil
@@ -1766,7 +1766,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodReturns(result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodReturnsOnCall(i int, result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodReturnsOnCall(i int, result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.decreaseStreamRetentionPeriodMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodStub = nil
@@ -1782,7 +1782,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequest(arg1 *kinesis.DecreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.DecreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequest(arg1 *kinesis.DecreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.DecreaseStreamRetentionPeriodOutput) {
 	fake.decreaseStreamRetentionPeriodRequestMutex.Lock()
 	ret, specificReturn := fake.decreaseStreamRetentionPeriodRequestReturnsOnCall[len(fake.decreaseStreamRetentionPeriodRequestArgsForCall)]
 	fake.decreaseStreamRetentionPeriodRequestArgsForCall = append(fake.decreaseStreamRetentionPeriodRequestArgsForCall, struct {
@@ -1801,26 +1801,26 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequest(arg1 *kinesis.De
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestCallCount() int {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestCallCount() int {
 	fake.decreaseStreamRetentionPeriodRequestMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.RUnlock()
 	return len(fake.decreaseStreamRetentionPeriodRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestCalls(stub func(*kinesis.DecreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.DecreaseStreamRetentionPeriodOutput)) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestCalls(stub func(*kinesis.DecreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.DecreaseStreamRetentionPeriodOutput)) {
 	fake.decreaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodRequestStub = stub
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestArgsForCall(i int) *kinesis.DecreaseStreamRetentionPeriodInput {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestArgsForCall(i int) *kinesis.DecreaseStreamRetentionPeriodInput {
 	fake.decreaseStreamRetentionPeriodRequestMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.RUnlock()
 	argsForCall := fake.decreaseStreamRetentionPeriodRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestReturns(result1 *request.Request, result2 *kinesis.DecreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestReturns(result1 *request.Request, result2 *kinesis.DecreaseStreamRetentionPeriodOutput) {
 	fake.decreaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodRequestStub = nil
@@ -1830,7 +1830,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DecreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DecreaseStreamRetentionPeriodOutput) {
 	fake.decreaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodRequestStub = nil
@@ -1846,7 +1846,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodRequestReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.DecreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.DecreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	ret, specificReturn := fake.decreaseStreamRetentionPeriodWithContextReturnsOnCall[len(fake.decreaseStreamRetentionPeriodWithContextArgsForCall)]
 	fake.decreaseStreamRetentionPeriodWithContextArgsForCall = append(fake.decreaseStreamRetentionPeriodWithContextArgsForCall, struct {
@@ -1867,26 +1867,26 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 context
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextCallCount() int {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextCallCount() int {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	return len(fake.decreaseStreamRetentionPeriodWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodWithContextStub = stub
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, []request.Option) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, []request.Option) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	argsForCall := fake.decreaseStreamRetentionPeriodWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextReturns(result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextReturns(result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodWithContextStub = nil
@@ -1896,7 +1896,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextReturns(resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextReturnsOnCall(i int, result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextReturnsOnCall(i int, result1 *kinesis.DecreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodWithContextStub = nil
@@ -1912,7 +1912,7 @@ func (fake *KinesisClient) DecreaseStreamRetentionPeriodWithContextReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStream(arg1 *kinesis.DeleteStreamInput) (*kinesis.DeleteStreamOutput, error) {
+func (fake *FakeKinesisClient) DeleteStream(arg1 *kinesis.DeleteStreamInput) (*kinesis.DeleteStreamOutput, error) {
 	fake.deleteStreamMutex.Lock()
 	ret, specificReturn := fake.deleteStreamReturnsOnCall[len(fake.deleteStreamArgsForCall)]
 	fake.deleteStreamArgsForCall = append(fake.deleteStreamArgsForCall, struct {
@@ -1931,26 +1931,26 @@ func (fake *KinesisClient) DeleteStream(arg1 *kinesis.DeleteStreamInput) (*kines
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeleteStreamCallCount() int {
+func (fake *FakeKinesisClient) DeleteStreamCallCount() int {
 	fake.deleteStreamMutex.RLock()
 	defer fake.deleteStreamMutex.RUnlock()
 	return len(fake.deleteStreamArgsForCall)
 }
 
-func (fake *KinesisClient) DeleteStreamCalls(stub func(*kinesis.DeleteStreamInput) (*kinesis.DeleteStreamOutput, error)) {
+func (fake *FakeKinesisClient) DeleteStreamCalls(stub func(*kinesis.DeleteStreamInput) (*kinesis.DeleteStreamOutput, error)) {
 	fake.deleteStreamMutex.Lock()
 	defer fake.deleteStreamMutex.Unlock()
 	fake.DeleteStreamStub = stub
 }
 
-func (fake *KinesisClient) DeleteStreamArgsForCall(i int) *kinesis.DeleteStreamInput {
+func (fake *FakeKinesisClient) DeleteStreamArgsForCall(i int) *kinesis.DeleteStreamInput {
 	fake.deleteStreamMutex.RLock()
 	defer fake.deleteStreamMutex.RUnlock()
 	argsForCall := fake.deleteStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DeleteStreamReturns(result1 *kinesis.DeleteStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DeleteStreamReturns(result1 *kinesis.DeleteStreamOutput, result2 error) {
 	fake.deleteStreamMutex.Lock()
 	defer fake.deleteStreamMutex.Unlock()
 	fake.DeleteStreamStub = nil
@@ -1960,7 +1960,7 @@ func (fake *KinesisClient) DeleteStreamReturns(result1 *kinesis.DeleteStreamOutp
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStreamReturnsOnCall(i int, result1 *kinesis.DeleteStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DeleteStreamReturnsOnCall(i int, result1 *kinesis.DeleteStreamOutput, result2 error) {
 	fake.deleteStreamMutex.Lock()
 	defer fake.deleteStreamMutex.Unlock()
 	fake.DeleteStreamStub = nil
@@ -1976,7 +1976,7 @@ func (fake *KinesisClient) DeleteStreamReturnsOnCall(i int, result1 *kinesis.Del
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStreamRequest(arg1 *kinesis.DeleteStreamInput) (*request.Request, *kinesis.DeleteStreamOutput) {
+func (fake *FakeKinesisClient) DeleteStreamRequest(arg1 *kinesis.DeleteStreamInput) (*request.Request, *kinesis.DeleteStreamOutput) {
 	fake.deleteStreamRequestMutex.Lock()
 	ret, specificReturn := fake.deleteStreamRequestReturnsOnCall[len(fake.deleteStreamRequestArgsForCall)]
 	fake.deleteStreamRequestArgsForCall = append(fake.deleteStreamRequestArgsForCall, struct {
@@ -1995,26 +1995,26 @@ func (fake *KinesisClient) DeleteStreamRequest(arg1 *kinesis.DeleteStreamInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeleteStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) DeleteStreamRequestCallCount() int {
 	fake.deleteStreamRequestMutex.RLock()
 	defer fake.deleteStreamRequestMutex.RUnlock()
 	return len(fake.deleteStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DeleteStreamRequestCalls(stub func(*kinesis.DeleteStreamInput) (*request.Request, *kinesis.DeleteStreamOutput)) {
+func (fake *FakeKinesisClient) DeleteStreamRequestCalls(stub func(*kinesis.DeleteStreamInput) (*request.Request, *kinesis.DeleteStreamOutput)) {
 	fake.deleteStreamRequestMutex.Lock()
 	defer fake.deleteStreamRequestMutex.Unlock()
 	fake.DeleteStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) DeleteStreamRequestArgsForCall(i int) *kinesis.DeleteStreamInput {
+func (fake *FakeKinesisClient) DeleteStreamRequestArgsForCall(i int) *kinesis.DeleteStreamInput {
 	fake.deleteStreamRequestMutex.RLock()
 	defer fake.deleteStreamRequestMutex.RUnlock()
 	argsForCall := fake.deleteStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DeleteStreamRequestReturns(result1 *request.Request, result2 *kinesis.DeleteStreamOutput) {
+func (fake *FakeKinesisClient) DeleteStreamRequestReturns(result1 *request.Request, result2 *kinesis.DeleteStreamOutput) {
 	fake.deleteStreamRequestMutex.Lock()
 	defer fake.deleteStreamRequestMutex.Unlock()
 	fake.DeleteStreamRequestStub = nil
@@ -2024,7 +2024,7 @@ func (fake *KinesisClient) DeleteStreamRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DeleteStreamOutput) {
+func (fake *FakeKinesisClient) DeleteStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DeleteStreamOutput) {
 	fake.deleteStreamRequestMutex.Lock()
 	defer fake.deleteStreamRequestMutex.Unlock()
 	fake.DeleteStreamRequestStub = nil
@@ -2040,7 +2040,7 @@ func (fake *KinesisClient) DeleteStreamRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStreamWithContext(arg1 context.Context, arg2 *kinesis.DeleteStreamInput, arg3 ...request.Option) (*kinesis.DeleteStreamOutput, error) {
+func (fake *FakeKinesisClient) DeleteStreamWithContext(arg1 context.Context, arg2 *kinesis.DeleteStreamInput, arg3 ...request.Option) (*kinesis.DeleteStreamOutput, error) {
 	fake.deleteStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteStreamWithContextReturnsOnCall[len(fake.deleteStreamWithContextArgsForCall)]
 	fake.deleteStreamWithContextArgsForCall = append(fake.deleteStreamWithContextArgsForCall, struct {
@@ -2061,26 +2061,26 @@ func (fake *KinesisClient) DeleteStreamWithContext(arg1 context.Context, arg2 *k
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeleteStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) DeleteStreamWithContextCallCount() int {
 	fake.deleteStreamWithContextMutex.RLock()
 	defer fake.deleteStreamWithContextMutex.RUnlock()
 	return len(fake.deleteStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DeleteStreamWithContextCalls(stub func(context.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextCalls(stub func(context.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)) {
 	fake.deleteStreamWithContextMutex.Lock()
 	defer fake.deleteStreamWithContextMutex.Unlock()
 	fake.DeleteStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) DeleteStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DeleteStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DeleteStreamInput, []request.Option) {
 	fake.deleteStreamWithContextMutex.RLock()
 	defer fake.deleteStreamWithContextMutex.RUnlock()
 	argsForCall := fake.deleteStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DeleteStreamWithContextReturns(result1 *kinesis.DeleteStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextReturns(result1 *kinesis.DeleteStreamOutput, result2 error) {
 	fake.deleteStreamWithContextMutex.Lock()
 	defer fake.deleteStreamWithContextMutex.Unlock()
 	fake.DeleteStreamWithContextStub = nil
@@ -2090,7 +2090,7 @@ func (fake *KinesisClient) DeleteStreamWithContextReturns(result1 *kinesis.Delet
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeleteStreamWithContextReturnsOnCall(i int, result1 *kinesis.DeleteStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextReturnsOnCall(i int, result1 *kinesis.DeleteStreamOutput, result2 error) {
 	fake.deleteStreamWithContextMutex.Lock()
 	defer fake.deleteStreamWithContextMutex.Unlock()
 	fake.DeleteStreamWithContextStub = nil
@@ -2106,7 +2106,7 @@ func (fake *KinesisClient) DeleteStreamWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumer(arg1 *kinesis.DeregisterStreamConsumerInput) (*kinesis.DeregisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumer(arg1 *kinesis.DeregisterStreamConsumerInput) (*kinesis.DeregisterStreamConsumerOutput, error) {
 	fake.deregisterStreamConsumerMutex.Lock()
 	ret, specificReturn := fake.deregisterStreamConsumerReturnsOnCall[len(fake.deregisterStreamConsumerArgsForCall)]
 	fake.deregisterStreamConsumerArgsForCall = append(fake.deregisterStreamConsumerArgsForCall, struct {
@@ -2125,26 +2125,26 @@ func (fake *KinesisClient) DeregisterStreamConsumer(arg1 *kinesis.DeregisterStre
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerCallCount() int {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerCallCount() int {
 	fake.deregisterStreamConsumerMutex.RLock()
 	defer fake.deregisterStreamConsumerMutex.RUnlock()
 	return len(fake.deregisterStreamConsumerArgsForCall)
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerCalls(stub func(*kinesis.DeregisterStreamConsumerInput) (*kinesis.DeregisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerCalls(stub func(*kinesis.DeregisterStreamConsumerInput) (*kinesis.DeregisterStreamConsumerOutput, error)) {
 	fake.deregisterStreamConsumerMutex.Lock()
 	defer fake.deregisterStreamConsumerMutex.Unlock()
 	fake.DeregisterStreamConsumerStub = stub
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerArgsForCall(i int) *kinesis.DeregisterStreamConsumerInput {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerArgsForCall(i int) *kinesis.DeregisterStreamConsumerInput {
 	fake.deregisterStreamConsumerMutex.RLock()
 	defer fake.deregisterStreamConsumerMutex.RUnlock()
 	argsForCall := fake.deregisterStreamConsumerArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerReturns(result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerReturns(result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
 	fake.deregisterStreamConsumerMutex.Lock()
 	defer fake.deregisterStreamConsumerMutex.Unlock()
 	fake.DeregisterStreamConsumerStub = nil
@@ -2154,7 +2154,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerReturns(result1 *kinesis.Dere
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerReturnsOnCall(i int, result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerReturnsOnCall(i int, result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
 	fake.deregisterStreamConsumerMutex.Lock()
 	defer fake.deregisterStreamConsumerMutex.Unlock()
 	fake.DeregisterStreamConsumerStub = nil
@@ -2170,7 +2170,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequest(arg1 *kinesis.DeregisterStreamConsumerInput) (*request.Request, *kinesis.DeregisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequest(arg1 *kinesis.DeregisterStreamConsumerInput) (*request.Request, *kinesis.DeregisterStreamConsumerOutput) {
 	fake.deregisterStreamConsumerRequestMutex.Lock()
 	ret, specificReturn := fake.deregisterStreamConsumerRequestReturnsOnCall[len(fake.deregisterStreamConsumerRequestArgsForCall)]
 	fake.deregisterStreamConsumerRequestArgsForCall = append(fake.deregisterStreamConsumerRequestArgsForCall, struct {
@@ -2189,26 +2189,26 @@ func (fake *KinesisClient) DeregisterStreamConsumerRequest(arg1 *kinesis.Deregis
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequestCallCount() int {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestCallCount() int {
 	fake.deregisterStreamConsumerRequestMutex.RLock()
 	defer fake.deregisterStreamConsumerRequestMutex.RUnlock()
 	return len(fake.deregisterStreamConsumerRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequestCalls(stub func(*kinesis.DeregisterStreamConsumerInput) (*request.Request, *kinesis.DeregisterStreamConsumerOutput)) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestCalls(stub func(*kinesis.DeregisterStreamConsumerInput) (*request.Request, *kinesis.DeregisterStreamConsumerOutput)) {
 	fake.deregisterStreamConsumerRequestMutex.Lock()
 	defer fake.deregisterStreamConsumerRequestMutex.Unlock()
 	fake.DeregisterStreamConsumerRequestStub = stub
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequestArgsForCall(i int) *kinesis.DeregisterStreamConsumerInput {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestArgsForCall(i int) *kinesis.DeregisterStreamConsumerInput {
 	fake.deregisterStreamConsumerRequestMutex.RLock()
 	defer fake.deregisterStreamConsumerRequestMutex.RUnlock()
 	argsForCall := fake.deregisterStreamConsumerRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.DeregisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.DeregisterStreamConsumerOutput) {
 	fake.deregisterStreamConsumerRequestMutex.Lock()
 	defer fake.deregisterStreamConsumerRequestMutex.Unlock()
 	fake.DeregisterStreamConsumerRequestStub = nil
@@ -2218,7 +2218,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DeregisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DeregisterStreamConsumerOutput) {
 	fake.deregisterStreamConsumerRequestMutex.Lock()
 	defer fake.deregisterStreamConsumerRequestMutex.Unlock()
 	fake.DeregisterStreamConsumerRequestStub = nil
@@ -2234,7 +2234,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DeregisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DeregisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.deregisterStreamConsumerWithContextReturnsOnCall[len(fake.deregisterStreamConsumerWithContextArgsForCall)]
 	fake.deregisterStreamConsumerWithContextArgsForCall = append(fake.deregisterStreamConsumerWithContextArgsForCall, struct {
@@ -2255,26 +2255,26 @@ func (fake *KinesisClient) DeregisterStreamConsumerWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContextCallCount() int {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextCallCount() int {
 	fake.deregisterStreamConsumerWithContextMutex.RLock()
 	defer fake.deregisterStreamConsumerWithContextMutex.RUnlock()
 	return len(fake.deregisterStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	defer fake.deregisterStreamConsumerWithContextMutex.Unlock()
 	fake.DeregisterStreamConsumerWithContextStub = stub
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DeregisterStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DeregisterStreamConsumerInput, []request.Option) {
 	fake.deregisterStreamConsumerWithContextMutex.RLock()
 	defer fake.deregisterStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.deregisterStreamConsumerWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContextReturns(result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextReturns(result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	defer fake.deregisterStreamConsumerWithContextMutex.Unlock()
 	fake.DeregisterStreamConsumerWithContextStub = nil
@@ -2284,7 +2284,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerWithContextReturns(result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DeregisterStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.DeregisterStreamConsumerOutput, result2 error) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	defer fake.deregisterStreamConsumerWithContextMutex.Unlock()
 	fake.DeregisterStreamConsumerWithContextStub = nil
@@ -2300,7 +2300,7 @@ func (fake *KinesisClient) DeregisterStreamConsumerWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimits(arg1 *kinesis.DescribeLimitsInput) (*kinesis.DescribeLimitsOutput, error) {
+func (fake *FakeKinesisClient) DescribeLimits(arg1 *kinesis.DescribeLimitsInput) (*kinesis.DescribeLimitsOutput, error) {
 	fake.describeLimitsMutex.Lock()
 	ret, specificReturn := fake.describeLimitsReturnsOnCall[len(fake.describeLimitsArgsForCall)]
 	fake.describeLimitsArgsForCall = append(fake.describeLimitsArgsForCall, struct {
@@ -2319,26 +2319,26 @@ func (fake *KinesisClient) DescribeLimits(arg1 *kinesis.DescribeLimitsInput) (*k
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeLimitsCallCount() int {
+func (fake *FakeKinesisClient) DescribeLimitsCallCount() int {
 	fake.describeLimitsMutex.RLock()
 	defer fake.describeLimitsMutex.RUnlock()
 	return len(fake.describeLimitsArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeLimitsCalls(stub func(*kinesis.DescribeLimitsInput) (*kinesis.DescribeLimitsOutput, error)) {
+func (fake *FakeKinesisClient) DescribeLimitsCalls(stub func(*kinesis.DescribeLimitsInput) (*kinesis.DescribeLimitsOutput, error)) {
 	fake.describeLimitsMutex.Lock()
 	defer fake.describeLimitsMutex.Unlock()
 	fake.DescribeLimitsStub = stub
 }
 
-func (fake *KinesisClient) DescribeLimitsArgsForCall(i int) *kinesis.DescribeLimitsInput {
+func (fake *FakeKinesisClient) DescribeLimitsArgsForCall(i int) *kinesis.DescribeLimitsInput {
 	fake.describeLimitsMutex.RLock()
 	defer fake.describeLimitsMutex.RUnlock()
 	argsForCall := fake.describeLimitsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeLimitsReturns(result1 *kinesis.DescribeLimitsOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeLimitsReturns(result1 *kinesis.DescribeLimitsOutput, result2 error) {
 	fake.describeLimitsMutex.Lock()
 	defer fake.describeLimitsMutex.Unlock()
 	fake.DescribeLimitsStub = nil
@@ -2348,7 +2348,7 @@ func (fake *KinesisClient) DescribeLimitsReturns(result1 *kinesis.DescribeLimits
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimitsReturnsOnCall(i int, result1 *kinesis.DescribeLimitsOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeLimitsReturnsOnCall(i int, result1 *kinesis.DescribeLimitsOutput, result2 error) {
 	fake.describeLimitsMutex.Lock()
 	defer fake.describeLimitsMutex.Unlock()
 	fake.DescribeLimitsStub = nil
@@ -2364,7 +2364,7 @@ func (fake *KinesisClient) DescribeLimitsReturnsOnCall(i int, result1 *kinesis.D
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimitsRequest(arg1 *kinesis.DescribeLimitsInput) (*request.Request, *kinesis.DescribeLimitsOutput) {
+func (fake *FakeKinesisClient) DescribeLimitsRequest(arg1 *kinesis.DescribeLimitsInput) (*request.Request, *kinesis.DescribeLimitsOutput) {
 	fake.describeLimitsRequestMutex.Lock()
 	ret, specificReturn := fake.describeLimitsRequestReturnsOnCall[len(fake.describeLimitsRequestArgsForCall)]
 	fake.describeLimitsRequestArgsForCall = append(fake.describeLimitsRequestArgsForCall, struct {
@@ -2383,26 +2383,26 @@ func (fake *KinesisClient) DescribeLimitsRequest(arg1 *kinesis.DescribeLimitsInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeLimitsRequestCallCount() int {
+func (fake *FakeKinesisClient) DescribeLimitsRequestCallCount() int {
 	fake.describeLimitsRequestMutex.RLock()
 	defer fake.describeLimitsRequestMutex.RUnlock()
 	return len(fake.describeLimitsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeLimitsRequestCalls(stub func(*kinesis.DescribeLimitsInput) (*request.Request, *kinesis.DescribeLimitsOutput)) {
+func (fake *FakeKinesisClient) DescribeLimitsRequestCalls(stub func(*kinesis.DescribeLimitsInput) (*request.Request, *kinesis.DescribeLimitsOutput)) {
 	fake.describeLimitsRequestMutex.Lock()
 	defer fake.describeLimitsRequestMutex.Unlock()
 	fake.DescribeLimitsRequestStub = stub
 }
 
-func (fake *KinesisClient) DescribeLimitsRequestArgsForCall(i int) *kinesis.DescribeLimitsInput {
+func (fake *FakeKinesisClient) DescribeLimitsRequestArgsForCall(i int) *kinesis.DescribeLimitsInput {
 	fake.describeLimitsRequestMutex.RLock()
 	defer fake.describeLimitsRequestMutex.RUnlock()
 	argsForCall := fake.describeLimitsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeLimitsRequestReturns(result1 *request.Request, result2 *kinesis.DescribeLimitsOutput) {
+func (fake *FakeKinesisClient) DescribeLimitsRequestReturns(result1 *request.Request, result2 *kinesis.DescribeLimitsOutput) {
 	fake.describeLimitsRequestMutex.Lock()
 	defer fake.describeLimitsRequestMutex.Unlock()
 	fake.DescribeLimitsRequestStub = nil
@@ -2412,7 +2412,7 @@ func (fake *KinesisClient) DescribeLimitsRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimitsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeLimitsOutput) {
+func (fake *FakeKinesisClient) DescribeLimitsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeLimitsOutput) {
 	fake.describeLimitsRequestMutex.Lock()
 	defer fake.describeLimitsRequestMutex.Unlock()
 	fake.DescribeLimitsRequestStub = nil
@@ -2428,7 +2428,7 @@ func (fake *KinesisClient) DescribeLimitsRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContext(arg1 context.Context, arg2 *kinesis.DescribeLimitsInput, arg3 ...request.Option) (*kinesis.DescribeLimitsOutput, error) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContext(arg1 context.Context, arg2 *kinesis.DescribeLimitsInput, arg3 ...request.Option) (*kinesis.DescribeLimitsOutput, error) {
 	fake.describeLimitsWithContextMutex.Lock()
 	ret, specificReturn := fake.describeLimitsWithContextReturnsOnCall[len(fake.describeLimitsWithContextArgsForCall)]
 	fake.describeLimitsWithContextArgsForCall = append(fake.describeLimitsWithContextArgsForCall, struct {
@@ -2449,26 +2449,26 @@ func (fake *KinesisClient) DescribeLimitsWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContextCallCount() int {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextCallCount() int {
 	fake.describeLimitsWithContextMutex.RLock()
 	defer fake.describeLimitsWithContextMutex.RUnlock()
 	return len(fake.describeLimitsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContextCalls(stub func(context.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextCalls(stub func(context.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)) {
 	fake.describeLimitsWithContextMutex.Lock()
 	defer fake.describeLimitsWithContextMutex.Unlock()
 	fake.DescribeLimitsWithContextStub = stub
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeLimitsInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeLimitsInput, []request.Option) {
 	fake.describeLimitsWithContextMutex.RLock()
 	defer fake.describeLimitsWithContextMutex.RUnlock()
 	argsForCall := fake.describeLimitsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContextReturns(result1 *kinesis.DescribeLimitsOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextReturns(result1 *kinesis.DescribeLimitsOutput, result2 error) {
 	fake.describeLimitsWithContextMutex.Lock()
 	defer fake.describeLimitsWithContextMutex.Unlock()
 	fake.DescribeLimitsWithContextStub = nil
@@ -2478,7 +2478,7 @@ func (fake *KinesisClient) DescribeLimitsWithContextReturns(result1 *kinesis.Des
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeLimitsWithContextReturnsOnCall(i int, result1 *kinesis.DescribeLimitsOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextReturnsOnCall(i int, result1 *kinesis.DescribeLimitsOutput, result2 error) {
 	fake.describeLimitsWithContextMutex.Lock()
 	defer fake.describeLimitsWithContextMutex.Unlock()
 	fake.DescribeLimitsWithContextStub = nil
@@ -2494,7 +2494,7 @@ func (fake *KinesisClient) DescribeLimitsWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStream(arg1 *kinesis.DescribeStreamInput) (*kinesis.DescribeStreamOutput, error) {
+func (fake *FakeKinesisClient) DescribeStream(arg1 *kinesis.DescribeStreamInput) (*kinesis.DescribeStreamOutput, error) {
 	fake.describeStreamMutex.Lock()
 	ret, specificReturn := fake.describeStreamReturnsOnCall[len(fake.describeStreamArgsForCall)]
 	fake.describeStreamArgsForCall = append(fake.describeStreamArgsForCall, struct {
@@ -2513,26 +2513,26 @@ func (fake *KinesisClient) DescribeStream(arg1 *kinesis.DescribeStreamInput) (*k
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamCallCount() int {
 	fake.describeStreamMutex.RLock()
 	defer fake.describeStreamMutex.RUnlock()
 	return len(fake.describeStreamArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamCalls(stub func(*kinesis.DescribeStreamInput) (*kinesis.DescribeStreamOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamCalls(stub func(*kinesis.DescribeStreamInput) (*kinesis.DescribeStreamOutput, error)) {
 	fake.describeStreamMutex.Lock()
 	defer fake.describeStreamMutex.Unlock()
 	fake.DescribeStreamStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamArgsForCall(i int) *kinesis.DescribeStreamInput {
+func (fake *FakeKinesisClient) DescribeStreamArgsForCall(i int) *kinesis.DescribeStreamInput {
 	fake.describeStreamMutex.RLock()
 	defer fake.describeStreamMutex.RUnlock()
 	argsForCall := fake.describeStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamReturns(result1 *kinesis.DescribeStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamReturns(result1 *kinesis.DescribeStreamOutput, result2 error) {
 	fake.describeStreamMutex.Lock()
 	defer fake.describeStreamMutex.Unlock()
 	fake.DescribeStreamStub = nil
@@ -2542,7 +2542,7 @@ func (fake *KinesisClient) DescribeStreamReturns(result1 *kinesis.DescribeStream
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamReturnsOnCall(i int, result1 *kinesis.DescribeStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamReturnsOnCall(i int, result1 *kinesis.DescribeStreamOutput, result2 error) {
 	fake.describeStreamMutex.Lock()
 	defer fake.describeStreamMutex.Unlock()
 	fake.DescribeStreamStub = nil
@@ -2558,7 +2558,7 @@ func (fake *KinesisClient) DescribeStreamReturnsOnCall(i int, result1 *kinesis.D
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumer(arg1 *kinesis.DescribeStreamConsumerInput) (*kinesis.DescribeStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumer(arg1 *kinesis.DescribeStreamConsumerInput) (*kinesis.DescribeStreamConsumerOutput, error) {
 	fake.describeStreamConsumerMutex.Lock()
 	ret, specificReturn := fake.describeStreamConsumerReturnsOnCall[len(fake.describeStreamConsumerArgsForCall)]
 	fake.describeStreamConsumerArgsForCall = append(fake.describeStreamConsumerArgsForCall, struct {
@@ -2577,26 +2577,26 @@ func (fake *KinesisClient) DescribeStreamConsumer(arg1 *kinesis.DescribeStreamCo
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamConsumerCallCount() int {
 	fake.describeStreamConsumerMutex.RLock()
 	defer fake.describeStreamConsumerMutex.RUnlock()
 	return len(fake.describeStreamConsumerArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerCalls(stub func(*kinesis.DescribeStreamConsumerInput) (*kinesis.DescribeStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerCalls(stub func(*kinesis.DescribeStreamConsumerInput) (*kinesis.DescribeStreamConsumerOutput, error)) {
 	fake.describeStreamConsumerMutex.Lock()
 	defer fake.describeStreamConsumerMutex.Unlock()
 	fake.DescribeStreamConsumerStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerArgsForCall(i int) *kinesis.DescribeStreamConsumerInput {
+func (fake *FakeKinesisClient) DescribeStreamConsumerArgsForCall(i int) *kinesis.DescribeStreamConsumerInput {
 	fake.describeStreamConsumerMutex.RLock()
 	defer fake.describeStreamConsumerMutex.RUnlock()
 	argsForCall := fake.describeStreamConsumerArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerReturns(result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerReturns(result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
 	fake.describeStreamConsumerMutex.Lock()
 	defer fake.describeStreamConsumerMutex.Unlock()
 	fake.DescribeStreamConsumerStub = nil
@@ -2606,7 +2606,7 @@ func (fake *KinesisClient) DescribeStreamConsumerReturns(result1 *kinesis.Descri
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerReturnsOnCall(i int, result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerReturnsOnCall(i int, result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
 	fake.describeStreamConsumerMutex.Lock()
 	defer fake.describeStreamConsumerMutex.Unlock()
 	fake.DescribeStreamConsumerStub = nil
@@ -2622,7 +2622,7 @@ func (fake *KinesisClient) DescribeStreamConsumerReturnsOnCall(i int, result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequest(arg1 *kinesis.DescribeStreamConsumerInput) (*request.Request, *kinesis.DescribeStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequest(arg1 *kinesis.DescribeStreamConsumerInput) (*request.Request, *kinesis.DescribeStreamConsumerOutput) {
 	fake.describeStreamConsumerRequestMutex.Lock()
 	ret, specificReturn := fake.describeStreamConsumerRequestReturnsOnCall[len(fake.describeStreamConsumerRequestArgsForCall)]
 	fake.describeStreamConsumerRequestArgsForCall = append(fake.describeStreamConsumerRequestArgsForCall, struct {
@@ -2641,26 +2641,26 @@ func (fake *KinesisClient) DescribeStreamConsumerRequest(arg1 *kinesis.DescribeS
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequestCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequestCallCount() int {
 	fake.describeStreamConsumerRequestMutex.RLock()
 	defer fake.describeStreamConsumerRequestMutex.RUnlock()
 	return len(fake.describeStreamConsumerRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequestCalls(stub func(*kinesis.DescribeStreamConsumerInput) (*request.Request, *kinesis.DescribeStreamConsumerOutput)) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequestCalls(stub func(*kinesis.DescribeStreamConsumerInput) (*request.Request, *kinesis.DescribeStreamConsumerOutput)) {
 	fake.describeStreamConsumerRequestMutex.Lock()
 	defer fake.describeStreamConsumerRequestMutex.Unlock()
 	fake.DescribeStreamConsumerRequestStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequestArgsForCall(i int) *kinesis.DescribeStreamConsumerInput {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequestArgsForCall(i int) *kinesis.DescribeStreamConsumerInput {
 	fake.describeStreamConsumerRequestMutex.RLock()
 	defer fake.describeStreamConsumerRequestMutex.RUnlock()
 	argsForCall := fake.describeStreamConsumerRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamConsumerOutput) {
 	fake.describeStreamConsumerRequestMutex.Lock()
 	defer fake.describeStreamConsumerRequestMutex.Unlock()
 	fake.DescribeStreamConsumerRequestStub = nil
@@ -2670,7 +2670,7 @@ func (fake *KinesisClient) DescribeStreamConsumerRequestReturns(result1 *request
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamConsumerOutput) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamConsumerOutput) {
 	fake.describeStreamConsumerRequestMutex.Lock()
 	defer fake.describeStreamConsumerRequestMutex.Unlock()
 	fake.DescribeStreamConsumerRequestStub = nil
@@ -2686,7 +2686,7 @@ func (fake *KinesisClient) DescribeStreamConsumerRequestReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamConsumerInput, arg3 ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamConsumerInput, arg3 ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamConsumerWithContextReturnsOnCall[len(fake.describeStreamConsumerWithContextArgsForCall)]
 	fake.describeStreamConsumerWithContextArgsForCall = append(fake.describeStreamConsumerWithContextArgsForCall, struct {
@@ -2707,26 +2707,26 @@ func (fake *KinesisClient) DescribeStreamConsumerWithContext(arg1 context.Contex
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContextCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextCallCount() int {
 	fake.describeStreamConsumerWithContextMutex.RLock()
 	defer fake.describeStreamConsumerWithContextMutex.RUnlock()
 	return len(fake.describeStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	defer fake.describeStreamConsumerWithContextMutex.Unlock()
 	fake.DescribeStreamConsumerWithContextStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamConsumerInput, []request.Option) {
 	fake.describeStreamConsumerWithContextMutex.RLock()
 	defer fake.describeStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamConsumerWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContextReturns(result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextReturns(result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	defer fake.describeStreamConsumerWithContextMutex.Unlock()
 	fake.DescribeStreamConsumerWithContextStub = nil
@@ -2736,7 +2736,7 @@ func (fake *KinesisClient) DescribeStreamConsumerWithContextReturns(result1 *kin
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamConsumerOutput, result2 error) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	defer fake.describeStreamConsumerWithContextMutex.Unlock()
 	fake.DescribeStreamConsumerWithContextStub = nil
@@ -2752,7 +2752,7 @@ func (fake *KinesisClient) DescribeStreamConsumerWithContextReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamPages(arg1 *kinesis.DescribeStreamInput, arg2 func(*kinesis.DescribeStreamOutput, bool) bool) error {
+func (fake *FakeKinesisClient) DescribeStreamPages(arg1 *kinesis.DescribeStreamInput, arg2 func(*kinesis.DescribeStreamOutput, bool) bool) error {
 	fake.describeStreamPagesMutex.Lock()
 	ret, specificReturn := fake.describeStreamPagesReturnsOnCall[len(fake.describeStreamPagesArgsForCall)]
 	fake.describeStreamPagesArgsForCall = append(fake.describeStreamPagesArgsForCall, struct {
@@ -2772,26 +2772,26 @@ func (fake *KinesisClient) DescribeStreamPages(arg1 *kinesis.DescribeStreamInput
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) DescribeStreamPagesCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamPagesCallCount() int {
 	fake.describeStreamPagesMutex.RLock()
 	defer fake.describeStreamPagesMutex.RUnlock()
 	return len(fake.describeStreamPagesArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamPagesCalls(stub func(*kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool) error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesCalls(stub func(*kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool) error) {
 	fake.describeStreamPagesMutex.Lock()
 	defer fake.describeStreamPagesMutex.Unlock()
 	fake.DescribeStreamPagesStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamPagesArgsForCall(i int) (*kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool) {
+func (fake *FakeKinesisClient) DescribeStreamPagesArgsForCall(i int) (*kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool) {
 	fake.describeStreamPagesMutex.RLock()
 	defer fake.describeStreamPagesMutex.RUnlock()
 	argsForCall := fake.describeStreamPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *KinesisClient) DescribeStreamPagesReturns(result1 error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesReturns(result1 error) {
 	fake.describeStreamPagesMutex.Lock()
 	defer fake.describeStreamPagesMutex.Unlock()
 	fake.DescribeStreamPagesStub = nil
@@ -2800,7 +2800,7 @@ func (fake *KinesisClient) DescribeStreamPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) DescribeStreamPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesReturnsOnCall(i int, result1 error) {
 	fake.describeStreamPagesMutex.Lock()
 	defer fake.describeStreamPagesMutex.Unlock()
 	fake.DescribeStreamPagesStub = nil
@@ -2814,7 +2814,7 @@ func (fake *KinesisClient) DescribeStreamPagesReturnsOnCall(i int, result1 error
 	}{result1}
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 func(*kinesis.DescribeStreamOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 func(*kinesis.DescribeStreamOutput, bool) bool, arg4 ...request.Option) error {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamPagesWithContextReturnsOnCall[len(fake.describeStreamPagesWithContextArgsForCall)]
 	fake.describeStreamPagesWithContextArgsForCall = append(fake.describeStreamPagesWithContextArgsForCall, struct {
@@ -2836,26 +2836,26 @@ func (fake *KinesisClient) DescribeStreamPagesWithContext(arg1 context.Context, 
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContextCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextCallCount() int {
 	fake.describeStreamPagesWithContextMutex.RLock()
 	defer fake.describeStreamPagesWithContextMutex.RUnlock()
 	return len(fake.describeStreamPagesWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error) {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	defer fake.describeStreamPagesWithContextMutex.Unlock()
 	fake.DescribeStreamPagesWithContextStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, []request.Option) {
 	fake.describeStreamPagesWithContextMutex.RLock()
 	defer fake.describeStreamPagesWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContextReturns(result1 error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextReturns(result1 error) {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	defer fake.describeStreamPagesWithContextMutex.Unlock()
 	fake.DescribeStreamPagesWithContextStub = nil
@@ -2864,7 +2864,7 @@ func (fake *KinesisClient) DescribeStreamPagesWithContextReturns(result1 error) 
 	}{result1}
 }
 
-func (fake *KinesisClient) DescribeStreamPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	defer fake.describeStreamPagesWithContextMutex.Unlock()
 	fake.DescribeStreamPagesWithContextStub = nil
@@ -2878,7 +2878,7 @@ func (fake *KinesisClient) DescribeStreamPagesWithContextReturnsOnCall(i int, re
 	}{result1}
 }
 
-func (fake *KinesisClient) DescribeStreamRequest(arg1 *kinesis.DescribeStreamInput) (*request.Request, *kinesis.DescribeStreamOutput) {
+func (fake *FakeKinesisClient) DescribeStreamRequest(arg1 *kinesis.DescribeStreamInput) (*request.Request, *kinesis.DescribeStreamOutput) {
 	fake.describeStreamRequestMutex.Lock()
 	ret, specificReturn := fake.describeStreamRequestReturnsOnCall[len(fake.describeStreamRequestArgsForCall)]
 	fake.describeStreamRequestArgsForCall = append(fake.describeStreamRequestArgsForCall, struct {
@@ -2897,26 +2897,26 @@ func (fake *KinesisClient) DescribeStreamRequest(arg1 *kinesis.DescribeStreamInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamRequestCallCount() int {
 	fake.describeStreamRequestMutex.RLock()
 	defer fake.describeStreamRequestMutex.RUnlock()
 	return len(fake.describeStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamRequestCalls(stub func(*kinesis.DescribeStreamInput) (*request.Request, *kinesis.DescribeStreamOutput)) {
+func (fake *FakeKinesisClient) DescribeStreamRequestCalls(stub func(*kinesis.DescribeStreamInput) (*request.Request, *kinesis.DescribeStreamOutput)) {
 	fake.describeStreamRequestMutex.Lock()
 	defer fake.describeStreamRequestMutex.Unlock()
 	fake.DescribeStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamRequestArgsForCall(i int) *kinesis.DescribeStreamInput {
+func (fake *FakeKinesisClient) DescribeStreamRequestArgsForCall(i int) *kinesis.DescribeStreamInput {
 	fake.describeStreamRequestMutex.RLock()
 	defer fake.describeStreamRequestMutex.RUnlock()
 	argsForCall := fake.describeStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamOutput) {
+func (fake *FakeKinesisClient) DescribeStreamRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamOutput) {
 	fake.describeStreamRequestMutex.Lock()
 	defer fake.describeStreamRequestMutex.Unlock()
 	fake.DescribeStreamRequestStub = nil
@@ -2926,7 +2926,7 @@ func (fake *KinesisClient) DescribeStreamRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamOutput) {
+func (fake *FakeKinesisClient) DescribeStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamOutput) {
 	fake.describeStreamRequestMutex.Lock()
 	defer fake.describeStreamRequestMutex.Unlock()
 	fake.DescribeStreamRequestStub = nil
@@ -2942,7 +2942,7 @@ func (fake *KinesisClient) DescribeStreamRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummary(arg1 *kinesis.DescribeStreamSummaryInput) (*kinesis.DescribeStreamSummaryOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamSummary(arg1 *kinesis.DescribeStreamSummaryInput) (*kinesis.DescribeStreamSummaryOutput, error) {
 	fake.describeStreamSummaryMutex.Lock()
 	ret, specificReturn := fake.describeStreamSummaryReturnsOnCall[len(fake.describeStreamSummaryArgsForCall)]
 	fake.describeStreamSummaryArgsForCall = append(fake.describeStreamSummaryArgsForCall, struct {
@@ -2961,26 +2961,26 @@ func (fake *KinesisClient) DescribeStreamSummary(arg1 *kinesis.DescribeStreamSum
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamSummaryCallCount() int {
 	fake.describeStreamSummaryMutex.RLock()
 	defer fake.describeStreamSummaryMutex.RUnlock()
 	return len(fake.describeStreamSummaryArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryCalls(stub func(*kinesis.DescribeStreamSummaryInput) (*kinesis.DescribeStreamSummaryOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryCalls(stub func(*kinesis.DescribeStreamSummaryInput) (*kinesis.DescribeStreamSummaryOutput, error)) {
 	fake.describeStreamSummaryMutex.Lock()
 	defer fake.describeStreamSummaryMutex.Unlock()
 	fake.DescribeStreamSummaryStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryArgsForCall(i int) *kinesis.DescribeStreamSummaryInput {
+func (fake *FakeKinesisClient) DescribeStreamSummaryArgsForCall(i int) *kinesis.DescribeStreamSummaryInput {
 	fake.describeStreamSummaryMutex.RLock()
 	defer fake.describeStreamSummaryMutex.RUnlock()
 	argsForCall := fake.describeStreamSummaryArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryReturns(result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryReturns(result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
 	fake.describeStreamSummaryMutex.Lock()
 	defer fake.describeStreamSummaryMutex.Unlock()
 	fake.DescribeStreamSummaryStub = nil
@@ -2990,7 +2990,7 @@ func (fake *KinesisClient) DescribeStreamSummaryReturns(result1 *kinesis.Describ
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryReturnsOnCall(i int, result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryReturnsOnCall(i int, result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
 	fake.describeStreamSummaryMutex.Lock()
 	defer fake.describeStreamSummaryMutex.Unlock()
 	fake.DescribeStreamSummaryStub = nil
@@ -3006,7 +3006,7 @@ func (fake *KinesisClient) DescribeStreamSummaryReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequest(arg1 *kinesis.DescribeStreamSummaryInput) (*request.Request, *kinesis.DescribeStreamSummaryOutput) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequest(arg1 *kinesis.DescribeStreamSummaryInput) (*request.Request, *kinesis.DescribeStreamSummaryOutput) {
 	fake.describeStreamSummaryRequestMutex.Lock()
 	ret, specificReturn := fake.describeStreamSummaryRequestReturnsOnCall[len(fake.describeStreamSummaryRequestArgsForCall)]
 	fake.describeStreamSummaryRequestArgsForCall = append(fake.describeStreamSummaryRequestArgsForCall, struct {
@@ -3025,26 +3025,26 @@ func (fake *KinesisClient) DescribeStreamSummaryRequest(arg1 *kinesis.DescribeSt
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequestCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequestCallCount() int {
 	fake.describeStreamSummaryRequestMutex.RLock()
 	defer fake.describeStreamSummaryRequestMutex.RUnlock()
 	return len(fake.describeStreamSummaryRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequestCalls(stub func(*kinesis.DescribeStreamSummaryInput) (*request.Request, *kinesis.DescribeStreamSummaryOutput)) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequestCalls(stub func(*kinesis.DescribeStreamSummaryInput) (*request.Request, *kinesis.DescribeStreamSummaryOutput)) {
 	fake.describeStreamSummaryRequestMutex.Lock()
 	defer fake.describeStreamSummaryRequestMutex.Unlock()
 	fake.DescribeStreamSummaryRequestStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequestArgsForCall(i int) *kinesis.DescribeStreamSummaryInput {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequestArgsForCall(i int) *kinesis.DescribeStreamSummaryInput {
 	fake.describeStreamSummaryRequestMutex.RLock()
 	defer fake.describeStreamSummaryRequestMutex.RUnlock()
 	argsForCall := fake.describeStreamSummaryRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamSummaryOutput) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequestReturns(result1 *request.Request, result2 *kinesis.DescribeStreamSummaryOutput) {
 	fake.describeStreamSummaryRequestMutex.Lock()
 	defer fake.describeStreamSummaryRequestMutex.Unlock()
 	fake.DescribeStreamSummaryRequestStub = nil
@@ -3054,7 +3054,7 @@ func (fake *KinesisClient) DescribeStreamSummaryRequestReturns(result1 *request.
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamSummaryOutput) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DescribeStreamSummaryOutput) {
 	fake.describeStreamSummaryRequestMutex.Lock()
 	defer fake.describeStreamSummaryRequestMutex.Unlock()
 	fake.DescribeStreamSummaryRequestStub = nil
@@ -3070,7 +3070,7 @@ func (fake *KinesisClient) DescribeStreamSummaryRequestReturnsOnCall(i int, resu
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamSummaryInput, arg3 ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamSummaryInput, arg3 ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamSummaryWithContextReturnsOnCall[len(fake.describeStreamSummaryWithContextArgsForCall)]
 	fake.describeStreamSummaryWithContextArgsForCall = append(fake.describeStreamSummaryWithContextArgsForCall, struct {
@@ -3091,26 +3091,26 @@ func (fake *KinesisClient) DescribeStreamSummaryWithContext(arg1 context.Context
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContextCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextCallCount() int {
 	fake.describeStreamSummaryWithContextMutex.RLock()
 	defer fake.describeStreamSummaryWithContextMutex.RUnlock()
 	return len(fake.describeStreamSummaryWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	defer fake.describeStreamSummaryWithContextMutex.Unlock()
 	fake.DescribeStreamSummaryWithContextStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamSummaryInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamSummaryInput, []request.Option) {
 	fake.describeStreamSummaryWithContextMutex.RLock()
 	defer fake.describeStreamSummaryWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamSummaryWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContextReturns(result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextReturns(result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	defer fake.describeStreamSummaryWithContextMutex.Unlock()
 	fake.DescribeStreamSummaryWithContextStub = nil
@@ -3120,7 +3120,7 @@ func (fake *KinesisClient) DescribeStreamSummaryWithContextReturns(result1 *kine
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamSummaryWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamSummaryOutput, result2 error) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	defer fake.describeStreamSummaryWithContextMutex.Unlock()
 	fake.DescribeStreamSummaryWithContextStub = nil
@@ -3136,7 +3136,7 @@ func (fake *KinesisClient) DescribeStreamSummaryWithContextReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.Option) (*kinesis.DescribeStreamOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.Option) (*kinesis.DescribeStreamOutput, error) {
 	fake.describeStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamWithContextReturnsOnCall[len(fake.describeStreamWithContextArgsForCall)]
 	fake.describeStreamWithContextArgsForCall = append(fake.describeStreamWithContextArgsForCall, struct {
@@ -3157,26 +3157,26 @@ func (fake *KinesisClient) DescribeStreamWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DescribeStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) DescribeStreamWithContextCallCount() int {
 	fake.describeStreamWithContextMutex.RLock()
 	defer fake.describeStreamWithContextMutex.RUnlock()
 	return len(fake.describeStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DescribeStreamWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)) {
 	fake.describeStreamWithContextMutex.Lock()
 	defer fake.describeStreamWithContextMutex.Unlock()
 	fake.DescribeStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) DescribeStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.Option) {
 	fake.describeStreamWithContextMutex.RLock()
 	defer fake.describeStreamWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DescribeStreamWithContextReturns(result1 *kinesis.DescribeStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextReturns(result1 *kinesis.DescribeStreamOutput, result2 error) {
 	fake.describeStreamWithContextMutex.Lock()
 	defer fake.describeStreamWithContextMutex.Unlock()
 	fake.DescribeStreamWithContextStub = nil
@@ -3186,7 +3186,7 @@ func (fake *KinesisClient) DescribeStreamWithContextReturns(result1 *kinesis.Des
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DescribeStreamWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextReturnsOnCall(i int, result1 *kinesis.DescribeStreamOutput, result2 error) {
 	fake.describeStreamWithContextMutex.Lock()
 	defer fake.describeStreamWithContextMutex.Unlock()
 	fake.DescribeStreamWithContextStub = nil
@@ -3202,7 +3202,7 @@ func (fake *KinesisClient) DescribeStreamWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoring(arg1 *kinesis.DisableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoring(arg1 *kinesis.DisableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.disableEnhancedMonitoringMutex.Lock()
 	ret, specificReturn := fake.disableEnhancedMonitoringReturnsOnCall[len(fake.disableEnhancedMonitoringArgsForCall)]
 	fake.disableEnhancedMonitoringArgsForCall = append(fake.disableEnhancedMonitoringArgsForCall, struct {
@@ -3221,26 +3221,26 @@ func (fake *KinesisClient) DisableEnhancedMonitoring(arg1 *kinesis.DisableEnhanc
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringCallCount() int {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringCallCount() int {
 	fake.disableEnhancedMonitoringMutex.RLock()
 	defer fake.disableEnhancedMonitoringMutex.RUnlock()
 	return len(fake.disableEnhancedMonitoringArgsForCall)
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringCalls(stub func(*kinesis.DisableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringCalls(stub func(*kinesis.DisableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.disableEnhancedMonitoringMutex.Lock()
 	defer fake.disableEnhancedMonitoringMutex.Unlock()
 	fake.DisableEnhancedMonitoringStub = stub
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringArgsForCall(i int) *kinesis.DisableEnhancedMonitoringInput {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringArgsForCall(i int) *kinesis.DisableEnhancedMonitoringInput {
 	fake.disableEnhancedMonitoringMutex.RLock()
 	defer fake.disableEnhancedMonitoringMutex.RUnlock()
 	argsForCall := fake.disableEnhancedMonitoringArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.disableEnhancedMonitoringMutex.Lock()
 	defer fake.disableEnhancedMonitoringMutex.Unlock()
 	fake.DisableEnhancedMonitoringStub = nil
@@ -3250,7 +3250,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringReturns(result1 *kinesis.Enh
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.disableEnhancedMonitoringMutex.Lock()
 	defer fake.disableEnhancedMonitoringMutex.Unlock()
 	fake.DisableEnhancedMonitoringStub = nil
@@ -3266,7 +3266,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequest(arg1 *kinesis.DisableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequest(arg1 *kinesis.DisableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput) {
 	fake.disableEnhancedMonitoringRequestMutex.Lock()
 	ret, specificReturn := fake.disableEnhancedMonitoringRequestReturnsOnCall[len(fake.disableEnhancedMonitoringRequestArgsForCall)]
 	fake.disableEnhancedMonitoringRequestArgsForCall = append(fake.disableEnhancedMonitoringRequestArgsForCall, struct {
@@ -3285,26 +3285,26 @@ func (fake *KinesisClient) DisableEnhancedMonitoringRequest(arg1 *kinesis.Disabl
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequestCallCount() int {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestCallCount() int {
 	fake.disableEnhancedMonitoringRequestMutex.RLock()
 	defer fake.disableEnhancedMonitoringRequestMutex.RUnlock()
 	return len(fake.disableEnhancedMonitoringRequestArgsForCall)
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequestCalls(stub func(*kinesis.DisableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput)) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestCalls(stub func(*kinesis.DisableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput)) {
 	fake.disableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.disableEnhancedMonitoringRequestMutex.Unlock()
 	fake.DisableEnhancedMonitoringRequestStub = stub
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequestArgsForCall(i int) *kinesis.DisableEnhancedMonitoringInput {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestArgsForCall(i int) *kinesis.DisableEnhancedMonitoringInput {
 	fake.disableEnhancedMonitoringRequestMutex.RLock()
 	defer fake.disableEnhancedMonitoringRequestMutex.RUnlock()
 	argsForCall := fake.disableEnhancedMonitoringRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequestReturns(result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestReturns(result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
 	fake.disableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.disableEnhancedMonitoringRequestMutex.Unlock()
 	fake.DisableEnhancedMonitoringRequestStub = nil
@@ -3314,7 +3314,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringRequestReturns(result1 *requ
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
 	fake.disableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.disableEnhancedMonitoringRequestMutex.Unlock()
 	fake.DisableEnhancedMonitoringRequestStub = nil
@@ -3330,7 +3330,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.DisableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.DisableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	ret, specificReturn := fake.disableEnhancedMonitoringWithContextReturnsOnCall[len(fake.disableEnhancedMonitoringWithContextArgsForCall)]
 	fake.disableEnhancedMonitoringWithContextArgsForCall = append(fake.disableEnhancedMonitoringWithContextArgsForCall, struct {
@@ -3351,26 +3351,26 @@ func (fake *KinesisClient) DisableEnhancedMonitoringWithContext(arg1 context.Con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContextCallCount() int {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextCallCount() int {
 	fake.disableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.RUnlock()
 	return len(fake.disableEnhancedMonitoringWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.DisableEnhancedMonitoringWithContextStub = stub
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.DisableEnhancedMonitoringInput, []request.Option) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.DisableEnhancedMonitoringInput, []request.Option) {
 	fake.disableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.RUnlock()
 	argsForCall := fake.disableEnhancedMonitoringWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContextReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.DisableEnhancedMonitoringWithContextStub = nil
@@ -3380,7 +3380,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringWithContextReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) DisableEnhancedMonitoringWithContextReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.DisableEnhancedMonitoringWithContextStub = nil
@@ -3396,7 +3396,7 @@ func (fake *KinesisClient) DisableEnhancedMonitoringWithContextReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoring(arg1 *kinesis.EnableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoring(arg1 *kinesis.EnableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.enableEnhancedMonitoringMutex.Lock()
 	ret, specificReturn := fake.enableEnhancedMonitoringReturnsOnCall[len(fake.enableEnhancedMonitoringArgsForCall)]
 	fake.enableEnhancedMonitoringArgsForCall = append(fake.enableEnhancedMonitoringArgsForCall, struct {
@@ -3415,26 +3415,26 @@ func (fake *KinesisClient) EnableEnhancedMonitoring(arg1 *kinesis.EnableEnhanced
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringCallCount() int {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringCallCount() int {
 	fake.enableEnhancedMonitoringMutex.RLock()
 	defer fake.enableEnhancedMonitoringMutex.RUnlock()
 	return len(fake.enableEnhancedMonitoringArgsForCall)
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringCalls(stub func(*kinesis.EnableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringCalls(stub func(*kinesis.EnableEnhancedMonitoringInput) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.enableEnhancedMonitoringMutex.Lock()
 	defer fake.enableEnhancedMonitoringMutex.Unlock()
 	fake.EnableEnhancedMonitoringStub = stub
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringArgsForCall(i int) *kinesis.EnableEnhancedMonitoringInput {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringArgsForCall(i int) *kinesis.EnableEnhancedMonitoringInput {
 	fake.enableEnhancedMonitoringMutex.RLock()
 	defer fake.enableEnhancedMonitoringMutex.RUnlock()
 	argsForCall := fake.enableEnhancedMonitoringArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.enableEnhancedMonitoringMutex.Lock()
 	defer fake.enableEnhancedMonitoringMutex.Unlock()
 	fake.EnableEnhancedMonitoringStub = nil
@@ -3444,7 +3444,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringReturns(result1 *kinesis.Enha
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.enableEnhancedMonitoringMutex.Lock()
 	defer fake.enableEnhancedMonitoringMutex.Unlock()
 	fake.EnableEnhancedMonitoringStub = nil
@@ -3460,7 +3460,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequest(arg1 *kinesis.EnableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequest(arg1 *kinesis.EnableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput) {
 	fake.enableEnhancedMonitoringRequestMutex.Lock()
 	ret, specificReturn := fake.enableEnhancedMonitoringRequestReturnsOnCall[len(fake.enableEnhancedMonitoringRequestArgsForCall)]
 	fake.enableEnhancedMonitoringRequestArgsForCall = append(fake.enableEnhancedMonitoringRequestArgsForCall, struct {
@@ -3479,26 +3479,26 @@ func (fake *KinesisClient) EnableEnhancedMonitoringRequest(arg1 *kinesis.EnableE
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequestCallCount() int {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestCallCount() int {
 	fake.enableEnhancedMonitoringRequestMutex.RLock()
 	defer fake.enableEnhancedMonitoringRequestMutex.RUnlock()
 	return len(fake.enableEnhancedMonitoringRequestArgsForCall)
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequestCalls(stub func(*kinesis.EnableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput)) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestCalls(stub func(*kinesis.EnableEnhancedMonitoringInput) (*request.Request, *kinesis.EnhancedMonitoringOutput)) {
 	fake.enableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.enableEnhancedMonitoringRequestMutex.Unlock()
 	fake.EnableEnhancedMonitoringRequestStub = stub
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequestArgsForCall(i int) *kinesis.EnableEnhancedMonitoringInput {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestArgsForCall(i int) *kinesis.EnableEnhancedMonitoringInput {
 	fake.enableEnhancedMonitoringRequestMutex.RLock()
 	defer fake.enableEnhancedMonitoringRequestMutex.RUnlock()
 	argsForCall := fake.enableEnhancedMonitoringRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequestReturns(result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestReturns(result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
 	fake.enableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.enableEnhancedMonitoringRequestMutex.Unlock()
 	fake.EnableEnhancedMonitoringRequestStub = nil
@@ -3508,7 +3508,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.EnhancedMonitoringOutput) {
 	fake.enableEnhancedMonitoringRequestMutex.Lock()
 	defer fake.enableEnhancedMonitoringRequestMutex.Unlock()
 	fake.EnableEnhancedMonitoringRequestStub = nil
@@ -3524,7 +3524,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.EnableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.EnableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	ret, specificReturn := fake.enableEnhancedMonitoringWithContextReturnsOnCall[len(fake.enableEnhancedMonitoringWithContextArgsForCall)]
 	fake.enableEnhancedMonitoringWithContextArgsForCall = append(fake.enableEnhancedMonitoringWithContextArgsForCall, struct {
@@ -3545,26 +3545,26 @@ func (fake *KinesisClient) EnableEnhancedMonitoringWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContextCallCount() int {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextCallCount() int {
 	fake.enableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.RUnlock()
 	return len(fake.enableEnhancedMonitoringWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.EnableEnhancedMonitoringWithContextStub = stub
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.EnableEnhancedMonitoringInput, []request.Option) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.EnableEnhancedMonitoringInput, []request.Option) {
 	fake.enableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.RUnlock()
 	argsForCall := fake.enableEnhancedMonitoringWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContextReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextReturns(result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.EnableEnhancedMonitoringWithContextStub = nil
@@ -3574,7 +3574,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringWithContextReturns(result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) EnableEnhancedMonitoringWithContextReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextReturnsOnCall(i int, result1 *kinesis.EnhancedMonitoringOutput, result2 error) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.EnableEnhancedMonitoringWithContextStub = nil
@@ -3590,7 +3590,7 @@ func (fake *KinesisClient) EnableEnhancedMonitoringWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecords(arg1 *kinesis.GetRecordsInput) (*kinesis.GetRecordsOutput, error) {
+func (fake *FakeKinesisClient) GetRecords(arg1 *kinesis.GetRecordsInput) (*kinesis.GetRecordsOutput, error) {
 	fake.getRecordsMutex.Lock()
 	ret, specificReturn := fake.getRecordsReturnsOnCall[len(fake.getRecordsArgsForCall)]
 	fake.getRecordsArgsForCall = append(fake.getRecordsArgsForCall, struct {
@@ -3609,26 +3609,26 @@ func (fake *KinesisClient) GetRecords(arg1 *kinesis.GetRecordsInput) (*kinesis.G
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetRecordsCallCount() int {
+func (fake *FakeKinesisClient) GetRecordsCallCount() int {
 	fake.getRecordsMutex.RLock()
 	defer fake.getRecordsMutex.RUnlock()
 	return len(fake.getRecordsArgsForCall)
 }
 
-func (fake *KinesisClient) GetRecordsCalls(stub func(*kinesis.GetRecordsInput) (*kinesis.GetRecordsOutput, error)) {
+func (fake *FakeKinesisClient) GetRecordsCalls(stub func(*kinesis.GetRecordsInput) (*kinesis.GetRecordsOutput, error)) {
 	fake.getRecordsMutex.Lock()
 	defer fake.getRecordsMutex.Unlock()
 	fake.GetRecordsStub = stub
 }
 
-func (fake *KinesisClient) GetRecordsArgsForCall(i int) *kinesis.GetRecordsInput {
+func (fake *FakeKinesisClient) GetRecordsArgsForCall(i int) *kinesis.GetRecordsInput {
 	fake.getRecordsMutex.RLock()
 	defer fake.getRecordsMutex.RUnlock()
 	argsForCall := fake.getRecordsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) GetRecordsReturns(result1 *kinesis.GetRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) GetRecordsReturns(result1 *kinesis.GetRecordsOutput, result2 error) {
 	fake.getRecordsMutex.Lock()
 	defer fake.getRecordsMutex.Unlock()
 	fake.GetRecordsStub = nil
@@ -3638,7 +3638,7 @@ func (fake *KinesisClient) GetRecordsReturns(result1 *kinesis.GetRecordsOutput, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecordsReturnsOnCall(i int, result1 *kinesis.GetRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) GetRecordsReturnsOnCall(i int, result1 *kinesis.GetRecordsOutput, result2 error) {
 	fake.getRecordsMutex.Lock()
 	defer fake.getRecordsMutex.Unlock()
 	fake.GetRecordsStub = nil
@@ -3654,7 +3654,7 @@ func (fake *KinesisClient) GetRecordsReturnsOnCall(i int, result1 *kinesis.GetRe
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecordsRequest(arg1 *kinesis.GetRecordsInput) (*request.Request, *kinesis.GetRecordsOutput) {
+func (fake *FakeKinesisClient) GetRecordsRequest(arg1 *kinesis.GetRecordsInput) (*request.Request, *kinesis.GetRecordsOutput) {
 	fake.getRecordsRequestMutex.Lock()
 	ret, specificReturn := fake.getRecordsRequestReturnsOnCall[len(fake.getRecordsRequestArgsForCall)]
 	fake.getRecordsRequestArgsForCall = append(fake.getRecordsRequestArgsForCall, struct {
@@ -3673,26 +3673,26 @@ func (fake *KinesisClient) GetRecordsRequest(arg1 *kinesis.GetRecordsInput) (*re
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetRecordsRequestCallCount() int {
+func (fake *FakeKinesisClient) GetRecordsRequestCallCount() int {
 	fake.getRecordsRequestMutex.RLock()
 	defer fake.getRecordsRequestMutex.RUnlock()
 	return len(fake.getRecordsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) GetRecordsRequestCalls(stub func(*kinesis.GetRecordsInput) (*request.Request, *kinesis.GetRecordsOutput)) {
+func (fake *FakeKinesisClient) GetRecordsRequestCalls(stub func(*kinesis.GetRecordsInput) (*request.Request, *kinesis.GetRecordsOutput)) {
 	fake.getRecordsRequestMutex.Lock()
 	defer fake.getRecordsRequestMutex.Unlock()
 	fake.GetRecordsRequestStub = stub
 }
 
-func (fake *KinesisClient) GetRecordsRequestArgsForCall(i int) *kinesis.GetRecordsInput {
+func (fake *FakeKinesisClient) GetRecordsRequestArgsForCall(i int) *kinesis.GetRecordsInput {
 	fake.getRecordsRequestMutex.RLock()
 	defer fake.getRecordsRequestMutex.RUnlock()
 	argsForCall := fake.getRecordsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) GetRecordsRequestReturns(result1 *request.Request, result2 *kinesis.GetRecordsOutput) {
+func (fake *FakeKinesisClient) GetRecordsRequestReturns(result1 *request.Request, result2 *kinesis.GetRecordsOutput) {
 	fake.getRecordsRequestMutex.Lock()
 	defer fake.getRecordsRequestMutex.Unlock()
 	fake.GetRecordsRequestStub = nil
@@ -3702,7 +3702,7 @@ func (fake *KinesisClient) GetRecordsRequestReturns(result1 *request.Request, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecordsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.GetRecordsOutput) {
+func (fake *FakeKinesisClient) GetRecordsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.GetRecordsOutput) {
 	fake.getRecordsRequestMutex.Lock()
 	defer fake.getRecordsRequestMutex.Unlock()
 	fake.GetRecordsRequestStub = nil
@@ -3718,7 +3718,7 @@ func (fake *KinesisClient) GetRecordsRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecordsWithContext(arg1 context.Context, arg2 *kinesis.GetRecordsInput, arg3 ...request.Option) (*kinesis.GetRecordsOutput, error) {
+func (fake *FakeKinesisClient) GetRecordsWithContext(arg1 context.Context, arg2 *kinesis.GetRecordsInput, arg3 ...request.Option) (*kinesis.GetRecordsOutput, error) {
 	fake.getRecordsWithContextMutex.Lock()
 	ret, specificReturn := fake.getRecordsWithContextReturnsOnCall[len(fake.getRecordsWithContextArgsForCall)]
 	fake.getRecordsWithContextArgsForCall = append(fake.getRecordsWithContextArgsForCall, struct {
@@ -3739,26 +3739,26 @@ func (fake *KinesisClient) GetRecordsWithContext(arg1 context.Context, arg2 *kin
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetRecordsWithContextCallCount() int {
+func (fake *FakeKinesisClient) GetRecordsWithContextCallCount() int {
 	fake.getRecordsWithContextMutex.RLock()
 	defer fake.getRecordsWithContextMutex.RUnlock()
 	return len(fake.getRecordsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) GetRecordsWithContextCalls(stub func(context.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)) {
+func (fake *FakeKinesisClient) GetRecordsWithContextCalls(stub func(context.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)) {
 	fake.getRecordsWithContextMutex.Lock()
 	defer fake.getRecordsWithContextMutex.Unlock()
 	fake.GetRecordsWithContextStub = stub
 }
 
-func (fake *KinesisClient) GetRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.GetRecordsInput, []request.Option) {
+func (fake *FakeKinesisClient) GetRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.GetRecordsInput, []request.Option) {
 	fake.getRecordsWithContextMutex.RLock()
 	defer fake.getRecordsWithContextMutex.RUnlock()
 	argsForCall := fake.getRecordsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) GetRecordsWithContextReturns(result1 *kinesis.GetRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) GetRecordsWithContextReturns(result1 *kinesis.GetRecordsOutput, result2 error) {
 	fake.getRecordsWithContextMutex.Lock()
 	defer fake.getRecordsWithContextMutex.Unlock()
 	fake.GetRecordsWithContextStub = nil
@@ -3768,7 +3768,7 @@ func (fake *KinesisClient) GetRecordsWithContextReturns(result1 *kinesis.GetReco
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetRecordsWithContextReturnsOnCall(i int, result1 *kinesis.GetRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) GetRecordsWithContextReturnsOnCall(i int, result1 *kinesis.GetRecordsOutput, result2 error) {
 	fake.getRecordsWithContextMutex.Lock()
 	defer fake.getRecordsWithContextMutex.Unlock()
 	fake.GetRecordsWithContextStub = nil
@@ -3784,7 +3784,7 @@ func (fake *KinesisClient) GetRecordsWithContextReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIterator(arg1 *kinesis.GetShardIteratorInput) (*kinesis.GetShardIteratorOutput, error) {
+func (fake *FakeKinesisClient) GetShardIterator(arg1 *kinesis.GetShardIteratorInput) (*kinesis.GetShardIteratorOutput, error) {
 	fake.getShardIteratorMutex.Lock()
 	ret, specificReturn := fake.getShardIteratorReturnsOnCall[len(fake.getShardIteratorArgsForCall)]
 	fake.getShardIteratorArgsForCall = append(fake.getShardIteratorArgsForCall, struct {
@@ -3803,26 +3803,26 @@ func (fake *KinesisClient) GetShardIterator(arg1 *kinesis.GetShardIteratorInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetShardIteratorCallCount() int {
+func (fake *FakeKinesisClient) GetShardIteratorCallCount() int {
 	fake.getShardIteratorMutex.RLock()
 	defer fake.getShardIteratorMutex.RUnlock()
 	return len(fake.getShardIteratorArgsForCall)
 }
 
-func (fake *KinesisClient) GetShardIteratorCalls(stub func(*kinesis.GetShardIteratorInput) (*kinesis.GetShardIteratorOutput, error)) {
+func (fake *FakeKinesisClient) GetShardIteratorCalls(stub func(*kinesis.GetShardIteratorInput) (*kinesis.GetShardIteratorOutput, error)) {
 	fake.getShardIteratorMutex.Lock()
 	defer fake.getShardIteratorMutex.Unlock()
 	fake.GetShardIteratorStub = stub
 }
 
-func (fake *KinesisClient) GetShardIteratorArgsForCall(i int) *kinesis.GetShardIteratorInput {
+func (fake *FakeKinesisClient) GetShardIteratorArgsForCall(i int) *kinesis.GetShardIteratorInput {
 	fake.getShardIteratorMutex.RLock()
 	defer fake.getShardIteratorMutex.RUnlock()
 	argsForCall := fake.getShardIteratorArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) GetShardIteratorReturns(result1 *kinesis.GetShardIteratorOutput, result2 error) {
+func (fake *FakeKinesisClient) GetShardIteratorReturns(result1 *kinesis.GetShardIteratorOutput, result2 error) {
 	fake.getShardIteratorMutex.Lock()
 	defer fake.getShardIteratorMutex.Unlock()
 	fake.GetShardIteratorStub = nil
@@ -3832,7 +3832,7 @@ func (fake *KinesisClient) GetShardIteratorReturns(result1 *kinesis.GetShardIter
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIteratorReturnsOnCall(i int, result1 *kinesis.GetShardIteratorOutput, result2 error) {
+func (fake *FakeKinesisClient) GetShardIteratorReturnsOnCall(i int, result1 *kinesis.GetShardIteratorOutput, result2 error) {
 	fake.getShardIteratorMutex.Lock()
 	defer fake.getShardIteratorMutex.Unlock()
 	fake.GetShardIteratorStub = nil
@@ -3848,7 +3848,7 @@ func (fake *KinesisClient) GetShardIteratorReturnsOnCall(i int, result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIteratorRequest(arg1 *kinesis.GetShardIteratorInput) (*request.Request, *kinesis.GetShardIteratorOutput) {
+func (fake *FakeKinesisClient) GetShardIteratorRequest(arg1 *kinesis.GetShardIteratorInput) (*request.Request, *kinesis.GetShardIteratorOutput) {
 	fake.getShardIteratorRequestMutex.Lock()
 	ret, specificReturn := fake.getShardIteratorRequestReturnsOnCall[len(fake.getShardIteratorRequestArgsForCall)]
 	fake.getShardIteratorRequestArgsForCall = append(fake.getShardIteratorRequestArgsForCall, struct {
@@ -3867,26 +3867,26 @@ func (fake *KinesisClient) GetShardIteratorRequest(arg1 *kinesis.GetShardIterato
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetShardIteratorRequestCallCount() int {
+func (fake *FakeKinesisClient) GetShardIteratorRequestCallCount() int {
 	fake.getShardIteratorRequestMutex.RLock()
 	defer fake.getShardIteratorRequestMutex.RUnlock()
 	return len(fake.getShardIteratorRequestArgsForCall)
 }
 
-func (fake *KinesisClient) GetShardIteratorRequestCalls(stub func(*kinesis.GetShardIteratorInput) (*request.Request, *kinesis.GetShardIteratorOutput)) {
+func (fake *FakeKinesisClient) GetShardIteratorRequestCalls(stub func(*kinesis.GetShardIteratorInput) (*request.Request, *kinesis.GetShardIteratorOutput)) {
 	fake.getShardIteratorRequestMutex.Lock()
 	defer fake.getShardIteratorRequestMutex.Unlock()
 	fake.GetShardIteratorRequestStub = stub
 }
 
-func (fake *KinesisClient) GetShardIteratorRequestArgsForCall(i int) *kinesis.GetShardIteratorInput {
+func (fake *FakeKinesisClient) GetShardIteratorRequestArgsForCall(i int) *kinesis.GetShardIteratorInput {
 	fake.getShardIteratorRequestMutex.RLock()
 	defer fake.getShardIteratorRequestMutex.RUnlock()
 	argsForCall := fake.getShardIteratorRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) GetShardIteratorRequestReturns(result1 *request.Request, result2 *kinesis.GetShardIteratorOutput) {
+func (fake *FakeKinesisClient) GetShardIteratorRequestReturns(result1 *request.Request, result2 *kinesis.GetShardIteratorOutput) {
 	fake.getShardIteratorRequestMutex.Lock()
 	defer fake.getShardIteratorRequestMutex.Unlock()
 	fake.GetShardIteratorRequestStub = nil
@@ -3896,7 +3896,7 @@ func (fake *KinesisClient) GetShardIteratorRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIteratorRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.GetShardIteratorOutput) {
+func (fake *FakeKinesisClient) GetShardIteratorRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.GetShardIteratorOutput) {
 	fake.getShardIteratorRequestMutex.Lock()
 	defer fake.getShardIteratorRequestMutex.Unlock()
 	fake.GetShardIteratorRequestStub = nil
@@ -3912,7 +3912,7 @@ func (fake *KinesisClient) GetShardIteratorRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContext(arg1 context.Context, arg2 *kinesis.GetShardIteratorInput, arg3 ...request.Option) (*kinesis.GetShardIteratorOutput, error) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContext(arg1 context.Context, arg2 *kinesis.GetShardIteratorInput, arg3 ...request.Option) (*kinesis.GetShardIteratorOutput, error) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	ret, specificReturn := fake.getShardIteratorWithContextReturnsOnCall[len(fake.getShardIteratorWithContextArgsForCall)]
 	fake.getShardIteratorWithContextArgsForCall = append(fake.getShardIteratorWithContextArgsForCall, struct {
@@ -3933,26 +3933,26 @@ func (fake *KinesisClient) GetShardIteratorWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContextCallCount() int {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextCallCount() int {
 	fake.getShardIteratorWithContextMutex.RLock()
 	defer fake.getShardIteratorWithContextMutex.RUnlock()
 	return len(fake.getShardIteratorWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContextCalls(stub func(context.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextCalls(stub func(context.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	defer fake.getShardIteratorWithContextMutex.Unlock()
 	fake.GetShardIteratorWithContextStub = stub
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContextArgsForCall(i int) (context.Context, *kinesis.GetShardIteratorInput, []request.Option) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextArgsForCall(i int) (context.Context, *kinesis.GetShardIteratorInput, []request.Option) {
 	fake.getShardIteratorWithContextMutex.RLock()
 	defer fake.getShardIteratorWithContextMutex.RUnlock()
 	argsForCall := fake.getShardIteratorWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContextReturns(result1 *kinesis.GetShardIteratorOutput, result2 error) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextReturns(result1 *kinesis.GetShardIteratorOutput, result2 error) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	defer fake.getShardIteratorWithContextMutex.Unlock()
 	fake.GetShardIteratorWithContextStub = nil
@@ -3962,7 +3962,7 @@ func (fake *KinesisClient) GetShardIteratorWithContextReturns(result1 *kinesis.G
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) GetShardIteratorWithContextReturnsOnCall(i int, result1 *kinesis.GetShardIteratorOutput, result2 error) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextReturnsOnCall(i int, result1 *kinesis.GetShardIteratorOutput, result2 error) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	defer fake.getShardIteratorWithContextMutex.Unlock()
 	fake.GetShardIteratorWithContextStub = nil
@@ -3978,7 +3978,7 @@ func (fake *KinesisClient) GetShardIteratorWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriod(arg1 *kinesis.IncreaseStreamRetentionPeriodInput) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriod(arg1 *kinesis.IncreaseStreamRetentionPeriodInput) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
 	fake.increaseStreamRetentionPeriodMutex.Lock()
 	ret, specificReturn := fake.increaseStreamRetentionPeriodReturnsOnCall[len(fake.increaseStreamRetentionPeriodArgsForCall)]
 	fake.increaseStreamRetentionPeriodArgsForCall = append(fake.increaseStreamRetentionPeriodArgsForCall, struct {
@@ -3997,26 +3997,26 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriod(arg1 *kinesis.IncreaseS
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodCallCount() int {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodCallCount() int {
 	fake.increaseStreamRetentionPeriodMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodMutex.RUnlock()
 	return len(fake.increaseStreamRetentionPeriodArgsForCall)
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodCalls(stub func(*kinesis.IncreaseStreamRetentionPeriodInput) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodCalls(stub func(*kinesis.IncreaseStreamRetentionPeriodInput) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
 	fake.increaseStreamRetentionPeriodMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodStub = stub
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodArgsForCall(i int) *kinesis.IncreaseStreamRetentionPeriodInput {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodArgsForCall(i int) *kinesis.IncreaseStreamRetentionPeriodInput {
 	fake.increaseStreamRetentionPeriodMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodMutex.RUnlock()
 	argsForCall := fake.increaseStreamRetentionPeriodArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodReturns(result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodReturns(result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.increaseStreamRetentionPeriodMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodStub = nil
@@ -4026,7 +4026,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodReturns(result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodReturnsOnCall(i int, result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodReturnsOnCall(i int, result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.increaseStreamRetentionPeriodMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodStub = nil
@@ -4042,7 +4042,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequest(arg1 *kinesis.IncreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.IncreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequest(arg1 *kinesis.IncreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.IncreaseStreamRetentionPeriodOutput) {
 	fake.increaseStreamRetentionPeriodRequestMutex.Lock()
 	ret, specificReturn := fake.increaseStreamRetentionPeriodRequestReturnsOnCall[len(fake.increaseStreamRetentionPeriodRequestArgsForCall)]
 	fake.increaseStreamRetentionPeriodRequestArgsForCall = append(fake.increaseStreamRetentionPeriodRequestArgsForCall, struct {
@@ -4061,26 +4061,26 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequest(arg1 *kinesis.In
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestCallCount() int {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestCallCount() int {
 	fake.increaseStreamRetentionPeriodRequestMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodRequestMutex.RUnlock()
 	return len(fake.increaseStreamRetentionPeriodRequestArgsForCall)
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestCalls(stub func(*kinesis.IncreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.IncreaseStreamRetentionPeriodOutput)) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestCalls(stub func(*kinesis.IncreaseStreamRetentionPeriodInput) (*request.Request, *kinesis.IncreaseStreamRetentionPeriodOutput)) {
 	fake.increaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodRequestStub = stub
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestArgsForCall(i int) *kinesis.IncreaseStreamRetentionPeriodInput {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestArgsForCall(i int) *kinesis.IncreaseStreamRetentionPeriodInput {
 	fake.increaseStreamRetentionPeriodRequestMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodRequestMutex.RUnlock()
 	argsForCall := fake.increaseStreamRetentionPeriodRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestReturns(result1 *request.Request, result2 *kinesis.IncreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestReturns(result1 *request.Request, result2 *kinesis.IncreaseStreamRetentionPeriodOutput) {
 	fake.increaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodRequestStub = nil
@@ -4090,7 +4090,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.IncreaseStreamRetentionPeriodOutput) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.IncreaseStreamRetentionPeriodOutput) {
 	fake.increaseStreamRetentionPeriodRequestMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodRequestMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodRequestStub = nil
@@ -4106,7 +4106,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodRequestReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.IncreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.IncreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	ret, specificReturn := fake.increaseStreamRetentionPeriodWithContextReturnsOnCall[len(fake.increaseStreamRetentionPeriodWithContextArgsForCall)]
 	fake.increaseStreamRetentionPeriodWithContextArgsForCall = append(fake.increaseStreamRetentionPeriodWithContextArgsForCall, struct {
@@ -4127,26 +4127,26 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 context
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextCallCount() int {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextCallCount() int {
 	fake.increaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	return len(fake.increaseStreamRetentionPeriodWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodWithContextStub = stub
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, []request.Option) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, []request.Option) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	argsForCall := fake.increaseStreamRetentionPeriodWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextReturns(result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextReturns(result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodWithContextStub = nil
@@ -4156,7 +4156,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextReturns(resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextReturnsOnCall(i int, result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextReturnsOnCall(i int, result1 *kinesis.IncreaseStreamRetentionPeriodOutput, result2 error) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodWithContextStub = nil
@@ -4172,7 +4172,7 @@ func (fake *KinesisClient) IncreaseStreamRetentionPeriodWithContextReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShards(arg1 *kinesis.ListShardsInput) (*kinesis.ListShardsOutput, error) {
+func (fake *FakeKinesisClient) ListShards(arg1 *kinesis.ListShardsInput) (*kinesis.ListShardsOutput, error) {
 	fake.listShardsMutex.Lock()
 	ret, specificReturn := fake.listShardsReturnsOnCall[len(fake.listShardsArgsForCall)]
 	fake.listShardsArgsForCall = append(fake.listShardsArgsForCall, struct {
@@ -4191,26 +4191,26 @@ func (fake *KinesisClient) ListShards(arg1 *kinesis.ListShardsInput) (*kinesis.L
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListShardsCallCount() int {
+func (fake *FakeKinesisClient) ListShardsCallCount() int {
 	fake.listShardsMutex.RLock()
 	defer fake.listShardsMutex.RUnlock()
 	return len(fake.listShardsArgsForCall)
 }
 
-func (fake *KinesisClient) ListShardsCalls(stub func(*kinesis.ListShardsInput) (*kinesis.ListShardsOutput, error)) {
+func (fake *FakeKinesisClient) ListShardsCalls(stub func(*kinesis.ListShardsInput) (*kinesis.ListShardsOutput, error)) {
 	fake.listShardsMutex.Lock()
 	defer fake.listShardsMutex.Unlock()
 	fake.ListShardsStub = stub
 }
 
-func (fake *KinesisClient) ListShardsArgsForCall(i int) *kinesis.ListShardsInput {
+func (fake *FakeKinesisClient) ListShardsArgsForCall(i int) *kinesis.ListShardsInput {
 	fake.listShardsMutex.RLock()
 	defer fake.listShardsMutex.RUnlock()
 	argsForCall := fake.listShardsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListShardsReturns(result1 *kinesis.ListShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListShardsReturns(result1 *kinesis.ListShardsOutput, result2 error) {
 	fake.listShardsMutex.Lock()
 	defer fake.listShardsMutex.Unlock()
 	fake.ListShardsStub = nil
@@ -4220,7 +4220,7 @@ func (fake *KinesisClient) ListShardsReturns(result1 *kinesis.ListShardsOutput, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShardsReturnsOnCall(i int, result1 *kinesis.ListShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListShardsReturnsOnCall(i int, result1 *kinesis.ListShardsOutput, result2 error) {
 	fake.listShardsMutex.Lock()
 	defer fake.listShardsMutex.Unlock()
 	fake.ListShardsStub = nil
@@ -4236,7 +4236,7 @@ func (fake *KinesisClient) ListShardsReturnsOnCall(i int, result1 *kinesis.ListS
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShardsRequest(arg1 *kinesis.ListShardsInput) (*request.Request, *kinesis.ListShardsOutput) {
+func (fake *FakeKinesisClient) ListShardsRequest(arg1 *kinesis.ListShardsInput) (*request.Request, *kinesis.ListShardsOutput) {
 	fake.listShardsRequestMutex.Lock()
 	ret, specificReturn := fake.listShardsRequestReturnsOnCall[len(fake.listShardsRequestArgsForCall)]
 	fake.listShardsRequestArgsForCall = append(fake.listShardsRequestArgsForCall, struct {
@@ -4255,26 +4255,26 @@ func (fake *KinesisClient) ListShardsRequest(arg1 *kinesis.ListShardsInput) (*re
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListShardsRequestCallCount() int {
+func (fake *FakeKinesisClient) ListShardsRequestCallCount() int {
 	fake.listShardsRequestMutex.RLock()
 	defer fake.listShardsRequestMutex.RUnlock()
 	return len(fake.listShardsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) ListShardsRequestCalls(stub func(*kinesis.ListShardsInput) (*request.Request, *kinesis.ListShardsOutput)) {
+func (fake *FakeKinesisClient) ListShardsRequestCalls(stub func(*kinesis.ListShardsInput) (*request.Request, *kinesis.ListShardsOutput)) {
 	fake.listShardsRequestMutex.Lock()
 	defer fake.listShardsRequestMutex.Unlock()
 	fake.ListShardsRequestStub = stub
 }
 
-func (fake *KinesisClient) ListShardsRequestArgsForCall(i int) *kinesis.ListShardsInput {
+func (fake *FakeKinesisClient) ListShardsRequestArgsForCall(i int) *kinesis.ListShardsInput {
 	fake.listShardsRequestMutex.RLock()
 	defer fake.listShardsRequestMutex.RUnlock()
 	argsForCall := fake.listShardsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListShardsRequestReturns(result1 *request.Request, result2 *kinesis.ListShardsOutput) {
+func (fake *FakeKinesisClient) ListShardsRequestReturns(result1 *request.Request, result2 *kinesis.ListShardsOutput) {
 	fake.listShardsRequestMutex.Lock()
 	defer fake.listShardsRequestMutex.Unlock()
 	fake.ListShardsRequestStub = nil
@@ -4284,7 +4284,7 @@ func (fake *KinesisClient) ListShardsRequestReturns(result1 *request.Request, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShardsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListShardsOutput) {
+func (fake *FakeKinesisClient) ListShardsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListShardsOutput) {
 	fake.listShardsRequestMutex.Lock()
 	defer fake.listShardsRequestMutex.Unlock()
 	fake.ListShardsRequestStub = nil
@@ -4300,7 +4300,7 @@ func (fake *KinesisClient) ListShardsRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShardsWithContext(arg1 context.Context, arg2 *kinesis.ListShardsInput, arg3 ...request.Option) (*kinesis.ListShardsOutput, error) {
+func (fake *FakeKinesisClient) ListShardsWithContext(arg1 context.Context, arg2 *kinesis.ListShardsInput, arg3 ...request.Option) (*kinesis.ListShardsOutput, error) {
 	fake.listShardsWithContextMutex.Lock()
 	ret, specificReturn := fake.listShardsWithContextReturnsOnCall[len(fake.listShardsWithContextArgsForCall)]
 	fake.listShardsWithContextArgsForCall = append(fake.listShardsWithContextArgsForCall, struct {
@@ -4321,26 +4321,26 @@ func (fake *KinesisClient) ListShardsWithContext(arg1 context.Context, arg2 *kin
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListShardsWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListShardsWithContextCallCount() int {
 	fake.listShardsWithContextMutex.RLock()
 	defer fake.listShardsWithContextMutex.RUnlock()
 	return len(fake.listShardsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListShardsWithContextCalls(stub func(context.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)) {
+func (fake *FakeKinesisClient) ListShardsWithContextCalls(stub func(context.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)) {
 	fake.listShardsWithContextMutex.Lock()
 	defer fake.listShardsWithContextMutex.Unlock()
 	fake.ListShardsWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListShardsWithContextArgsForCall(i int) (context.Context, *kinesis.ListShardsInput, []request.Option) {
+func (fake *FakeKinesisClient) ListShardsWithContextArgsForCall(i int) (context.Context, *kinesis.ListShardsInput, []request.Option) {
 	fake.listShardsWithContextMutex.RLock()
 	defer fake.listShardsWithContextMutex.RUnlock()
 	argsForCall := fake.listShardsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) ListShardsWithContextReturns(result1 *kinesis.ListShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListShardsWithContextReturns(result1 *kinesis.ListShardsOutput, result2 error) {
 	fake.listShardsWithContextMutex.Lock()
 	defer fake.listShardsWithContextMutex.Unlock()
 	fake.ListShardsWithContextStub = nil
@@ -4350,7 +4350,7 @@ func (fake *KinesisClient) ListShardsWithContextReturns(result1 *kinesis.ListSha
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListShardsWithContextReturnsOnCall(i int, result1 *kinesis.ListShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListShardsWithContextReturnsOnCall(i int, result1 *kinesis.ListShardsOutput, result2 error) {
 	fake.listShardsWithContextMutex.Lock()
 	defer fake.listShardsWithContextMutex.Unlock()
 	fake.ListShardsWithContextStub = nil
@@ -4366,7 +4366,7 @@ func (fake *KinesisClient) ListShardsWithContextReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumers(arg1 *kinesis.ListStreamConsumersInput) (*kinesis.ListStreamConsumersOutput, error) {
+func (fake *FakeKinesisClient) ListStreamConsumers(arg1 *kinesis.ListStreamConsumersInput) (*kinesis.ListStreamConsumersOutput, error) {
 	fake.listStreamConsumersMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersReturnsOnCall[len(fake.listStreamConsumersArgsForCall)]
 	fake.listStreamConsumersArgsForCall = append(fake.listStreamConsumersArgsForCall, struct {
@@ -4385,26 +4385,26 @@ func (fake *KinesisClient) ListStreamConsumers(arg1 *kinesis.ListStreamConsumers
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamConsumersCallCount() int {
+func (fake *FakeKinesisClient) ListStreamConsumersCallCount() int {
 	fake.listStreamConsumersMutex.RLock()
 	defer fake.listStreamConsumersMutex.RUnlock()
 	return len(fake.listStreamConsumersArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamConsumersCalls(stub func(*kinesis.ListStreamConsumersInput) (*kinesis.ListStreamConsumersOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamConsumersCalls(stub func(*kinesis.ListStreamConsumersInput) (*kinesis.ListStreamConsumersOutput, error)) {
 	fake.listStreamConsumersMutex.Lock()
 	defer fake.listStreamConsumersMutex.Unlock()
 	fake.ListStreamConsumersStub = stub
 }
 
-func (fake *KinesisClient) ListStreamConsumersArgsForCall(i int) *kinesis.ListStreamConsumersInput {
+func (fake *FakeKinesisClient) ListStreamConsumersArgsForCall(i int) *kinesis.ListStreamConsumersInput {
 	fake.listStreamConsumersMutex.RLock()
 	defer fake.listStreamConsumersMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListStreamConsumersReturns(result1 *kinesis.ListStreamConsumersOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersReturns(result1 *kinesis.ListStreamConsumersOutput, result2 error) {
 	fake.listStreamConsumersMutex.Lock()
 	defer fake.listStreamConsumersMutex.Unlock()
 	fake.ListStreamConsumersStub = nil
@@ -4414,7 +4414,7 @@ func (fake *KinesisClient) ListStreamConsumersReturns(result1 *kinesis.ListStrea
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumersReturnsOnCall(i int, result1 *kinesis.ListStreamConsumersOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersReturnsOnCall(i int, result1 *kinesis.ListStreamConsumersOutput, result2 error) {
 	fake.listStreamConsumersMutex.Lock()
 	defer fake.listStreamConsumersMutex.Unlock()
 	fake.ListStreamConsumersStub = nil
@@ -4430,7 +4430,7 @@ func (fake *KinesisClient) ListStreamConsumersReturnsOnCall(i int, result1 *kine
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumersPages(arg1 *kinesis.ListStreamConsumersInput, arg2 func(*kinesis.ListStreamConsumersOutput, bool) bool) error {
+func (fake *FakeKinesisClient) ListStreamConsumersPages(arg1 *kinesis.ListStreamConsumersInput, arg2 func(*kinesis.ListStreamConsumersOutput, bool) bool) error {
 	fake.listStreamConsumersPagesMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersPagesReturnsOnCall[len(fake.listStreamConsumersPagesArgsForCall)]
 	fake.listStreamConsumersPagesArgsForCall = append(fake.listStreamConsumersPagesArgsForCall, struct {
@@ -4450,26 +4450,26 @@ func (fake *KinesisClient) ListStreamConsumersPages(arg1 *kinesis.ListStreamCons
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesCallCount() int {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesCallCount() int {
 	fake.listStreamConsumersPagesMutex.RLock()
 	defer fake.listStreamConsumersPagesMutex.RUnlock()
 	return len(fake.listStreamConsumersPagesArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesCalls(stub func(*kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool) error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesCalls(stub func(*kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool) error) {
 	fake.listStreamConsumersPagesMutex.Lock()
 	defer fake.listStreamConsumersPagesMutex.Unlock()
 	fake.ListStreamConsumersPagesStub = stub
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesArgsForCall(i int) (*kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesArgsForCall(i int) (*kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool) {
 	fake.listStreamConsumersPagesMutex.RLock()
 	defer fake.listStreamConsumersPagesMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesReturns(result1 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesReturns(result1 error) {
 	fake.listStreamConsumersPagesMutex.Lock()
 	defer fake.listStreamConsumersPagesMutex.Unlock()
 	fake.ListStreamConsumersPagesStub = nil
@@ -4478,7 +4478,7 @@ func (fake *KinesisClient) ListStreamConsumersPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesReturnsOnCall(i int, result1 error) {
 	fake.listStreamConsumersPagesMutex.Lock()
 	defer fake.listStreamConsumersPagesMutex.Unlock()
 	fake.ListStreamConsumersPagesStub = nil
@@ -4492,7 +4492,7 @@ func (fake *KinesisClient) ListStreamConsumersPagesReturnsOnCall(i int, result1 
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersPagesWithContextReturnsOnCall[len(fake.listStreamConsumersPagesWithContextArgsForCall)]
 	fake.listStreamConsumersPagesWithContextArgsForCall = append(fake.listStreamConsumersPagesWithContextArgsForCall, struct {
@@ -4514,26 +4514,26 @@ func (fake *KinesisClient) ListStreamConsumersPagesWithContext(arg1 context.Cont
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextCallCount() int {
 	fake.listStreamConsumersPagesWithContextMutex.RLock()
 	defer fake.listStreamConsumersPagesWithContextMutex.RUnlock()
 	return len(fake.listStreamConsumersPagesWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error) {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	defer fake.listStreamConsumersPagesWithContextMutex.Unlock()
 	fake.ListStreamConsumersPagesWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, []request.Option) {
 	fake.listStreamConsumersPagesWithContextMutex.RLock()
 	defer fake.listStreamConsumersPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContextReturns(result1 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextReturns(result1 error) {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	defer fake.listStreamConsumersPagesWithContextMutex.Unlock()
 	fake.ListStreamConsumersPagesWithContextStub = nil
@@ -4542,7 +4542,7 @@ func (fake *KinesisClient) ListStreamConsumersPagesWithContextReturns(result1 er
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamConsumersPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	defer fake.listStreamConsumersPagesWithContextMutex.Unlock()
 	fake.ListStreamConsumersPagesWithContextStub = nil
@@ -4556,7 +4556,7 @@ func (fake *KinesisClient) ListStreamConsumersPagesWithContextReturnsOnCall(i in
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequest(arg1 *kinesis.ListStreamConsumersInput) (*request.Request, *kinesis.ListStreamConsumersOutput) {
+func (fake *FakeKinesisClient) ListStreamConsumersRequest(arg1 *kinesis.ListStreamConsumersInput) (*request.Request, *kinesis.ListStreamConsumersOutput) {
 	fake.listStreamConsumersRequestMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersRequestReturnsOnCall[len(fake.listStreamConsumersRequestArgsForCall)]
 	fake.listStreamConsumersRequestArgsForCall = append(fake.listStreamConsumersRequestArgsForCall, struct {
@@ -4575,26 +4575,26 @@ func (fake *KinesisClient) ListStreamConsumersRequest(arg1 *kinesis.ListStreamCo
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequestCallCount() int {
+func (fake *FakeKinesisClient) ListStreamConsumersRequestCallCount() int {
 	fake.listStreamConsumersRequestMutex.RLock()
 	defer fake.listStreamConsumersRequestMutex.RUnlock()
 	return len(fake.listStreamConsumersRequestArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequestCalls(stub func(*kinesis.ListStreamConsumersInput) (*request.Request, *kinesis.ListStreamConsumersOutput)) {
+func (fake *FakeKinesisClient) ListStreamConsumersRequestCalls(stub func(*kinesis.ListStreamConsumersInput) (*request.Request, *kinesis.ListStreamConsumersOutput)) {
 	fake.listStreamConsumersRequestMutex.Lock()
 	defer fake.listStreamConsumersRequestMutex.Unlock()
 	fake.ListStreamConsumersRequestStub = stub
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequestArgsForCall(i int) *kinesis.ListStreamConsumersInput {
+func (fake *FakeKinesisClient) ListStreamConsumersRequestArgsForCall(i int) *kinesis.ListStreamConsumersInput {
 	fake.listStreamConsumersRequestMutex.RLock()
 	defer fake.listStreamConsumersRequestMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequestReturns(result1 *request.Request, result2 *kinesis.ListStreamConsumersOutput) {
+func (fake *FakeKinesisClient) ListStreamConsumersRequestReturns(result1 *request.Request, result2 *kinesis.ListStreamConsumersOutput) {
 	fake.listStreamConsumersRequestMutex.Lock()
 	defer fake.listStreamConsumersRequestMutex.Unlock()
 	fake.ListStreamConsumersRequestStub = nil
@@ -4604,7 +4604,7 @@ func (fake *KinesisClient) ListStreamConsumersRequestReturns(result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumersRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListStreamConsumersOutput) {
+func (fake *FakeKinesisClient) ListStreamConsumersRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListStreamConsumersOutput) {
 	fake.listStreamConsumersRequestMutex.Lock()
 	defer fake.listStreamConsumersRequestMutex.Unlock()
 	fake.ListStreamConsumersRequestStub = nil
@@ -4620,7 +4620,7 @@ func (fake *KinesisClient) ListStreamConsumersRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 ...request.Option) (*kinesis.ListStreamConsumersOutput, error) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 ...request.Option) (*kinesis.ListStreamConsumersOutput, error) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersWithContextReturnsOnCall[len(fake.listStreamConsumersWithContextArgsForCall)]
 	fake.listStreamConsumersWithContextArgsForCall = append(fake.listStreamConsumersWithContextArgsForCall, struct {
@@ -4641,26 +4641,26 @@ func (fake *KinesisClient) ListStreamConsumersWithContext(arg1 context.Context, 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextCallCount() int {
 	fake.listStreamConsumersWithContextMutex.RLock()
 	defer fake.listStreamConsumersWithContextMutex.RUnlock()
 	return len(fake.listStreamConsumersWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	defer fake.listStreamConsumersWithContextMutex.Unlock()
 	fake.ListStreamConsumersWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, []request.Option) {
 	fake.listStreamConsumersWithContextMutex.RLock()
 	defer fake.listStreamConsumersWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContextReturns(result1 *kinesis.ListStreamConsumersOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextReturns(result1 *kinesis.ListStreamConsumersOutput, result2 error) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	defer fake.listStreamConsumersWithContextMutex.Unlock()
 	fake.ListStreamConsumersWithContextStub = nil
@@ -4670,7 +4670,7 @@ func (fake *KinesisClient) ListStreamConsumersWithContextReturns(result1 *kinesi
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamConsumersWithContextReturnsOnCall(i int, result1 *kinesis.ListStreamConsumersOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextReturnsOnCall(i int, result1 *kinesis.ListStreamConsumersOutput, result2 error) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	defer fake.listStreamConsumersWithContextMutex.Unlock()
 	fake.ListStreamConsumersWithContextStub = nil
@@ -4686,7 +4686,7 @@ func (fake *KinesisClient) ListStreamConsumersWithContextReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreams(arg1 *kinesis.ListStreamsInput) (*kinesis.ListStreamsOutput, error) {
+func (fake *FakeKinesisClient) ListStreams(arg1 *kinesis.ListStreamsInput) (*kinesis.ListStreamsOutput, error) {
 	fake.listStreamsMutex.Lock()
 	ret, specificReturn := fake.listStreamsReturnsOnCall[len(fake.listStreamsArgsForCall)]
 	fake.listStreamsArgsForCall = append(fake.listStreamsArgsForCall, struct {
@@ -4705,26 +4705,26 @@ func (fake *KinesisClient) ListStreams(arg1 *kinesis.ListStreamsInput) (*kinesis
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamsCallCount() int {
+func (fake *FakeKinesisClient) ListStreamsCallCount() int {
 	fake.listStreamsMutex.RLock()
 	defer fake.listStreamsMutex.RUnlock()
 	return len(fake.listStreamsArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamsCalls(stub func(*kinesis.ListStreamsInput) (*kinesis.ListStreamsOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamsCalls(stub func(*kinesis.ListStreamsInput) (*kinesis.ListStreamsOutput, error)) {
 	fake.listStreamsMutex.Lock()
 	defer fake.listStreamsMutex.Unlock()
 	fake.ListStreamsStub = stub
 }
 
-func (fake *KinesisClient) ListStreamsArgsForCall(i int) *kinesis.ListStreamsInput {
+func (fake *FakeKinesisClient) ListStreamsArgsForCall(i int) *kinesis.ListStreamsInput {
 	fake.listStreamsMutex.RLock()
 	defer fake.listStreamsMutex.RUnlock()
 	argsForCall := fake.listStreamsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListStreamsReturns(result1 *kinesis.ListStreamsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamsReturns(result1 *kinesis.ListStreamsOutput, result2 error) {
 	fake.listStreamsMutex.Lock()
 	defer fake.listStreamsMutex.Unlock()
 	fake.ListStreamsStub = nil
@@ -4734,7 +4734,7 @@ func (fake *KinesisClient) ListStreamsReturns(result1 *kinesis.ListStreamsOutput
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamsReturnsOnCall(i int, result1 *kinesis.ListStreamsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamsReturnsOnCall(i int, result1 *kinesis.ListStreamsOutput, result2 error) {
 	fake.listStreamsMutex.Lock()
 	defer fake.listStreamsMutex.Unlock()
 	fake.ListStreamsStub = nil
@@ -4750,7 +4750,7 @@ func (fake *KinesisClient) ListStreamsReturnsOnCall(i int, result1 *kinesis.List
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamsPages(arg1 *kinesis.ListStreamsInput, arg2 func(*kinesis.ListStreamsOutput, bool) bool) error {
+func (fake *FakeKinesisClient) ListStreamsPages(arg1 *kinesis.ListStreamsInput, arg2 func(*kinesis.ListStreamsOutput, bool) bool) error {
 	fake.listStreamsPagesMutex.Lock()
 	ret, specificReturn := fake.listStreamsPagesReturnsOnCall[len(fake.listStreamsPagesArgsForCall)]
 	fake.listStreamsPagesArgsForCall = append(fake.listStreamsPagesArgsForCall, struct {
@@ -4770,26 +4770,26 @@ func (fake *KinesisClient) ListStreamsPages(arg1 *kinesis.ListStreamsInput, arg2
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) ListStreamsPagesCallCount() int {
+func (fake *FakeKinesisClient) ListStreamsPagesCallCount() int {
 	fake.listStreamsPagesMutex.RLock()
 	defer fake.listStreamsPagesMutex.RUnlock()
 	return len(fake.listStreamsPagesArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamsPagesCalls(stub func(*kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool) error) {
+func (fake *FakeKinesisClient) ListStreamsPagesCalls(stub func(*kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool) error) {
 	fake.listStreamsPagesMutex.Lock()
 	defer fake.listStreamsPagesMutex.Unlock()
 	fake.ListStreamsPagesStub = stub
 }
 
-func (fake *KinesisClient) ListStreamsPagesArgsForCall(i int) (*kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool) {
+func (fake *FakeKinesisClient) ListStreamsPagesArgsForCall(i int) (*kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool) {
 	fake.listStreamsPagesMutex.RLock()
 	defer fake.listStreamsPagesMutex.RUnlock()
 	argsForCall := fake.listStreamsPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *KinesisClient) ListStreamsPagesReturns(result1 error) {
+func (fake *FakeKinesisClient) ListStreamsPagesReturns(result1 error) {
 	fake.listStreamsPagesMutex.Lock()
 	defer fake.listStreamsPagesMutex.Unlock()
 	fake.ListStreamsPagesStub = nil
@@ -4798,7 +4798,7 @@ func (fake *KinesisClient) ListStreamsPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamsPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) ListStreamsPagesReturnsOnCall(i int, result1 error) {
 	fake.listStreamsPagesMutex.Lock()
 	defer fake.listStreamsPagesMutex.Unlock()
 	fake.ListStreamsPagesStub = nil
@@ -4812,7 +4812,7 @@ func (fake *KinesisClient) ListStreamsPagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 func(*kinesis.ListStreamsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 func(*kinesis.ListStreamsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamsPagesWithContextReturnsOnCall[len(fake.listStreamsPagesWithContextArgsForCall)]
 	fake.listStreamsPagesWithContextArgsForCall = append(fake.listStreamsPagesWithContextArgsForCall, struct {
@@ -4834,26 +4834,26 @@ func (fake *KinesisClient) ListStreamsPagesWithContext(arg1 context.Context, arg
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextCallCount() int {
 	fake.listStreamsPagesWithContextMutex.RLock()
 	defer fake.listStreamsPagesWithContextMutex.RUnlock()
 	return len(fake.listStreamsPagesWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error) {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	defer fake.listStreamsPagesWithContextMutex.Unlock()
 	fake.ListStreamsPagesWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, []request.Option) {
 	fake.listStreamsPagesWithContextMutex.RLock()
 	defer fake.listStreamsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamsPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContextReturns(result1 error) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextReturns(result1 error) {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	defer fake.listStreamsPagesWithContextMutex.Unlock()
 	fake.ListStreamsPagesWithContextStub = nil
@@ -4862,7 +4862,7 @@ func (fake *KinesisClient) ListStreamsPagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamsPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	defer fake.listStreamsPagesWithContextMutex.Unlock()
 	fake.ListStreamsPagesWithContextStub = nil
@@ -4876,7 +4876,7 @@ func (fake *KinesisClient) ListStreamsPagesWithContextReturnsOnCall(i int, resul
 	}{result1}
 }
 
-func (fake *KinesisClient) ListStreamsRequest(arg1 *kinesis.ListStreamsInput) (*request.Request, *kinesis.ListStreamsOutput) {
+func (fake *FakeKinesisClient) ListStreamsRequest(arg1 *kinesis.ListStreamsInput) (*request.Request, *kinesis.ListStreamsOutput) {
 	fake.listStreamsRequestMutex.Lock()
 	ret, specificReturn := fake.listStreamsRequestReturnsOnCall[len(fake.listStreamsRequestArgsForCall)]
 	fake.listStreamsRequestArgsForCall = append(fake.listStreamsRequestArgsForCall, struct {
@@ -4895,26 +4895,26 @@ func (fake *KinesisClient) ListStreamsRequest(arg1 *kinesis.ListStreamsInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamsRequestCallCount() int {
+func (fake *FakeKinesisClient) ListStreamsRequestCallCount() int {
 	fake.listStreamsRequestMutex.RLock()
 	defer fake.listStreamsRequestMutex.RUnlock()
 	return len(fake.listStreamsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamsRequestCalls(stub func(*kinesis.ListStreamsInput) (*request.Request, *kinesis.ListStreamsOutput)) {
+func (fake *FakeKinesisClient) ListStreamsRequestCalls(stub func(*kinesis.ListStreamsInput) (*request.Request, *kinesis.ListStreamsOutput)) {
 	fake.listStreamsRequestMutex.Lock()
 	defer fake.listStreamsRequestMutex.Unlock()
 	fake.ListStreamsRequestStub = stub
 }
 
-func (fake *KinesisClient) ListStreamsRequestArgsForCall(i int) *kinesis.ListStreamsInput {
+func (fake *FakeKinesisClient) ListStreamsRequestArgsForCall(i int) *kinesis.ListStreamsInput {
 	fake.listStreamsRequestMutex.RLock()
 	defer fake.listStreamsRequestMutex.RUnlock()
 	argsForCall := fake.listStreamsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListStreamsRequestReturns(result1 *request.Request, result2 *kinesis.ListStreamsOutput) {
+func (fake *FakeKinesisClient) ListStreamsRequestReturns(result1 *request.Request, result2 *kinesis.ListStreamsOutput) {
 	fake.listStreamsRequestMutex.Lock()
 	defer fake.listStreamsRequestMutex.Unlock()
 	fake.ListStreamsRequestStub = nil
@@ -4924,7 +4924,7 @@ func (fake *KinesisClient) ListStreamsRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListStreamsOutput) {
+func (fake *FakeKinesisClient) ListStreamsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListStreamsOutput) {
 	fake.listStreamsRequestMutex.Lock()
 	defer fake.listStreamsRequestMutex.Unlock()
 	fake.ListStreamsRequestStub = nil
@@ -4940,7 +4940,7 @@ func (fake *KinesisClient) ListStreamsRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamsWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 ...request.Option) (*kinesis.ListStreamsOutput, error) {
+func (fake *FakeKinesisClient) ListStreamsWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 ...request.Option) (*kinesis.ListStreamsOutput, error) {
 	fake.listStreamsWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamsWithContextReturnsOnCall[len(fake.listStreamsWithContextArgsForCall)]
 	fake.listStreamsWithContextArgsForCall = append(fake.listStreamsWithContextArgsForCall, struct {
@@ -4961,26 +4961,26 @@ func (fake *KinesisClient) ListStreamsWithContext(arg1 context.Context, arg2 *ki
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListStreamsWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListStreamsWithContextCallCount() int {
 	fake.listStreamsWithContextMutex.RLock()
 	defer fake.listStreamsWithContextMutex.RUnlock()
 	return len(fake.listStreamsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListStreamsWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamsWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)) {
 	fake.listStreamsWithContextMutex.Lock()
 	defer fake.listStreamsWithContextMutex.Unlock()
 	fake.ListStreamsWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListStreamsWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamsWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, []request.Option) {
 	fake.listStreamsWithContextMutex.RLock()
 	defer fake.listStreamsWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) ListStreamsWithContextReturns(result1 *kinesis.ListStreamsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamsWithContextReturns(result1 *kinesis.ListStreamsOutput, result2 error) {
 	fake.listStreamsWithContextMutex.Lock()
 	defer fake.listStreamsWithContextMutex.Unlock()
 	fake.ListStreamsWithContextStub = nil
@@ -4990,7 +4990,7 @@ func (fake *KinesisClient) ListStreamsWithContextReturns(result1 *kinesis.ListSt
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListStreamsWithContextReturnsOnCall(i int, result1 *kinesis.ListStreamsOutput, result2 error) {
+func (fake *FakeKinesisClient) ListStreamsWithContextReturnsOnCall(i int, result1 *kinesis.ListStreamsOutput, result2 error) {
 	fake.listStreamsWithContextMutex.Lock()
 	defer fake.listStreamsWithContextMutex.Unlock()
 	fake.ListStreamsWithContextStub = nil
@@ -5006,7 +5006,7 @@ func (fake *KinesisClient) ListStreamsWithContextReturnsOnCall(i int, result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStream(arg1 *kinesis.ListTagsForStreamInput) (*kinesis.ListTagsForStreamOutput, error) {
+func (fake *FakeKinesisClient) ListTagsForStream(arg1 *kinesis.ListTagsForStreamInput) (*kinesis.ListTagsForStreamOutput, error) {
 	fake.listTagsForStreamMutex.Lock()
 	ret, specificReturn := fake.listTagsForStreamReturnsOnCall[len(fake.listTagsForStreamArgsForCall)]
 	fake.listTagsForStreamArgsForCall = append(fake.listTagsForStreamArgsForCall, struct {
@@ -5025,26 +5025,26 @@ func (fake *KinesisClient) ListTagsForStream(arg1 *kinesis.ListTagsForStreamInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListTagsForStreamCallCount() int {
+func (fake *FakeKinesisClient) ListTagsForStreamCallCount() int {
 	fake.listTagsForStreamMutex.RLock()
 	defer fake.listTagsForStreamMutex.RUnlock()
 	return len(fake.listTagsForStreamArgsForCall)
 }
 
-func (fake *KinesisClient) ListTagsForStreamCalls(stub func(*kinesis.ListTagsForStreamInput) (*kinesis.ListTagsForStreamOutput, error)) {
+func (fake *FakeKinesisClient) ListTagsForStreamCalls(stub func(*kinesis.ListTagsForStreamInput) (*kinesis.ListTagsForStreamOutput, error)) {
 	fake.listTagsForStreamMutex.Lock()
 	defer fake.listTagsForStreamMutex.Unlock()
 	fake.ListTagsForStreamStub = stub
 }
 
-func (fake *KinesisClient) ListTagsForStreamArgsForCall(i int) *kinesis.ListTagsForStreamInput {
+func (fake *FakeKinesisClient) ListTagsForStreamArgsForCall(i int) *kinesis.ListTagsForStreamInput {
 	fake.listTagsForStreamMutex.RLock()
 	defer fake.listTagsForStreamMutex.RUnlock()
 	argsForCall := fake.listTagsForStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListTagsForStreamReturns(result1 *kinesis.ListTagsForStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) ListTagsForStreamReturns(result1 *kinesis.ListTagsForStreamOutput, result2 error) {
 	fake.listTagsForStreamMutex.Lock()
 	defer fake.listTagsForStreamMutex.Unlock()
 	fake.ListTagsForStreamStub = nil
@@ -5054,7 +5054,7 @@ func (fake *KinesisClient) ListTagsForStreamReturns(result1 *kinesis.ListTagsFor
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStreamReturnsOnCall(i int, result1 *kinesis.ListTagsForStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) ListTagsForStreamReturnsOnCall(i int, result1 *kinesis.ListTagsForStreamOutput, result2 error) {
 	fake.listTagsForStreamMutex.Lock()
 	defer fake.listTagsForStreamMutex.Unlock()
 	fake.ListTagsForStreamStub = nil
@@ -5070,7 +5070,7 @@ func (fake *KinesisClient) ListTagsForStreamReturnsOnCall(i int, result1 *kinesi
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequest(arg1 *kinesis.ListTagsForStreamInput) (*request.Request, *kinesis.ListTagsForStreamOutput) {
+func (fake *FakeKinesisClient) ListTagsForStreamRequest(arg1 *kinesis.ListTagsForStreamInput) (*request.Request, *kinesis.ListTagsForStreamOutput) {
 	fake.listTagsForStreamRequestMutex.Lock()
 	ret, specificReturn := fake.listTagsForStreamRequestReturnsOnCall[len(fake.listTagsForStreamRequestArgsForCall)]
 	fake.listTagsForStreamRequestArgsForCall = append(fake.listTagsForStreamRequestArgsForCall, struct {
@@ -5089,26 +5089,26 @@ func (fake *KinesisClient) ListTagsForStreamRequest(arg1 *kinesis.ListTagsForStr
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) ListTagsForStreamRequestCallCount() int {
 	fake.listTagsForStreamRequestMutex.RLock()
 	defer fake.listTagsForStreamRequestMutex.RUnlock()
 	return len(fake.listTagsForStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequestCalls(stub func(*kinesis.ListTagsForStreamInput) (*request.Request, *kinesis.ListTagsForStreamOutput)) {
+func (fake *FakeKinesisClient) ListTagsForStreamRequestCalls(stub func(*kinesis.ListTagsForStreamInput) (*request.Request, *kinesis.ListTagsForStreamOutput)) {
 	fake.listTagsForStreamRequestMutex.Lock()
 	defer fake.listTagsForStreamRequestMutex.Unlock()
 	fake.ListTagsForStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequestArgsForCall(i int) *kinesis.ListTagsForStreamInput {
+func (fake *FakeKinesisClient) ListTagsForStreamRequestArgsForCall(i int) *kinesis.ListTagsForStreamInput {
 	fake.listTagsForStreamRequestMutex.RLock()
 	defer fake.listTagsForStreamRequestMutex.RUnlock()
 	argsForCall := fake.listTagsForStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequestReturns(result1 *request.Request, result2 *kinesis.ListTagsForStreamOutput) {
+func (fake *FakeKinesisClient) ListTagsForStreamRequestReturns(result1 *request.Request, result2 *kinesis.ListTagsForStreamOutput) {
 	fake.listTagsForStreamRequestMutex.Lock()
 	defer fake.listTagsForStreamRequestMutex.Unlock()
 	fake.ListTagsForStreamRequestStub = nil
@@ -5118,7 +5118,7 @@ func (fake *KinesisClient) ListTagsForStreamRequestReturns(result1 *request.Requ
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListTagsForStreamOutput) {
+func (fake *FakeKinesisClient) ListTagsForStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.ListTagsForStreamOutput) {
 	fake.listTagsForStreamRequestMutex.Lock()
 	defer fake.listTagsForStreamRequestMutex.Unlock()
 	fake.ListTagsForStreamRequestStub = nil
@@ -5134,7 +5134,7 @@ func (fake *KinesisClient) ListTagsForStreamRequestReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContext(arg1 context.Context, arg2 *kinesis.ListTagsForStreamInput, arg3 ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContext(arg1 context.Context, arg2 *kinesis.ListTagsForStreamInput, arg3 ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.listTagsForStreamWithContextReturnsOnCall[len(fake.listTagsForStreamWithContextArgsForCall)]
 	fake.listTagsForStreamWithContextArgsForCall = append(fake.listTagsForStreamWithContextArgsForCall, struct {
@@ -5155,26 +5155,26 @@ func (fake *KinesisClient) ListTagsForStreamWithContext(arg1 context.Context, ar
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextCallCount() int {
 	fake.listTagsForStreamWithContextMutex.RLock()
 	defer fake.listTagsForStreamWithContextMutex.RUnlock()
 	return len(fake.listTagsForStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContextCalls(stub func(context.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextCalls(stub func(context.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	defer fake.listTagsForStreamWithContextMutex.Unlock()
 	fake.ListTagsForStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContextArgsForCall(i int) (context.Context, *kinesis.ListTagsForStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextArgsForCall(i int) (context.Context, *kinesis.ListTagsForStreamInput, []request.Option) {
 	fake.listTagsForStreamWithContextMutex.RLock()
 	defer fake.listTagsForStreamWithContextMutex.RUnlock()
 	argsForCall := fake.listTagsForStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContextReturns(result1 *kinesis.ListTagsForStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextReturns(result1 *kinesis.ListTagsForStreamOutput, result2 error) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	defer fake.listTagsForStreamWithContextMutex.Unlock()
 	fake.ListTagsForStreamWithContextStub = nil
@@ -5184,7 +5184,7 @@ func (fake *KinesisClient) ListTagsForStreamWithContextReturns(result1 *kinesis.
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) ListTagsForStreamWithContextReturnsOnCall(i int, result1 *kinesis.ListTagsForStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextReturnsOnCall(i int, result1 *kinesis.ListTagsForStreamOutput, result2 error) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	defer fake.listTagsForStreamWithContextMutex.Unlock()
 	fake.ListTagsForStreamWithContextStub = nil
@@ -5200,7 +5200,7 @@ func (fake *KinesisClient) ListTagsForStreamWithContextReturnsOnCall(i int, resu
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShards(arg1 *kinesis.MergeShardsInput) (*kinesis.MergeShardsOutput, error) {
+func (fake *FakeKinesisClient) MergeShards(arg1 *kinesis.MergeShardsInput) (*kinesis.MergeShardsOutput, error) {
 	fake.mergeShardsMutex.Lock()
 	ret, specificReturn := fake.mergeShardsReturnsOnCall[len(fake.mergeShardsArgsForCall)]
 	fake.mergeShardsArgsForCall = append(fake.mergeShardsArgsForCall, struct {
@@ -5219,26 +5219,26 @@ func (fake *KinesisClient) MergeShards(arg1 *kinesis.MergeShardsInput) (*kinesis
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) MergeShardsCallCount() int {
+func (fake *FakeKinesisClient) MergeShardsCallCount() int {
 	fake.mergeShardsMutex.RLock()
 	defer fake.mergeShardsMutex.RUnlock()
 	return len(fake.mergeShardsArgsForCall)
 }
 
-func (fake *KinesisClient) MergeShardsCalls(stub func(*kinesis.MergeShardsInput) (*kinesis.MergeShardsOutput, error)) {
+func (fake *FakeKinesisClient) MergeShardsCalls(stub func(*kinesis.MergeShardsInput) (*kinesis.MergeShardsOutput, error)) {
 	fake.mergeShardsMutex.Lock()
 	defer fake.mergeShardsMutex.Unlock()
 	fake.MergeShardsStub = stub
 }
 
-func (fake *KinesisClient) MergeShardsArgsForCall(i int) *kinesis.MergeShardsInput {
+func (fake *FakeKinesisClient) MergeShardsArgsForCall(i int) *kinesis.MergeShardsInput {
 	fake.mergeShardsMutex.RLock()
 	defer fake.mergeShardsMutex.RUnlock()
 	argsForCall := fake.mergeShardsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) MergeShardsReturns(result1 *kinesis.MergeShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) MergeShardsReturns(result1 *kinesis.MergeShardsOutput, result2 error) {
 	fake.mergeShardsMutex.Lock()
 	defer fake.mergeShardsMutex.Unlock()
 	fake.MergeShardsStub = nil
@@ -5248,7 +5248,7 @@ func (fake *KinesisClient) MergeShardsReturns(result1 *kinesis.MergeShardsOutput
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShardsReturnsOnCall(i int, result1 *kinesis.MergeShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) MergeShardsReturnsOnCall(i int, result1 *kinesis.MergeShardsOutput, result2 error) {
 	fake.mergeShardsMutex.Lock()
 	defer fake.mergeShardsMutex.Unlock()
 	fake.MergeShardsStub = nil
@@ -5264,7 +5264,7 @@ func (fake *KinesisClient) MergeShardsReturnsOnCall(i int, result1 *kinesis.Merg
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShardsRequest(arg1 *kinesis.MergeShardsInput) (*request.Request, *kinesis.MergeShardsOutput) {
+func (fake *FakeKinesisClient) MergeShardsRequest(arg1 *kinesis.MergeShardsInput) (*request.Request, *kinesis.MergeShardsOutput) {
 	fake.mergeShardsRequestMutex.Lock()
 	ret, specificReturn := fake.mergeShardsRequestReturnsOnCall[len(fake.mergeShardsRequestArgsForCall)]
 	fake.mergeShardsRequestArgsForCall = append(fake.mergeShardsRequestArgsForCall, struct {
@@ -5283,26 +5283,26 @@ func (fake *KinesisClient) MergeShardsRequest(arg1 *kinesis.MergeShardsInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) MergeShardsRequestCallCount() int {
+func (fake *FakeKinesisClient) MergeShardsRequestCallCount() int {
 	fake.mergeShardsRequestMutex.RLock()
 	defer fake.mergeShardsRequestMutex.RUnlock()
 	return len(fake.mergeShardsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) MergeShardsRequestCalls(stub func(*kinesis.MergeShardsInput) (*request.Request, *kinesis.MergeShardsOutput)) {
+func (fake *FakeKinesisClient) MergeShardsRequestCalls(stub func(*kinesis.MergeShardsInput) (*request.Request, *kinesis.MergeShardsOutput)) {
 	fake.mergeShardsRequestMutex.Lock()
 	defer fake.mergeShardsRequestMutex.Unlock()
 	fake.MergeShardsRequestStub = stub
 }
 
-func (fake *KinesisClient) MergeShardsRequestArgsForCall(i int) *kinesis.MergeShardsInput {
+func (fake *FakeKinesisClient) MergeShardsRequestArgsForCall(i int) *kinesis.MergeShardsInput {
 	fake.mergeShardsRequestMutex.RLock()
 	defer fake.mergeShardsRequestMutex.RUnlock()
 	argsForCall := fake.mergeShardsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) MergeShardsRequestReturns(result1 *request.Request, result2 *kinesis.MergeShardsOutput) {
+func (fake *FakeKinesisClient) MergeShardsRequestReturns(result1 *request.Request, result2 *kinesis.MergeShardsOutput) {
 	fake.mergeShardsRequestMutex.Lock()
 	defer fake.mergeShardsRequestMutex.Unlock()
 	fake.MergeShardsRequestStub = nil
@@ -5312,7 +5312,7 @@ func (fake *KinesisClient) MergeShardsRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShardsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.MergeShardsOutput) {
+func (fake *FakeKinesisClient) MergeShardsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.MergeShardsOutput) {
 	fake.mergeShardsRequestMutex.Lock()
 	defer fake.mergeShardsRequestMutex.Unlock()
 	fake.MergeShardsRequestStub = nil
@@ -5328,7 +5328,7 @@ func (fake *KinesisClient) MergeShardsRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShardsWithContext(arg1 context.Context, arg2 *kinesis.MergeShardsInput, arg3 ...request.Option) (*kinesis.MergeShardsOutput, error) {
+func (fake *FakeKinesisClient) MergeShardsWithContext(arg1 context.Context, arg2 *kinesis.MergeShardsInput, arg3 ...request.Option) (*kinesis.MergeShardsOutput, error) {
 	fake.mergeShardsWithContextMutex.Lock()
 	ret, specificReturn := fake.mergeShardsWithContextReturnsOnCall[len(fake.mergeShardsWithContextArgsForCall)]
 	fake.mergeShardsWithContextArgsForCall = append(fake.mergeShardsWithContextArgsForCall, struct {
@@ -5349,26 +5349,26 @@ func (fake *KinesisClient) MergeShardsWithContext(arg1 context.Context, arg2 *ki
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) MergeShardsWithContextCallCount() int {
+func (fake *FakeKinesisClient) MergeShardsWithContextCallCount() int {
 	fake.mergeShardsWithContextMutex.RLock()
 	defer fake.mergeShardsWithContextMutex.RUnlock()
 	return len(fake.mergeShardsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) MergeShardsWithContextCalls(stub func(context.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)) {
+func (fake *FakeKinesisClient) MergeShardsWithContextCalls(stub func(context.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)) {
 	fake.mergeShardsWithContextMutex.Lock()
 	defer fake.mergeShardsWithContextMutex.Unlock()
 	fake.MergeShardsWithContextStub = stub
 }
 
-func (fake *KinesisClient) MergeShardsWithContextArgsForCall(i int) (context.Context, *kinesis.MergeShardsInput, []request.Option) {
+func (fake *FakeKinesisClient) MergeShardsWithContextArgsForCall(i int) (context.Context, *kinesis.MergeShardsInput, []request.Option) {
 	fake.mergeShardsWithContextMutex.RLock()
 	defer fake.mergeShardsWithContextMutex.RUnlock()
 	argsForCall := fake.mergeShardsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) MergeShardsWithContextReturns(result1 *kinesis.MergeShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) MergeShardsWithContextReturns(result1 *kinesis.MergeShardsOutput, result2 error) {
 	fake.mergeShardsWithContextMutex.Lock()
 	defer fake.mergeShardsWithContextMutex.Unlock()
 	fake.MergeShardsWithContextStub = nil
@@ -5378,7 +5378,7 @@ func (fake *KinesisClient) MergeShardsWithContextReturns(result1 *kinesis.MergeS
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) MergeShardsWithContextReturnsOnCall(i int, result1 *kinesis.MergeShardsOutput, result2 error) {
+func (fake *FakeKinesisClient) MergeShardsWithContextReturnsOnCall(i int, result1 *kinesis.MergeShardsOutput, result2 error) {
 	fake.mergeShardsWithContextMutex.Lock()
 	defer fake.mergeShardsWithContextMutex.Unlock()
 	fake.MergeShardsWithContextStub = nil
@@ -5394,7 +5394,7 @@ func (fake *KinesisClient) MergeShardsWithContextReturnsOnCall(i int, result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecord(arg1 *kinesis.PutRecordInput) (*kinesis.PutRecordOutput, error) {
+func (fake *FakeKinesisClient) PutRecord(arg1 *kinesis.PutRecordInput) (*kinesis.PutRecordOutput, error) {
 	fake.putRecordMutex.Lock()
 	ret, specificReturn := fake.putRecordReturnsOnCall[len(fake.putRecordArgsForCall)]
 	fake.putRecordArgsForCall = append(fake.putRecordArgsForCall, struct {
@@ -5413,26 +5413,26 @@ func (fake *KinesisClient) PutRecord(arg1 *kinesis.PutRecordInput) (*kinesis.Put
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordCallCount() int {
+func (fake *FakeKinesisClient) PutRecordCallCount() int {
 	fake.putRecordMutex.RLock()
 	defer fake.putRecordMutex.RUnlock()
 	return len(fake.putRecordArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordCalls(stub func(*kinesis.PutRecordInput) (*kinesis.PutRecordOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordCalls(stub func(*kinesis.PutRecordInput) (*kinesis.PutRecordOutput, error)) {
 	fake.putRecordMutex.Lock()
 	defer fake.putRecordMutex.Unlock()
 	fake.PutRecordStub = stub
 }
 
-func (fake *KinesisClient) PutRecordArgsForCall(i int) *kinesis.PutRecordInput {
+func (fake *FakeKinesisClient) PutRecordArgsForCall(i int) *kinesis.PutRecordInput {
 	fake.putRecordMutex.RLock()
 	defer fake.putRecordMutex.RUnlock()
 	argsForCall := fake.putRecordArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) PutRecordReturns(result1 *kinesis.PutRecordOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordReturns(result1 *kinesis.PutRecordOutput, result2 error) {
 	fake.putRecordMutex.Lock()
 	defer fake.putRecordMutex.Unlock()
 	fake.PutRecordStub = nil
@@ -5442,7 +5442,7 @@ func (fake *KinesisClient) PutRecordReturns(result1 *kinesis.PutRecordOutput, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordReturnsOnCall(i int, result1 *kinesis.PutRecordOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordReturnsOnCall(i int, result1 *kinesis.PutRecordOutput, result2 error) {
 	fake.putRecordMutex.Lock()
 	defer fake.putRecordMutex.Unlock()
 	fake.PutRecordStub = nil
@@ -5458,7 +5458,7 @@ func (fake *KinesisClient) PutRecordReturnsOnCall(i int, result1 *kinesis.PutRec
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordRequest(arg1 *kinesis.PutRecordInput) (*request.Request, *kinesis.PutRecordOutput) {
+func (fake *FakeKinesisClient) PutRecordRequest(arg1 *kinesis.PutRecordInput) (*request.Request, *kinesis.PutRecordOutput) {
 	fake.putRecordRequestMutex.Lock()
 	ret, specificReturn := fake.putRecordRequestReturnsOnCall[len(fake.putRecordRequestArgsForCall)]
 	fake.putRecordRequestArgsForCall = append(fake.putRecordRequestArgsForCall, struct {
@@ -5477,26 +5477,26 @@ func (fake *KinesisClient) PutRecordRequest(arg1 *kinesis.PutRecordInput) (*requ
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordRequestCallCount() int {
+func (fake *FakeKinesisClient) PutRecordRequestCallCount() int {
 	fake.putRecordRequestMutex.RLock()
 	defer fake.putRecordRequestMutex.RUnlock()
 	return len(fake.putRecordRequestArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordRequestCalls(stub func(*kinesis.PutRecordInput) (*request.Request, *kinesis.PutRecordOutput)) {
+func (fake *FakeKinesisClient) PutRecordRequestCalls(stub func(*kinesis.PutRecordInput) (*request.Request, *kinesis.PutRecordOutput)) {
 	fake.putRecordRequestMutex.Lock()
 	defer fake.putRecordRequestMutex.Unlock()
 	fake.PutRecordRequestStub = stub
 }
 
-func (fake *KinesisClient) PutRecordRequestArgsForCall(i int) *kinesis.PutRecordInput {
+func (fake *FakeKinesisClient) PutRecordRequestArgsForCall(i int) *kinesis.PutRecordInput {
 	fake.putRecordRequestMutex.RLock()
 	defer fake.putRecordRequestMutex.RUnlock()
 	argsForCall := fake.putRecordRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) PutRecordRequestReturns(result1 *request.Request, result2 *kinesis.PutRecordOutput) {
+func (fake *FakeKinesisClient) PutRecordRequestReturns(result1 *request.Request, result2 *kinesis.PutRecordOutput) {
 	fake.putRecordRequestMutex.Lock()
 	defer fake.putRecordRequestMutex.Unlock()
 	fake.PutRecordRequestStub = nil
@@ -5506,7 +5506,7 @@ func (fake *KinesisClient) PutRecordRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.PutRecordOutput) {
+func (fake *FakeKinesisClient) PutRecordRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.PutRecordOutput) {
 	fake.putRecordRequestMutex.Lock()
 	defer fake.putRecordRequestMutex.Unlock()
 	fake.PutRecordRequestStub = nil
@@ -5522,7 +5522,7 @@ func (fake *KinesisClient) PutRecordRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordWithContext(arg1 context.Context, arg2 *kinesis.PutRecordInput, arg3 ...request.Option) (*kinesis.PutRecordOutput, error) {
+func (fake *FakeKinesisClient) PutRecordWithContext(arg1 context.Context, arg2 *kinesis.PutRecordInput, arg3 ...request.Option) (*kinesis.PutRecordOutput, error) {
 	fake.putRecordWithContextMutex.Lock()
 	ret, specificReturn := fake.putRecordWithContextReturnsOnCall[len(fake.putRecordWithContextArgsForCall)]
 	fake.putRecordWithContextArgsForCall = append(fake.putRecordWithContextArgsForCall, struct {
@@ -5543,26 +5543,26 @@ func (fake *KinesisClient) PutRecordWithContext(arg1 context.Context, arg2 *kine
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordWithContextCallCount() int {
+func (fake *FakeKinesisClient) PutRecordWithContextCallCount() int {
 	fake.putRecordWithContextMutex.RLock()
 	defer fake.putRecordWithContextMutex.RUnlock()
 	return len(fake.putRecordWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordWithContextCalls(stub func(context.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordWithContextCalls(stub func(context.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)) {
 	fake.putRecordWithContextMutex.Lock()
 	defer fake.putRecordWithContextMutex.Unlock()
 	fake.PutRecordWithContextStub = stub
 }
 
-func (fake *KinesisClient) PutRecordWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordInput, []request.Option) {
+func (fake *FakeKinesisClient) PutRecordWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordInput, []request.Option) {
 	fake.putRecordWithContextMutex.RLock()
 	defer fake.putRecordWithContextMutex.RUnlock()
 	argsForCall := fake.putRecordWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) PutRecordWithContextReturns(result1 *kinesis.PutRecordOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordWithContextReturns(result1 *kinesis.PutRecordOutput, result2 error) {
 	fake.putRecordWithContextMutex.Lock()
 	defer fake.putRecordWithContextMutex.Unlock()
 	fake.PutRecordWithContextStub = nil
@@ -5572,7 +5572,7 @@ func (fake *KinesisClient) PutRecordWithContextReturns(result1 *kinesis.PutRecor
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordWithContextReturnsOnCall(i int, result1 *kinesis.PutRecordOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordWithContextReturnsOnCall(i int, result1 *kinesis.PutRecordOutput, result2 error) {
 	fake.putRecordWithContextMutex.Lock()
 	defer fake.putRecordWithContextMutex.Unlock()
 	fake.PutRecordWithContextStub = nil
@@ -5588,7 +5588,7 @@ func (fake *KinesisClient) PutRecordWithContextReturnsOnCall(i int, result1 *kin
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecords(arg1 *kinesis.PutRecordsInput) (*kinesis.PutRecordsOutput, error) {
+func (fake *FakeKinesisClient) PutRecords(arg1 *kinesis.PutRecordsInput) (*kinesis.PutRecordsOutput, error) {
 	fake.putRecordsMutex.Lock()
 	ret, specificReturn := fake.putRecordsReturnsOnCall[len(fake.putRecordsArgsForCall)]
 	fake.putRecordsArgsForCall = append(fake.putRecordsArgsForCall, struct {
@@ -5607,26 +5607,26 @@ func (fake *KinesisClient) PutRecords(arg1 *kinesis.PutRecordsInput) (*kinesis.P
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordsCallCount() int {
+func (fake *FakeKinesisClient) PutRecordsCallCount() int {
 	fake.putRecordsMutex.RLock()
 	defer fake.putRecordsMutex.RUnlock()
 	return len(fake.putRecordsArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordsCalls(stub func(*kinesis.PutRecordsInput) (*kinesis.PutRecordsOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordsCalls(stub func(*kinesis.PutRecordsInput) (*kinesis.PutRecordsOutput, error)) {
 	fake.putRecordsMutex.Lock()
 	defer fake.putRecordsMutex.Unlock()
 	fake.PutRecordsStub = stub
 }
 
-func (fake *KinesisClient) PutRecordsArgsForCall(i int) *kinesis.PutRecordsInput {
+func (fake *FakeKinesisClient) PutRecordsArgsForCall(i int) *kinesis.PutRecordsInput {
 	fake.putRecordsMutex.RLock()
 	defer fake.putRecordsMutex.RUnlock()
 	argsForCall := fake.putRecordsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) PutRecordsReturns(result1 *kinesis.PutRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordsReturns(result1 *kinesis.PutRecordsOutput, result2 error) {
 	fake.putRecordsMutex.Lock()
 	defer fake.putRecordsMutex.Unlock()
 	fake.PutRecordsStub = nil
@@ -5636,7 +5636,7 @@ func (fake *KinesisClient) PutRecordsReturns(result1 *kinesis.PutRecordsOutput, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordsReturnsOnCall(i int, result1 *kinesis.PutRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordsReturnsOnCall(i int, result1 *kinesis.PutRecordsOutput, result2 error) {
 	fake.putRecordsMutex.Lock()
 	defer fake.putRecordsMutex.Unlock()
 	fake.PutRecordsStub = nil
@@ -5652,7 +5652,7 @@ func (fake *KinesisClient) PutRecordsReturnsOnCall(i int, result1 *kinesis.PutRe
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordsRequest(arg1 *kinesis.PutRecordsInput) (*request.Request, *kinesis.PutRecordsOutput) {
+func (fake *FakeKinesisClient) PutRecordsRequest(arg1 *kinesis.PutRecordsInput) (*request.Request, *kinesis.PutRecordsOutput) {
 	fake.putRecordsRequestMutex.Lock()
 	ret, specificReturn := fake.putRecordsRequestReturnsOnCall[len(fake.putRecordsRequestArgsForCall)]
 	fake.putRecordsRequestArgsForCall = append(fake.putRecordsRequestArgsForCall, struct {
@@ -5671,26 +5671,26 @@ func (fake *KinesisClient) PutRecordsRequest(arg1 *kinesis.PutRecordsInput) (*re
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordsRequestCallCount() int {
+func (fake *FakeKinesisClient) PutRecordsRequestCallCount() int {
 	fake.putRecordsRequestMutex.RLock()
 	defer fake.putRecordsRequestMutex.RUnlock()
 	return len(fake.putRecordsRequestArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordsRequestCalls(stub func(*kinesis.PutRecordsInput) (*request.Request, *kinesis.PutRecordsOutput)) {
+func (fake *FakeKinesisClient) PutRecordsRequestCalls(stub func(*kinesis.PutRecordsInput) (*request.Request, *kinesis.PutRecordsOutput)) {
 	fake.putRecordsRequestMutex.Lock()
 	defer fake.putRecordsRequestMutex.Unlock()
 	fake.PutRecordsRequestStub = stub
 }
 
-func (fake *KinesisClient) PutRecordsRequestArgsForCall(i int) *kinesis.PutRecordsInput {
+func (fake *FakeKinesisClient) PutRecordsRequestArgsForCall(i int) *kinesis.PutRecordsInput {
 	fake.putRecordsRequestMutex.RLock()
 	defer fake.putRecordsRequestMutex.RUnlock()
 	argsForCall := fake.putRecordsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) PutRecordsRequestReturns(result1 *request.Request, result2 *kinesis.PutRecordsOutput) {
+func (fake *FakeKinesisClient) PutRecordsRequestReturns(result1 *request.Request, result2 *kinesis.PutRecordsOutput) {
 	fake.putRecordsRequestMutex.Lock()
 	defer fake.putRecordsRequestMutex.Unlock()
 	fake.PutRecordsRequestStub = nil
@@ -5700,7 +5700,7 @@ func (fake *KinesisClient) PutRecordsRequestReturns(result1 *request.Request, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.PutRecordsOutput) {
+func (fake *FakeKinesisClient) PutRecordsRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.PutRecordsOutput) {
 	fake.putRecordsRequestMutex.Lock()
 	defer fake.putRecordsRequestMutex.Unlock()
 	fake.PutRecordsRequestStub = nil
@@ -5716,7 +5716,7 @@ func (fake *KinesisClient) PutRecordsRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordsWithContext(arg1 context.Context, arg2 *kinesis.PutRecordsInput, arg3 ...request.Option) (*kinesis.PutRecordsOutput, error) {
+func (fake *FakeKinesisClient) PutRecordsWithContext(arg1 context.Context, arg2 *kinesis.PutRecordsInput, arg3 ...request.Option) (*kinesis.PutRecordsOutput, error) {
 	fake.putRecordsWithContextMutex.Lock()
 	ret, specificReturn := fake.putRecordsWithContextReturnsOnCall[len(fake.putRecordsWithContextArgsForCall)]
 	fake.putRecordsWithContextArgsForCall = append(fake.putRecordsWithContextArgsForCall, struct {
@@ -5737,26 +5737,26 @@ func (fake *KinesisClient) PutRecordsWithContext(arg1 context.Context, arg2 *kin
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) PutRecordsWithContextCallCount() int {
+func (fake *FakeKinesisClient) PutRecordsWithContextCallCount() int {
 	fake.putRecordsWithContextMutex.RLock()
 	defer fake.putRecordsWithContextMutex.RUnlock()
 	return len(fake.putRecordsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) PutRecordsWithContextCalls(stub func(context.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordsWithContextCalls(stub func(context.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)) {
 	fake.putRecordsWithContextMutex.Lock()
 	defer fake.putRecordsWithContextMutex.Unlock()
 	fake.PutRecordsWithContextStub = stub
 }
 
-func (fake *KinesisClient) PutRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordsInput, []request.Option) {
+func (fake *FakeKinesisClient) PutRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordsInput, []request.Option) {
 	fake.putRecordsWithContextMutex.RLock()
 	defer fake.putRecordsWithContextMutex.RUnlock()
 	argsForCall := fake.putRecordsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) PutRecordsWithContextReturns(result1 *kinesis.PutRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordsWithContextReturns(result1 *kinesis.PutRecordsOutput, result2 error) {
 	fake.putRecordsWithContextMutex.Lock()
 	defer fake.putRecordsWithContextMutex.Unlock()
 	fake.PutRecordsWithContextStub = nil
@@ -5766,7 +5766,7 @@ func (fake *KinesisClient) PutRecordsWithContextReturns(result1 *kinesis.PutReco
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) PutRecordsWithContextReturnsOnCall(i int, result1 *kinesis.PutRecordsOutput, result2 error) {
+func (fake *FakeKinesisClient) PutRecordsWithContextReturnsOnCall(i int, result1 *kinesis.PutRecordsOutput, result2 error) {
 	fake.putRecordsWithContextMutex.Lock()
 	defer fake.putRecordsWithContextMutex.Unlock()
 	fake.PutRecordsWithContextStub = nil
@@ -5782,7 +5782,7 @@ func (fake *KinesisClient) PutRecordsWithContextReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumer(arg1 *kinesis.RegisterStreamConsumerInput) (*kinesis.RegisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumer(arg1 *kinesis.RegisterStreamConsumerInput) (*kinesis.RegisterStreamConsumerOutput, error) {
 	fake.registerStreamConsumerMutex.Lock()
 	ret, specificReturn := fake.registerStreamConsumerReturnsOnCall[len(fake.registerStreamConsumerArgsForCall)]
 	fake.registerStreamConsumerArgsForCall = append(fake.registerStreamConsumerArgsForCall, struct {
@@ -5801,26 +5801,26 @@ func (fake *KinesisClient) RegisterStreamConsumer(arg1 *kinesis.RegisterStreamCo
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerCallCount() int {
+func (fake *FakeKinesisClient) RegisterStreamConsumerCallCount() int {
 	fake.registerStreamConsumerMutex.RLock()
 	defer fake.registerStreamConsumerMutex.RUnlock()
 	return len(fake.registerStreamConsumerArgsForCall)
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerCalls(stub func(*kinesis.RegisterStreamConsumerInput) (*kinesis.RegisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerCalls(stub func(*kinesis.RegisterStreamConsumerInput) (*kinesis.RegisterStreamConsumerOutput, error)) {
 	fake.registerStreamConsumerMutex.Lock()
 	defer fake.registerStreamConsumerMutex.Unlock()
 	fake.RegisterStreamConsumerStub = stub
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerArgsForCall(i int) *kinesis.RegisterStreamConsumerInput {
+func (fake *FakeKinesisClient) RegisterStreamConsumerArgsForCall(i int) *kinesis.RegisterStreamConsumerInput {
 	fake.registerStreamConsumerMutex.RLock()
 	defer fake.registerStreamConsumerMutex.RUnlock()
 	argsForCall := fake.registerStreamConsumerArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerReturns(result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerReturns(result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
 	fake.registerStreamConsumerMutex.Lock()
 	defer fake.registerStreamConsumerMutex.Unlock()
 	fake.RegisterStreamConsumerStub = nil
@@ -5830,7 +5830,7 @@ func (fake *KinesisClient) RegisterStreamConsumerReturns(result1 *kinesis.Regist
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerReturnsOnCall(i int, result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerReturnsOnCall(i int, result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
 	fake.registerStreamConsumerMutex.Lock()
 	defer fake.registerStreamConsumerMutex.Unlock()
 	fake.RegisterStreamConsumerStub = nil
@@ -5846,7 +5846,7 @@ func (fake *KinesisClient) RegisterStreamConsumerReturnsOnCall(i int, result1 *k
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequest(arg1 *kinesis.RegisterStreamConsumerInput) (*request.Request, *kinesis.RegisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequest(arg1 *kinesis.RegisterStreamConsumerInput) (*request.Request, *kinesis.RegisterStreamConsumerOutput) {
 	fake.registerStreamConsumerRequestMutex.Lock()
 	ret, specificReturn := fake.registerStreamConsumerRequestReturnsOnCall[len(fake.registerStreamConsumerRequestArgsForCall)]
 	fake.registerStreamConsumerRequestArgsForCall = append(fake.registerStreamConsumerRequestArgsForCall, struct {
@@ -5865,26 +5865,26 @@ func (fake *KinesisClient) RegisterStreamConsumerRequest(arg1 *kinesis.RegisterS
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequestCallCount() int {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequestCallCount() int {
 	fake.registerStreamConsumerRequestMutex.RLock()
 	defer fake.registerStreamConsumerRequestMutex.RUnlock()
 	return len(fake.registerStreamConsumerRequestArgsForCall)
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequestCalls(stub func(*kinesis.RegisterStreamConsumerInput) (*request.Request, *kinesis.RegisterStreamConsumerOutput)) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequestCalls(stub func(*kinesis.RegisterStreamConsumerInput) (*request.Request, *kinesis.RegisterStreamConsumerOutput)) {
 	fake.registerStreamConsumerRequestMutex.Lock()
 	defer fake.registerStreamConsumerRequestMutex.Unlock()
 	fake.RegisterStreamConsumerRequestStub = stub
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequestArgsForCall(i int) *kinesis.RegisterStreamConsumerInput {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequestArgsForCall(i int) *kinesis.RegisterStreamConsumerInput {
 	fake.registerStreamConsumerRequestMutex.RLock()
 	defer fake.registerStreamConsumerRequestMutex.RUnlock()
 	argsForCall := fake.registerStreamConsumerRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.RegisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequestReturns(result1 *request.Request, result2 *kinesis.RegisterStreamConsumerOutput) {
 	fake.registerStreamConsumerRequestMutex.Lock()
 	defer fake.registerStreamConsumerRequestMutex.Unlock()
 	fake.RegisterStreamConsumerRequestStub = nil
@@ -5894,7 +5894,7 @@ func (fake *KinesisClient) RegisterStreamConsumerRequestReturns(result1 *request
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.RegisterStreamConsumerOutput) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.RegisterStreamConsumerOutput) {
 	fake.registerStreamConsumerRequestMutex.Lock()
 	defer fake.registerStreamConsumerRequestMutex.Unlock()
 	fake.RegisterStreamConsumerRequestStub = nil
@@ -5910,7 +5910,7 @@ func (fake *KinesisClient) RegisterStreamConsumerRequestReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.RegisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.RegisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.registerStreamConsumerWithContextReturnsOnCall[len(fake.registerStreamConsumerWithContextArgsForCall)]
 	fake.registerStreamConsumerWithContextArgsForCall = append(fake.registerStreamConsumerWithContextArgsForCall, struct {
@@ -5931,26 +5931,26 @@ func (fake *KinesisClient) RegisterStreamConsumerWithContext(arg1 context.Contex
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContextCallCount() int {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextCallCount() int {
 	fake.registerStreamConsumerWithContextMutex.RLock()
 	defer fake.registerStreamConsumerWithContextMutex.RUnlock()
 	return len(fake.registerStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	defer fake.registerStreamConsumerWithContextMutex.Unlock()
 	fake.RegisterStreamConsumerWithContextStub = stub
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.RegisterStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.RegisterStreamConsumerInput, []request.Option) {
 	fake.registerStreamConsumerWithContextMutex.RLock()
 	defer fake.registerStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.registerStreamConsumerWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContextReturns(result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextReturns(result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	defer fake.registerStreamConsumerWithContextMutex.Unlock()
 	fake.RegisterStreamConsumerWithContextStub = nil
@@ -5960,7 +5960,7 @@ func (fake *KinesisClient) RegisterStreamConsumerWithContextReturns(result1 *kin
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RegisterStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextReturnsOnCall(i int, result1 *kinesis.RegisterStreamConsumerOutput, result2 error) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	defer fake.registerStreamConsumerWithContextMutex.Unlock()
 	fake.RegisterStreamConsumerWithContextStub = nil
@@ -5976,7 +5976,7 @@ func (fake *KinesisClient) RegisterStreamConsumerWithContextReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStream(arg1 *kinesis.RemoveTagsFromStreamInput) (*kinesis.RemoveTagsFromStreamOutput, error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStream(arg1 *kinesis.RemoveTagsFromStreamInput) (*kinesis.RemoveTagsFromStreamOutput, error) {
 	fake.removeTagsFromStreamMutex.Lock()
 	ret, specificReturn := fake.removeTagsFromStreamReturnsOnCall[len(fake.removeTagsFromStreamArgsForCall)]
 	fake.removeTagsFromStreamArgsForCall = append(fake.removeTagsFromStreamArgsForCall, struct {
@@ -5995,26 +5995,26 @@ func (fake *KinesisClient) RemoveTagsFromStream(arg1 *kinesis.RemoveTagsFromStre
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamCallCount() int {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamCallCount() int {
 	fake.removeTagsFromStreamMutex.RLock()
 	defer fake.removeTagsFromStreamMutex.RUnlock()
 	return len(fake.removeTagsFromStreamArgsForCall)
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamCalls(stub func(*kinesis.RemoveTagsFromStreamInput) (*kinesis.RemoveTagsFromStreamOutput, error)) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamCalls(stub func(*kinesis.RemoveTagsFromStreamInput) (*kinesis.RemoveTagsFromStreamOutput, error)) {
 	fake.removeTagsFromStreamMutex.Lock()
 	defer fake.removeTagsFromStreamMutex.Unlock()
 	fake.RemoveTagsFromStreamStub = stub
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamArgsForCall(i int) *kinesis.RemoveTagsFromStreamInput {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamArgsForCall(i int) *kinesis.RemoveTagsFromStreamInput {
 	fake.removeTagsFromStreamMutex.RLock()
 	defer fake.removeTagsFromStreamMutex.RUnlock()
 	argsForCall := fake.removeTagsFromStreamArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamReturns(result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamReturns(result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
 	fake.removeTagsFromStreamMutex.Lock()
 	defer fake.removeTagsFromStreamMutex.Unlock()
 	fake.RemoveTagsFromStreamStub = nil
@@ -6024,7 +6024,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamReturns(result1 *kinesis.RemoveTa
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamReturnsOnCall(i int, result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamReturnsOnCall(i int, result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
 	fake.removeTagsFromStreamMutex.Lock()
 	defer fake.removeTagsFromStreamMutex.Unlock()
 	fake.RemoveTagsFromStreamStub = nil
@@ -6040,7 +6040,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamReturnsOnCall(i int, result1 *kin
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequest(arg1 *kinesis.RemoveTagsFromStreamInput) (*request.Request, *kinesis.RemoveTagsFromStreamOutput) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequest(arg1 *kinesis.RemoveTagsFromStreamInput) (*request.Request, *kinesis.RemoveTagsFromStreamOutput) {
 	fake.removeTagsFromStreamRequestMutex.Lock()
 	ret, specificReturn := fake.removeTagsFromStreamRequestReturnsOnCall[len(fake.removeTagsFromStreamRequestArgsForCall)]
 	fake.removeTagsFromStreamRequestArgsForCall = append(fake.removeTagsFromStreamRequestArgsForCall, struct {
@@ -6059,26 +6059,26 @@ func (fake *KinesisClient) RemoveTagsFromStreamRequest(arg1 *kinesis.RemoveTagsF
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequestCallCount() int {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestCallCount() int {
 	fake.removeTagsFromStreamRequestMutex.RLock()
 	defer fake.removeTagsFromStreamRequestMutex.RUnlock()
 	return len(fake.removeTagsFromStreamRequestArgsForCall)
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequestCalls(stub func(*kinesis.RemoveTagsFromStreamInput) (*request.Request, *kinesis.RemoveTagsFromStreamOutput)) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestCalls(stub func(*kinesis.RemoveTagsFromStreamInput) (*request.Request, *kinesis.RemoveTagsFromStreamOutput)) {
 	fake.removeTagsFromStreamRequestMutex.Lock()
 	defer fake.removeTagsFromStreamRequestMutex.Unlock()
 	fake.RemoveTagsFromStreamRequestStub = stub
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequestArgsForCall(i int) *kinesis.RemoveTagsFromStreamInput {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestArgsForCall(i int) *kinesis.RemoveTagsFromStreamInput {
 	fake.removeTagsFromStreamRequestMutex.RLock()
 	defer fake.removeTagsFromStreamRequestMutex.RUnlock()
 	argsForCall := fake.removeTagsFromStreamRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequestReturns(result1 *request.Request, result2 *kinesis.RemoveTagsFromStreamOutput) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestReturns(result1 *request.Request, result2 *kinesis.RemoveTagsFromStreamOutput) {
 	fake.removeTagsFromStreamRequestMutex.Lock()
 	defer fake.removeTagsFromStreamRequestMutex.Unlock()
 	fake.RemoveTagsFromStreamRequestStub = nil
@@ -6088,7 +6088,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamRequestReturns(result1 *request.R
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.RemoveTagsFromStreamOutput) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.RemoveTagsFromStreamOutput) {
 	fake.removeTagsFromStreamRequestMutex.Lock()
 	defer fake.removeTagsFromStreamRequestMutex.Unlock()
 	fake.RemoveTagsFromStreamRequestStub = nil
@@ -6104,7 +6104,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContext(arg1 context.Context, arg2 *kinesis.RemoveTagsFromStreamInput, arg3 ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContext(arg1 context.Context, arg2 *kinesis.RemoveTagsFromStreamInput, arg3 ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.removeTagsFromStreamWithContextReturnsOnCall[len(fake.removeTagsFromStreamWithContextArgsForCall)]
 	fake.removeTagsFromStreamWithContextArgsForCall = append(fake.removeTagsFromStreamWithContextArgsForCall, struct {
@@ -6125,26 +6125,26 @@ func (fake *KinesisClient) RemoveTagsFromStreamWithContext(arg1 context.Context,
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContextCallCount() int {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextCallCount() int {
 	fake.removeTagsFromStreamWithContextMutex.RLock()
 	defer fake.removeTagsFromStreamWithContextMutex.RUnlock()
 	return len(fake.removeTagsFromStreamWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContextCalls(stub func(context.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextCalls(stub func(context.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	defer fake.removeTagsFromStreamWithContextMutex.Unlock()
 	fake.RemoveTagsFromStreamWithContextStub = stub
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContextArgsForCall(i int) (context.Context, *kinesis.RemoveTagsFromStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextArgsForCall(i int) (context.Context, *kinesis.RemoveTagsFromStreamInput, []request.Option) {
 	fake.removeTagsFromStreamWithContextMutex.RLock()
 	defer fake.removeTagsFromStreamWithContextMutex.RUnlock()
 	argsForCall := fake.removeTagsFromStreamWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContextReturns(result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextReturns(result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	defer fake.removeTagsFromStreamWithContextMutex.Unlock()
 	fake.RemoveTagsFromStreamWithContextStub = nil
@@ -6154,7 +6154,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamWithContextReturns(result1 *kines
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) RemoveTagsFromStreamWithContextReturnsOnCall(i int, result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextReturnsOnCall(i int, result1 *kinesis.RemoveTagsFromStreamOutput, result2 error) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	defer fake.removeTagsFromStreamWithContextMutex.Unlock()
 	fake.RemoveTagsFromStreamWithContextStub = nil
@@ -6170,7 +6170,7 @@ func (fake *KinesisClient) RemoveTagsFromStreamWithContextReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShard(arg1 *kinesis.SplitShardInput) (*kinesis.SplitShardOutput, error) {
+func (fake *FakeKinesisClient) SplitShard(arg1 *kinesis.SplitShardInput) (*kinesis.SplitShardOutput, error) {
 	fake.splitShardMutex.Lock()
 	ret, specificReturn := fake.splitShardReturnsOnCall[len(fake.splitShardArgsForCall)]
 	fake.splitShardArgsForCall = append(fake.splitShardArgsForCall, struct {
@@ -6189,26 +6189,26 @@ func (fake *KinesisClient) SplitShard(arg1 *kinesis.SplitShardInput) (*kinesis.S
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SplitShardCallCount() int {
+func (fake *FakeKinesisClient) SplitShardCallCount() int {
 	fake.splitShardMutex.RLock()
 	defer fake.splitShardMutex.RUnlock()
 	return len(fake.splitShardArgsForCall)
 }
 
-func (fake *KinesisClient) SplitShardCalls(stub func(*kinesis.SplitShardInput) (*kinesis.SplitShardOutput, error)) {
+func (fake *FakeKinesisClient) SplitShardCalls(stub func(*kinesis.SplitShardInput) (*kinesis.SplitShardOutput, error)) {
 	fake.splitShardMutex.Lock()
 	defer fake.splitShardMutex.Unlock()
 	fake.SplitShardStub = stub
 }
 
-func (fake *KinesisClient) SplitShardArgsForCall(i int) *kinesis.SplitShardInput {
+func (fake *FakeKinesisClient) SplitShardArgsForCall(i int) *kinesis.SplitShardInput {
 	fake.splitShardMutex.RLock()
 	defer fake.splitShardMutex.RUnlock()
 	argsForCall := fake.splitShardArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) SplitShardReturns(result1 *kinesis.SplitShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SplitShardReturns(result1 *kinesis.SplitShardOutput, result2 error) {
 	fake.splitShardMutex.Lock()
 	defer fake.splitShardMutex.Unlock()
 	fake.SplitShardStub = nil
@@ -6218,7 +6218,7 @@ func (fake *KinesisClient) SplitShardReturns(result1 *kinesis.SplitShardOutput, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShardReturnsOnCall(i int, result1 *kinesis.SplitShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SplitShardReturnsOnCall(i int, result1 *kinesis.SplitShardOutput, result2 error) {
 	fake.splitShardMutex.Lock()
 	defer fake.splitShardMutex.Unlock()
 	fake.SplitShardStub = nil
@@ -6234,7 +6234,7 @@ func (fake *KinesisClient) SplitShardReturnsOnCall(i int, result1 *kinesis.Split
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShardRequest(arg1 *kinesis.SplitShardInput) (*request.Request, *kinesis.SplitShardOutput) {
+func (fake *FakeKinesisClient) SplitShardRequest(arg1 *kinesis.SplitShardInput) (*request.Request, *kinesis.SplitShardOutput) {
 	fake.splitShardRequestMutex.Lock()
 	ret, specificReturn := fake.splitShardRequestReturnsOnCall[len(fake.splitShardRequestArgsForCall)]
 	fake.splitShardRequestArgsForCall = append(fake.splitShardRequestArgsForCall, struct {
@@ -6253,26 +6253,26 @@ func (fake *KinesisClient) SplitShardRequest(arg1 *kinesis.SplitShardInput) (*re
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SplitShardRequestCallCount() int {
+func (fake *FakeKinesisClient) SplitShardRequestCallCount() int {
 	fake.splitShardRequestMutex.RLock()
 	defer fake.splitShardRequestMutex.RUnlock()
 	return len(fake.splitShardRequestArgsForCall)
 }
 
-func (fake *KinesisClient) SplitShardRequestCalls(stub func(*kinesis.SplitShardInput) (*request.Request, *kinesis.SplitShardOutput)) {
+func (fake *FakeKinesisClient) SplitShardRequestCalls(stub func(*kinesis.SplitShardInput) (*request.Request, *kinesis.SplitShardOutput)) {
 	fake.splitShardRequestMutex.Lock()
 	defer fake.splitShardRequestMutex.Unlock()
 	fake.SplitShardRequestStub = stub
 }
 
-func (fake *KinesisClient) SplitShardRequestArgsForCall(i int) *kinesis.SplitShardInput {
+func (fake *FakeKinesisClient) SplitShardRequestArgsForCall(i int) *kinesis.SplitShardInput {
 	fake.splitShardRequestMutex.RLock()
 	defer fake.splitShardRequestMutex.RUnlock()
 	argsForCall := fake.splitShardRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) SplitShardRequestReturns(result1 *request.Request, result2 *kinesis.SplitShardOutput) {
+func (fake *FakeKinesisClient) SplitShardRequestReturns(result1 *request.Request, result2 *kinesis.SplitShardOutput) {
 	fake.splitShardRequestMutex.Lock()
 	defer fake.splitShardRequestMutex.Unlock()
 	fake.SplitShardRequestStub = nil
@@ -6282,7 +6282,7 @@ func (fake *KinesisClient) SplitShardRequestReturns(result1 *request.Request, re
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShardRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.SplitShardOutput) {
+func (fake *FakeKinesisClient) SplitShardRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.SplitShardOutput) {
 	fake.splitShardRequestMutex.Lock()
 	defer fake.splitShardRequestMutex.Unlock()
 	fake.SplitShardRequestStub = nil
@@ -6298,7 +6298,7 @@ func (fake *KinesisClient) SplitShardRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShardWithContext(arg1 context.Context, arg2 *kinesis.SplitShardInput, arg3 ...request.Option) (*kinesis.SplitShardOutput, error) {
+func (fake *FakeKinesisClient) SplitShardWithContext(arg1 context.Context, arg2 *kinesis.SplitShardInput, arg3 ...request.Option) (*kinesis.SplitShardOutput, error) {
 	fake.splitShardWithContextMutex.Lock()
 	ret, specificReturn := fake.splitShardWithContextReturnsOnCall[len(fake.splitShardWithContextArgsForCall)]
 	fake.splitShardWithContextArgsForCall = append(fake.splitShardWithContextArgsForCall, struct {
@@ -6319,26 +6319,26 @@ func (fake *KinesisClient) SplitShardWithContext(arg1 context.Context, arg2 *kin
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SplitShardWithContextCallCount() int {
+func (fake *FakeKinesisClient) SplitShardWithContextCallCount() int {
 	fake.splitShardWithContextMutex.RLock()
 	defer fake.splitShardWithContextMutex.RUnlock()
 	return len(fake.splitShardWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) SplitShardWithContextCalls(stub func(context.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)) {
+func (fake *FakeKinesisClient) SplitShardWithContextCalls(stub func(context.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)) {
 	fake.splitShardWithContextMutex.Lock()
 	defer fake.splitShardWithContextMutex.Unlock()
 	fake.SplitShardWithContextStub = stub
 }
 
-func (fake *KinesisClient) SplitShardWithContextArgsForCall(i int) (context.Context, *kinesis.SplitShardInput, []request.Option) {
+func (fake *FakeKinesisClient) SplitShardWithContextArgsForCall(i int) (context.Context, *kinesis.SplitShardInput, []request.Option) {
 	fake.splitShardWithContextMutex.RLock()
 	defer fake.splitShardWithContextMutex.RUnlock()
 	argsForCall := fake.splitShardWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) SplitShardWithContextReturns(result1 *kinesis.SplitShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SplitShardWithContextReturns(result1 *kinesis.SplitShardOutput, result2 error) {
 	fake.splitShardWithContextMutex.Lock()
 	defer fake.splitShardWithContextMutex.Unlock()
 	fake.SplitShardWithContextStub = nil
@@ -6348,7 +6348,7 @@ func (fake *KinesisClient) SplitShardWithContextReturns(result1 *kinesis.SplitSh
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SplitShardWithContextReturnsOnCall(i int, result1 *kinesis.SplitShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SplitShardWithContextReturnsOnCall(i int, result1 *kinesis.SplitShardOutput, result2 error) {
 	fake.splitShardWithContextMutex.Lock()
 	defer fake.splitShardWithContextMutex.Unlock()
 	fake.SplitShardWithContextStub = nil
@@ -6364,7 +6364,7 @@ func (fake *KinesisClient) SplitShardWithContextReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryption(arg1 *kinesis.StartStreamEncryptionInput) (*kinesis.StartStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StartStreamEncryption(arg1 *kinesis.StartStreamEncryptionInput) (*kinesis.StartStreamEncryptionOutput, error) {
 	fake.startStreamEncryptionMutex.Lock()
 	ret, specificReturn := fake.startStreamEncryptionReturnsOnCall[len(fake.startStreamEncryptionArgsForCall)]
 	fake.startStreamEncryptionArgsForCall = append(fake.startStreamEncryptionArgsForCall, struct {
@@ -6383,26 +6383,26 @@ func (fake *KinesisClient) StartStreamEncryption(arg1 *kinesis.StartStreamEncryp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StartStreamEncryptionCallCount() int {
+func (fake *FakeKinesisClient) StartStreamEncryptionCallCount() int {
 	fake.startStreamEncryptionMutex.RLock()
 	defer fake.startStreamEncryptionMutex.RUnlock()
 	return len(fake.startStreamEncryptionArgsForCall)
 }
 
-func (fake *KinesisClient) StartStreamEncryptionCalls(stub func(*kinesis.StartStreamEncryptionInput) (*kinesis.StartStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StartStreamEncryptionCalls(stub func(*kinesis.StartStreamEncryptionInput) (*kinesis.StartStreamEncryptionOutput, error)) {
 	fake.startStreamEncryptionMutex.Lock()
 	defer fake.startStreamEncryptionMutex.Unlock()
 	fake.StartStreamEncryptionStub = stub
 }
 
-func (fake *KinesisClient) StartStreamEncryptionArgsForCall(i int) *kinesis.StartStreamEncryptionInput {
+func (fake *FakeKinesisClient) StartStreamEncryptionArgsForCall(i int) *kinesis.StartStreamEncryptionInput {
 	fake.startStreamEncryptionMutex.RLock()
 	defer fake.startStreamEncryptionMutex.RUnlock()
 	argsForCall := fake.startStreamEncryptionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) StartStreamEncryptionReturns(result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionReturns(result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
 	fake.startStreamEncryptionMutex.Lock()
 	defer fake.startStreamEncryptionMutex.Unlock()
 	fake.StartStreamEncryptionStub = nil
@@ -6412,7 +6412,7 @@ func (fake *KinesisClient) StartStreamEncryptionReturns(result1 *kinesis.StartSt
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryptionReturnsOnCall(i int, result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionReturnsOnCall(i int, result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
 	fake.startStreamEncryptionMutex.Lock()
 	defer fake.startStreamEncryptionMutex.Unlock()
 	fake.StartStreamEncryptionStub = nil
@@ -6428,7 +6428,7 @@ func (fake *KinesisClient) StartStreamEncryptionReturnsOnCall(i int, result1 *ki
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequest(arg1 *kinesis.StartStreamEncryptionInput) (*request.Request, *kinesis.StartStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequest(arg1 *kinesis.StartStreamEncryptionInput) (*request.Request, *kinesis.StartStreamEncryptionOutput) {
 	fake.startStreamEncryptionRequestMutex.Lock()
 	ret, specificReturn := fake.startStreamEncryptionRequestReturnsOnCall[len(fake.startStreamEncryptionRequestArgsForCall)]
 	fake.startStreamEncryptionRequestArgsForCall = append(fake.startStreamEncryptionRequestArgsForCall, struct {
@@ -6447,26 +6447,26 @@ func (fake *KinesisClient) StartStreamEncryptionRequest(arg1 *kinesis.StartStrea
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequestCallCount() int {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequestCallCount() int {
 	fake.startStreamEncryptionRequestMutex.RLock()
 	defer fake.startStreamEncryptionRequestMutex.RUnlock()
 	return len(fake.startStreamEncryptionRequestArgsForCall)
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequestCalls(stub func(*kinesis.StartStreamEncryptionInput) (*request.Request, *kinesis.StartStreamEncryptionOutput)) {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequestCalls(stub func(*kinesis.StartStreamEncryptionInput) (*request.Request, *kinesis.StartStreamEncryptionOutput)) {
 	fake.startStreamEncryptionRequestMutex.Lock()
 	defer fake.startStreamEncryptionRequestMutex.Unlock()
 	fake.StartStreamEncryptionRequestStub = stub
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequestArgsForCall(i int) *kinesis.StartStreamEncryptionInput {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequestArgsForCall(i int) *kinesis.StartStreamEncryptionInput {
 	fake.startStreamEncryptionRequestMutex.RLock()
 	defer fake.startStreamEncryptionRequestMutex.RUnlock()
 	argsForCall := fake.startStreamEncryptionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequestReturns(result1 *request.Request, result2 *kinesis.StartStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequestReturns(result1 *request.Request, result2 *kinesis.StartStreamEncryptionOutput) {
 	fake.startStreamEncryptionRequestMutex.Lock()
 	defer fake.startStreamEncryptionRequestMutex.Unlock()
 	fake.StartStreamEncryptionRequestStub = nil
@@ -6476,7 +6476,7 @@ func (fake *KinesisClient) StartStreamEncryptionRequestReturns(result1 *request.
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.StartStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StartStreamEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.StartStreamEncryptionOutput) {
 	fake.startStreamEncryptionRequestMutex.Lock()
 	defer fake.startStreamEncryptionRequestMutex.Unlock()
 	fake.StartStreamEncryptionRequestStub = nil
@@ -6492,7 +6492,7 @@ func (fake *KinesisClient) StartStreamEncryptionRequestReturnsOnCall(i int, resu
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StartStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StartStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StartStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StartStreamEncryptionOutput, error) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.startStreamEncryptionWithContextReturnsOnCall[len(fake.startStreamEncryptionWithContextArgsForCall)]
 	fake.startStreamEncryptionWithContextArgsForCall = append(fake.startStreamEncryptionWithContextArgsForCall, struct {
@@ -6513,26 +6513,26 @@ func (fake *KinesisClient) StartStreamEncryptionWithContext(arg1 context.Context
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContextCallCount() int {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextCallCount() int {
 	fake.startStreamEncryptionWithContextMutex.RLock()
 	defer fake.startStreamEncryptionWithContextMutex.RUnlock()
 	return len(fake.startStreamEncryptionWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	defer fake.startStreamEncryptionWithContextMutex.Unlock()
 	fake.StartStreamEncryptionWithContextStub = stub
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StartStreamEncryptionInput, []request.Option) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StartStreamEncryptionInput, []request.Option) {
 	fake.startStreamEncryptionWithContextMutex.RLock()
 	defer fake.startStreamEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.startStreamEncryptionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContextReturns(result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextReturns(result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	defer fake.startStreamEncryptionWithContextMutex.Unlock()
 	fake.StartStreamEncryptionWithContextStub = nil
@@ -6542,7 +6542,7 @@ func (fake *KinesisClient) StartStreamEncryptionWithContextReturns(result1 *kine
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StartStreamEncryptionWithContextReturnsOnCall(i int, result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextReturnsOnCall(i int, result1 *kinesis.StartStreamEncryptionOutput, result2 error) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	defer fake.startStreamEncryptionWithContextMutex.Unlock()
 	fake.StartStreamEncryptionWithContextStub = nil
@@ -6558,7 +6558,7 @@ func (fake *KinesisClient) StartStreamEncryptionWithContextReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryption(arg1 *kinesis.StopStreamEncryptionInput) (*kinesis.StopStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StopStreamEncryption(arg1 *kinesis.StopStreamEncryptionInput) (*kinesis.StopStreamEncryptionOutput, error) {
 	fake.stopStreamEncryptionMutex.Lock()
 	ret, specificReturn := fake.stopStreamEncryptionReturnsOnCall[len(fake.stopStreamEncryptionArgsForCall)]
 	fake.stopStreamEncryptionArgsForCall = append(fake.stopStreamEncryptionArgsForCall, struct {
@@ -6577,26 +6577,26 @@ func (fake *KinesisClient) StopStreamEncryption(arg1 *kinesis.StopStreamEncrypti
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StopStreamEncryptionCallCount() int {
+func (fake *FakeKinesisClient) StopStreamEncryptionCallCount() int {
 	fake.stopStreamEncryptionMutex.RLock()
 	defer fake.stopStreamEncryptionMutex.RUnlock()
 	return len(fake.stopStreamEncryptionArgsForCall)
 }
 
-func (fake *KinesisClient) StopStreamEncryptionCalls(stub func(*kinesis.StopStreamEncryptionInput) (*kinesis.StopStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StopStreamEncryptionCalls(stub func(*kinesis.StopStreamEncryptionInput) (*kinesis.StopStreamEncryptionOutput, error)) {
 	fake.stopStreamEncryptionMutex.Lock()
 	defer fake.stopStreamEncryptionMutex.Unlock()
 	fake.StopStreamEncryptionStub = stub
 }
 
-func (fake *KinesisClient) StopStreamEncryptionArgsForCall(i int) *kinesis.StopStreamEncryptionInput {
+func (fake *FakeKinesisClient) StopStreamEncryptionArgsForCall(i int) *kinesis.StopStreamEncryptionInput {
 	fake.stopStreamEncryptionMutex.RLock()
 	defer fake.stopStreamEncryptionMutex.RUnlock()
 	argsForCall := fake.stopStreamEncryptionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) StopStreamEncryptionReturns(result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionReturns(result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
 	fake.stopStreamEncryptionMutex.Lock()
 	defer fake.stopStreamEncryptionMutex.Unlock()
 	fake.StopStreamEncryptionStub = nil
@@ -6606,7 +6606,7 @@ func (fake *KinesisClient) StopStreamEncryptionReturns(result1 *kinesis.StopStre
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryptionReturnsOnCall(i int, result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionReturnsOnCall(i int, result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
 	fake.stopStreamEncryptionMutex.Lock()
 	defer fake.stopStreamEncryptionMutex.Unlock()
 	fake.StopStreamEncryptionStub = nil
@@ -6622,7 +6622,7 @@ func (fake *KinesisClient) StopStreamEncryptionReturnsOnCall(i int, result1 *kin
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequest(arg1 *kinesis.StopStreamEncryptionInput) (*request.Request, *kinesis.StopStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequest(arg1 *kinesis.StopStreamEncryptionInput) (*request.Request, *kinesis.StopStreamEncryptionOutput) {
 	fake.stopStreamEncryptionRequestMutex.Lock()
 	ret, specificReturn := fake.stopStreamEncryptionRequestReturnsOnCall[len(fake.stopStreamEncryptionRequestArgsForCall)]
 	fake.stopStreamEncryptionRequestArgsForCall = append(fake.stopStreamEncryptionRequestArgsForCall, struct {
@@ -6641,26 +6641,26 @@ func (fake *KinesisClient) StopStreamEncryptionRequest(arg1 *kinesis.StopStreamE
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequestCallCount() int {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequestCallCount() int {
 	fake.stopStreamEncryptionRequestMutex.RLock()
 	defer fake.stopStreamEncryptionRequestMutex.RUnlock()
 	return len(fake.stopStreamEncryptionRequestArgsForCall)
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequestCalls(stub func(*kinesis.StopStreamEncryptionInput) (*request.Request, *kinesis.StopStreamEncryptionOutput)) {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequestCalls(stub func(*kinesis.StopStreamEncryptionInput) (*request.Request, *kinesis.StopStreamEncryptionOutput)) {
 	fake.stopStreamEncryptionRequestMutex.Lock()
 	defer fake.stopStreamEncryptionRequestMutex.Unlock()
 	fake.StopStreamEncryptionRequestStub = stub
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequestArgsForCall(i int) *kinesis.StopStreamEncryptionInput {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequestArgsForCall(i int) *kinesis.StopStreamEncryptionInput {
 	fake.stopStreamEncryptionRequestMutex.RLock()
 	defer fake.stopStreamEncryptionRequestMutex.RUnlock()
 	argsForCall := fake.stopStreamEncryptionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequestReturns(result1 *request.Request, result2 *kinesis.StopStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequestReturns(result1 *request.Request, result2 *kinesis.StopStreamEncryptionOutput) {
 	fake.stopStreamEncryptionRequestMutex.Lock()
 	defer fake.stopStreamEncryptionRequestMutex.Unlock()
 	fake.StopStreamEncryptionRequestStub = nil
@@ -6670,7 +6670,7 @@ func (fake *KinesisClient) StopStreamEncryptionRequestReturns(result1 *request.R
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.StopStreamEncryptionOutput) {
+func (fake *FakeKinesisClient) StopStreamEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.StopStreamEncryptionOutput) {
 	fake.stopStreamEncryptionRequestMutex.Lock()
 	defer fake.stopStreamEncryptionRequestMutex.Unlock()
 	fake.StopStreamEncryptionRequestStub = nil
@@ -6686,7 +6686,7 @@ func (fake *KinesisClient) StopStreamEncryptionRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StopStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StopStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StopStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StopStreamEncryptionOutput, error) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.stopStreamEncryptionWithContextReturnsOnCall[len(fake.stopStreamEncryptionWithContextArgsForCall)]
 	fake.stopStreamEncryptionWithContextArgsForCall = append(fake.stopStreamEncryptionWithContextArgsForCall, struct {
@@ -6707,26 +6707,26 @@ func (fake *KinesisClient) StopStreamEncryptionWithContext(arg1 context.Context,
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContextCallCount() int {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextCallCount() int {
 	fake.stopStreamEncryptionWithContextMutex.RLock()
 	defer fake.stopStreamEncryptionWithContextMutex.RUnlock()
 	return len(fake.stopStreamEncryptionWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	defer fake.stopStreamEncryptionWithContextMutex.Unlock()
 	fake.StopStreamEncryptionWithContextStub = stub
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StopStreamEncryptionInput, []request.Option) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StopStreamEncryptionInput, []request.Option) {
 	fake.stopStreamEncryptionWithContextMutex.RLock()
 	defer fake.stopStreamEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.stopStreamEncryptionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContextReturns(result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextReturns(result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	defer fake.stopStreamEncryptionWithContextMutex.Unlock()
 	fake.StopStreamEncryptionWithContextStub = nil
@@ -6736,7 +6736,7 @@ func (fake *KinesisClient) StopStreamEncryptionWithContextReturns(result1 *kines
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) StopStreamEncryptionWithContextReturnsOnCall(i int, result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextReturnsOnCall(i int, result1 *kinesis.StopStreamEncryptionOutput, result2 error) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	defer fake.stopStreamEncryptionWithContextMutex.Unlock()
 	fake.StopStreamEncryptionWithContextStub = nil
@@ -6752,7 +6752,7 @@ func (fake *KinesisClient) StopStreamEncryptionWithContextReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShard(arg1 *kinesis.SubscribeToShardInput) (*kinesis.SubscribeToShardOutput, error) {
+func (fake *FakeKinesisClient) SubscribeToShard(arg1 *kinesis.SubscribeToShardInput) (*kinesis.SubscribeToShardOutput, error) {
 	fake.subscribeToShardMutex.Lock()
 	ret, specificReturn := fake.subscribeToShardReturnsOnCall[len(fake.subscribeToShardArgsForCall)]
 	fake.subscribeToShardArgsForCall = append(fake.subscribeToShardArgsForCall, struct {
@@ -6771,26 +6771,26 @@ func (fake *KinesisClient) SubscribeToShard(arg1 *kinesis.SubscribeToShardInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SubscribeToShardCallCount() int {
+func (fake *FakeKinesisClient) SubscribeToShardCallCount() int {
 	fake.subscribeToShardMutex.RLock()
 	defer fake.subscribeToShardMutex.RUnlock()
 	return len(fake.subscribeToShardArgsForCall)
 }
 
-func (fake *KinesisClient) SubscribeToShardCalls(stub func(*kinesis.SubscribeToShardInput) (*kinesis.SubscribeToShardOutput, error)) {
+func (fake *FakeKinesisClient) SubscribeToShardCalls(stub func(*kinesis.SubscribeToShardInput) (*kinesis.SubscribeToShardOutput, error)) {
 	fake.subscribeToShardMutex.Lock()
 	defer fake.subscribeToShardMutex.Unlock()
 	fake.SubscribeToShardStub = stub
 }
 
-func (fake *KinesisClient) SubscribeToShardArgsForCall(i int) *kinesis.SubscribeToShardInput {
+func (fake *FakeKinesisClient) SubscribeToShardArgsForCall(i int) *kinesis.SubscribeToShardInput {
 	fake.subscribeToShardMutex.RLock()
 	defer fake.subscribeToShardMutex.RUnlock()
 	argsForCall := fake.subscribeToShardArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) SubscribeToShardReturns(result1 *kinesis.SubscribeToShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SubscribeToShardReturns(result1 *kinesis.SubscribeToShardOutput, result2 error) {
 	fake.subscribeToShardMutex.Lock()
 	defer fake.subscribeToShardMutex.Unlock()
 	fake.SubscribeToShardStub = nil
@@ -6800,7 +6800,7 @@ func (fake *KinesisClient) SubscribeToShardReturns(result1 *kinesis.SubscribeToS
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShardReturnsOnCall(i int, result1 *kinesis.SubscribeToShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SubscribeToShardReturnsOnCall(i int, result1 *kinesis.SubscribeToShardOutput, result2 error) {
 	fake.subscribeToShardMutex.Lock()
 	defer fake.subscribeToShardMutex.Unlock()
 	fake.SubscribeToShardStub = nil
@@ -6816,7 +6816,7 @@ func (fake *KinesisClient) SubscribeToShardReturnsOnCall(i int, result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShardRequest(arg1 *kinesis.SubscribeToShardInput) (*request.Request, *kinesis.SubscribeToShardOutput) {
+func (fake *FakeKinesisClient) SubscribeToShardRequest(arg1 *kinesis.SubscribeToShardInput) (*request.Request, *kinesis.SubscribeToShardOutput) {
 	fake.subscribeToShardRequestMutex.Lock()
 	ret, specificReturn := fake.subscribeToShardRequestReturnsOnCall[len(fake.subscribeToShardRequestArgsForCall)]
 	fake.subscribeToShardRequestArgsForCall = append(fake.subscribeToShardRequestArgsForCall, struct {
@@ -6835,26 +6835,26 @@ func (fake *KinesisClient) SubscribeToShardRequest(arg1 *kinesis.SubscribeToShar
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SubscribeToShardRequestCallCount() int {
+func (fake *FakeKinesisClient) SubscribeToShardRequestCallCount() int {
 	fake.subscribeToShardRequestMutex.RLock()
 	defer fake.subscribeToShardRequestMutex.RUnlock()
 	return len(fake.subscribeToShardRequestArgsForCall)
 }
 
-func (fake *KinesisClient) SubscribeToShardRequestCalls(stub func(*kinesis.SubscribeToShardInput) (*request.Request, *kinesis.SubscribeToShardOutput)) {
+func (fake *FakeKinesisClient) SubscribeToShardRequestCalls(stub func(*kinesis.SubscribeToShardInput) (*request.Request, *kinesis.SubscribeToShardOutput)) {
 	fake.subscribeToShardRequestMutex.Lock()
 	defer fake.subscribeToShardRequestMutex.Unlock()
 	fake.SubscribeToShardRequestStub = stub
 }
 
-func (fake *KinesisClient) SubscribeToShardRequestArgsForCall(i int) *kinesis.SubscribeToShardInput {
+func (fake *FakeKinesisClient) SubscribeToShardRequestArgsForCall(i int) *kinesis.SubscribeToShardInput {
 	fake.subscribeToShardRequestMutex.RLock()
 	defer fake.subscribeToShardRequestMutex.RUnlock()
 	argsForCall := fake.subscribeToShardRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) SubscribeToShardRequestReturns(result1 *request.Request, result2 *kinesis.SubscribeToShardOutput) {
+func (fake *FakeKinesisClient) SubscribeToShardRequestReturns(result1 *request.Request, result2 *kinesis.SubscribeToShardOutput) {
 	fake.subscribeToShardRequestMutex.Lock()
 	defer fake.subscribeToShardRequestMutex.Unlock()
 	fake.SubscribeToShardRequestStub = nil
@@ -6864,7 +6864,7 @@ func (fake *KinesisClient) SubscribeToShardRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShardRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.SubscribeToShardOutput) {
+func (fake *FakeKinesisClient) SubscribeToShardRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.SubscribeToShardOutput) {
 	fake.subscribeToShardRequestMutex.Lock()
 	defer fake.subscribeToShardRequestMutex.Unlock()
 	fake.SubscribeToShardRequestStub = nil
@@ -6880,7 +6880,7 @@ func (fake *KinesisClient) SubscribeToShardRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContext(arg1 context.Context, arg2 *kinesis.SubscribeToShardInput, arg3 ...request.Option) (*kinesis.SubscribeToShardOutput, error) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContext(arg1 context.Context, arg2 *kinesis.SubscribeToShardInput, arg3 ...request.Option) (*kinesis.SubscribeToShardOutput, error) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	ret, specificReturn := fake.subscribeToShardWithContextReturnsOnCall[len(fake.subscribeToShardWithContextArgsForCall)]
 	fake.subscribeToShardWithContextArgsForCall = append(fake.subscribeToShardWithContextArgsForCall, struct {
@@ -6901,26 +6901,26 @@ func (fake *KinesisClient) SubscribeToShardWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContextCallCount() int {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextCallCount() int {
 	fake.subscribeToShardWithContextMutex.RLock()
 	defer fake.subscribeToShardWithContextMutex.RUnlock()
 	return len(fake.subscribeToShardWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContextCalls(stub func(context.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextCalls(stub func(context.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	defer fake.subscribeToShardWithContextMutex.Unlock()
 	fake.SubscribeToShardWithContextStub = stub
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContextArgsForCall(i int) (context.Context, *kinesis.SubscribeToShardInput, []request.Option) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextArgsForCall(i int) (context.Context, *kinesis.SubscribeToShardInput, []request.Option) {
 	fake.subscribeToShardWithContextMutex.RLock()
 	defer fake.subscribeToShardWithContextMutex.RUnlock()
 	argsForCall := fake.subscribeToShardWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContextReturns(result1 *kinesis.SubscribeToShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextReturns(result1 *kinesis.SubscribeToShardOutput, result2 error) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	defer fake.subscribeToShardWithContextMutex.Unlock()
 	fake.SubscribeToShardWithContextStub = nil
@@ -6930,7 +6930,7 @@ func (fake *KinesisClient) SubscribeToShardWithContextReturns(result1 *kinesis.S
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) SubscribeToShardWithContextReturnsOnCall(i int, result1 *kinesis.SubscribeToShardOutput, result2 error) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextReturnsOnCall(i int, result1 *kinesis.SubscribeToShardOutput, result2 error) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	defer fake.subscribeToShardWithContextMutex.Unlock()
 	fake.SubscribeToShardWithContextStub = nil
@@ -6946,7 +6946,7 @@ func (fake *KinesisClient) SubscribeToShardWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCount(arg1 *kinesis.UpdateShardCountInput) (*kinesis.UpdateShardCountOutput, error) {
+func (fake *FakeKinesisClient) UpdateShardCount(arg1 *kinesis.UpdateShardCountInput) (*kinesis.UpdateShardCountOutput, error) {
 	fake.updateShardCountMutex.Lock()
 	ret, specificReturn := fake.updateShardCountReturnsOnCall[len(fake.updateShardCountArgsForCall)]
 	fake.updateShardCountArgsForCall = append(fake.updateShardCountArgsForCall, struct {
@@ -6965,26 +6965,26 @@ func (fake *KinesisClient) UpdateShardCount(arg1 *kinesis.UpdateShardCountInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateShardCountCallCount() int {
+func (fake *FakeKinesisClient) UpdateShardCountCallCount() int {
 	fake.updateShardCountMutex.RLock()
 	defer fake.updateShardCountMutex.RUnlock()
 	return len(fake.updateShardCountArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateShardCountCalls(stub func(*kinesis.UpdateShardCountInput) (*kinesis.UpdateShardCountOutput, error)) {
+func (fake *FakeKinesisClient) UpdateShardCountCalls(stub func(*kinesis.UpdateShardCountInput) (*kinesis.UpdateShardCountOutput, error)) {
 	fake.updateShardCountMutex.Lock()
 	defer fake.updateShardCountMutex.Unlock()
 	fake.UpdateShardCountStub = stub
 }
 
-func (fake *KinesisClient) UpdateShardCountArgsForCall(i int) *kinesis.UpdateShardCountInput {
+func (fake *FakeKinesisClient) UpdateShardCountArgsForCall(i int) *kinesis.UpdateShardCountInput {
 	fake.updateShardCountMutex.RLock()
 	defer fake.updateShardCountMutex.RUnlock()
 	argsForCall := fake.updateShardCountArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) UpdateShardCountReturns(result1 *kinesis.UpdateShardCountOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateShardCountReturns(result1 *kinesis.UpdateShardCountOutput, result2 error) {
 	fake.updateShardCountMutex.Lock()
 	defer fake.updateShardCountMutex.Unlock()
 	fake.UpdateShardCountStub = nil
@@ -6994,7 +6994,7 @@ func (fake *KinesisClient) UpdateShardCountReturns(result1 *kinesis.UpdateShardC
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCountReturnsOnCall(i int, result1 *kinesis.UpdateShardCountOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateShardCountReturnsOnCall(i int, result1 *kinesis.UpdateShardCountOutput, result2 error) {
 	fake.updateShardCountMutex.Lock()
 	defer fake.updateShardCountMutex.Unlock()
 	fake.UpdateShardCountStub = nil
@@ -7010,7 +7010,7 @@ func (fake *KinesisClient) UpdateShardCountReturnsOnCall(i int, result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCountRequest(arg1 *kinesis.UpdateShardCountInput) (*request.Request, *kinesis.UpdateShardCountOutput) {
+func (fake *FakeKinesisClient) UpdateShardCountRequest(arg1 *kinesis.UpdateShardCountInput) (*request.Request, *kinesis.UpdateShardCountOutput) {
 	fake.updateShardCountRequestMutex.Lock()
 	ret, specificReturn := fake.updateShardCountRequestReturnsOnCall[len(fake.updateShardCountRequestArgsForCall)]
 	fake.updateShardCountRequestArgsForCall = append(fake.updateShardCountRequestArgsForCall, struct {
@@ -7029,26 +7029,26 @@ func (fake *KinesisClient) UpdateShardCountRequest(arg1 *kinesis.UpdateShardCoun
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateShardCountRequestCallCount() int {
+func (fake *FakeKinesisClient) UpdateShardCountRequestCallCount() int {
 	fake.updateShardCountRequestMutex.RLock()
 	defer fake.updateShardCountRequestMutex.RUnlock()
 	return len(fake.updateShardCountRequestArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateShardCountRequestCalls(stub func(*kinesis.UpdateShardCountInput) (*request.Request, *kinesis.UpdateShardCountOutput)) {
+func (fake *FakeKinesisClient) UpdateShardCountRequestCalls(stub func(*kinesis.UpdateShardCountInput) (*request.Request, *kinesis.UpdateShardCountOutput)) {
 	fake.updateShardCountRequestMutex.Lock()
 	defer fake.updateShardCountRequestMutex.Unlock()
 	fake.UpdateShardCountRequestStub = stub
 }
 
-func (fake *KinesisClient) UpdateShardCountRequestArgsForCall(i int) *kinesis.UpdateShardCountInput {
+func (fake *FakeKinesisClient) UpdateShardCountRequestArgsForCall(i int) *kinesis.UpdateShardCountInput {
 	fake.updateShardCountRequestMutex.RLock()
 	defer fake.updateShardCountRequestMutex.RUnlock()
 	argsForCall := fake.updateShardCountRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) UpdateShardCountRequestReturns(result1 *request.Request, result2 *kinesis.UpdateShardCountOutput) {
+func (fake *FakeKinesisClient) UpdateShardCountRequestReturns(result1 *request.Request, result2 *kinesis.UpdateShardCountOutput) {
 	fake.updateShardCountRequestMutex.Lock()
 	defer fake.updateShardCountRequestMutex.Unlock()
 	fake.UpdateShardCountRequestStub = nil
@@ -7058,7 +7058,7 @@ func (fake *KinesisClient) UpdateShardCountRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCountRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.UpdateShardCountOutput) {
+func (fake *FakeKinesisClient) UpdateShardCountRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.UpdateShardCountOutput) {
 	fake.updateShardCountRequestMutex.Lock()
 	defer fake.updateShardCountRequestMutex.Unlock()
 	fake.UpdateShardCountRequestStub = nil
@@ -7074,7 +7074,7 @@ func (fake *KinesisClient) UpdateShardCountRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContext(arg1 context.Context, arg2 *kinesis.UpdateShardCountInput, arg3 ...request.Option) (*kinesis.UpdateShardCountOutput, error) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContext(arg1 context.Context, arg2 *kinesis.UpdateShardCountInput, arg3 ...request.Option) (*kinesis.UpdateShardCountOutput, error) {
 	fake.updateShardCountWithContextMutex.Lock()
 	ret, specificReturn := fake.updateShardCountWithContextReturnsOnCall[len(fake.updateShardCountWithContextArgsForCall)]
 	fake.updateShardCountWithContextArgsForCall = append(fake.updateShardCountWithContextArgsForCall, struct {
@@ -7095,26 +7095,26 @@ func (fake *KinesisClient) UpdateShardCountWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContextCallCount() int {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextCallCount() int {
 	fake.updateShardCountWithContextMutex.RLock()
 	defer fake.updateShardCountWithContextMutex.RUnlock()
 	return len(fake.updateShardCountWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContextCalls(stub func(context.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextCalls(stub func(context.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)) {
 	fake.updateShardCountWithContextMutex.Lock()
 	defer fake.updateShardCountWithContextMutex.Unlock()
 	fake.UpdateShardCountWithContextStub = stub
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateShardCountInput, []request.Option) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateShardCountInput, []request.Option) {
 	fake.updateShardCountWithContextMutex.RLock()
 	defer fake.updateShardCountWithContextMutex.RUnlock()
 	argsForCall := fake.updateShardCountWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContextReturns(result1 *kinesis.UpdateShardCountOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextReturns(result1 *kinesis.UpdateShardCountOutput, result2 error) {
 	fake.updateShardCountWithContextMutex.Lock()
 	defer fake.updateShardCountWithContextMutex.Unlock()
 	fake.UpdateShardCountWithContextStub = nil
@@ -7124,7 +7124,7 @@ func (fake *KinesisClient) UpdateShardCountWithContextReturns(result1 *kinesis.U
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateShardCountWithContextReturnsOnCall(i int, result1 *kinesis.UpdateShardCountOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextReturnsOnCall(i int, result1 *kinesis.UpdateShardCountOutput, result2 error) {
 	fake.updateShardCountWithContextMutex.Lock()
 	defer fake.updateShardCountWithContextMutex.Unlock()
 	fake.UpdateShardCountWithContextStub = nil
@@ -7140,7 +7140,7 @@ func (fake *KinesisClient) UpdateShardCountWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamMode(arg1 *kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error) {
+func (fake *FakeKinesisClient) UpdateStreamMode(arg1 *kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error) {
 	fake.updateStreamModeMutex.Lock()
 	ret, specificReturn := fake.updateStreamModeReturnsOnCall[len(fake.updateStreamModeArgsForCall)]
 	fake.updateStreamModeArgsForCall = append(fake.updateStreamModeArgsForCall, struct {
@@ -7159,26 +7159,26 @@ func (fake *KinesisClient) UpdateStreamMode(arg1 *kinesis.UpdateStreamModeInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateStreamModeCallCount() int {
+func (fake *FakeKinesisClient) UpdateStreamModeCallCount() int {
 	fake.updateStreamModeMutex.RLock()
 	defer fake.updateStreamModeMutex.RUnlock()
 	return len(fake.updateStreamModeArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateStreamModeCalls(stub func(*kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error)) {
+func (fake *FakeKinesisClient) UpdateStreamModeCalls(stub func(*kinesis.UpdateStreamModeInput) (*kinesis.UpdateStreamModeOutput, error)) {
 	fake.updateStreamModeMutex.Lock()
 	defer fake.updateStreamModeMutex.Unlock()
 	fake.UpdateStreamModeStub = stub
 }
 
-func (fake *KinesisClient) UpdateStreamModeArgsForCall(i int) *kinesis.UpdateStreamModeInput {
+func (fake *FakeKinesisClient) UpdateStreamModeArgsForCall(i int) *kinesis.UpdateStreamModeInput {
 	fake.updateStreamModeMutex.RLock()
 	defer fake.updateStreamModeMutex.RUnlock()
 	argsForCall := fake.updateStreamModeArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) UpdateStreamModeReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateStreamModeReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
 	fake.updateStreamModeMutex.Lock()
 	defer fake.updateStreamModeMutex.Unlock()
 	fake.UpdateStreamModeStub = nil
@@ -7188,7 +7188,7 @@ func (fake *KinesisClient) UpdateStreamModeReturns(result1 *kinesis.UpdateStream
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamModeReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateStreamModeReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
 	fake.updateStreamModeMutex.Lock()
 	defer fake.updateStreamModeMutex.Unlock()
 	fake.UpdateStreamModeStub = nil
@@ -7204,7 +7204,7 @@ func (fake *KinesisClient) UpdateStreamModeReturnsOnCall(i int, result1 *kinesis
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequest(arg1 *kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput) {
+func (fake *FakeKinesisClient) UpdateStreamModeRequest(arg1 *kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput) {
 	fake.updateStreamModeRequestMutex.Lock()
 	ret, specificReturn := fake.updateStreamModeRequestReturnsOnCall[len(fake.updateStreamModeRequestArgsForCall)]
 	fake.updateStreamModeRequestArgsForCall = append(fake.updateStreamModeRequestArgsForCall, struct {
@@ -7223,26 +7223,26 @@ func (fake *KinesisClient) UpdateStreamModeRequest(arg1 *kinesis.UpdateStreamMod
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequestCallCount() int {
+func (fake *FakeKinesisClient) UpdateStreamModeRequestCallCount() int {
 	fake.updateStreamModeRequestMutex.RLock()
 	defer fake.updateStreamModeRequestMutex.RUnlock()
 	return len(fake.updateStreamModeRequestArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequestCalls(stub func(*kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput)) {
+func (fake *FakeKinesisClient) UpdateStreamModeRequestCalls(stub func(*kinesis.UpdateStreamModeInput) (*request.Request, *kinesis.UpdateStreamModeOutput)) {
 	fake.updateStreamModeRequestMutex.Lock()
 	defer fake.updateStreamModeRequestMutex.Unlock()
 	fake.UpdateStreamModeRequestStub = stub
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequestArgsForCall(i int) *kinesis.UpdateStreamModeInput {
+func (fake *FakeKinesisClient) UpdateStreamModeRequestArgsForCall(i int) *kinesis.UpdateStreamModeInput {
 	fake.updateStreamModeRequestMutex.RLock()
 	defer fake.updateStreamModeRequestMutex.RUnlock()
 	argsForCall := fake.updateStreamModeRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequestReturns(result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
+func (fake *FakeKinesisClient) UpdateStreamModeRequestReturns(result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
 	fake.updateStreamModeRequestMutex.Lock()
 	defer fake.updateStreamModeRequestMutex.Unlock()
 	fake.UpdateStreamModeRequestStub = nil
@@ -7252,7 +7252,7 @@ func (fake *KinesisClient) UpdateStreamModeRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamModeRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
+func (fake *FakeKinesisClient) UpdateStreamModeRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.UpdateStreamModeOutput) {
 	fake.updateStreamModeRequestMutex.Lock()
 	defer fake.updateStreamModeRequestMutex.Unlock()
 	fake.UpdateStreamModeRequestStub = nil
@@ -7268,7 +7268,7 @@ func (fake *KinesisClient) UpdateStreamModeRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContext(arg1 context.Context, arg2 *kinesis.UpdateStreamModeInput, arg3 ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContext(arg1 context.Context, arg2 *kinesis.UpdateStreamModeInput, arg3 ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	ret, specificReturn := fake.updateStreamModeWithContextReturnsOnCall[len(fake.updateStreamModeWithContextArgsForCall)]
 	fake.updateStreamModeWithContextArgsForCall = append(fake.updateStreamModeWithContextArgsForCall, struct {
@@ -7289,26 +7289,26 @@ func (fake *KinesisClient) UpdateStreamModeWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContextCallCount() int {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextCallCount() int {
 	fake.updateStreamModeWithContextMutex.RLock()
 	defer fake.updateStreamModeWithContextMutex.RUnlock()
 	return len(fake.updateStreamModeWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContextCalls(stub func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextCalls(stub func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	defer fake.updateStreamModeWithContextMutex.Unlock()
 	fake.UpdateStreamModeWithContextStub = stub
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateStreamModeInput, []request.Option) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateStreamModeInput, []request.Option) {
 	fake.updateStreamModeWithContextMutex.RLock()
 	defer fake.updateStreamModeWithContextMutex.RUnlock()
 	argsForCall := fake.updateStreamModeWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContextReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextReturns(result1 *kinesis.UpdateStreamModeOutput, result2 error) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	defer fake.updateStreamModeWithContextMutex.Unlock()
 	fake.UpdateStreamModeWithContextStub = nil
@@ -7318,7 +7318,7 @@ func (fake *KinesisClient) UpdateStreamModeWithContextReturns(result1 *kinesis.U
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) UpdateStreamModeWithContextReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextReturnsOnCall(i int, result1 *kinesis.UpdateStreamModeOutput, result2 error) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	defer fake.updateStreamModeWithContextMutex.Unlock()
 	fake.UpdateStreamModeWithContextStub = nil
@@ -7334,7 +7334,7 @@ func (fake *KinesisClient) UpdateStreamModeWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *KinesisClient) WaitUntilStreamExists(arg1 *kinesis.DescribeStreamInput) error {
+func (fake *FakeKinesisClient) WaitUntilStreamExists(arg1 *kinesis.DescribeStreamInput) error {
 	fake.waitUntilStreamExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamExistsReturnsOnCall[len(fake.waitUntilStreamExistsArgsForCall)]
 	fake.waitUntilStreamExistsArgsForCall = append(fake.waitUntilStreamExistsArgsForCall, struct {
@@ -7353,26 +7353,26 @@ func (fake *KinesisClient) WaitUntilStreamExists(arg1 *kinesis.DescribeStreamInp
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsCallCount() int {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsCallCount() int {
 	fake.waitUntilStreamExistsMutex.RLock()
 	defer fake.waitUntilStreamExistsMutex.RUnlock()
 	return len(fake.waitUntilStreamExistsArgsForCall)
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsCalls(stub func(*kinesis.DescribeStreamInput) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsCalls(stub func(*kinesis.DescribeStreamInput) error) {
 	fake.waitUntilStreamExistsMutex.Lock()
 	defer fake.waitUntilStreamExistsMutex.Unlock()
 	fake.WaitUntilStreamExistsStub = stub
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsArgsForCall(i int) *kinesis.DescribeStreamInput {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsArgsForCall(i int) *kinesis.DescribeStreamInput {
 	fake.waitUntilStreamExistsMutex.RLock()
 	defer fake.waitUntilStreamExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsReturns(result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsReturns(result1 error) {
 	fake.waitUntilStreamExistsMutex.Lock()
 	defer fake.waitUntilStreamExistsMutex.Unlock()
 	fake.WaitUntilStreamExistsStub = nil
@@ -7381,7 +7381,7 @@ func (fake *KinesisClient) WaitUntilStreamExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilStreamExistsMutex.Lock()
 	defer fake.waitUntilStreamExistsMutex.Unlock()
 	fake.WaitUntilStreamExistsStub = nil
@@ -7395,7 +7395,7 @@ func (fake *KinesisClient) WaitUntilStreamExistsReturnsOnCall(i int, result1 err
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamExistsWithContextReturnsOnCall[len(fake.waitUntilStreamExistsWithContextArgsForCall)]
 	fake.waitUntilStreamExistsWithContextArgsForCall = append(fake.waitUntilStreamExistsWithContextArgsForCall, struct {
@@ -7416,26 +7416,26 @@ func (fake *KinesisClient) WaitUntilStreamExistsWithContext(arg1 context.Context
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContextCallCount() int {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextCallCount() int {
 	fake.waitUntilStreamExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilStreamExistsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamExistsWithContextStub = stub
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
 	fake.waitUntilStreamExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContextReturns(result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextReturns(result1 error) {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamExistsWithContextStub = nil
@@ -7444,7 +7444,7 @@ func (fake *KinesisClient) WaitUntilStreamExistsWithContextReturns(result1 error
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamExistsWithContextStub = nil
@@ -7458,7 +7458,7 @@ func (fake *KinesisClient) WaitUntilStreamExistsWithContextReturnsOnCall(i int, 
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExists(arg1 *kinesis.DescribeStreamInput) error {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExists(arg1 *kinesis.DescribeStreamInput) error {
 	fake.waitUntilStreamNotExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamNotExistsReturnsOnCall[len(fake.waitUntilStreamNotExistsArgsForCall)]
 	fake.waitUntilStreamNotExistsArgsForCall = append(fake.waitUntilStreamNotExistsArgsForCall, struct {
@@ -7477,26 +7477,26 @@ func (fake *KinesisClient) WaitUntilStreamNotExists(arg1 *kinesis.DescribeStream
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsCallCount() int {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsCallCount() int {
 	fake.waitUntilStreamNotExistsMutex.RLock()
 	defer fake.waitUntilStreamNotExistsMutex.RUnlock()
 	return len(fake.waitUntilStreamNotExistsArgsForCall)
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsCalls(stub func(*kinesis.DescribeStreamInput) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsCalls(stub func(*kinesis.DescribeStreamInput) error) {
 	fake.waitUntilStreamNotExistsMutex.Lock()
 	defer fake.waitUntilStreamNotExistsMutex.Unlock()
 	fake.WaitUntilStreamNotExistsStub = stub
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsArgsForCall(i int) *kinesis.DescribeStreamInput {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsArgsForCall(i int) *kinesis.DescribeStreamInput {
 	fake.waitUntilStreamNotExistsMutex.RLock()
 	defer fake.waitUntilStreamNotExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamNotExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsReturns(result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsReturns(result1 error) {
 	fake.waitUntilStreamNotExistsMutex.Lock()
 	defer fake.waitUntilStreamNotExistsMutex.Unlock()
 	fake.WaitUntilStreamNotExistsStub = nil
@@ -7505,7 +7505,7 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilStreamNotExistsMutex.Lock()
 	defer fake.waitUntilStreamNotExistsMutex.Unlock()
 	fake.WaitUntilStreamNotExistsStub = nil
@@ -7519,7 +7519,7 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsReturnsOnCall(i int, result1 
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamNotExistsWithContextReturnsOnCall[len(fake.waitUntilStreamNotExistsWithContextArgsForCall)]
 	fake.waitUntilStreamNotExistsWithContextArgsForCall = append(fake.waitUntilStreamNotExistsWithContextArgsForCall, struct {
@@ -7540,26 +7540,26 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsWithContext(arg1 context.Cont
 	return fakeReturns.result1
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextCallCount() int {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextCallCount() int {
 	fake.waitUntilStreamNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilStreamNotExistsWithContextArgsForCall)
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamNotExistsWithContextStub = stub
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
 	fake.waitUntilStreamNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamNotExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextReturns(result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextReturns(result1 error) {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamNotExistsWithContextStub = nil
@@ -7568,7 +7568,7 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextReturns(result1 er
 	}{result1}
 }
 
-func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamNotExistsWithContextStub = nil
@@ -7582,7 +7582,7 @@ func (fake *KinesisClient) WaitUntilStreamNotExistsWithContextReturnsOnCall(i in
 	}{result1}
 }
 
-func (fake *KinesisClient) Invocations() map[string][][]interface{} {
+func (fake *FakeKinesisClient) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.addTagsToStreamMutex.RLock()
@@ -7786,7 +7786,7 @@ func (fake *KinesisClient) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *KinesisClient) recordInvocation(key string, args []interface{}) {
+func (fake *FakeKinesisClient) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -7798,4 +7798,4 @@ func (fake *KinesisClient) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ theta.KinesisClient = new(KinesisClient)
+var _ theta.KinesisClient = new(FakeKinesisClient)

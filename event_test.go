@@ -6,17 +6,17 @@ import (
 	"time"
 
 	"github.com/phogolabs/theta"
-	"github.com/phogolabs/theta/fake"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	. "github.com/phogolabs/theta/fake"
 )
 
 var _ = Describe("CompositeEventHandler", func() {
 	var (
 		reactor *theta.CompositeEventHandler
 		event   *theta.EventArgs
-		handler *fake.EventHandler
+		handler *FakeEventHandler
 	)
 
 	BeforeEach(func() {
@@ -32,7 +32,7 @@ var _ = Describe("CompositeEventHandler", func() {
 			Body: []byte("{}"),
 		}
 
-		handler = &fake.EventHandler{}
+		handler = &FakeEventHandler{}
 		reactor = &theta.CompositeEventHandler{
 			handler,
 		}
