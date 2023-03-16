@@ -9,13 +9,13 @@ require (
 	github.com/aws/aws-sdk-go v1.44.216
 	github.com/aws/aws-xray-sdk-go v1.8.1
 	github.com/awslabs/kinesis-aggregation/go v0.0.0-20230103085831-6e43795f8bc4 // indirect
-	github.com/go-chi/chi v1.5.4
+	github.com/go-chi/chi/v5 v5.0.8
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/harlow/kinesis-consumer v0.3.5
 	github.com/klauspost/compress v1.16.0 // indirect
 	github.com/leodido/go-urn v1.2.2 // indirect
 	github.com/lib/pq v1.10.7 // indirect
-	github.com/onsi/ginkgo v1.16.5
+	github.com/onsi/ginkgo/v2 v2.8.4
 	github.com/onsi/gomega v1.27.2
 	github.com/phogolabs/flaw v0.0.0-20230111045222-8efffb46800b // indirect
 	github.com/phogolabs/log v0.0.0-20230111045248-dad4d3c50e0f

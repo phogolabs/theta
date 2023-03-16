@@ -8,7 +8,7 @@ import (
 
 	"github.com/apex/gateway"
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 	"github.com/phogolabs/log"
 )
 
