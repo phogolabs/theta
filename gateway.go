@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"net/http"
 	"strings"
 
 	"github.com/apex/gateway"
@@ -17,9 +18,17 @@ type GatewayRoute interface {
 	Mount(r chi.Router)
 }
 
+// GatewayInterceptor represents a gateway interceptor
+type GatewayInterceptor func(http.Handler) http.Handler
+
 // GatewayHandler represents a webhook
 type GatewayHandler struct {
 	router chi.Router
+}
+
+// Use use a given interceptor.
+func (h *GatewayHandler) Use(m GatewayInterceptor) {
+	h.mux().Use(m)
 }
 
 // Group returns the router.
