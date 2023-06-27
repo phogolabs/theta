@@ -52,6 +52,47 @@ type FakeSQSClient struct {
 		result1 *sqs.AddPermissionOutput
 		result2 error
 	}
+	CancelMessageMoveTaskStub        func(*sqs.CancelMessageMoveTaskInput) (*sqs.CancelMessageMoveTaskOutput, error)
+	cancelMessageMoveTaskMutex       sync.RWMutex
+	cancelMessageMoveTaskArgsForCall []struct {
+		arg1 *sqs.CancelMessageMoveTaskInput
+	}
+	cancelMessageMoveTaskReturns struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}
+	cancelMessageMoveTaskReturnsOnCall map[int]struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}
+	CancelMessageMoveTaskRequestStub        func(*sqs.CancelMessageMoveTaskInput) (*request.Request, *sqs.CancelMessageMoveTaskOutput)
+	cancelMessageMoveTaskRequestMutex       sync.RWMutex
+	cancelMessageMoveTaskRequestArgsForCall []struct {
+		arg1 *sqs.CancelMessageMoveTaskInput
+	}
+	cancelMessageMoveTaskRequestReturns struct {
+		result1 *request.Request
+		result2 *sqs.CancelMessageMoveTaskOutput
+	}
+	cancelMessageMoveTaskRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *sqs.CancelMessageMoveTaskOutput
+	}
+	CancelMessageMoveTaskWithContextStub        func(context.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)
+	cancelMessageMoveTaskWithContextMutex       sync.RWMutex
+	cancelMessageMoveTaskWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *sqs.CancelMessageMoveTaskInput
+		arg3 []request.Option
+	}
+	cancelMessageMoveTaskWithContextReturns struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}
+	cancelMessageMoveTaskWithContextReturnsOnCall map[int]struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}
 	ChangeMessageVisibilityStub        func(*sqs.ChangeMessageVisibilityInput) (*sqs.ChangeMessageVisibilityOutput, error)
 	changeMessageVisibilityMutex       sync.RWMutex
 	changeMessageVisibilityArgsForCall []struct {
@@ -447,6 +488,47 @@ type FakeSQSClient struct {
 		result1 *sqs.ListDeadLetterSourceQueuesOutput
 		result2 error
 	}
+	ListMessageMoveTasksStub        func(*sqs.ListMessageMoveTasksInput) (*sqs.ListMessageMoveTasksOutput, error)
+	listMessageMoveTasksMutex       sync.RWMutex
+	listMessageMoveTasksArgsForCall []struct {
+		arg1 *sqs.ListMessageMoveTasksInput
+	}
+	listMessageMoveTasksReturns struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}
+	listMessageMoveTasksReturnsOnCall map[int]struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}
+	ListMessageMoveTasksRequestStub        func(*sqs.ListMessageMoveTasksInput) (*request.Request, *sqs.ListMessageMoveTasksOutput)
+	listMessageMoveTasksRequestMutex       sync.RWMutex
+	listMessageMoveTasksRequestArgsForCall []struct {
+		arg1 *sqs.ListMessageMoveTasksInput
+	}
+	listMessageMoveTasksRequestReturns struct {
+		result1 *request.Request
+		result2 *sqs.ListMessageMoveTasksOutput
+	}
+	listMessageMoveTasksRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *sqs.ListMessageMoveTasksOutput
+	}
+	ListMessageMoveTasksWithContextStub        func(context.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)
+	listMessageMoveTasksWithContextMutex       sync.RWMutex
+	listMessageMoveTasksWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *sqs.ListMessageMoveTasksInput
+		arg3 []request.Option
+	}
+	listMessageMoveTasksWithContextReturns struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}
+	listMessageMoveTasksWithContextReturnsOnCall map[int]struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}
 	ListQueueTagsStub        func(*sqs.ListQueueTagsInput) (*sqs.ListQueueTagsOutput, error)
 	listQueueTagsMutex       sync.RWMutex
 	listQueueTagsArgsForCall []struct {
@@ -801,6 +883,47 @@ type FakeSQSClient struct {
 		result1 *sqs.SetQueueAttributesOutput
 		result2 error
 	}
+	StartMessageMoveTaskStub        func(*sqs.StartMessageMoveTaskInput) (*sqs.StartMessageMoveTaskOutput, error)
+	startMessageMoveTaskMutex       sync.RWMutex
+	startMessageMoveTaskArgsForCall []struct {
+		arg1 *sqs.StartMessageMoveTaskInput
+	}
+	startMessageMoveTaskReturns struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}
+	startMessageMoveTaskReturnsOnCall map[int]struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}
+	StartMessageMoveTaskRequestStub        func(*sqs.StartMessageMoveTaskInput) (*request.Request, *sqs.StartMessageMoveTaskOutput)
+	startMessageMoveTaskRequestMutex       sync.RWMutex
+	startMessageMoveTaskRequestArgsForCall []struct {
+		arg1 *sqs.StartMessageMoveTaskInput
+	}
+	startMessageMoveTaskRequestReturns struct {
+		result1 *request.Request
+		result2 *sqs.StartMessageMoveTaskOutput
+	}
+	startMessageMoveTaskRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *sqs.StartMessageMoveTaskOutput
+	}
+	StartMessageMoveTaskWithContextStub        func(context.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)
+	startMessageMoveTaskWithContextMutex       sync.RWMutex
+	startMessageMoveTaskWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *sqs.StartMessageMoveTaskInput
+		arg3 []request.Option
+	}
+	startMessageMoveTaskWithContextReturns struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}
+	startMessageMoveTaskWithContextReturnsOnCall map[int]struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}
 	TagQueueStub        func(*sqs.TagQueueInput) (*sqs.TagQueueOutput, error)
 	tagQueueMutex       sync.RWMutex
 	tagQueueArgsForCall []struct {
@@ -1077,6 +1200,200 @@ func (fake *FakeSQSClient) AddPermissionWithContextReturnsOnCall(i int, result1 
 	}
 	fake.addPermissionWithContextReturnsOnCall[i] = struct {
 		result1 *sqs.AddPermissionOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTask(arg1 *sqs.CancelMessageMoveTaskInput) (*sqs.CancelMessageMoveTaskOutput, error) {
+	fake.cancelMessageMoveTaskMutex.Lock()
+	ret, specificReturn := fake.cancelMessageMoveTaskReturnsOnCall[len(fake.cancelMessageMoveTaskArgsForCall)]
+	fake.cancelMessageMoveTaskArgsForCall = append(fake.cancelMessageMoveTaskArgsForCall, struct {
+		arg1 *sqs.CancelMessageMoveTaskInput
+	}{arg1})
+	stub := fake.CancelMessageMoveTaskStub
+	fakeReturns := fake.cancelMessageMoveTaskReturns
+	fake.recordInvocation("CancelMessageMoveTask", []interface{}{arg1})
+	fake.cancelMessageMoveTaskMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskCallCount() int {
+	fake.cancelMessageMoveTaskMutex.RLock()
+	defer fake.cancelMessageMoveTaskMutex.RUnlock()
+	return len(fake.cancelMessageMoveTaskArgsForCall)
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskCalls(stub func(*sqs.CancelMessageMoveTaskInput) (*sqs.CancelMessageMoveTaskOutput, error)) {
+	fake.cancelMessageMoveTaskMutex.Lock()
+	defer fake.cancelMessageMoveTaskMutex.Unlock()
+	fake.CancelMessageMoveTaskStub = stub
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskArgsForCall(i int) *sqs.CancelMessageMoveTaskInput {
+	fake.cancelMessageMoveTaskMutex.RLock()
+	defer fake.cancelMessageMoveTaskMutex.RUnlock()
+	argsForCall := fake.cancelMessageMoveTaskArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskReturns(result1 *sqs.CancelMessageMoveTaskOutput, result2 error) {
+	fake.cancelMessageMoveTaskMutex.Lock()
+	defer fake.cancelMessageMoveTaskMutex.Unlock()
+	fake.CancelMessageMoveTaskStub = nil
+	fake.cancelMessageMoveTaskReturns = struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskReturnsOnCall(i int, result1 *sqs.CancelMessageMoveTaskOutput, result2 error) {
+	fake.cancelMessageMoveTaskMutex.Lock()
+	defer fake.cancelMessageMoveTaskMutex.Unlock()
+	fake.CancelMessageMoveTaskStub = nil
+	if fake.cancelMessageMoveTaskReturnsOnCall == nil {
+		fake.cancelMessageMoveTaskReturnsOnCall = make(map[int]struct {
+			result1 *sqs.CancelMessageMoveTaskOutput
+			result2 error
+		})
+	}
+	fake.cancelMessageMoveTaskReturnsOnCall[i] = struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequest(arg1 *sqs.CancelMessageMoveTaskInput) (*request.Request, *sqs.CancelMessageMoveTaskOutput) {
+	fake.cancelMessageMoveTaskRequestMutex.Lock()
+	ret, specificReturn := fake.cancelMessageMoveTaskRequestReturnsOnCall[len(fake.cancelMessageMoveTaskRequestArgsForCall)]
+	fake.cancelMessageMoveTaskRequestArgsForCall = append(fake.cancelMessageMoveTaskRequestArgsForCall, struct {
+		arg1 *sqs.CancelMessageMoveTaskInput
+	}{arg1})
+	stub := fake.CancelMessageMoveTaskRequestStub
+	fakeReturns := fake.cancelMessageMoveTaskRequestReturns
+	fake.recordInvocation("CancelMessageMoveTaskRequest", []interface{}{arg1})
+	fake.cancelMessageMoveTaskRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequestCallCount() int {
+	fake.cancelMessageMoveTaskRequestMutex.RLock()
+	defer fake.cancelMessageMoveTaskRequestMutex.RUnlock()
+	return len(fake.cancelMessageMoveTaskRequestArgsForCall)
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequestCalls(stub func(*sqs.CancelMessageMoveTaskInput) (*request.Request, *sqs.CancelMessageMoveTaskOutput)) {
+	fake.cancelMessageMoveTaskRequestMutex.Lock()
+	defer fake.cancelMessageMoveTaskRequestMutex.Unlock()
+	fake.CancelMessageMoveTaskRequestStub = stub
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequestArgsForCall(i int) *sqs.CancelMessageMoveTaskInput {
+	fake.cancelMessageMoveTaskRequestMutex.RLock()
+	defer fake.cancelMessageMoveTaskRequestMutex.RUnlock()
+	argsForCall := fake.cancelMessageMoveTaskRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequestReturns(result1 *request.Request, result2 *sqs.CancelMessageMoveTaskOutput) {
+	fake.cancelMessageMoveTaskRequestMutex.Lock()
+	defer fake.cancelMessageMoveTaskRequestMutex.Unlock()
+	fake.CancelMessageMoveTaskRequestStub = nil
+	fake.cancelMessageMoveTaskRequestReturns = struct {
+		result1 *request.Request
+		result2 *sqs.CancelMessageMoveTaskOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskRequestReturnsOnCall(i int, result1 *request.Request, result2 *sqs.CancelMessageMoveTaskOutput) {
+	fake.cancelMessageMoveTaskRequestMutex.Lock()
+	defer fake.cancelMessageMoveTaskRequestMutex.Unlock()
+	fake.CancelMessageMoveTaskRequestStub = nil
+	if fake.cancelMessageMoveTaskRequestReturnsOnCall == nil {
+		fake.cancelMessageMoveTaskRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *sqs.CancelMessageMoveTaskOutput
+		})
+	}
+	fake.cancelMessageMoveTaskRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *sqs.CancelMessageMoveTaskOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContext(arg1 context.Context, arg2 *sqs.CancelMessageMoveTaskInput, arg3 ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error) {
+	fake.cancelMessageMoveTaskWithContextMutex.Lock()
+	ret, specificReturn := fake.cancelMessageMoveTaskWithContextReturnsOnCall[len(fake.cancelMessageMoveTaskWithContextArgsForCall)]
+	fake.cancelMessageMoveTaskWithContextArgsForCall = append(fake.cancelMessageMoveTaskWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *sqs.CancelMessageMoveTaskInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.CancelMessageMoveTaskWithContextStub
+	fakeReturns := fake.cancelMessageMoveTaskWithContextReturns
+	fake.recordInvocation("CancelMessageMoveTaskWithContext", []interface{}{arg1, arg2, arg3})
+	fake.cancelMessageMoveTaskWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextCallCount() int {
+	fake.cancelMessageMoveTaskWithContextMutex.RLock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.RUnlock()
+	return len(fake.cancelMessageMoveTaskWithContextArgsForCall)
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextCalls(stub func(context.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)) {
+	fake.cancelMessageMoveTaskWithContextMutex.Lock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.Unlock()
+	fake.CancelMessageMoveTaskWithContextStub = stub
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextArgsForCall(i int) (context.Context, *sqs.CancelMessageMoveTaskInput, []request.Option) {
+	fake.cancelMessageMoveTaskWithContextMutex.RLock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.RUnlock()
+	argsForCall := fake.cancelMessageMoveTaskWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextReturns(result1 *sqs.CancelMessageMoveTaskOutput, result2 error) {
+	fake.cancelMessageMoveTaskWithContextMutex.Lock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.Unlock()
+	fake.CancelMessageMoveTaskWithContextStub = nil
+	fake.cancelMessageMoveTaskWithContextReturns = struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextReturnsOnCall(i int, result1 *sqs.CancelMessageMoveTaskOutput, result2 error) {
+	fake.cancelMessageMoveTaskWithContextMutex.Lock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.Unlock()
+	fake.CancelMessageMoveTaskWithContextStub = nil
+	if fake.cancelMessageMoveTaskWithContextReturnsOnCall == nil {
+		fake.cancelMessageMoveTaskWithContextReturnsOnCall = make(map[int]struct {
+			result1 *sqs.CancelMessageMoveTaskOutput
+			result2 error
+		})
+	}
+	fake.cancelMessageMoveTaskWithContextReturnsOnCall[i] = struct {
+		result1 *sqs.CancelMessageMoveTaskOutput
 		result2 error
 	}{result1, result2}
 }
@@ -2953,6 +3270,200 @@ func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextReturnsOnCall(i 
 	}{result1, result2}
 }
 
+func (fake *FakeSQSClient) ListMessageMoveTasks(arg1 *sqs.ListMessageMoveTasksInput) (*sqs.ListMessageMoveTasksOutput, error) {
+	fake.listMessageMoveTasksMutex.Lock()
+	ret, specificReturn := fake.listMessageMoveTasksReturnsOnCall[len(fake.listMessageMoveTasksArgsForCall)]
+	fake.listMessageMoveTasksArgsForCall = append(fake.listMessageMoveTasksArgsForCall, struct {
+		arg1 *sqs.ListMessageMoveTasksInput
+	}{arg1})
+	stub := fake.ListMessageMoveTasksStub
+	fakeReturns := fake.listMessageMoveTasksReturns
+	fake.recordInvocation("ListMessageMoveTasks", []interface{}{arg1})
+	fake.listMessageMoveTasksMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksCallCount() int {
+	fake.listMessageMoveTasksMutex.RLock()
+	defer fake.listMessageMoveTasksMutex.RUnlock()
+	return len(fake.listMessageMoveTasksArgsForCall)
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksCalls(stub func(*sqs.ListMessageMoveTasksInput) (*sqs.ListMessageMoveTasksOutput, error)) {
+	fake.listMessageMoveTasksMutex.Lock()
+	defer fake.listMessageMoveTasksMutex.Unlock()
+	fake.ListMessageMoveTasksStub = stub
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksArgsForCall(i int) *sqs.ListMessageMoveTasksInput {
+	fake.listMessageMoveTasksMutex.RLock()
+	defer fake.listMessageMoveTasksMutex.RUnlock()
+	argsForCall := fake.listMessageMoveTasksArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksReturns(result1 *sqs.ListMessageMoveTasksOutput, result2 error) {
+	fake.listMessageMoveTasksMutex.Lock()
+	defer fake.listMessageMoveTasksMutex.Unlock()
+	fake.ListMessageMoveTasksStub = nil
+	fake.listMessageMoveTasksReturns = struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksReturnsOnCall(i int, result1 *sqs.ListMessageMoveTasksOutput, result2 error) {
+	fake.listMessageMoveTasksMutex.Lock()
+	defer fake.listMessageMoveTasksMutex.Unlock()
+	fake.ListMessageMoveTasksStub = nil
+	if fake.listMessageMoveTasksReturnsOnCall == nil {
+		fake.listMessageMoveTasksReturnsOnCall = make(map[int]struct {
+			result1 *sqs.ListMessageMoveTasksOutput
+			result2 error
+		})
+	}
+	fake.listMessageMoveTasksReturnsOnCall[i] = struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequest(arg1 *sqs.ListMessageMoveTasksInput) (*request.Request, *sqs.ListMessageMoveTasksOutput) {
+	fake.listMessageMoveTasksRequestMutex.Lock()
+	ret, specificReturn := fake.listMessageMoveTasksRequestReturnsOnCall[len(fake.listMessageMoveTasksRequestArgsForCall)]
+	fake.listMessageMoveTasksRequestArgsForCall = append(fake.listMessageMoveTasksRequestArgsForCall, struct {
+		arg1 *sqs.ListMessageMoveTasksInput
+	}{arg1})
+	stub := fake.ListMessageMoveTasksRequestStub
+	fakeReturns := fake.listMessageMoveTasksRequestReturns
+	fake.recordInvocation("ListMessageMoveTasksRequest", []interface{}{arg1})
+	fake.listMessageMoveTasksRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequestCallCount() int {
+	fake.listMessageMoveTasksRequestMutex.RLock()
+	defer fake.listMessageMoveTasksRequestMutex.RUnlock()
+	return len(fake.listMessageMoveTasksRequestArgsForCall)
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequestCalls(stub func(*sqs.ListMessageMoveTasksInput) (*request.Request, *sqs.ListMessageMoveTasksOutput)) {
+	fake.listMessageMoveTasksRequestMutex.Lock()
+	defer fake.listMessageMoveTasksRequestMutex.Unlock()
+	fake.ListMessageMoveTasksRequestStub = stub
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequestArgsForCall(i int) *sqs.ListMessageMoveTasksInput {
+	fake.listMessageMoveTasksRequestMutex.RLock()
+	defer fake.listMessageMoveTasksRequestMutex.RUnlock()
+	argsForCall := fake.listMessageMoveTasksRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequestReturns(result1 *request.Request, result2 *sqs.ListMessageMoveTasksOutput) {
+	fake.listMessageMoveTasksRequestMutex.Lock()
+	defer fake.listMessageMoveTasksRequestMutex.Unlock()
+	fake.ListMessageMoveTasksRequestStub = nil
+	fake.listMessageMoveTasksRequestReturns = struct {
+		result1 *request.Request
+		result2 *sqs.ListMessageMoveTasksOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksRequestReturnsOnCall(i int, result1 *request.Request, result2 *sqs.ListMessageMoveTasksOutput) {
+	fake.listMessageMoveTasksRequestMutex.Lock()
+	defer fake.listMessageMoveTasksRequestMutex.Unlock()
+	fake.ListMessageMoveTasksRequestStub = nil
+	if fake.listMessageMoveTasksRequestReturnsOnCall == nil {
+		fake.listMessageMoveTasksRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *sqs.ListMessageMoveTasksOutput
+		})
+	}
+	fake.listMessageMoveTasksRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *sqs.ListMessageMoveTasksOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContext(arg1 context.Context, arg2 *sqs.ListMessageMoveTasksInput, arg3 ...request.Option) (*sqs.ListMessageMoveTasksOutput, error) {
+	fake.listMessageMoveTasksWithContextMutex.Lock()
+	ret, specificReturn := fake.listMessageMoveTasksWithContextReturnsOnCall[len(fake.listMessageMoveTasksWithContextArgsForCall)]
+	fake.listMessageMoveTasksWithContextArgsForCall = append(fake.listMessageMoveTasksWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *sqs.ListMessageMoveTasksInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.ListMessageMoveTasksWithContextStub
+	fakeReturns := fake.listMessageMoveTasksWithContextReturns
+	fake.recordInvocation("ListMessageMoveTasksWithContext", []interface{}{arg1, arg2, arg3})
+	fake.listMessageMoveTasksWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextCallCount() int {
+	fake.listMessageMoveTasksWithContextMutex.RLock()
+	defer fake.listMessageMoveTasksWithContextMutex.RUnlock()
+	return len(fake.listMessageMoveTasksWithContextArgsForCall)
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextCalls(stub func(context.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)) {
+	fake.listMessageMoveTasksWithContextMutex.Lock()
+	defer fake.listMessageMoveTasksWithContextMutex.Unlock()
+	fake.ListMessageMoveTasksWithContextStub = stub
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextArgsForCall(i int) (context.Context, *sqs.ListMessageMoveTasksInput, []request.Option) {
+	fake.listMessageMoveTasksWithContextMutex.RLock()
+	defer fake.listMessageMoveTasksWithContextMutex.RUnlock()
+	argsForCall := fake.listMessageMoveTasksWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextReturns(result1 *sqs.ListMessageMoveTasksOutput, result2 error) {
+	fake.listMessageMoveTasksWithContextMutex.Lock()
+	defer fake.listMessageMoveTasksWithContextMutex.Unlock()
+	fake.ListMessageMoveTasksWithContextStub = nil
+	fake.listMessageMoveTasksWithContextReturns = struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextReturnsOnCall(i int, result1 *sqs.ListMessageMoveTasksOutput, result2 error) {
+	fake.listMessageMoveTasksWithContextMutex.Lock()
+	defer fake.listMessageMoveTasksWithContextMutex.Unlock()
+	fake.ListMessageMoveTasksWithContextStub = nil
+	if fake.listMessageMoveTasksWithContextReturnsOnCall == nil {
+		fake.listMessageMoveTasksWithContextReturnsOnCall = make(map[int]struct {
+			result1 *sqs.ListMessageMoveTasksOutput
+			result2 error
+		})
+	}
+	fake.listMessageMoveTasksWithContextReturnsOnCall[i] = struct {
+		result1 *sqs.ListMessageMoveTasksOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *FakeSQSClient) ListQueueTags(arg1 *sqs.ListQueueTagsInput) (*sqs.ListQueueTagsOutput, error) {
 	fake.listQueueTagsMutex.Lock()
 	ret, specificReturn := fake.listQueueTagsReturnsOnCall[len(fake.listQueueTagsArgsForCall)]
@@ -4631,6 +5142,200 @@ func (fake *FakeSQSClient) SetQueueAttributesWithContextReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
+func (fake *FakeSQSClient) StartMessageMoveTask(arg1 *sqs.StartMessageMoveTaskInput) (*sqs.StartMessageMoveTaskOutput, error) {
+	fake.startMessageMoveTaskMutex.Lock()
+	ret, specificReturn := fake.startMessageMoveTaskReturnsOnCall[len(fake.startMessageMoveTaskArgsForCall)]
+	fake.startMessageMoveTaskArgsForCall = append(fake.startMessageMoveTaskArgsForCall, struct {
+		arg1 *sqs.StartMessageMoveTaskInput
+	}{arg1})
+	stub := fake.StartMessageMoveTaskStub
+	fakeReturns := fake.startMessageMoveTaskReturns
+	fake.recordInvocation("StartMessageMoveTask", []interface{}{arg1})
+	fake.startMessageMoveTaskMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskCallCount() int {
+	fake.startMessageMoveTaskMutex.RLock()
+	defer fake.startMessageMoveTaskMutex.RUnlock()
+	return len(fake.startMessageMoveTaskArgsForCall)
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskCalls(stub func(*sqs.StartMessageMoveTaskInput) (*sqs.StartMessageMoveTaskOutput, error)) {
+	fake.startMessageMoveTaskMutex.Lock()
+	defer fake.startMessageMoveTaskMutex.Unlock()
+	fake.StartMessageMoveTaskStub = stub
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskArgsForCall(i int) *sqs.StartMessageMoveTaskInput {
+	fake.startMessageMoveTaskMutex.RLock()
+	defer fake.startMessageMoveTaskMutex.RUnlock()
+	argsForCall := fake.startMessageMoveTaskArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskReturns(result1 *sqs.StartMessageMoveTaskOutput, result2 error) {
+	fake.startMessageMoveTaskMutex.Lock()
+	defer fake.startMessageMoveTaskMutex.Unlock()
+	fake.StartMessageMoveTaskStub = nil
+	fake.startMessageMoveTaskReturns = struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskReturnsOnCall(i int, result1 *sqs.StartMessageMoveTaskOutput, result2 error) {
+	fake.startMessageMoveTaskMutex.Lock()
+	defer fake.startMessageMoveTaskMutex.Unlock()
+	fake.StartMessageMoveTaskStub = nil
+	if fake.startMessageMoveTaskReturnsOnCall == nil {
+		fake.startMessageMoveTaskReturnsOnCall = make(map[int]struct {
+			result1 *sqs.StartMessageMoveTaskOutput
+			result2 error
+		})
+	}
+	fake.startMessageMoveTaskReturnsOnCall[i] = struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequest(arg1 *sqs.StartMessageMoveTaskInput) (*request.Request, *sqs.StartMessageMoveTaskOutput) {
+	fake.startMessageMoveTaskRequestMutex.Lock()
+	ret, specificReturn := fake.startMessageMoveTaskRequestReturnsOnCall[len(fake.startMessageMoveTaskRequestArgsForCall)]
+	fake.startMessageMoveTaskRequestArgsForCall = append(fake.startMessageMoveTaskRequestArgsForCall, struct {
+		arg1 *sqs.StartMessageMoveTaskInput
+	}{arg1})
+	stub := fake.StartMessageMoveTaskRequestStub
+	fakeReturns := fake.startMessageMoveTaskRequestReturns
+	fake.recordInvocation("StartMessageMoveTaskRequest", []interface{}{arg1})
+	fake.startMessageMoveTaskRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequestCallCount() int {
+	fake.startMessageMoveTaskRequestMutex.RLock()
+	defer fake.startMessageMoveTaskRequestMutex.RUnlock()
+	return len(fake.startMessageMoveTaskRequestArgsForCall)
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequestCalls(stub func(*sqs.StartMessageMoveTaskInput) (*request.Request, *sqs.StartMessageMoveTaskOutput)) {
+	fake.startMessageMoveTaskRequestMutex.Lock()
+	defer fake.startMessageMoveTaskRequestMutex.Unlock()
+	fake.StartMessageMoveTaskRequestStub = stub
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequestArgsForCall(i int) *sqs.StartMessageMoveTaskInput {
+	fake.startMessageMoveTaskRequestMutex.RLock()
+	defer fake.startMessageMoveTaskRequestMutex.RUnlock()
+	argsForCall := fake.startMessageMoveTaskRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequestReturns(result1 *request.Request, result2 *sqs.StartMessageMoveTaskOutput) {
+	fake.startMessageMoveTaskRequestMutex.Lock()
+	defer fake.startMessageMoveTaskRequestMutex.Unlock()
+	fake.StartMessageMoveTaskRequestStub = nil
+	fake.startMessageMoveTaskRequestReturns = struct {
+		result1 *request.Request
+		result2 *sqs.StartMessageMoveTaskOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskRequestReturnsOnCall(i int, result1 *request.Request, result2 *sqs.StartMessageMoveTaskOutput) {
+	fake.startMessageMoveTaskRequestMutex.Lock()
+	defer fake.startMessageMoveTaskRequestMutex.Unlock()
+	fake.StartMessageMoveTaskRequestStub = nil
+	if fake.startMessageMoveTaskRequestReturnsOnCall == nil {
+		fake.startMessageMoveTaskRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *sqs.StartMessageMoveTaskOutput
+		})
+	}
+	fake.startMessageMoveTaskRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *sqs.StartMessageMoveTaskOutput
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContext(arg1 context.Context, arg2 *sqs.StartMessageMoveTaskInput, arg3 ...request.Option) (*sqs.StartMessageMoveTaskOutput, error) {
+	fake.startMessageMoveTaskWithContextMutex.Lock()
+	ret, specificReturn := fake.startMessageMoveTaskWithContextReturnsOnCall[len(fake.startMessageMoveTaskWithContextArgsForCall)]
+	fake.startMessageMoveTaskWithContextArgsForCall = append(fake.startMessageMoveTaskWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *sqs.StartMessageMoveTaskInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.StartMessageMoveTaskWithContextStub
+	fakeReturns := fake.startMessageMoveTaskWithContextReturns
+	fake.recordInvocation("StartMessageMoveTaskWithContext", []interface{}{arg1, arg2, arg3})
+	fake.startMessageMoveTaskWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextCallCount() int {
+	fake.startMessageMoveTaskWithContextMutex.RLock()
+	defer fake.startMessageMoveTaskWithContextMutex.RUnlock()
+	return len(fake.startMessageMoveTaskWithContextArgsForCall)
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextCalls(stub func(context.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)) {
+	fake.startMessageMoveTaskWithContextMutex.Lock()
+	defer fake.startMessageMoveTaskWithContextMutex.Unlock()
+	fake.StartMessageMoveTaskWithContextStub = stub
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextArgsForCall(i int) (context.Context, *sqs.StartMessageMoveTaskInput, []request.Option) {
+	fake.startMessageMoveTaskWithContextMutex.RLock()
+	defer fake.startMessageMoveTaskWithContextMutex.RUnlock()
+	argsForCall := fake.startMessageMoveTaskWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextReturns(result1 *sqs.StartMessageMoveTaskOutput, result2 error) {
+	fake.startMessageMoveTaskWithContextMutex.Lock()
+	defer fake.startMessageMoveTaskWithContextMutex.Unlock()
+	fake.StartMessageMoveTaskWithContextStub = nil
+	fake.startMessageMoveTaskWithContextReturns = struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextReturnsOnCall(i int, result1 *sqs.StartMessageMoveTaskOutput, result2 error) {
+	fake.startMessageMoveTaskWithContextMutex.Lock()
+	defer fake.startMessageMoveTaskWithContextMutex.Unlock()
+	fake.StartMessageMoveTaskWithContextStub = nil
+	if fake.startMessageMoveTaskWithContextReturnsOnCall == nil {
+		fake.startMessageMoveTaskWithContextReturnsOnCall = make(map[int]struct {
+			result1 *sqs.StartMessageMoveTaskOutput
+			result2 error
+		})
+	}
+	fake.startMessageMoveTaskWithContextReturnsOnCall[i] = struct {
+		result1 *sqs.StartMessageMoveTaskOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *FakeSQSClient) TagQueue(arg1 *sqs.TagQueueInput) (*sqs.TagQueueOutput, error) {
 	fake.tagQueueMutex.Lock()
 	ret, specificReturn := fake.tagQueueReturnsOnCall[len(fake.tagQueueArgsForCall)]
@@ -5028,6 +5733,12 @@ func (fake *FakeSQSClient) Invocations() map[string][][]interface{} {
 	defer fake.addPermissionRequestMutex.RUnlock()
 	fake.addPermissionWithContextMutex.RLock()
 	defer fake.addPermissionWithContextMutex.RUnlock()
+	fake.cancelMessageMoveTaskMutex.RLock()
+	defer fake.cancelMessageMoveTaskMutex.RUnlock()
+	fake.cancelMessageMoveTaskRequestMutex.RLock()
+	defer fake.cancelMessageMoveTaskRequestMutex.RUnlock()
+	fake.cancelMessageMoveTaskWithContextMutex.RLock()
+	defer fake.cancelMessageMoveTaskWithContextMutex.RUnlock()
 	fake.changeMessageVisibilityMutex.RLock()
 	defer fake.changeMessageVisibilityMutex.RUnlock()
 	fake.changeMessageVisibilityBatchMutex.RLock()
@@ -5086,6 +5797,12 @@ func (fake *FakeSQSClient) Invocations() map[string][][]interface{} {
 	defer fake.listDeadLetterSourceQueuesRequestMutex.RUnlock()
 	fake.listDeadLetterSourceQueuesWithContextMutex.RLock()
 	defer fake.listDeadLetterSourceQueuesWithContextMutex.RUnlock()
+	fake.listMessageMoveTasksMutex.RLock()
+	defer fake.listMessageMoveTasksMutex.RUnlock()
+	fake.listMessageMoveTasksRequestMutex.RLock()
+	defer fake.listMessageMoveTasksRequestMutex.RUnlock()
+	fake.listMessageMoveTasksWithContextMutex.RLock()
+	defer fake.listMessageMoveTasksWithContextMutex.RUnlock()
 	fake.listQueueTagsMutex.RLock()
 	defer fake.listQueueTagsMutex.RUnlock()
 	fake.listQueueTagsRequestMutex.RLock()
@@ -5138,6 +5855,12 @@ func (fake *FakeSQSClient) Invocations() map[string][][]interface{} {
 	defer fake.setQueueAttributesRequestMutex.RUnlock()
 	fake.setQueueAttributesWithContextMutex.RLock()
 	defer fake.setQueueAttributesWithContextMutex.RUnlock()
+	fake.startMessageMoveTaskMutex.RLock()
+	defer fake.startMessageMoveTaskMutex.RUnlock()
+	fake.startMessageMoveTaskRequestMutex.RLock()
+	defer fake.startMessageMoveTaskRequestMutex.RUnlock()
+	fake.startMessageMoveTaskWithContextMutex.RLock()
+	defer fake.startMessageMoveTaskWithContextMutex.RUnlock()
 	fake.tagQueueMutex.RLock()
 	defer fake.tagQueueMutex.RUnlock()
 	fake.tagQueueRequestMutex.RLock()

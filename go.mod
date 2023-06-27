@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/apex/gateway v1.1.2
 	github.com/aws/aws-lambda-go v1.41.0
-	github.com/aws/aws-sdk-go v1.44.287
+	github.com/aws/aws-sdk-go v1.44.290
 	github.com/aws/aws-xray-sdk-go v1.8.1
 	github.com/awslabs/kinesis-aggregation/go v0.0.0-20230428132731-b06a97ace10c // indirect
 	github.com/go-chi/chi/v5 v5.0.8
@@ -20,8 +20,9 @@ require (
 	github.com/phogolabs/log v0.0.0-20230111045248-dad4d3c50e0f
 	github.com/valyala/fasthttp v1.48.0 // indirect
 	golang.org/x/net v0.11.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230530153820-e85fd2cbaebc // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230626202813-9b080da550b3 // indirect
 	google.golang.org/grpc v1.56.1 // indirect
+	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0
 )
