@@ -2,9 +2,9 @@
 package fake
 
 import (
-	"context"
 	"sync"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/phogolabs/theta"
@@ -37,10 +37,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.AddPermissionOutput
 	}
-	AddPermissionWithContextStub        func(context.Context, *sqs.AddPermissionInput, ...request.Option) (*sqs.AddPermissionOutput, error)
+	AddPermissionWithContextStub        func(aws.Context, *sqs.AddPermissionInput, ...request.Option) (*sqs.AddPermissionOutput, error)
 	addPermissionWithContextMutex       sync.RWMutex
 	addPermissionWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.AddPermissionInput
 		arg3 []request.Option
 	}
@@ -78,10 +78,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.CancelMessageMoveTaskOutput
 	}
-	CancelMessageMoveTaskWithContextStub        func(context.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)
+	CancelMessageMoveTaskWithContextStub        func(aws.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)
 	cancelMessageMoveTaskWithContextMutex       sync.RWMutex
 	cancelMessageMoveTaskWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.CancelMessageMoveTaskInput
 		arg3 []request.Option
 	}
@@ -132,10 +132,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ChangeMessageVisibilityBatchOutput
 	}
-	ChangeMessageVisibilityBatchWithContextStub        func(context.Context, *sqs.ChangeMessageVisibilityBatchInput, ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error)
+	ChangeMessageVisibilityBatchWithContextStub        func(aws.Context, *sqs.ChangeMessageVisibilityBatchInput, ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error)
 	changeMessageVisibilityBatchWithContextMutex       sync.RWMutex
 	changeMessageVisibilityBatchWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ChangeMessageVisibilityBatchInput
 		arg3 []request.Option
 	}
@@ -160,10 +160,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ChangeMessageVisibilityOutput
 	}
-	ChangeMessageVisibilityWithContextStub        func(context.Context, *sqs.ChangeMessageVisibilityInput, ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error)
+	ChangeMessageVisibilityWithContextStub        func(aws.Context, *sqs.ChangeMessageVisibilityInput, ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error)
 	changeMessageVisibilityWithContextMutex       sync.RWMutex
 	changeMessageVisibilityWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ChangeMessageVisibilityInput
 		arg3 []request.Option
 	}
@@ -201,10 +201,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.CreateQueueOutput
 	}
-	CreateQueueWithContextStub        func(context.Context, *sqs.CreateQueueInput, ...request.Option) (*sqs.CreateQueueOutput, error)
+	CreateQueueWithContextStub        func(aws.Context, *sqs.CreateQueueInput, ...request.Option) (*sqs.CreateQueueOutput, error)
 	createQueueWithContextMutex       sync.RWMutex
 	createQueueWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.CreateQueueInput
 		arg3 []request.Option
 	}
@@ -255,10 +255,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.DeleteMessageBatchOutput
 	}
-	DeleteMessageBatchWithContextStub        func(context.Context, *sqs.DeleteMessageBatchInput, ...request.Option) (*sqs.DeleteMessageBatchOutput, error)
+	DeleteMessageBatchWithContextStub        func(aws.Context, *sqs.DeleteMessageBatchInput, ...request.Option) (*sqs.DeleteMessageBatchOutput, error)
 	deleteMessageBatchWithContextMutex       sync.RWMutex
 	deleteMessageBatchWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteMessageBatchInput
 		arg3 []request.Option
 	}
@@ -283,10 +283,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.DeleteMessageOutput
 	}
-	DeleteMessageWithContextStub        func(context.Context, *sqs.DeleteMessageInput, ...request.Option) (*sqs.DeleteMessageOutput, error)
+	DeleteMessageWithContextStub        func(aws.Context, *sqs.DeleteMessageInput, ...request.Option) (*sqs.DeleteMessageOutput, error)
 	deleteMessageWithContextMutex       sync.RWMutex
 	deleteMessageWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteMessageInput
 		arg3 []request.Option
 	}
@@ -324,10 +324,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.DeleteQueueOutput
 	}
-	DeleteQueueWithContextStub        func(context.Context, *sqs.DeleteQueueInput, ...request.Option) (*sqs.DeleteQueueOutput, error)
+	DeleteQueueWithContextStub        func(aws.Context, *sqs.DeleteQueueInput, ...request.Option) (*sqs.DeleteQueueOutput, error)
 	deleteQueueWithContextMutex       sync.RWMutex
 	deleteQueueWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteQueueInput
 		arg3 []request.Option
 	}
@@ -365,10 +365,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.GetQueueAttributesOutput
 	}
-	GetQueueAttributesWithContextStub        func(context.Context, *sqs.GetQueueAttributesInput, ...request.Option) (*sqs.GetQueueAttributesOutput, error)
+	GetQueueAttributesWithContextStub        func(aws.Context, *sqs.GetQueueAttributesInput, ...request.Option) (*sqs.GetQueueAttributesOutput, error)
 	getQueueAttributesWithContextMutex       sync.RWMutex
 	getQueueAttributesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.GetQueueAttributesInput
 		arg3 []request.Option
 	}
@@ -406,10 +406,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.GetQueueUrlOutput
 	}
-	GetQueueUrlWithContextStub        func(context.Context, *sqs.GetQueueUrlInput, ...request.Option) (*sqs.GetQueueUrlOutput, error)
+	GetQueueUrlWithContextStub        func(aws.Context, *sqs.GetQueueUrlInput, ...request.Option) (*sqs.GetQueueUrlOutput, error)
 	getQueueUrlWithContextMutex       sync.RWMutex
 	getQueueUrlWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.GetQueueUrlInput
 		arg3 []request.Option
 	}
@@ -446,10 +446,10 @@ type FakeSQSClient struct {
 	listDeadLetterSourceQueuesPagesReturnsOnCall map[int]struct {
 		result1 error
 	}
-	ListDeadLetterSourceQueuesPagesWithContextStub        func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error
+	ListDeadLetterSourceQueuesPagesWithContextStub        func(aws.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error
 	listDeadLetterSourceQueuesPagesWithContextMutex       sync.RWMutex
 	listDeadLetterSourceQueuesPagesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListDeadLetterSourceQueuesInput
 		arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
 		arg4 []request.Option
@@ -473,10 +473,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ListDeadLetterSourceQueuesOutput
 	}
-	ListDeadLetterSourceQueuesWithContextStub        func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)
+	ListDeadLetterSourceQueuesWithContextStub        func(aws.Context, *sqs.ListDeadLetterSourceQueuesInput, ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)
 	listDeadLetterSourceQueuesWithContextMutex       sync.RWMutex
 	listDeadLetterSourceQueuesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListDeadLetterSourceQueuesInput
 		arg3 []request.Option
 	}
@@ -514,10 +514,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ListMessageMoveTasksOutput
 	}
-	ListMessageMoveTasksWithContextStub        func(context.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)
+	ListMessageMoveTasksWithContextStub        func(aws.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)
 	listMessageMoveTasksWithContextMutex       sync.RWMutex
 	listMessageMoveTasksWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListMessageMoveTasksInput
 		arg3 []request.Option
 	}
@@ -555,10 +555,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ListQueueTagsOutput
 	}
-	ListQueueTagsWithContextStub        func(context.Context, *sqs.ListQueueTagsInput, ...request.Option) (*sqs.ListQueueTagsOutput, error)
+	ListQueueTagsWithContextStub        func(aws.Context, *sqs.ListQueueTagsInput, ...request.Option) (*sqs.ListQueueTagsOutput, error)
 	listQueueTagsWithContextMutex       sync.RWMutex
 	listQueueTagsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueueTagsInput
 		arg3 []request.Option
 	}
@@ -595,10 +595,10 @@ type FakeSQSClient struct {
 	listQueuesPagesReturnsOnCall map[int]struct {
 		result1 error
 	}
-	ListQueuesPagesWithContextStub        func(context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error
+	ListQueuesPagesWithContextStub        func(aws.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error
 	listQueuesPagesWithContextMutex       sync.RWMutex
 	listQueuesPagesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueuesInput
 		arg3 func(*sqs.ListQueuesOutput, bool) bool
 		arg4 []request.Option
@@ -622,10 +622,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ListQueuesOutput
 	}
-	ListQueuesWithContextStub        func(context.Context, *sqs.ListQueuesInput, ...request.Option) (*sqs.ListQueuesOutput, error)
+	ListQueuesWithContextStub        func(aws.Context, *sqs.ListQueuesInput, ...request.Option) (*sqs.ListQueuesOutput, error)
 	listQueuesWithContextMutex       sync.RWMutex
 	listQueuesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueuesInput
 		arg3 []request.Option
 	}
@@ -663,10 +663,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.PurgeQueueOutput
 	}
-	PurgeQueueWithContextStub        func(context.Context, *sqs.PurgeQueueInput, ...request.Option) (*sqs.PurgeQueueOutput, error)
+	PurgeQueueWithContextStub        func(aws.Context, *sqs.PurgeQueueInput, ...request.Option) (*sqs.PurgeQueueOutput, error)
 	purgeQueueWithContextMutex       sync.RWMutex
 	purgeQueueWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.PurgeQueueInput
 		arg3 []request.Option
 	}
@@ -704,10 +704,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.ReceiveMessageOutput
 	}
-	ReceiveMessageWithContextStub        func(context.Context, *sqs.ReceiveMessageInput, ...request.Option) (*sqs.ReceiveMessageOutput, error)
+	ReceiveMessageWithContextStub        func(aws.Context, *sqs.ReceiveMessageInput, ...request.Option) (*sqs.ReceiveMessageOutput, error)
 	receiveMessageWithContextMutex       sync.RWMutex
 	receiveMessageWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ReceiveMessageInput
 		arg3 []request.Option
 	}
@@ -745,10 +745,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.RemovePermissionOutput
 	}
-	RemovePermissionWithContextStub        func(context.Context, *sqs.RemovePermissionInput, ...request.Option) (*sqs.RemovePermissionOutput, error)
+	RemovePermissionWithContextStub        func(aws.Context, *sqs.RemovePermissionInput, ...request.Option) (*sqs.RemovePermissionOutput, error)
 	removePermissionWithContextMutex       sync.RWMutex
 	removePermissionWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.RemovePermissionInput
 		arg3 []request.Option
 	}
@@ -799,10 +799,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.SendMessageBatchOutput
 	}
-	SendMessageBatchWithContextStub        func(context.Context, *sqs.SendMessageBatchInput, ...request.Option) (*sqs.SendMessageBatchOutput, error)
+	SendMessageBatchWithContextStub        func(aws.Context, *sqs.SendMessageBatchInput, ...request.Option) (*sqs.SendMessageBatchOutput, error)
 	sendMessageBatchWithContextMutex       sync.RWMutex
 	sendMessageBatchWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SendMessageBatchInput
 		arg3 []request.Option
 	}
@@ -827,10 +827,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.SendMessageOutput
 	}
-	SendMessageWithContextStub        func(context.Context, *sqs.SendMessageInput, ...request.Option) (*sqs.SendMessageOutput, error)
+	SendMessageWithContextStub        func(aws.Context, *sqs.SendMessageInput, ...request.Option) (*sqs.SendMessageOutput, error)
 	sendMessageWithContextMutex       sync.RWMutex
 	sendMessageWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SendMessageInput
 		arg3 []request.Option
 	}
@@ -868,10 +868,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.SetQueueAttributesOutput
 	}
-	SetQueueAttributesWithContextStub        func(context.Context, *sqs.SetQueueAttributesInput, ...request.Option) (*sqs.SetQueueAttributesOutput, error)
+	SetQueueAttributesWithContextStub        func(aws.Context, *sqs.SetQueueAttributesInput, ...request.Option) (*sqs.SetQueueAttributesOutput, error)
 	setQueueAttributesWithContextMutex       sync.RWMutex
 	setQueueAttributesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SetQueueAttributesInput
 		arg3 []request.Option
 	}
@@ -909,10 +909,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.StartMessageMoveTaskOutput
 	}
-	StartMessageMoveTaskWithContextStub        func(context.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)
+	StartMessageMoveTaskWithContextStub        func(aws.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)
 	startMessageMoveTaskWithContextMutex       sync.RWMutex
 	startMessageMoveTaskWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.StartMessageMoveTaskInput
 		arg3 []request.Option
 	}
@@ -950,10 +950,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.TagQueueOutput
 	}
-	TagQueueWithContextStub        func(context.Context, *sqs.TagQueueInput, ...request.Option) (*sqs.TagQueueOutput, error)
+	TagQueueWithContextStub        func(aws.Context, *sqs.TagQueueInput, ...request.Option) (*sqs.TagQueueOutput, error)
 	tagQueueWithContextMutex       sync.RWMutex
 	tagQueueWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.TagQueueInput
 		arg3 []request.Option
 	}
@@ -991,10 +991,10 @@ type FakeSQSClient struct {
 		result1 *request.Request
 		result2 *sqs.UntagQueueOutput
 	}
-	UntagQueueWithContextStub        func(context.Context, *sqs.UntagQueueInput, ...request.Option) (*sqs.UntagQueueOutput, error)
+	UntagQueueWithContextStub        func(aws.Context, *sqs.UntagQueueInput, ...request.Option) (*sqs.UntagQueueOutput, error)
 	untagQueueWithContextMutex       sync.RWMutex
 	untagQueueWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.UntagQueueInput
 		arg3 []request.Option
 	}
@@ -1138,11 +1138,11 @@ func (fake *FakeSQSClient) AddPermissionRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) AddPermissionWithContext(arg1 context.Context, arg2 *sqs.AddPermissionInput, arg3 ...request.Option) (*sqs.AddPermissionOutput, error) {
+func (fake *FakeSQSClient) AddPermissionWithContext(arg1 aws.Context, arg2 *sqs.AddPermissionInput, arg3 ...request.Option) (*sqs.AddPermissionOutput, error) {
 	fake.addPermissionWithContextMutex.Lock()
 	ret, specificReturn := fake.addPermissionWithContextReturnsOnCall[len(fake.addPermissionWithContextArgsForCall)]
 	fake.addPermissionWithContextArgsForCall = append(fake.addPermissionWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.AddPermissionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1165,13 +1165,13 @@ func (fake *FakeSQSClient) AddPermissionWithContextCallCount() int {
 	return len(fake.addPermissionWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) AddPermissionWithContextCalls(stub func(context.Context, *sqs.AddPermissionInput, ...request.Option) (*sqs.AddPermissionOutput, error)) {
+func (fake *FakeSQSClient) AddPermissionWithContextCalls(stub func(aws.Context, *sqs.AddPermissionInput, ...request.Option) (*sqs.AddPermissionOutput, error)) {
 	fake.addPermissionWithContextMutex.Lock()
 	defer fake.addPermissionWithContextMutex.Unlock()
 	fake.AddPermissionWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) AddPermissionWithContextArgsForCall(i int) (context.Context, *sqs.AddPermissionInput, []request.Option) {
+func (fake *FakeSQSClient) AddPermissionWithContextArgsForCall(i int) (aws.Context, *sqs.AddPermissionInput, []request.Option) {
 	fake.addPermissionWithContextMutex.RLock()
 	defer fake.addPermissionWithContextMutex.RUnlock()
 	argsForCall := fake.addPermissionWithContextArgsForCall[i]
@@ -1332,11 +1332,11 @@ func (fake *FakeSQSClient) CancelMessageMoveTaskRequestReturnsOnCall(i int, resu
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) CancelMessageMoveTaskWithContext(arg1 context.Context, arg2 *sqs.CancelMessageMoveTaskInput, arg3 ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error) {
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContext(arg1 aws.Context, arg2 *sqs.CancelMessageMoveTaskInput, arg3 ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error) {
 	fake.cancelMessageMoveTaskWithContextMutex.Lock()
 	ret, specificReturn := fake.cancelMessageMoveTaskWithContextReturnsOnCall[len(fake.cancelMessageMoveTaskWithContextArgsForCall)]
 	fake.cancelMessageMoveTaskWithContextArgsForCall = append(fake.cancelMessageMoveTaskWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.CancelMessageMoveTaskInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1359,13 +1359,13 @@ func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextCallCount() int {
 	return len(fake.cancelMessageMoveTaskWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextCalls(stub func(context.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)) {
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextCalls(stub func(aws.Context, *sqs.CancelMessageMoveTaskInput, ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)) {
 	fake.cancelMessageMoveTaskWithContextMutex.Lock()
 	defer fake.cancelMessageMoveTaskWithContextMutex.Unlock()
 	fake.CancelMessageMoveTaskWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextArgsForCall(i int) (context.Context, *sqs.CancelMessageMoveTaskInput, []request.Option) {
+func (fake *FakeSQSClient) CancelMessageMoveTaskWithContextArgsForCall(i int) (aws.Context, *sqs.CancelMessageMoveTaskInput, []request.Option) {
 	fake.cancelMessageMoveTaskWithContextMutex.RLock()
 	defer fake.cancelMessageMoveTaskWithContextMutex.RUnlock()
 	argsForCall := fake.cancelMessageMoveTaskWithContextArgsForCall[i]
@@ -1590,11 +1590,11 @@ func (fake *FakeSQSClient) ChangeMessageVisibilityBatchRequestReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContext(arg1 context.Context, arg2 *sqs.ChangeMessageVisibilityBatchInput, arg3 ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContext(arg1 aws.Context, arg2 *sqs.ChangeMessageVisibilityBatchInput, arg3 ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error) {
 	fake.changeMessageVisibilityBatchWithContextMutex.Lock()
 	ret, specificReturn := fake.changeMessageVisibilityBatchWithContextReturnsOnCall[len(fake.changeMessageVisibilityBatchWithContextArgsForCall)]
 	fake.changeMessageVisibilityBatchWithContextArgsForCall = append(fake.changeMessageVisibilityBatchWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ChangeMessageVisibilityBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1617,13 +1617,13 @@ func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContextCallCount() in
 	return len(fake.changeMessageVisibilityBatchWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContextCalls(stub func(context.Context, *sqs.ChangeMessageVisibilityBatchInput, ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error)) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContextCalls(stub func(aws.Context, *sqs.ChangeMessageVisibilityBatchInput, ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error)) {
 	fake.changeMessageVisibilityBatchWithContextMutex.Lock()
 	defer fake.changeMessageVisibilityBatchWithContextMutex.Unlock()
 	fake.ChangeMessageVisibilityBatchWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContextArgsForCall(i int) (context.Context, *sqs.ChangeMessageVisibilityBatchInput, []request.Option) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityBatchWithContextArgsForCall(i int) (aws.Context, *sqs.ChangeMessageVisibilityBatchInput, []request.Option) {
 	fake.changeMessageVisibilityBatchWithContextMutex.RLock()
 	defer fake.changeMessageVisibilityBatchWithContextMutex.RUnlock()
 	argsForCall := fake.changeMessageVisibilityBatchWithContextArgsForCall[i]
@@ -1720,11 +1720,11 @@ func (fake *FakeSQSClient) ChangeMessageVisibilityRequestReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityWithContext(arg1 context.Context, arg2 *sqs.ChangeMessageVisibilityInput, arg3 ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityWithContext(arg1 aws.Context, arg2 *sqs.ChangeMessageVisibilityInput, arg3 ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error) {
 	fake.changeMessageVisibilityWithContextMutex.Lock()
 	ret, specificReturn := fake.changeMessageVisibilityWithContextReturnsOnCall[len(fake.changeMessageVisibilityWithContextArgsForCall)]
 	fake.changeMessageVisibilityWithContextArgsForCall = append(fake.changeMessageVisibilityWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ChangeMessageVisibilityInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1747,13 +1747,13 @@ func (fake *FakeSQSClient) ChangeMessageVisibilityWithContextCallCount() int {
 	return len(fake.changeMessageVisibilityWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityWithContextCalls(stub func(context.Context, *sqs.ChangeMessageVisibilityInput, ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error)) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityWithContextCalls(stub func(aws.Context, *sqs.ChangeMessageVisibilityInput, ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error)) {
 	fake.changeMessageVisibilityWithContextMutex.Lock()
 	defer fake.changeMessageVisibilityWithContextMutex.Unlock()
 	fake.ChangeMessageVisibilityWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ChangeMessageVisibilityWithContextArgsForCall(i int) (context.Context, *sqs.ChangeMessageVisibilityInput, []request.Option) {
+func (fake *FakeSQSClient) ChangeMessageVisibilityWithContextArgsForCall(i int) (aws.Context, *sqs.ChangeMessageVisibilityInput, []request.Option) {
 	fake.changeMessageVisibilityWithContextMutex.RLock()
 	defer fake.changeMessageVisibilityWithContextMutex.RUnlock()
 	argsForCall := fake.changeMessageVisibilityWithContextArgsForCall[i]
@@ -1914,11 +1914,11 @@ func (fake *FakeSQSClient) CreateQueueRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) CreateQueueWithContext(arg1 context.Context, arg2 *sqs.CreateQueueInput, arg3 ...request.Option) (*sqs.CreateQueueOutput, error) {
+func (fake *FakeSQSClient) CreateQueueWithContext(arg1 aws.Context, arg2 *sqs.CreateQueueInput, arg3 ...request.Option) (*sqs.CreateQueueOutput, error) {
 	fake.createQueueWithContextMutex.Lock()
 	ret, specificReturn := fake.createQueueWithContextReturnsOnCall[len(fake.createQueueWithContextArgsForCall)]
 	fake.createQueueWithContextArgsForCall = append(fake.createQueueWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.CreateQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1941,13 +1941,13 @@ func (fake *FakeSQSClient) CreateQueueWithContextCallCount() int {
 	return len(fake.createQueueWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) CreateQueueWithContextCalls(stub func(context.Context, *sqs.CreateQueueInput, ...request.Option) (*sqs.CreateQueueOutput, error)) {
+func (fake *FakeSQSClient) CreateQueueWithContextCalls(stub func(aws.Context, *sqs.CreateQueueInput, ...request.Option) (*sqs.CreateQueueOutput, error)) {
 	fake.createQueueWithContextMutex.Lock()
 	defer fake.createQueueWithContextMutex.Unlock()
 	fake.CreateQueueWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) CreateQueueWithContextArgsForCall(i int) (context.Context, *sqs.CreateQueueInput, []request.Option) {
+func (fake *FakeSQSClient) CreateQueueWithContextArgsForCall(i int) (aws.Context, *sqs.CreateQueueInput, []request.Option) {
 	fake.createQueueWithContextMutex.RLock()
 	defer fake.createQueueWithContextMutex.RUnlock()
 	argsForCall := fake.createQueueWithContextArgsForCall[i]
@@ -2172,11 +2172,11 @@ func (fake *FakeSQSClient) DeleteMessageBatchRequestReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) DeleteMessageBatchWithContext(arg1 context.Context, arg2 *sqs.DeleteMessageBatchInput, arg3 ...request.Option) (*sqs.DeleteMessageBatchOutput, error) {
+func (fake *FakeSQSClient) DeleteMessageBatchWithContext(arg1 aws.Context, arg2 *sqs.DeleteMessageBatchInput, arg3 ...request.Option) (*sqs.DeleteMessageBatchOutput, error) {
 	fake.deleteMessageBatchWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteMessageBatchWithContextReturnsOnCall[len(fake.deleteMessageBatchWithContextArgsForCall)]
 	fake.deleteMessageBatchWithContextArgsForCall = append(fake.deleteMessageBatchWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteMessageBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2199,13 +2199,13 @@ func (fake *FakeSQSClient) DeleteMessageBatchWithContextCallCount() int {
 	return len(fake.deleteMessageBatchWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) DeleteMessageBatchWithContextCalls(stub func(context.Context, *sqs.DeleteMessageBatchInput, ...request.Option) (*sqs.DeleteMessageBatchOutput, error)) {
+func (fake *FakeSQSClient) DeleteMessageBatchWithContextCalls(stub func(aws.Context, *sqs.DeleteMessageBatchInput, ...request.Option) (*sqs.DeleteMessageBatchOutput, error)) {
 	fake.deleteMessageBatchWithContextMutex.Lock()
 	defer fake.deleteMessageBatchWithContextMutex.Unlock()
 	fake.DeleteMessageBatchWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) DeleteMessageBatchWithContextArgsForCall(i int) (context.Context, *sqs.DeleteMessageBatchInput, []request.Option) {
+func (fake *FakeSQSClient) DeleteMessageBatchWithContextArgsForCall(i int) (aws.Context, *sqs.DeleteMessageBatchInput, []request.Option) {
 	fake.deleteMessageBatchWithContextMutex.RLock()
 	defer fake.deleteMessageBatchWithContextMutex.RUnlock()
 	argsForCall := fake.deleteMessageBatchWithContextArgsForCall[i]
@@ -2302,11 +2302,11 @@ func (fake *FakeSQSClient) DeleteMessageRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) DeleteMessageWithContext(arg1 context.Context, arg2 *sqs.DeleteMessageInput, arg3 ...request.Option) (*sqs.DeleteMessageOutput, error) {
+func (fake *FakeSQSClient) DeleteMessageWithContext(arg1 aws.Context, arg2 *sqs.DeleteMessageInput, arg3 ...request.Option) (*sqs.DeleteMessageOutput, error) {
 	fake.deleteMessageWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteMessageWithContextReturnsOnCall[len(fake.deleteMessageWithContextArgsForCall)]
 	fake.deleteMessageWithContextArgsForCall = append(fake.deleteMessageWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2329,13 +2329,13 @@ func (fake *FakeSQSClient) DeleteMessageWithContextCallCount() int {
 	return len(fake.deleteMessageWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) DeleteMessageWithContextCalls(stub func(context.Context, *sqs.DeleteMessageInput, ...request.Option) (*sqs.DeleteMessageOutput, error)) {
+func (fake *FakeSQSClient) DeleteMessageWithContextCalls(stub func(aws.Context, *sqs.DeleteMessageInput, ...request.Option) (*sqs.DeleteMessageOutput, error)) {
 	fake.deleteMessageWithContextMutex.Lock()
 	defer fake.deleteMessageWithContextMutex.Unlock()
 	fake.DeleteMessageWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) DeleteMessageWithContextArgsForCall(i int) (context.Context, *sqs.DeleteMessageInput, []request.Option) {
+func (fake *FakeSQSClient) DeleteMessageWithContextArgsForCall(i int) (aws.Context, *sqs.DeleteMessageInput, []request.Option) {
 	fake.deleteMessageWithContextMutex.RLock()
 	defer fake.deleteMessageWithContextMutex.RUnlock()
 	argsForCall := fake.deleteMessageWithContextArgsForCall[i]
@@ -2496,11 +2496,11 @@ func (fake *FakeSQSClient) DeleteQueueRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) DeleteQueueWithContext(arg1 context.Context, arg2 *sqs.DeleteQueueInput, arg3 ...request.Option) (*sqs.DeleteQueueOutput, error) {
+func (fake *FakeSQSClient) DeleteQueueWithContext(arg1 aws.Context, arg2 *sqs.DeleteQueueInput, arg3 ...request.Option) (*sqs.DeleteQueueOutput, error) {
 	fake.deleteQueueWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteQueueWithContextReturnsOnCall[len(fake.deleteQueueWithContextArgsForCall)]
 	fake.deleteQueueWithContextArgsForCall = append(fake.deleteQueueWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.DeleteQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2523,13 +2523,13 @@ func (fake *FakeSQSClient) DeleteQueueWithContextCallCount() int {
 	return len(fake.deleteQueueWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) DeleteQueueWithContextCalls(stub func(context.Context, *sqs.DeleteQueueInput, ...request.Option) (*sqs.DeleteQueueOutput, error)) {
+func (fake *FakeSQSClient) DeleteQueueWithContextCalls(stub func(aws.Context, *sqs.DeleteQueueInput, ...request.Option) (*sqs.DeleteQueueOutput, error)) {
 	fake.deleteQueueWithContextMutex.Lock()
 	defer fake.deleteQueueWithContextMutex.Unlock()
 	fake.DeleteQueueWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) DeleteQueueWithContextArgsForCall(i int) (context.Context, *sqs.DeleteQueueInput, []request.Option) {
+func (fake *FakeSQSClient) DeleteQueueWithContextArgsForCall(i int) (aws.Context, *sqs.DeleteQueueInput, []request.Option) {
 	fake.deleteQueueWithContextMutex.RLock()
 	defer fake.deleteQueueWithContextMutex.RUnlock()
 	argsForCall := fake.deleteQueueWithContextArgsForCall[i]
@@ -2690,11 +2690,11 @@ func (fake *FakeSQSClient) GetQueueAttributesRequestReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) GetQueueAttributesWithContext(arg1 context.Context, arg2 *sqs.GetQueueAttributesInput, arg3 ...request.Option) (*sqs.GetQueueAttributesOutput, error) {
+func (fake *FakeSQSClient) GetQueueAttributesWithContext(arg1 aws.Context, arg2 *sqs.GetQueueAttributesInput, arg3 ...request.Option) (*sqs.GetQueueAttributesOutput, error) {
 	fake.getQueueAttributesWithContextMutex.Lock()
 	ret, specificReturn := fake.getQueueAttributesWithContextReturnsOnCall[len(fake.getQueueAttributesWithContextArgsForCall)]
 	fake.getQueueAttributesWithContextArgsForCall = append(fake.getQueueAttributesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.GetQueueAttributesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2717,13 +2717,13 @@ func (fake *FakeSQSClient) GetQueueAttributesWithContextCallCount() int {
 	return len(fake.getQueueAttributesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) GetQueueAttributesWithContextCalls(stub func(context.Context, *sqs.GetQueueAttributesInput, ...request.Option) (*sqs.GetQueueAttributesOutput, error)) {
+func (fake *FakeSQSClient) GetQueueAttributesWithContextCalls(stub func(aws.Context, *sqs.GetQueueAttributesInput, ...request.Option) (*sqs.GetQueueAttributesOutput, error)) {
 	fake.getQueueAttributesWithContextMutex.Lock()
 	defer fake.getQueueAttributesWithContextMutex.Unlock()
 	fake.GetQueueAttributesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) GetQueueAttributesWithContextArgsForCall(i int) (context.Context, *sqs.GetQueueAttributesInput, []request.Option) {
+func (fake *FakeSQSClient) GetQueueAttributesWithContextArgsForCall(i int) (aws.Context, *sqs.GetQueueAttributesInput, []request.Option) {
 	fake.getQueueAttributesWithContextMutex.RLock()
 	defer fake.getQueueAttributesWithContextMutex.RUnlock()
 	argsForCall := fake.getQueueAttributesWithContextArgsForCall[i]
@@ -2884,11 +2884,11 @@ func (fake *FakeSQSClient) GetQueueUrlRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) GetQueueUrlWithContext(arg1 context.Context, arg2 *sqs.GetQueueUrlInput, arg3 ...request.Option) (*sqs.GetQueueUrlOutput, error) {
+func (fake *FakeSQSClient) GetQueueUrlWithContext(arg1 aws.Context, arg2 *sqs.GetQueueUrlInput, arg3 ...request.Option) (*sqs.GetQueueUrlOutput, error) {
 	fake.getQueueUrlWithContextMutex.Lock()
 	ret, specificReturn := fake.getQueueUrlWithContextReturnsOnCall[len(fake.getQueueUrlWithContextArgsForCall)]
 	fake.getQueueUrlWithContextArgsForCall = append(fake.getQueueUrlWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.GetQueueUrlInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2911,13 +2911,13 @@ func (fake *FakeSQSClient) GetQueueUrlWithContextCallCount() int {
 	return len(fake.getQueueUrlWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) GetQueueUrlWithContextCalls(stub func(context.Context, *sqs.GetQueueUrlInput, ...request.Option) (*sqs.GetQueueUrlOutput, error)) {
+func (fake *FakeSQSClient) GetQueueUrlWithContextCalls(stub func(aws.Context, *sqs.GetQueueUrlInput, ...request.Option) (*sqs.GetQueueUrlOutput, error)) {
 	fake.getQueueUrlWithContextMutex.Lock()
 	defer fake.getQueueUrlWithContextMutex.Unlock()
 	fake.GetQueueUrlWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) GetQueueUrlWithContextArgsForCall(i int) (context.Context, *sqs.GetQueueUrlInput, []request.Option) {
+func (fake *FakeSQSClient) GetQueueUrlWithContextArgsForCall(i int) (aws.Context, *sqs.GetQueueUrlInput, []request.Option) {
 	fake.getQueueUrlWithContextMutex.RLock()
 	defer fake.getQueueUrlWithContextMutex.RUnlock()
 	argsForCall := fake.getQueueUrlWithContextArgsForCall[i]
@@ -3076,11 +3076,11 @@ func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesReturnsOnCall(i int, r
 	}{result1}
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContext(arg1 context.Context, arg2 *sqs.ListDeadLetterSourceQueuesInput, arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContext(arg1 aws.Context, arg2 *sqs.ListDeadLetterSourceQueuesInput, arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listDeadLetterSourceQueuesPagesWithContextReturnsOnCall[len(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall)]
 	fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall = append(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListDeadLetterSourceQueuesInput
 		arg3 func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool
 		arg4 []request.Option
@@ -3104,13 +3104,13 @@ func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContextCallCount()
 	return len(fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContextCalls(stub func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContextCalls(stub func(aws.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, ...request.Option) error) {
 	fake.listDeadLetterSourceQueuesPagesWithContextMutex.Lock()
 	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.Unlock()
 	fake.ListDeadLetterSourceQueuesPagesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContextArgsForCall(i int) (context.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, []request.Option) {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesPagesWithContextArgsForCall(i int) (aws.Context, *sqs.ListDeadLetterSourceQueuesInput, func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, []request.Option) {
 	fake.listDeadLetterSourceQueuesPagesWithContextMutex.RLock()
 	defer fake.listDeadLetterSourceQueuesPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listDeadLetterSourceQueuesPagesWithContextArgsForCall[i]
@@ -3204,11 +3204,11 @@ func (fake *FakeSQSClient) ListDeadLetterSourceQueuesRequestReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContext(arg1 context.Context, arg2 *sqs.ListDeadLetterSourceQueuesInput, arg3 ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error) {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContext(arg1 aws.Context, arg2 *sqs.ListDeadLetterSourceQueuesInput, arg3 ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error) {
 	fake.listDeadLetterSourceQueuesWithContextMutex.Lock()
 	ret, specificReturn := fake.listDeadLetterSourceQueuesWithContextReturnsOnCall[len(fake.listDeadLetterSourceQueuesWithContextArgsForCall)]
 	fake.listDeadLetterSourceQueuesWithContextArgsForCall = append(fake.listDeadLetterSourceQueuesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListDeadLetterSourceQueuesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3231,13 +3231,13 @@ func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextCallCount() int 
 	return len(fake.listDeadLetterSourceQueuesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextCalls(stub func(context.Context, *sqs.ListDeadLetterSourceQueuesInput, ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)) {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextCalls(stub func(aws.Context, *sqs.ListDeadLetterSourceQueuesInput, ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)) {
 	fake.listDeadLetterSourceQueuesWithContextMutex.Lock()
 	defer fake.listDeadLetterSourceQueuesWithContextMutex.Unlock()
 	fake.ListDeadLetterSourceQueuesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextArgsForCall(i int) (context.Context, *sqs.ListDeadLetterSourceQueuesInput, []request.Option) {
+func (fake *FakeSQSClient) ListDeadLetterSourceQueuesWithContextArgsForCall(i int) (aws.Context, *sqs.ListDeadLetterSourceQueuesInput, []request.Option) {
 	fake.listDeadLetterSourceQueuesWithContextMutex.RLock()
 	defer fake.listDeadLetterSourceQueuesWithContextMutex.RUnlock()
 	argsForCall := fake.listDeadLetterSourceQueuesWithContextArgsForCall[i]
@@ -3398,11 +3398,11 @@ func (fake *FakeSQSClient) ListMessageMoveTasksRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ListMessageMoveTasksWithContext(arg1 context.Context, arg2 *sqs.ListMessageMoveTasksInput, arg3 ...request.Option) (*sqs.ListMessageMoveTasksOutput, error) {
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContext(arg1 aws.Context, arg2 *sqs.ListMessageMoveTasksInput, arg3 ...request.Option) (*sqs.ListMessageMoveTasksOutput, error) {
 	fake.listMessageMoveTasksWithContextMutex.Lock()
 	ret, specificReturn := fake.listMessageMoveTasksWithContextReturnsOnCall[len(fake.listMessageMoveTasksWithContextArgsForCall)]
 	fake.listMessageMoveTasksWithContextArgsForCall = append(fake.listMessageMoveTasksWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListMessageMoveTasksInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3425,13 +3425,13 @@ func (fake *FakeSQSClient) ListMessageMoveTasksWithContextCallCount() int {
 	return len(fake.listMessageMoveTasksWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListMessageMoveTasksWithContextCalls(stub func(context.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)) {
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextCalls(stub func(aws.Context, *sqs.ListMessageMoveTasksInput, ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)) {
 	fake.listMessageMoveTasksWithContextMutex.Lock()
 	defer fake.listMessageMoveTasksWithContextMutex.Unlock()
 	fake.ListMessageMoveTasksWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListMessageMoveTasksWithContextArgsForCall(i int) (context.Context, *sqs.ListMessageMoveTasksInput, []request.Option) {
+func (fake *FakeSQSClient) ListMessageMoveTasksWithContextArgsForCall(i int) (aws.Context, *sqs.ListMessageMoveTasksInput, []request.Option) {
 	fake.listMessageMoveTasksWithContextMutex.RLock()
 	defer fake.listMessageMoveTasksWithContextMutex.RUnlock()
 	argsForCall := fake.listMessageMoveTasksWithContextArgsForCall[i]
@@ -3592,11 +3592,11 @@ func (fake *FakeSQSClient) ListQueueTagsRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ListQueueTagsWithContext(arg1 context.Context, arg2 *sqs.ListQueueTagsInput, arg3 ...request.Option) (*sqs.ListQueueTagsOutput, error) {
+func (fake *FakeSQSClient) ListQueueTagsWithContext(arg1 aws.Context, arg2 *sqs.ListQueueTagsInput, arg3 ...request.Option) (*sqs.ListQueueTagsOutput, error) {
 	fake.listQueueTagsWithContextMutex.Lock()
 	ret, specificReturn := fake.listQueueTagsWithContextReturnsOnCall[len(fake.listQueueTagsWithContextArgsForCall)]
 	fake.listQueueTagsWithContextArgsForCall = append(fake.listQueueTagsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueueTagsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3619,13 +3619,13 @@ func (fake *FakeSQSClient) ListQueueTagsWithContextCallCount() int {
 	return len(fake.listQueueTagsWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListQueueTagsWithContextCalls(stub func(context.Context, *sqs.ListQueueTagsInput, ...request.Option) (*sqs.ListQueueTagsOutput, error)) {
+func (fake *FakeSQSClient) ListQueueTagsWithContextCalls(stub func(aws.Context, *sqs.ListQueueTagsInput, ...request.Option) (*sqs.ListQueueTagsOutput, error)) {
 	fake.listQueueTagsWithContextMutex.Lock()
 	defer fake.listQueueTagsWithContextMutex.Unlock()
 	fake.ListQueueTagsWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListQueueTagsWithContextArgsForCall(i int) (context.Context, *sqs.ListQueueTagsInput, []request.Option) {
+func (fake *FakeSQSClient) ListQueueTagsWithContextArgsForCall(i int) (aws.Context, *sqs.ListQueueTagsInput, []request.Option) {
 	fake.listQueueTagsWithContextMutex.RLock()
 	defer fake.listQueueTagsWithContextMutex.RUnlock()
 	argsForCall := fake.listQueueTagsWithContextArgsForCall[i]
@@ -3784,11 +3784,11 @@ func (fake *FakeSQSClient) ListQueuesPagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeSQSClient) ListQueuesPagesWithContext(arg1 context.Context, arg2 *sqs.ListQueuesInput, arg3 func(*sqs.ListQueuesOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeSQSClient) ListQueuesPagesWithContext(arg1 aws.Context, arg2 *sqs.ListQueuesInput, arg3 func(*sqs.ListQueuesOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listQueuesPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listQueuesPagesWithContextReturnsOnCall[len(fake.listQueuesPagesWithContextArgsForCall)]
 	fake.listQueuesPagesWithContextArgsForCall = append(fake.listQueuesPagesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueuesInput
 		arg3 func(*sqs.ListQueuesOutput, bool) bool
 		arg4 []request.Option
@@ -3812,13 +3812,13 @@ func (fake *FakeSQSClient) ListQueuesPagesWithContextCallCount() int {
 	return len(fake.listQueuesPagesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListQueuesPagesWithContextCalls(stub func(context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeSQSClient) ListQueuesPagesWithContextCalls(stub func(aws.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, ...request.Option) error) {
 	fake.listQueuesPagesWithContextMutex.Lock()
 	defer fake.listQueuesPagesWithContextMutex.Unlock()
 	fake.ListQueuesPagesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListQueuesPagesWithContextArgsForCall(i int) (context.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, []request.Option) {
+func (fake *FakeSQSClient) ListQueuesPagesWithContextArgsForCall(i int) (aws.Context, *sqs.ListQueuesInput, func(*sqs.ListQueuesOutput, bool) bool, []request.Option) {
 	fake.listQueuesPagesWithContextMutex.RLock()
 	defer fake.listQueuesPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listQueuesPagesWithContextArgsForCall[i]
@@ -3912,11 +3912,11 @@ func (fake *FakeSQSClient) ListQueuesRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ListQueuesWithContext(arg1 context.Context, arg2 *sqs.ListQueuesInput, arg3 ...request.Option) (*sqs.ListQueuesOutput, error) {
+func (fake *FakeSQSClient) ListQueuesWithContext(arg1 aws.Context, arg2 *sqs.ListQueuesInput, arg3 ...request.Option) (*sqs.ListQueuesOutput, error) {
 	fake.listQueuesWithContextMutex.Lock()
 	ret, specificReturn := fake.listQueuesWithContextReturnsOnCall[len(fake.listQueuesWithContextArgsForCall)]
 	fake.listQueuesWithContextArgsForCall = append(fake.listQueuesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ListQueuesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3939,13 +3939,13 @@ func (fake *FakeSQSClient) ListQueuesWithContextCallCount() int {
 	return len(fake.listQueuesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ListQueuesWithContextCalls(stub func(context.Context, *sqs.ListQueuesInput, ...request.Option) (*sqs.ListQueuesOutput, error)) {
+func (fake *FakeSQSClient) ListQueuesWithContextCalls(stub func(aws.Context, *sqs.ListQueuesInput, ...request.Option) (*sqs.ListQueuesOutput, error)) {
 	fake.listQueuesWithContextMutex.Lock()
 	defer fake.listQueuesWithContextMutex.Unlock()
 	fake.ListQueuesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ListQueuesWithContextArgsForCall(i int) (context.Context, *sqs.ListQueuesInput, []request.Option) {
+func (fake *FakeSQSClient) ListQueuesWithContextArgsForCall(i int) (aws.Context, *sqs.ListQueuesInput, []request.Option) {
 	fake.listQueuesWithContextMutex.RLock()
 	defer fake.listQueuesWithContextMutex.RUnlock()
 	argsForCall := fake.listQueuesWithContextArgsForCall[i]
@@ -4106,11 +4106,11 @@ func (fake *FakeSQSClient) PurgeQueueRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) PurgeQueueWithContext(arg1 context.Context, arg2 *sqs.PurgeQueueInput, arg3 ...request.Option) (*sqs.PurgeQueueOutput, error) {
+func (fake *FakeSQSClient) PurgeQueueWithContext(arg1 aws.Context, arg2 *sqs.PurgeQueueInput, arg3 ...request.Option) (*sqs.PurgeQueueOutput, error) {
 	fake.purgeQueueWithContextMutex.Lock()
 	ret, specificReturn := fake.purgeQueueWithContextReturnsOnCall[len(fake.purgeQueueWithContextArgsForCall)]
 	fake.purgeQueueWithContextArgsForCall = append(fake.purgeQueueWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.PurgeQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4133,13 +4133,13 @@ func (fake *FakeSQSClient) PurgeQueueWithContextCallCount() int {
 	return len(fake.purgeQueueWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) PurgeQueueWithContextCalls(stub func(context.Context, *sqs.PurgeQueueInput, ...request.Option) (*sqs.PurgeQueueOutput, error)) {
+func (fake *FakeSQSClient) PurgeQueueWithContextCalls(stub func(aws.Context, *sqs.PurgeQueueInput, ...request.Option) (*sqs.PurgeQueueOutput, error)) {
 	fake.purgeQueueWithContextMutex.Lock()
 	defer fake.purgeQueueWithContextMutex.Unlock()
 	fake.PurgeQueueWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) PurgeQueueWithContextArgsForCall(i int) (context.Context, *sqs.PurgeQueueInput, []request.Option) {
+func (fake *FakeSQSClient) PurgeQueueWithContextArgsForCall(i int) (aws.Context, *sqs.PurgeQueueInput, []request.Option) {
 	fake.purgeQueueWithContextMutex.RLock()
 	defer fake.purgeQueueWithContextMutex.RUnlock()
 	argsForCall := fake.purgeQueueWithContextArgsForCall[i]
@@ -4300,11 +4300,11 @@ func (fake *FakeSQSClient) ReceiveMessageRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) ReceiveMessageWithContext(arg1 context.Context, arg2 *sqs.ReceiveMessageInput, arg3 ...request.Option) (*sqs.ReceiveMessageOutput, error) {
+func (fake *FakeSQSClient) ReceiveMessageWithContext(arg1 aws.Context, arg2 *sqs.ReceiveMessageInput, arg3 ...request.Option) (*sqs.ReceiveMessageOutput, error) {
 	fake.receiveMessageWithContextMutex.Lock()
 	ret, specificReturn := fake.receiveMessageWithContextReturnsOnCall[len(fake.receiveMessageWithContextArgsForCall)]
 	fake.receiveMessageWithContextArgsForCall = append(fake.receiveMessageWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.ReceiveMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4327,13 +4327,13 @@ func (fake *FakeSQSClient) ReceiveMessageWithContextCallCount() int {
 	return len(fake.receiveMessageWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) ReceiveMessageWithContextCalls(stub func(context.Context, *sqs.ReceiveMessageInput, ...request.Option) (*sqs.ReceiveMessageOutput, error)) {
+func (fake *FakeSQSClient) ReceiveMessageWithContextCalls(stub func(aws.Context, *sqs.ReceiveMessageInput, ...request.Option) (*sqs.ReceiveMessageOutput, error)) {
 	fake.receiveMessageWithContextMutex.Lock()
 	defer fake.receiveMessageWithContextMutex.Unlock()
 	fake.ReceiveMessageWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) ReceiveMessageWithContextArgsForCall(i int) (context.Context, *sqs.ReceiveMessageInput, []request.Option) {
+func (fake *FakeSQSClient) ReceiveMessageWithContextArgsForCall(i int) (aws.Context, *sqs.ReceiveMessageInput, []request.Option) {
 	fake.receiveMessageWithContextMutex.RLock()
 	defer fake.receiveMessageWithContextMutex.RUnlock()
 	argsForCall := fake.receiveMessageWithContextArgsForCall[i]
@@ -4494,11 +4494,11 @@ func (fake *FakeSQSClient) RemovePermissionRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) RemovePermissionWithContext(arg1 context.Context, arg2 *sqs.RemovePermissionInput, arg3 ...request.Option) (*sqs.RemovePermissionOutput, error) {
+func (fake *FakeSQSClient) RemovePermissionWithContext(arg1 aws.Context, arg2 *sqs.RemovePermissionInput, arg3 ...request.Option) (*sqs.RemovePermissionOutput, error) {
 	fake.removePermissionWithContextMutex.Lock()
 	ret, specificReturn := fake.removePermissionWithContextReturnsOnCall[len(fake.removePermissionWithContextArgsForCall)]
 	fake.removePermissionWithContextArgsForCall = append(fake.removePermissionWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.RemovePermissionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4521,13 +4521,13 @@ func (fake *FakeSQSClient) RemovePermissionWithContextCallCount() int {
 	return len(fake.removePermissionWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) RemovePermissionWithContextCalls(stub func(context.Context, *sqs.RemovePermissionInput, ...request.Option) (*sqs.RemovePermissionOutput, error)) {
+func (fake *FakeSQSClient) RemovePermissionWithContextCalls(stub func(aws.Context, *sqs.RemovePermissionInput, ...request.Option) (*sqs.RemovePermissionOutput, error)) {
 	fake.removePermissionWithContextMutex.Lock()
 	defer fake.removePermissionWithContextMutex.Unlock()
 	fake.RemovePermissionWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) RemovePermissionWithContextArgsForCall(i int) (context.Context, *sqs.RemovePermissionInput, []request.Option) {
+func (fake *FakeSQSClient) RemovePermissionWithContextArgsForCall(i int) (aws.Context, *sqs.RemovePermissionInput, []request.Option) {
 	fake.removePermissionWithContextMutex.RLock()
 	defer fake.removePermissionWithContextMutex.RUnlock()
 	argsForCall := fake.removePermissionWithContextArgsForCall[i]
@@ -4752,11 +4752,11 @@ func (fake *FakeSQSClient) SendMessageBatchRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) SendMessageBatchWithContext(arg1 context.Context, arg2 *sqs.SendMessageBatchInput, arg3 ...request.Option) (*sqs.SendMessageBatchOutput, error) {
+func (fake *FakeSQSClient) SendMessageBatchWithContext(arg1 aws.Context, arg2 *sqs.SendMessageBatchInput, arg3 ...request.Option) (*sqs.SendMessageBatchOutput, error) {
 	fake.sendMessageBatchWithContextMutex.Lock()
 	ret, specificReturn := fake.sendMessageBatchWithContextReturnsOnCall[len(fake.sendMessageBatchWithContextArgsForCall)]
 	fake.sendMessageBatchWithContextArgsForCall = append(fake.sendMessageBatchWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SendMessageBatchInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4779,13 +4779,13 @@ func (fake *FakeSQSClient) SendMessageBatchWithContextCallCount() int {
 	return len(fake.sendMessageBatchWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) SendMessageBatchWithContextCalls(stub func(context.Context, *sqs.SendMessageBatchInput, ...request.Option) (*sqs.SendMessageBatchOutput, error)) {
+func (fake *FakeSQSClient) SendMessageBatchWithContextCalls(stub func(aws.Context, *sqs.SendMessageBatchInput, ...request.Option) (*sqs.SendMessageBatchOutput, error)) {
 	fake.sendMessageBatchWithContextMutex.Lock()
 	defer fake.sendMessageBatchWithContextMutex.Unlock()
 	fake.SendMessageBatchWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) SendMessageBatchWithContextArgsForCall(i int) (context.Context, *sqs.SendMessageBatchInput, []request.Option) {
+func (fake *FakeSQSClient) SendMessageBatchWithContextArgsForCall(i int) (aws.Context, *sqs.SendMessageBatchInput, []request.Option) {
 	fake.sendMessageBatchWithContextMutex.RLock()
 	defer fake.sendMessageBatchWithContextMutex.RUnlock()
 	argsForCall := fake.sendMessageBatchWithContextArgsForCall[i]
@@ -4882,11 +4882,11 @@ func (fake *FakeSQSClient) SendMessageRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) SendMessageWithContext(arg1 context.Context, arg2 *sqs.SendMessageInput, arg3 ...request.Option) (*sqs.SendMessageOutput, error) {
+func (fake *FakeSQSClient) SendMessageWithContext(arg1 aws.Context, arg2 *sqs.SendMessageInput, arg3 ...request.Option) (*sqs.SendMessageOutput, error) {
 	fake.sendMessageWithContextMutex.Lock()
 	ret, specificReturn := fake.sendMessageWithContextReturnsOnCall[len(fake.sendMessageWithContextArgsForCall)]
 	fake.sendMessageWithContextArgsForCall = append(fake.sendMessageWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SendMessageInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4909,13 +4909,13 @@ func (fake *FakeSQSClient) SendMessageWithContextCallCount() int {
 	return len(fake.sendMessageWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) SendMessageWithContextCalls(stub func(context.Context, *sqs.SendMessageInput, ...request.Option) (*sqs.SendMessageOutput, error)) {
+func (fake *FakeSQSClient) SendMessageWithContextCalls(stub func(aws.Context, *sqs.SendMessageInput, ...request.Option) (*sqs.SendMessageOutput, error)) {
 	fake.sendMessageWithContextMutex.Lock()
 	defer fake.sendMessageWithContextMutex.Unlock()
 	fake.SendMessageWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) SendMessageWithContextArgsForCall(i int) (context.Context, *sqs.SendMessageInput, []request.Option) {
+func (fake *FakeSQSClient) SendMessageWithContextArgsForCall(i int) (aws.Context, *sqs.SendMessageInput, []request.Option) {
 	fake.sendMessageWithContextMutex.RLock()
 	defer fake.sendMessageWithContextMutex.RUnlock()
 	argsForCall := fake.sendMessageWithContextArgsForCall[i]
@@ -5076,11 +5076,11 @@ func (fake *FakeSQSClient) SetQueueAttributesRequestReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) SetQueueAttributesWithContext(arg1 context.Context, arg2 *sqs.SetQueueAttributesInput, arg3 ...request.Option) (*sqs.SetQueueAttributesOutput, error) {
+func (fake *FakeSQSClient) SetQueueAttributesWithContext(arg1 aws.Context, arg2 *sqs.SetQueueAttributesInput, arg3 ...request.Option) (*sqs.SetQueueAttributesOutput, error) {
 	fake.setQueueAttributesWithContextMutex.Lock()
 	ret, specificReturn := fake.setQueueAttributesWithContextReturnsOnCall[len(fake.setQueueAttributesWithContextArgsForCall)]
 	fake.setQueueAttributesWithContextArgsForCall = append(fake.setQueueAttributesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.SetQueueAttributesInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5103,13 +5103,13 @@ func (fake *FakeSQSClient) SetQueueAttributesWithContextCallCount() int {
 	return len(fake.setQueueAttributesWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) SetQueueAttributesWithContextCalls(stub func(context.Context, *sqs.SetQueueAttributesInput, ...request.Option) (*sqs.SetQueueAttributesOutput, error)) {
+func (fake *FakeSQSClient) SetQueueAttributesWithContextCalls(stub func(aws.Context, *sqs.SetQueueAttributesInput, ...request.Option) (*sqs.SetQueueAttributesOutput, error)) {
 	fake.setQueueAttributesWithContextMutex.Lock()
 	defer fake.setQueueAttributesWithContextMutex.Unlock()
 	fake.SetQueueAttributesWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) SetQueueAttributesWithContextArgsForCall(i int) (context.Context, *sqs.SetQueueAttributesInput, []request.Option) {
+func (fake *FakeSQSClient) SetQueueAttributesWithContextArgsForCall(i int) (aws.Context, *sqs.SetQueueAttributesInput, []request.Option) {
 	fake.setQueueAttributesWithContextMutex.RLock()
 	defer fake.setQueueAttributesWithContextMutex.RUnlock()
 	argsForCall := fake.setQueueAttributesWithContextArgsForCall[i]
@@ -5270,11 +5270,11 @@ func (fake *FakeSQSClient) StartMessageMoveTaskRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) StartMessageMoveTaskWithContext(arg1 context.Context, arg2 *sqs.StartMessageMoveTaskInput, arg3 ...request.Option) (*sqs.StartMessageMoveTaskOutput, error) {
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContext(arg1 aws.Context, arg2 *sqs.StartMessageMoveTaskInput, arg3 ...request.Option) (*sqs.StartMessageMoveTaskOutput, error) {
 	fake.startMessageMoveTaskWithContextMutex.Lock()
 	ret, specificReturn := fake.startMessageMoveTaskWithContextReturnsOnCall[len(fake.startMessageMoveTaskWithContextArgsForCall)]
 	fake.startMessageMoveTaskWithContextArgsForCall = append(fake.startMessageMoveTaskWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.StartMessageMoveTaskInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5297,13 +5297,13 @@ func (fake *FakeSQSClient) StartMessageMoveTaskWithContextCallCount() int {
 	return len(fake.startMessageMoveTaskWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) StartMessageMoveTaskWithContextCalls(stub func(context.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)) {
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextCalls(stub func(aws.Context, *sqs.StartMessageMoveTaskInput, ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)) {
 	fake.startMessageMoveTaskWithContextMutex.Lock()
 	defer fake.startMessageMoveTaskWithContextMutex.Unlock()
 	fake.StartMessageMoveTaskWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) StartMessageMoveTaskWithContextArgsForCall(i int) (context.Context, *sqs.StartMessageMoveTaskInput, []request.Option) {
+func (fake *FakeSQSClient) StartMessageMoveTaskWithContextArgsForCall(i int) (aws.Context, *sqs.StartMessageMoveTaskInput, []request.Option) {
 	fake.startMessageMoveTaskWithContextMutex.RLock()
 	defer fake.startMessageMoveTaskWithContextMutex.RUnlock()
 	argsForCall := fake.startMessageMoveTaskWithContextArgsForCall[i]
@@ -5464,11 +5464,11 @@ func (fake *FakeSQSClient) TagQueueRequestReturnsOnCall(i int, result1 *request.
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) TagQueueWithContext(arg1 context.Context, arg2 *sqs.TagQueueInput, arg3 ...request.Option) (*sqs.TagQueueOutput, error) {
+func (fake *FakeSQSClient) TagQueueWithContext(arg1 aws.Context, arg2 *sqs.TagQueueInput, arg3 ...request.Option) (*sqs.TagQueueOutput, error) {
 	fake.tagQueueWithContextMutex.Lock()
 	ret, specificReturn := fake.tagQueueWithContextReturnsOnCall[len(fake.tagQueueWithContextArgsForCall)]
 	fake.tagQueueWithContextArgsForCall = append(fake.tagQueueWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.TagQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5491,13 +5491,13 @@ func (fake *FakeSQSClient) TagQueueWithContextCallCount() int {
 	return len(fake.tagQueueWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) TagQueueWithContextCalls(stub func(context.Context, *sqs.TagQueueInput, ...request.Option) (*sqs.TagQueueOutput, error)) {
+func (fake *FakeSQSClient) TagQueueWithContextCalls(stub func(aws.Context, *sqs.TagQueueInput, ...request.Option) (*sqs.TagQueueOutput, error)) {
 	fake.tagQueueWithContextMutex.Lock()
 	defer fake.tagQueueWithContextMutex.Unlock()
 	fake.TagQueueWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) TagQueueWithContextArgsForCall(i int) (context.Context, *sqs.TagQueueInput, []request.Option) {
+func (fake *FakeSQSClient) TagQueueWithContextArgsForCall(i int) (aws.Context, *sqs.TagQueueInput, []request.Option) {
 	fake.tagQueueWithContextMutex.RLock()
 	defer fake.tagQueueWithContextMutex.RUnlock()
 	argsForCall := fake.tagQueueWithContextArgsForCall[i]
@@ -5658,11 +5658,11 @@ func (fake *FakeSQSClient) UntagQueueRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *FakeSQSClient) UntagQueueWithContext(arg1 context.Context, arg2 *sqs.UntagQueueInput, arg3 ...request.Option) (*sqs.UntagQueueOutput, error) {
+func (fake *FakeSQSClient) UntagQueueWithContext(arg1 aws.Context, arg2 *sqs.UntagQueueInput, arg3 ...request.Option) (*sqs.UntagQueueOutput, error) {
 	fake.untagQueueWithContextMutex.Lock()
 	ret, specificReturn := fake.untagQueueWithContextReturnsOnCall[len(fake.untagQueueWithContextArgsForCall)]
 	fake.untagQueueWithContextArgsForCall = append(fake.untagQueueWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *sqs.UntagQueueInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5685,13 +5685,13 @@ func (fake *FakeSQSClient) UntagQueueWithContextCallCount() int {
 	return len(fake.untagQueueWithContextArgsForCall)
 }
 
-func (fake *FakeSQSClient) UntagQueueWithContextCalls(stub func(context.Context, *sqs.UntagQueueInput, ...request.Option) (*sqs.UntagQueueOutput, error)) {
+func (fake *FakeSQSClient) UntagQueueWithContextCalls(stub func(aws.Context, *sqs.UntagQueueInput, ...request.Option) (*sqs.UntagQueueOutput, error)) {
 	fake.untagQueueWithContextMutex.Lock()
 	defer fake.untagQueueWithContextMutex.Unlock()
 	fake.UntagQueueWithContextStub = stub
 }
 
-func (fake *FakeSQSClient) UntagQueueWithContextArgsForCall(i int) (context.Context, *sqs.UntagQueueInput, []request.Option) {
+func (fake *FakeSQSClient) UntagQueueWithContextArgsForCall(i int) (aws.Context, *sqs.UntagQueueInput, []request.Option) {
 	fake.untagQueueWithContextMutex.RLock()
 	defer fake.untagQueueWithContextMutex.RUnlock()
 	argsForCall := fake.untagQueueWithContextArgsForCall[i]

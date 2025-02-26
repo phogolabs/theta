@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/apex/gateway v1.1.2
 	github.com/aws/aws-lambda-go v1.41.0
-	github.com/aws/aws-sdk-go v1.44.290
+	github.com/aws/aws-sdk-go v1.55.6
 	github.com/aws/aws-xray-sdk-go v1.8.1
 	github.com/awslabs/kinesis-aggregation/go v0.0.0-20230428132731-b06a97ace10c // indirect
 	github.com/go-chi/chi/v5 v5.0.8
