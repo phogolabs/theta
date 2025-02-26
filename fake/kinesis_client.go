@@ -2,9 +2,9 @@
 package fake
 
 import (
-	"context"
 	"sync"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 	"github.com/phogolabs/theta"
@@ -37,10 +37,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.AddTagsToStreamOutput
 	}
-	AddTagsToStreamWithContextStub        func(context.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)
+	AddTagsToStreamWithContextStub        func(aws.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)
 	addTagsToStreamWithContextMutex       sync.RWMutex
 	addTagsToStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.AddTagsToStreamInput
 		arg3 []request.Option
 	}
@@ -78,10 +78,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.CreateStreamOutput
 	}
-	CreateStreamWithContextStub        func(context.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)
+	CreateStreamWithContextStub        func(aws.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)
 	createStreamWithContextMutex       sync.RWMutex
 	createStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.CreateStreamInput
 		arg3 []request.Option
 	}
@@ -119,10 +119,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DecreaseStreamRetentionPeriodOutput
 	}
-	DecreaseStreamRetentionPeriodWithContextStub        func(context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)
+	DecreaseStreamRetentionPeriodWithContextStub        func(aws.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)
 	decreaseStreamRetentionPeriodWithContextMutex       sync.RWMutex
 	decreaseStreamRetentionPeriodWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DecreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}
@@ -132,6 +132,47 @@ type FakeKinesisClient struct {
 	}
 	decreaseStreamRetentionPeriodWithContextReturnsOnCall map[int]struct {
 		result1 *kinesis.DecreaseStreamRetentionPeriodOutput
+		result2 error
+	}
+	DeleteResourcePolicyStub        func(*kinesis.DeleteResourcePolicyInput) (*kinesis.DeleteResourcePolicyOutput, error)
+	deleteResourcePolicyMutex       sync.RWMutex
+	deleteResourcePolicyArgsForCall []struct {
+		arg1 *kinesis.DeleteResourcePolicyInput
+	}
+	deleteResourcePolicyReturns struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}
+	deleteResourcePolicyReturnsOnCall map[int]struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}
+	DeleteResourcePolicyRequestStub        func(*kinesis.DeleteResourcePolicyInput) (*request.Request, *kinesis.DeleteResourcePolicyOutput)
+	deleteResourcePolicyRequestMutex       sync.RWMutex
+	deleteResourcePolicyRequestArgsForCall []struct {
+		arg1 *kinesis.DeleteResourcePolicyInput
+	}
+	deleteResourcePolicyRequestReturns struct {
+		result1 *request.Request
+		result2 *kinesis.DeleteResourcePolicyOutput
+	}
+	deleteResourcePolicyRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kinesis.DeleteResourcePolicyOutput
+	}
+	DeleteResourcePolicyWithContextStub        func(aws.Context, *kinesis.DeleteResourcePolicyInput, ...request.Option) (*kinesis.DeleteResourcePolicyOutput, error)
+	deleteResourcePolicyWithContextMutex       sync.RWMutex
+	deleteResourcePolicyWithContextArgsForCall []struct {
+		arg1 aws.Context
+		arg2 *kinesis.DeleteResourcePolicyInput
+		arg3 []request.Option
+	}
+	deleteResourcePolicyWithContextReturns struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}
+	deleteResourcePolicyWithContextReturnsOnCall map[int]struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
 		result2 error
 	}
 	DeleteStreamStub        func(*kinesis.DeleteStreamInput) (*kinesis.DeleteStreamOutput, error)
@@ -160,10 +201,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DeleteStreamOutput
 	}
-	DeleteStreamWithContextStub        func(context.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)
+	DeleteStreamWithContextStub        func(aws.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)
 	deleteStreamWithContextMutex       sync.RWMutex
 	deleteStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DeleteStreamInput
 		arg3 []request.Option
 	}
@@ -201,10 +242,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DeregisterStreamConsumerOutput
 	}
-	DeregisterStreamConsumerWithContextStub        func(context.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)
+	DeregisterStreamConsumerWithContextStub        func(aws.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)
 	deregisterStreamConsumerWithContextMutex       sync.RWMutex
 	deregisterStreamConsumerWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DeregisterStreamConsumerInput
 		arg3 []request.Option
 	}
@@ -242,10 +283,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DescribeLimitsOutput
 	}
-	DescribeLimitsWithContextStub        func(context.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)
+	DescribeLimitsWithContextStub        func(aws.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)
 	describeLimitsWithContextMutex       sync.RWMutex
 	describeLimitsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeLimitsInput
 		arg3 []request.Option
 	}
@@ -296,10 +337,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DescribeStreamConsumerOutput
 	}
-	DescribeStreamConsumerWithContextStub        func(context.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)
+	DescribeStreamConsumerWithContextStub        func(aws.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)
 	describeStreamConsumerWithContextMutex       sync.RWMutex
 	describeStreamConsumerWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamConsumerInput
 		arg3 []request.Option
 	}
@@ -323,10 +364,10 @@ type FakeKinesisClient struct {
 	describeStreamPagesReturnsOnCall map[int]struct {
 		result1 error
 	}
-	DescribeStreamPagesWithContextStub        func(context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error
+	DescribeStreamPagesWithContextStub        func(aws.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error
 	describeStreamPagesWithContextMutex       sync.RWMutex
 	describeStreamPagesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 func(*kinesis.DescribeStreamOutput, bool) bool
 		arg4 []request.Option
@@ -376,10 +417,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.DescribeStreamSummaryOutput
 	}
-	DescribeStreamSummaryWithContextStub        func(context.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)
+	DescribeStreamSummaryWithContextStub        func(aws.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)
 	describeStreamSummaryWithContextMutex       sync.RWMutex
 	describeStreamSummaryWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamSummaryInput
 		arg3 []request.Option
 	}
@@ -391,10 +432,10 @@ type FakeKinesisClient struct {
 		result1 *kinesis.DescribeStreamSummaryOutput
 		result2 error
 	}
-	DescribeStreamWithContextStub        func(context.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)
+	DescribeStreamWithContextStub        func(aws.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)
 	describeStreamWithContextMutex       sync.RWMutex
 	describeStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.Option
 	}
@@ -432,10 +473,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.EnhancedMonitoringOutput
 	}
-	DisableEnhancedMonitoringWithContextStub        func(context.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)
+	DisableEnhancedMonitoringWithContextStub        func(aws.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)
 	disableEnhancedMonitoringWithContextMutex       sync.RWMutex
 	disableEnhancedMonitoringWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DisableEnhancedMonitoringInput
 		arg3 []request.Option
 	}
@@ -473,10 +514,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.EnhancedMonitoringOutput
 	}
-	EnableEnhancedMonitoringWithContextStub        func(context.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)
+	EnableEnhancedMonitoringWithContextStub        func(aws.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)
 	enableEnhancedMonitoringWithContextMutex       sync.RWMutex
 	enableEnhancedMonitoringWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.EnableEnhancedMonitoringInput
 		arg3 []request.Option
 	}
@@ -514,10 +555,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.GetRecordsOutput
 	}
-	GetRecordsWithContextStub        func(context.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)
+	GetRecordsWithContextStub        func(aws.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)
 	getRecordsWithContextMutex       sync.RWMutex
 	getRecordsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.GetRecordsInput
 		arg3 []request.Option
 	}
@@ -527,6 +568,47 @@ type FakeKinesisClient struct {
 	}
 	getRecordsWithContextReturnsOnCall map[int]struct {
 		result1 *kinesis.GetRecordsOutput
+		result2 error
+	}
+	GetResourcePolicyStub        func(*kinesis.GetResourcePolicyInput) (*kinesis.GetResourcePolicyOutput, error)
+	getResourcePolicyMutex       sync.RWMutex
+	getResourcePolicyArgsForCall []struct {
+		arg1 *kinesis.GetResourcePolicyInput
+	}
+	getResourcePolicyReturns struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}
+	getResourcePolicyReturnsOnCall map[int]struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}
+	GetResourcePolicyRequestStub        func(*kinesis.GetResourcePolicyInput) (*request.Request, *kinesis.GetResourcePolicyOutput)
+	getResourcePolicyRequestMutex       sync.RWMutex
+	getResourcePolicyRequestArgsForCall []struct {
+		arg1 *kinesis.GetResourcePolicyInput
+	}
+	getResourcePolicyRequestReturns struct {
+		result1 *request.Request
+		result2 *kinesis.GetResourcePolicyOutput
+	}
+	getResourcePolicyRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kinesis.GetResourcePolicyOutput
+	}
+	GetResourcePolicyWithContextStub        func(aws.Context, *kinesis.GetResourcePolicyInput, ...request.Option) (*kinesis.GetResourcePolicyOutput, error)
+	getResourcePolicyWithContextMutex       sync.RWMutex
+	getResourcePolicyWithContextArgsForCall []struct {
+		arg1 aws.Context
+		arg2 *kinesis.GetResourcePolicyInput
+		arg3 []request.Option
+	}
+	getResourcePolicyWithContextReturns struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}
+	getResourcePolicyWithContextReturnsOnCall map[int]struct {
+		result1 *kinesis.GetResourcePolicyOutput
 		result2 error
 	}
 	GetShardIteratorStub        func(*kinesis.GetShardIteratorInput) (*kinesis.GetShardIteratorOutput, error)
@@ -555,10 +637,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.GetShardIteratorOutput
 	}
-	GetShardIteratorWithContextStub        func(context.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)
+	GetShardIteratorWithContextStub        func(aws.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)
 	getShardIteratorWithContextMutex       sync.RWMutex
 	getShardIteratorWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.GetShardIteratorInput
 		arg3 []request.Option
 	}
@@ -596,10 +678,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.IncreaseStreamRetentionPeriodOutput
 	}
-	IncreaseStreamRetentionPeriodWithContextStub        func(context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)
+	IncreaseStreamRetentionPeriodWithContextStub        func(aws.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)
 	increaseStreamRetentionPeriodWithContextMutex       sync.RWMutex
 	increaseStreamRetentionPeriodWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.IncreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}
@@ -637,10 +719,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.ListShardsOutput
 	}
-	ListShardsWithContextStub        func(context.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)
+	ListShardsWithContextStub        func(aws.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)
 	listShardsWithContextMutex       sync.RWMutex
 	listShardsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListShardsInput
 		arg3 []request.Option
 	}
@@ -677,10 +759,10 @@ type FakeKinesisClient struct {
 	listStreamConsumersPagesReturnsOnCall map[int]struct {
 		result1 error
 	}
-	ListStreamConsumersPagesWithContextStub        func(context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error
+	ListStreamConsumersPagesWithContextStub        func(aws.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error
 	listStreamConsumersPagesWithContextMutex       sync.RWMutex
 	listStreamConsumersPagesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamConsumersInput
 		arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool
 		arg4 []request.Option
@@ -704,10 +786,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.ListStreamConsumersOutput
 	}
-	ListStreamConsumersWithContextStub        func(context.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)
+	ListStreamConsumersWithContextStub        func(aws.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)
 	listStreamConsumersWithContextMutex       sync.RWMutex
 	listStreamConsumersWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamConsumersInput
 		arg3 []request.Option
 	}
@@ -744,10 +826,10 @@ type FakeKinesisClient struct {
 	listStreamsPagesReturnsOnCall map[int]struct {
 		result1 error
 	}
-	ListStreamsPagesWithContextStub        func(context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error
+	ListStreamsPagesWithContextStub        func(aws.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error
 	listStreamsPagesWithContextMutex       sync.RWMutex
 	listStreamsPagesWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamsInput
 		arg3 func(*kinesis.ListStreamsOutput, bool) bool
 		arg4 []request.Option
@@ -771,10 +853,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.ListStreamsOutput
 	}
-	ListStreamsWithContextStub        func(context.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)
+	ListStreamsWithContextStub        func(aws.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)
 	listStreamsWithContextMutex       sync.RWMutex
 	listStreamsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamsInput
 		arg3 []request.Option
 	}
@@ -812,10 +894,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.ListTagsForStreamOutput
 	}
-	ListTagsForStreamWithContextStub        func(context.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)
+	ListTagsForStreamWithContextStub        func(aws.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)
 	listTagsForStreamWithContextMutex       sync.RWMutex
 	listTagsForStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListTagsForStreamInput
 		arg3 []request.Option
 	}
@@ -853,10 +935,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.MergeShardsOutput
 	}
-	MergeShardsWithContextStub        func(context.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)
+	MergeShardsWithContextStub        func(aws.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)
 	mergeShardsWithContextMutex       sync.RWMutex
 	mergeShardsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.MergeShardsInput
 		arg3 []request.Option
 	}
@@ -894,10 +976,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.PutRecordOutput
 	}
-	PutRecordWithContextStub        func(context.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)
+	PutRecordWithContextStub        func(aws.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)
 	putRecordWithContextMutex       sync.RWMutex
 	putRecordWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.PutRecordInput
 		arg3 []request.Option
 	}
@@ -935,10 +1017,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.PutRecordsOutput
 	}
-	PutRecordsWithContextStub        func(context.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)
+	PutRecordsWithContextStub        func(aws.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)
 	putRecordsWithContextMutex       sync.RWMutex
 	putRecordsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.PutRecordsInput
 		arg3 []request.Option
 	}
@@ -948,6 +1030,47 @@ type FakeKinesisClient struct {
 	}
 	putRecordsWithContextReturnsOnCall map[int]struct {
 		result1 *kinesis.PutRecordsOutput
+		result2 error
+	}
+	PutResourcePolicyStub        func(*kinesis.PutResourcePolicyInput) (*kinesis.PutResourcePolicyOutput, error)
+	putResourcePolicyMutex       sync.RWMutex
+	putResourcePolicyArgsForCall []struct {
+		arg1 *kinesis.PutResourcePolicyInput
+	}
+	putResourcePolicyReturns struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}
+	putResourcePolicyReturnsOnCall map[int]struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}
+	PutResourcePolicyRequestStub        func(*kinesis.PutResourcePolicyInput) (*request.Request, *kinesis.PutResourcePolicyOutput)
+	putResourcePolicyRequestMutex       sync.RWMutex
+	putResourcePolicyRequestArgsForCall []struct {
+		arg1 *kinesis.PutResourcePolicyInput
+	}
+	putResourcePolicyRequestReturns struct {
+		result1 *request.Request
+		result2 *kinesis.PutResourcePolicyOutput
+	}
+	putResourcePolicyRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kinesis.PutResourcePolicyOutput
+	}
+	PutResourcePolicyWithContextStub        func(aws.Context, *kinesis.PutResourcePolicyInput, ...request.Option) (*kinesis.PutResourcePolicyOutput, error)
+	putResourcePolicyWithContextMutex       sync.RWMutex
+	putResourcePolicyWithContextArgsForCall []struct {
+		arg1 aws.Context
+		arg2 *kinesis.PutResourcePolicyInput
+		arg3 []request.Option
+	}
+	putResourcePolicyWithContextReturns struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}
+	putResourcePolicyWithContextReturnsOnCall map[int]struct {
+		result1 *kinesis.PutResourcePolicyOutput
 		result2 error
 	}
 	RegisterStreamConsumerStub        func(*kinesis.RegisterStreamConsumerInput) (*kinesis.RegisterStreamConsumerOutput, error)
@@ -976,10 +1099,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.RegisterStreamConsumerOutput
 	}
-	RegisterStreamConsumerWithContextStub        func(context.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)
+	RegisterStreamConsumerWithContextStub        func(aws.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)
 	registerStreamConsumerWithContextMutex       sync.RWMutex
 	registerStreamConsumerWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.RegisterStreamConsumerInput
 		arg3 []request.Option
 	}
@@ -1017,10 +1140,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.RemoveTagsFromStreamOutput
 	}
-	RemoveTagsFromStreamWithContextStub        func(context.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)
+	RemoveTagsFromStreamWithContextStub        func(aws.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)
 	removeTagsFromStreamWithContextMutex       sync.RWMutex
 	removeTagsFromStreamWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.RemoveTagsFromStreamInput
 		arg3 []request.Option
 	}
@@ -1058,10 +1181,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.SplitShardOutput
 	}
-	SplitShardWithContextStub        func(context.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)
+	SplitShardWithContextStub        func(aws.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)
 	splitShardWithContextMutex       sync.RWMutex
 	splitShardWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.SplitShardInput
 		arg3 []request.Option
 	}
@@ -1099,10 +1222,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.StartStreamEncryptionOutput
 	}
-	StartStreamEncryptionWithContextStub        func(context.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)
+	StartStreamEncryptionWithContextStub        func(aws.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)
 	startStreamEncryptionWithContextMutex       sync.RWMutex
 	startStreamEncryptionWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.StartStreamEncryptionInput
 		arg3 []request.Option
 	}
@@ -1140,10 +1263,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.StopStreamEncryptionOutput
 	}
-	StopStreamEncryptionWithContextStub        func(context.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)
+	StopStreamEncryptionWithContextStub        func(aws.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)
 	stopStreamEncryptionWithContextMutex       sync.RWMutex
 	stopStreamEncryptionWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.StopStreamEncryptionInput
 		arg3 []request.Option
 	}
@@ -1181,10 +1304,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.SubscribeToShardOutput
 	}
-	SubscribeToShardWithContextStub        func(context.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)
+	SubscribeToShardWithContextStub        func(aws.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)
 	subscribeToShardWithContextMutex       sync.RWMutex
 	subscribeToShardWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.SubscribeToShardInput
 		arg3 []request.Option
 	}
@@ -1222,10 +1345,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.UpdateShardCountOutput
 	}
-	UpdateShardCountWithContextStub        func(context.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)
+	UpdateShardCountWithContextStub        func(aws.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)
 	updateShardCountWithContextMutex       sync.RWMutex
 	updateShardCountWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.UpdateShardCountInput
 		arg3 []request.Option
 	}
@@ -1263,10 +1386,10 @@ type FakeKinesisClient struct {
 		result1 *request.Request
 		result2 *kinesis.UpdateStreamModeOutput
 	}
-	UpdateStreamModeWithContextStub        func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)
+	UpdateStreamModeWithContextStub        func(aws.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)
 	updateStreamModeWithContextMutex       sync.RWMutex
 	updateStreamModeWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.UpdateStreamModeInput
 		arg3 []request.Option
 	}
@@ -1289,10 +1412,10 @@ type FakeKinesisClient struct {
 	waitUntilStreamExistsReturnsOnCall map[int]struct {
 		result1 error
 	}
-	WaitUntilStreamExistsWithContextStub        func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error
+	WaitUntilStreamExistsWithContextStub        func(aws.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error
 	waitUntilStreamExistsWithContextMutex       sync.RWMutex
 	waitUntilStreamExistsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}
@@ -1313,10 +1436,10 @@ type FakeKinesisClient struct {
 	waitUntilStreamNotExistsReturnsOnCall map[int]struct {
 		result1 error
 	}
-	WaitUntilStreamNotExistsWithContextStub        func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error
+	WaitUntilStreamNotExistsWithContextStub        func(aws.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error
 	waitUntilStreamNotExistsWithContextMutex       sync.RWMutex
 	waitUntilStreamNotExistsWithContextArgsForCall []struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}
@@ -1458,11 +1581,11 @@ func (fake *FakeKinesisClient) AddTagsToStreamRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) AddTagsToStreamWithContext(arg1 context.Context, arg2 *kinesis.AddTagsToStreamInput, arg3 ...request.Option) (*kinesis.AddTagsToStreamOutput, error) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContext(arg1 aws.Context, arg2 *kinesis.AddTagsToStreamInput, arg3 ...request.Option) (*kinesis.AddTagsToStreamOutput, error) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.addTagsToStreamWithContextReturnsOnCall[len(fake.addTagsToStreamWithContextArgsForCall)]
 	fake.addTagsToStreamWithContextArgsForCall = append(fake.addTagsToStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.AddTagsToStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1485,13 +1608,13 @@ func (fake *FakeKinesisClient) AddTagsToStreamWithContextCallCount() int {
 	return len(fake.addTagsToStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) AddTagsToStreamWithContextCalls(stub func(context.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextCalls(stub func(aws.Context, *kinesis.AddTagsToStreamInput, ...request.Option) (*kinesis.AddTagsToStreamOutput, error)) {
 	fake.addTagsToStreamWithContextMutex.Lock()
 	defer fake.addTagsToStreamWithContextMutex.Unlock()
 	fake.AddTagsToStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) AddTagsToStreamWithContextArgsForCall(i int) (context.Context, *kinesis.AddTagsToStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) AddTagsToStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.AddTagsToStreamInput, []request.Option) {
 	fake.addTagsToStreamWithContextMutex.RLock()
 	defer fake.addTagsToStreamWithContextMutex.RUnlock()
 	argsForCall := fake.addTagsToStreamWithContextArgsForCall[i]
@@ -1652,11 +1775,11 @@ func (fake *FakeKinesisClient) CreateStreamRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) CreateStreamWithContext(arg1 context.Context, arg2 *kinesis.CreateStreamInput, arg3 ...request.Option) (*kinesis.CreateStreamOutput, error) {
+func (fake *FakeKinesisClient) CreateStreamWithContext(arg1 aws.Context, arg2 *kinesis.CreateStreamInput, arg3 ...request.Option) (*kinesis.CreateStreamOutput, error) {
 	fake.createStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.createStreamWithContextReturnsOnCall[len(fake.createStreamWithContextArgsForCall)]
 	fake.createStreamWithContextArgsForCall = append(fake.createStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.CreateStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1679,13 +1802,13 @@ func (fake *FakeKinesisClient) CreateStreamWithContextCallCount() int {
 	return len(fake.createStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) CreateStreamWithContextCalls(stub func(context.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)) {
+func (fake *FakeKinesisClient) CreateStreamWithContextCalls(stub func(aws.Context, *kinesis.CreateStreamInput, ...request.Option) (*kinesis.CreateStreamOutput, error)) {
 	fake.createStreamWithContextMutex.Lock()
 	defer fake.createStreamWithContextMutex.Unlock()
 	fake.CreateStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) CreateStreamWithContextArgsForCall(i int) (context.Context, *kinesis.CreateStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) CreateStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.CreateStreamInput, []request.Option) {
 	fake.createStreamWithContextMutex.RLock()
 	defer fake.createStreamWithContextMutex.RUnlock()
 	argsForCall := fake.createStreamWithContextArgsForCall[i]
@@ -1846,11 +1969,11 @@ func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodRequestReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.DecreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContext(arg1 aws.Context, arg2 *kinesis.DecreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	ret, specificReturn := fake.decreaseStreamRetentionPeriodWithContextReturnsOnCall[len(fake.decreaseStreamRetentionPeriodWithContextArgsForCall)]
 	fake.decreaseStreamRetentionPeriodWithContextArgsForCall = append(fake.decreaseStreamRetentionPeriodWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DecreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -1873,13 +1996,13 @@ func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextCallCount
 	return len(fake.decreaseStreamRetentionPeriodWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextCalls(stub func(aws.Context, *kinesis.DecreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error)) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.DecreaseStreamRetentionPeriodWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.DecreaseStreamRetentionPeriodInput, []request.Option) {
+func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextArgsForCall(i int) (aws.Context, *kinesis.DecreaseStreamRetentionPeriodInput, []request.Option) {
 	fake.decreaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	argsForCall := fake.decreaseStreamRetentionPeriodWithContextArgsForCall[i]
@@ -1908,6 +2031,200 @@ func (fake *FakeKinesisClient) DecreaseStreamRetentionPeriodWithContextReturnsOn
 	}
 	fake.decreaseStreamRetentionPeriodWithContextReturnsOnCall[i] = struct {
 		result1 *kinesis.DecreaseStreamRetentionPeriodOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicy(arg1 *kinesis.DeleteResourcePolicyInput) (*kinesis.DeleteResourcePolicyOutput, error) {
+	fake.deleteResourcePolicyMutex.Lock()
+	ret, specificReturn := fake.deleteResourcePolicyReturnsOnCall[len(fake.deleteResourcePolicyArgsForCall)]
+	fake.deleteResourcePolicyArgsForCall = append(fake.deleteResourcePolicyArgsForCall, struct {
+		arg1 *kinesis.DeleteResourcePolicyInput
+	}{arg1})
+	stub := fake.DeleteResourcePolicyStub
+	fakeReturns := fake.deleteResourcePolicyReturns
+	fake.recordInvocation("DeleteResourcePolicy", []interface{}{arg1})
+	fake.deleteResourcePolicyMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyCallCount() int {
+	fake.deleteResourcePolicyMutex.RLock()
+	defer fake.deleteResourcePolicyMutex.RUnlock()
+	return len(fake.deleteResourcePolicyArgsForCall)
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyCalls(stub func(*kinesis.DeleteResourcePolicyInput) (*kinesis.DeleteResourcePolicyOutput, error)) {
+	fake.deleteResourcePolicyMutex.Lock()
+	defer fake.deleteResourcePolicyMutex.Unlock()
+	fake.DeleteResourcePolicyStub = stub
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyArgsForCall(i int) *kinesis.DeleteResourcePolicyInput {
+	fake.deleteResourcePolicyMutex.RLock()
+	defer fake.deleteResourcePolicyMutex.RUnlock()
+	argsForCall := fake.deleteResourcePolicyArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyReturns(result1 *kinesis.DeleteResourcePolicyOutput, result2 error) {
+	fake.deleteResourcePolicyMutex.Lock()
+	defer fake.deleteResourcePolicyMutex.Unlock()
+	fake.DeleteResourcePolicyStub = nil
+	fake.deleteResourcePolicyReturns = struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyReturnsOnCall(i int, result1 *kinesis.DeleteResourcePolicyOutput, result2 error) {
+	fake.deleteResourcePolicyMutex.Lock()
+	defer fake.deleteResourcePolicyMutex.Unlock()
+	fake.DeleteResourcePolicyStub = nil
+	if fake.deleteResourcePolicyReturnsOnCall == nil {
+		fake.deleteResourcePolicyReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.DeleteResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.deleteResourcePolicyReturnsOnCall[i] = struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequest(arg1 *kinesis.DeleteResourcePolicyInput) (*request.Request, *kinesis.DeleteResourcePolicyOutput) {
+	fake.deleteResourcePolicyRequestMutex.Lock()
+	ret, specificReturn := fake.deleteResourcePolicyRequestReturnsOnCall[len(fake.deleteResourcePolicyRequestArgsForCall)]
+	fake.deleteResourcePolicyRequestArgsForCall = append(fake.deleteResourcePolicyRequestArgsForCall, struct {
+		arg1 *kinesis.DeleteResourcePolicyInput
+	}{arg1})
+	stub := fake.DeleteResourcePolicyRequestStub
+	fakeReturns := fake.deleteResourcePolicyRequestReturns
+	fake.recordInvocation("DeleteResourcePolicyRequest", []interface{}{arg1})
+	fake.deleteResourcePolicyRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequestCallCount() int {
+	fake.deleteResourcePolicyRequestMutex.RLock()
+	defer fake.deleteResourcePolicyRequestMutex.RUnlock()
+	return len(fake.deleteResourcePolicyRequestArgsForCall)
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequestCalls(stub func(*kinesis.DeleteResourcePolicyInput) (*request.Request, *kinesis.DeleteResourcePolicyOutput)) {
+	fake.deleteResourcePolicyRequestMutex.Lock()
+	defer fake.deleteResourcePolicyRequestMutex.Unlock()
+	fake.DeleteResourcePolicyRequestStub = stub
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequestArgsForCall(i int) *kinesis.DeleteResourcePolicyInput {
+	fake.deleteResourcePolicyRequestMutex.RLock()
+	defer fake.deleteResourcePolicyRequestMutex.RUnlock()
+	argsForCall := fake.deleteResourcePolicyRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequestReturns(result1 *request.Request, result2 *kinesis.DeleteResourcePolicyOutput) {
+	fake.deleteResourcePolicyRequestMutex.Lock()
+	defer fake.deleteResourcePolicyRequestMutex.Unlock()
+	fake.DeleteResourcePolicyRequestStub = nil
+	fake.deleteResourcePolicyRequestReturns = struct {
+		result1 *request.Request
+		result2 *kinesis.DeleteResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.DeleteResourcePolicyOutput) {
+	fake.deleteResourcePolicyRequestMutex.Lock()
+	defer fake.deleteResourcePolicyRequestMutex.Unlock()
+	fake.DeleteResourcePolicyRequestStub = nil
+	if fake.deleteResourcePolicyRequestReturnsOnCall == nil {
+		fake.deleteResourcePolicyRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kinesis.DeleteResourcePolicyOutput
+		})
+	}
+	fake.deleteResourcePolicyRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kinesis.DeleteResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContext(arg1 aws.Context, arg2 *kinesis.DeleteResourcePolicyInput, arg3 ...request.Option) (*kinesis.DeleteResourcePolicyOutput, error) {
+	fake.deleteResourcePolicyWithContextMutex.Lock()
+	ret, specificReturn := fake.deleteResourcePolicyWithContextReturnsOnCall[len(fake.deleteResourcePolicyWithContextArgsForCall)]
+	fake.deleteResourcePolicyWithContextArgsForCall = append(fake.deleteResourcePolicyWithContextArgsForCall, struct {
+		arg1 aws.Context
+		arg2 *kinesis.DeleteResourcePolicyInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.DeleteResourcePolicyWithContextStub
+	fakeReturns := fake.deleteResourcePolicyWithContextReturns
+	fake.recordInvocation("DeleteResourcePolicyWithContext", []interface{}{arg1, arg2, arg3})
+	fake.deleteResourcePolicyWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContextCallCount() int {
+	fake.deleteResourcePolicyWithContextMutex.RLock()
+	defer fake.deleteResourcePolicyWithContextMutex.RUnlock()
+	return len(fake.deleteResourcePolicyWithContextArgsForCall)
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContextCalls(stub func(aws.Context, *kinesis.DeleteResourcePolicyInput, ...request.Option) (*kinesis.DeleteResourcePolicyOutput, error)) {
+	fake.deleteResourcePolicyWithContextMutex.Lock()
+	defer fake.deleteResourcePolicyWithContextMutex.Unlock()
+	fake.DeleteResourcePolicyWithContextStub = stub
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContextArgsForCall(i int) (aws.Context, *kinesis.DeleteResourcePolicyInput, []request.Option) {
+	fake.deleteResourcePolicyWithContextMutex.RLock()
+	defer fake.deleteResourcePolicyWithContextMutex.RUnlock()
+	argsForCall := fake.deleteResourcePolicyWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContextReturns(result1 *kinesis.DeleteResourcePolicyOutput, result2 error) {
+	fake.deleteResourcePolicyWithContextMutex.Lock()
+	defer fake.deleteResourcePolicyWithContextMutex.Unlock()
+	fake.DeleteResourcePolicyWithContextStub = nil
+	fake.deleteResourcePolicyWithContextReturns = struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) DeleteResourcePolicyWithContextReturnsOnCall(i int, result1 *kinesis.DeleteResourcePolicyOutput, result2 error) {
+	fake.deleteResourcePolicyWithContextMutex.Lock()
+	defer fake.deleteResourcePolicyWithContextMutex.Unlock()
+	fake.DeleteResourcePolicyWithContextStub = nil
+	if fake.deleteResourcePolicyWithContextReturnsOnCall == nil {
+		fake.deleteResourcePolicyWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.DeleteResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.deleteResourcePolicyWithContextReturnsOnCall[i] = struct {
+		result1 *kinesis.DeleteResourcePolicyOutput
 		result2 error
 	}{result1, result2}
 }
@@ -2040,11 +2357,11 @@ func (fake *FakeKinesisClient) DeleteStreamRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DeleteStreamWithContext(arg1 context.Context, arg2 *kinesis.DeleteStreamInput, arg3 ...request.Option) (*kinesis.DeleteStreamOutput, error) {
+func (fake *FakeKinesisClient) DeleteStreamWithContext(arg1 aws.Context, arg2 *kinesis.DeleteStreamInput, arg3 ...request.Option) (*kinesis.DeleteStreamOutput, error) {
 	fake.deleteStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteStreamWithContextReturnsOnCall[len(fake.deleteStreamWithContextArgsForCall)]
 	fake.deleteStreamWithContextArgsForCall = append(fake.deleteStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DeleteStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2067,13 +2384,13 @@ func (fake *FakeKinesisClient) DeleteStreamWithContextCallCount() int {
 	return len(fake.deleteStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DeleteStreamWithContextCalls(stub func(context.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextCalls(stub func(aws.Context, *kinesis.DeleteStreamInput, ...request.Option) (*kinesis.DeleteStreamOutput, error)) {
 	fake.deleteStreamWithContextMutex.Lock()
 	defer fake.deleteStreamWithContextMutex.Unlock()
 	fake.DeleteStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DeleteStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DeleteStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) DeleteStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.DeleteStreamInput, []request.Option) {
 	fake.deleteStreamWithContextMutex.RLock()
 	defer fake.deleteStreamWithContextMutex.RUnlock()
 	argsForCall := fake.deleteStreamWithContextArgsForCall[i]
@@ -2234,11 +2551,11 @@ func (fake *FakeKinesisClient) DeregisterStreamConsumerRequestReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DeregisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContext(arg1 aws.Context, arg2 *kinesis.DeregisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.deregisterStreamConsumerWithContextReturnsOnCall[len(fake.deregisterStreamConsumerWithContextArgsForCall)]
 	fake.deregisterStreamConsumerWithContextArgsForCall = append(fake.deregisterStreamConsumerWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DeregisterStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2261,13 +2578,13 @@ func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextCallCount() in
 	return len(fake.deregisterStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextCalls(stub func(aws.Context, *kinesis.DeregisterStreamConsumerInput, ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)) {
 	fake.deregisterStreamConsumerWithContextMutex.Lock()
 	defer fake.deregisterStreamConsumerWithContextMutex.Unlock()
 	fake.DeregisterStreamConsumerWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DeregisterStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) DeregisterStreamConsumerWithContextArgsForCall(i int) (aws.Context, *kinesis.DeregisterStreamConsumerInput, []request.Option) {
 	fake.deregisterStreamConsumerWithContextMutex.RLock()
 	defer fake.deregisterStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.deregisterStreamConsumerWithContextArgsForCall[i]
@@ -2428,11 +2745,11 @@ func (fake *FakeKinesisClient) DescribeLimitsRequestReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DescribeLimitsWithContext(arg1 context.Context, arg2 *kinesis.DescribeLimitsInput, arg3 ...request.Option) (*kinesis.DescribeLimitsOutput, error) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContext(arg1 aws.Context, arg2 *kinesis.DescribeLimitsInput, arg3 ...request.Option) (*kinesis.DescribeLimitsOutput, error) {
 	fake.describeLimitsWithContextMutex.Lock()
 	ret, specificReturn := fake.describeLimitsWithContextReturnsOnCall[len(fake.describeLimitsWithContextArgsForCall)]
 	fake.describeLimitsWithContextArgsForCall = append(fake.describeLimitsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeLimitsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2455,13 +2772,13 @@ func (fake *FakeKinesisClient) DescribeLimitsWithContextCallCount() int {
 	return len(fake.describeLimitsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DescribeLimitsWithContextCalls(stub func(context.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextCalls(stub func(aws.Context, *kinesis.DescribeLimitsInput, ...request.Option) (*kinesis.DescribeLimitsOutput, error)) {
 	fake.describeLimitsWithContextMutex.Lock()
 	defer fake.describeLimitsWithContextMutex.Unlock()
 	fake.DescribeLimitsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DescribeLimitsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeLimitsInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeLimitsWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeLimitsInput, []request.Option) {
 	fake.describeLimitsWithContextMutex.RLock()
 	defer fake.describeLimitsWithContextMutex.RUnlock()
 	argsForCall := fake.describeLimitsWithContextArgsForCall[i]
@@ -2686,11 +3003,11 @@ func (fake *FakeKinesisClient) DescribeStreamConsumerRequestReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DescribeStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamConsumerInput, arg3 ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamConsumerInput, arg3 ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamConsumerWithContextReturnsOnCall[len(fake.describeStreamConsumerWithContextArgsForCall)]
 	fake.describeStreamConsumerWithContextArgsForCall = append(fake.describeStreamConsumerWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -2713,13 +3030,13 @@ func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextCallCount() int 
 	return len(fake.describeStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamConsumerInput, ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)) {
 	fake.describeStreamConsumerWithContextMutex.Lock()
 	defer fake.describeStreamConsumerWithContextMutex.Unlock()
 	fake.DescribeStreamConsumerWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamConsumerWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamConsumerInput, []request.Option) {
 	fake.describeStreamConsumerWithContextMutex.RLock()
 	defer fake.describeStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamConsumerWithContextArgsForCall[i]
@@ -2814,11 +3131,11 @@ func (fake *FakeKinesisClient) DescribeStreamPagesReturnsOnCall(i int, result1 e
 	}{result1}
 }
 
-func (fake *FakeKinesisClient) DescribeStreamPagesWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 func(*kinesis.DescribeStreamOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamInput, arg3 func(*kinesis.DescribeStreamOutput, bool) bool, arg4 ...request.Option) error {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamPagesWithContextReturnsOnCall[len(fake.describeStreamPagesWithContextArgsForCall)]
 	fake.describeStreamPagesWithContextArgsForCall = append(fake.describeStreamPagesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 func(*kinesis.DescribeStreamOutput, bool) bool
 		arg4 []request.Option
@@ -2842,13 +3159,13 @@ func (fake *FakeKinesisClient) DescribeStreamPagesWithContextCallCount() int {
 	return len(fake.describeStreamPagesWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DescribeStreamPagesWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, ...request.Option) error) {
 	fake.describeStreamPagesWithContextMutex.Lock()
 	defer fake.describeStreamPagesWithContextMutex.Unlock()
 	fake.DescribeStreamPagesWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DescribeStreamPagesWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamPagesWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamInput, func(*kinesis.DescribeStreamOutput, bool) bool, []request.Option) {
 	fake.describeStreamPagesWithContextMutex.RLock()
 	defer fake.describeStreamPagesWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamPagesWithContextArgsForCall[i]
@@ -3070,11 +3387,11 @@ func (fake *FakeKinesisClient) DescribeStreamSummaryRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DescribeStreamSummaryWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamSummaryInput, arg3 ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamSummaryInput, arg3 ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamSummaryWithContextReturnsOnCall[len(fake.describeStreamSummaryWithContextArgsForCall)]
 	fake.describeStreamSummaryWithContextArgsForCall = append(fake.describeStreamSummaryWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamSummaryInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3097,13 +3414,13 @@ func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextCallCount() int {
 	return len(fake.describeStreamSummaryWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamSummaryInput, ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)) {
 	fake.describeStreamSummaryWithContextMutex.Lock()
 	defer fake.describeStreamSummaryWithContextMutex.Unlock()
 	fake.DescribeStreamSummaryWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamSummaryInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamSummaryInput, []request.Option) {
 	fake.describeStreamSummaryWithContextMutex.RLock()
 	defer fake.describeStreamSummaryWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamSummaryWithContextArgsForCall[i]
@@ -3136,11 +3453,11 @@ func (fake *FakeKinesisClient) DescribeStreamSummaryWithContextReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DescribeStreamWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.Option) (*kinesis.DescribeStreamOutput, error) {
+func (fake *FakeKinesisClient) DescribeStreamWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.Option) (*kinesis.DescribeStreamOutput, error) {
 	fake.describeStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.describeStreamWithContextReturnsOnCall[len(fake.describeStreamWithContextArgsForCall)]
 	fake.describeStreamWithContextArgsForCall = append(fake.describeStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3163,13 +3480,13 @@ func (fake *FakeKinesisClient) DescribeStreamWithContextCallCount() int {
 	return len(fake.describeStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DescribeStreamWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamInput, ...request.Option) (*kinesis.DescribeStreamOutput, error)) {
 	fake.describeStreamWithContextMutex.Lock()
 	defer fake.describeStreamWithContextMutex.Unlock()
 	fake.DescribeStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DescribeStreamWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) DescribeStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamInput, []request.Option) {
 	fake.describeStreamWithContextMutex.RLock()
 	defer fake.describeStreamWithContextMutex.RUnlock()
 	argsForCall := fake.describeStreamWithContextArgsForCall[i]
@@ -3330,11 +3647,11 @@ func (fake *FakeKinesisClient) DisableEnhancedMonitoringRequestReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.DisableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContext(arg1 aws.Context, arg2 *kinesis.DisableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	ret, specificReturn := fake.disableEnhancedMonitoringWithContextReturnsOnCall[len(fake.disableEnhancedMonitoringWithContextArgsForCall)]
 	fake.disableEnhancedMonitoringWithContextArgsForCall = append(fake.disableEnhancedMonitoringWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DisableEnhancedMonitoringInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3357,13 +3674,13 @@ func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextCallCount() i
 	return len(fake.disableEnhancedMonitoringWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextCalls(stub func(aws.Context, *kinesis.DisableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.disableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.DisableEnhancedMonitoringWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.DisableEnhancedMonitoringInput, []request.Option) {
+func (fake *FakeKinesisClient) DisableEnhancedMonitoringWithContextArgsForCall(i int) (aws.Context, *kinesis.DisableEnhancedMonitoringInput, []request.Option) {
 	fake.disableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.disableEnhancedMonitoringWithContextMutex.RUnlock()
 	argsForCall := fake.disableEnhancedMonitoringWithContextArgsForCall[i]
@@ -3524,11 +3841,11 @@ func (fake *FakeKinesisClient) EnableEnhancedMonitoringRequestReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContext(arg1 context.Context, arg2 *kinesis.EnableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContext(arg1 aws.Context, arg2 *kinesis.EnableEnhancedMonitoringInput, arg3 ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	ret, specificReturn := fake.enableEnhancedMonitoringWithContextReturnsOnCall[len(fake.enableEnhancedMonitoringWithContextArgsForCall)]
 	fake.enableEnhancedMonitoringWithContextArgsForCall = append(fake.enableEnhancedMonitoringWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.EnableEnhancedMonitoringInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3551,13 +3868,13 @@ func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextCallCount() in
 	return len(fake.enableEnhancedMonitoringWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextCalls(stub func(context.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextCalls(stub func(aws.Context, *kinesis.EnableEnhancedMonitoringInput, ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)) {
 	fake.enableEnhancedMonitoringWithContextMutex.Lock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.Unlock()
 	fake.EnableEnhancedMonitoringWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextArgsForCall(i int) (context.Context, *kinesis.EnableEnhancedMonitoringInput, []request.Option) {
+func (fake *FakeKinesisClient) EnableEnhancedMonitoringWithContextArgsForCall(i int) (aws.Context, *kinesis.EnableEnhancedMonitoringInput, []request.Option) {
 	fake.enableEnhancedMonitoringWithContextMutex.RLock()
 	defer fake.enableEnhancedMonitoringWithContextMutex.RUnlock()
 	argsForCall := fake.enableEnhancedMonitoringWithContextArgsForCall[i]
@@ -3718,11 +4035,11 @@ func (fake *FakeKinesisClient) GetRecordsRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) GetRecordsWithContext(arg1 context.Context, arg2 *kinesis.GetRecordsInput, arg3 ...request.Option) (*kinesis.GetRecordsOutput, error) {
+func (fake *FakeKinesisClient) GetRecordsWithContext(arg1 aws.Context, arg2 *kinesis.GetRecordsInput, arg3 ...request.Option) (*kinesis.GetRecordsOutput, error) {
 	fake.getRecordsWithContextMutex.Lock()
 	ret, specificReturn := fake.getRecordsWithContextReturnsOnCall[len(fake.getRecordsWithContextArgsForCall)]
 	fake.getRecordsWithContextArgsForCall = append(fake.getRecordsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.GetRecordsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3745,13 +4062,13 @@ func (fake *FakeKinesisClient) GetRecordsWithContextCallCount() int {
 	return len(fake.getRecordsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) GetRecordsWithContextCalls(stub func(context.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)) {
+func (fake *FakeKinesisClient) GetRecordsWithContextCalls(stub func(aws.Context, *kinesis.GetRecordsInput, ...request.Option) (*kinesis.GetRecordsOutput, error)) {
 	fake.getRecordsWithContextMutex.Lock()
 	defer fake.getRecordsWithContextMutex.Unlock()
 	fake.GetRecordsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) GetRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.GetRecordsInput, []request.Option) {
+func (fake *FakeKinesisClient) GetRecordsWithContextArgsForCall(i int) (aws.Context, *kinesis.GetRecordsInput, []request.Option) {
 	fake.getRecordsWithContextMutex.RLock()
 	defer fake.getRecordsWithContextMutex.RUnlock()
 	argsForCall := fake.getRecordsWithContextArgsForCall[i]
@@ -3780,6 +4097,200 @@ func (fake *FakeKinesisClient) GetRecordsWithContextReturnsOnCall(i int, result1
 	}
 	fake.getRecordsWithContextReturnsOnCall[i] = struct {
 		result1 *kinesis.GetRecordsOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicy(arg1 *kinesis.GetResourcePolicyInput) (*kinesis.GetResourcePolicyOutput, error) {
+	fake.getResourcePolicyMutex.Lock()
+	ret, specificReturn := fake.getResourcePolicyReturnsOnCall[len(fake.getResourcePolicyArgsForCall)]
+	fake.getResourcePolicyArgsForCall = append(fake.getResourcePolicyArgsForCall, struct {
+		arg1 *kinesis.GetResourcePolicyInput
+	}{arg1})
+	stub := fake.GetResourcePolicyStub
+	fakeReturns := fake.getResourcePolicyReturns
+	fake.recordInvocation("GetResourcePolicy", []interface{}{arg1})
+	fake.getResourcePolicyMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyCallCount() int {
+	fake.getResourcePolicyMutex.RLock()
+	defer fake.getResourcePolicyMutex.RUnlock()
+	return len(fake.getResourcePolicyArgsForCall)
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyCalls(stub func(*kinesis.GetResourcePolicyInput) (*kinesis.GetResourcePolicyOutput, error)) {
+	fake.getResourcePolicyMutex.Lock()
+	defer fake.getResourcePolicyMutex.Unlock()
+	fake.GetResourcePolicyStub = stub
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyArgsForCall(i int) *kinesis.GetResourcePolicyInput {
+	fake.getResourcePolicyMutex.RLock()
+	defer fake.getResourcePolicyMutex.RUnlock()
+	argsForCall := fake.getResourcePolicyArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyReturns(result1 *kinesis.GetResourcePolicyOutput, result2 error) {
+	fake.getResourcePolicyMutex.Lock()
+	defer fake.getResourcePolicyMutex.Unlock()
+	fake.GetResourcePolicyStub = nil
+	fake.getResourcePolicyReturns = struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyReturnsOnCall(i int, result1 *kinesis.GetResourcePolicyOutput, result2 error) {
+	fake.getResourcePolicyMutex.Lock()
+	defer fake.getResourcePolicyMutex.Unlock()
+	fake.GetResourcePolicyStub = nil
+	if fake.getResourcePolicyReturnsOnCall == nil {
+		fake.getResourcePolicyReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.GetResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.getResourcePolicyReturnsOnCall[i] = struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequest(arg1 *kinesis.GetResourcePolicyInput) (*request.Request, *kinesis.GetResourcePolicyOutput) {
+	fake.getResourcePolicyRequestMutex.Lock()
+	ret, specificReturn := fake.getResourcePolicyRequestReturnsOnCall[len(fake.getResourcePolicyRequestArgsForCall)]
+	fake.getResourcePolicyRequestArgsForCall = append(fake.getResourcePolicyRequestArgsForCall, struct {
+		arg1 *kinesis.GetResourcePolicyInput
+	}{arg1})
+	stub := fake.GetResourcePolicyRequestStub
+	fakeReturns := fake.getResourcePolicyRequestReturns
+	fake.recordInvocation("GetResourcePolicyRequest", []interface{}{arg1})
+	fake.getResourcePolicyRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequestCallCount() int {
+	fake.getResourcePolicyRequestMutex.RLock()
+	defer fake.getResourcePolicyRequestMutex.RUnlock()
+	return len(fake.getResourcePolicyRequestArgsForCall)
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequestCalls(stub func(*kinesis.GetResourcePolicyInput) (*request.Request, *kinesis.GetResourcePolicyOutput)) {
+	fake.getResourcePolicyRequestMutex.Lock()
+	defer fake.getResourcePolicyRequestMutex.Unlock()
+	fake.GetResourcePolicyRequestStub = stub
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequestArgsForCall(i int) *kinesis.GetResourcePolicyInput {
+	fake.getResourcePolicyRequestMutex.RLock()
+	defer fake.getResourcePolicyRequestMutex.RUnlock()
+	argsForCall := fake.getResourcePolicyRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequestReturns(result1 *request.Request, result2 *kinesis.GetResourcePolicyOutput) {
+	fake.getResourcePolicyRequestMutex.Lock()
+	defer fake.getResourcePolicyRequestMutex.Unlock()
+	fake.GetResourcePolicyRequestStub = nil
+	fake.getResourcePolicyRequestReturns = struct {
+		result1 *request.Request
+		result2 *kinesis.GetResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.GetResourcePolicyOutput) {
+	fake.getResourcePolicyRequestMutex.Lock()
+	defer fake.getResourcePolicyRequestMutex.Unlock()
+	fake.GetResourcePolicyRequestStub = nil
+	if fake.getResourcePolicyRequestReturnsOnCall == nil {
+		fake.getResourcePolicyRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kinesis.GetResourcePolicyOutput
+		})
+	}
+	fake.getResourcePolicyRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kinesis.GetResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContext(arg1 aws.Context, arg2 *kinesis.GetResourcePolicyInput, arg3 ...request.Option) (*kinesis.GetResourcePolicyOutput, error) {
+	fake.getResourcePolicyWithContextMutex.Lock()
+	ret, specificReturn := fake.getResourcePolicyWithContextReturnsOnCall[len(fake.getResourcePolicyWithContextArgsForCall)]
+	fake.getResourcePolicyWithContextArgsForCall = append(fake.getResourcePolicyWithContextArgsForCall, struct {
+		arg1 aws.Context
+		arg2 *kinesis.GetResourcePolicyInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.GetResourcePolicyWithContextStub
+	fakeReturns := fake.getResourcePolicyWithContextReturns
+	fake.recordInvocation("GetResourcePolicyWithContext", []interface{}{arg1, arg2, arg3})
+	fake.getResourcePolicyWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContextCallCount() int {
+	fake.getResourcePolicyWithContextMutex.RLock()
+	defer fake.getResourcePolicyWithContextMutex.RUnlock()
+	return len(fake.getResourcePolicyWithContextArgsForCall)
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContextCalls(stub func(aws.Context, *kinesis.GetResourcePolicyInput, ...request.Option) (*kinesis.GetResourcePolicyOutput, error)) {
+	fake.getResourcePolicyWithContextMutex.Lock()
+	defer fake.getResourcePolicyWithContextMutex.Unlock()
+	fake.GetResourcePolicyWithContextStub = stub
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContextArgsForCall(i int) (aws.Context, *kinesis.GetResourcePolicyInput, []request.Option) {
+	fake.getResourcePolicyWithContextMutex.RLock()
+	defer fake.getResourcePolicyWithContextMutex.RUnlock()
+	argsForCall := fake.getResourcePolicyWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContextReturns(result1 *kinesis.GetResourcePolicyOutput, result2 error) {
+	fake.getResourcePolicyWithContextMutex.Lock()
+	defer fake.getResourcePolicyWithContextMutex.Unlock()
+	fake.GetResourcePolicyWithContextStub = nil
+	fake.getResourcePolicyWithContextReturns = struct {
+		result1 *kinesis.GetResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) GetResourcePolicyWithContextReturnsOnCall(i int, result1 *kinesis.GetResourcePolicyOutput, result2 error) {
+	fake.getResourcePolicyWithContextMutex.Lock()
+	defer fake.getResourcePolicyWithContextMutex.Unlock()
+	fake.GetResourcePolicyWithContextStub = nil
+	if fake.getResourcePolicyWithContextReturnsOnCall == nil {
+		fake.getResourcePolicyWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.GetResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.getResourcePolicyWithContextReturnsOnCall[i] = struct {
+		result1 *kinesis.GetResourcePolicyOutput
 		result2 error
 	}{result1, result2}
 }
@@ -3912,11 +4423,11 @@ func (fake *FakeKinesisClient) GetShardIteratorRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) GetShardIteratorWithContext(arg1 context.Context, arg2 *kinesis.GetShardIteratorInput, arg3 ...request.Option) (*kinesis.GetShardIteratorOutput, error) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContext(arg1 aws.Context, arg2 *kinesis.GetShardIteratorInput, arg3 ...request.Option) (*kinesis.GetShardIteratorOutput, error) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	ret, specificReturn := fake.getShardIteratorWithContextReturnsOnCall[len(fake.getShardIteratorWithContextArgsForCall)]
 	fake.getShardIteratorWithContextArgsForCall = append(fake.getShardIteratorWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.GetShardIteratorInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -3939,13 +4450,13 @@ func (fake *FakeKinesisClient) GetShardIteratorWithContextCallCount() int {
 	return len(fake.getShardIteratorWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) GetShardIteratorWithContextCalls(stub func(context.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextCalls(stub func(aws.Context, *kinesis.GetShardIteratorInput, ...request.Option) (*kinesis.GetShardIteratorOutput, error)) {
 	fake.getShardIteratorWithContextMutex.Lock()
 	defer fake.getShardIteratorWithContextMutex.Unlock()
 	fake.GetShardIteratorWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) GetShardIteratorWithContextArgsForCall(i int) (context.Context, *kinesis.GetShardIteratorInput, []request.Option) {
+func (fake *FakeKinesisClient) GetShardIteratorWithContextArgsForCall(i int) (aws.Context, *kinesis.GetShardIteratorInput, []request.Option) {
 	fake.getShardIteratorWithContextMutex.RLock()
 	defer fake.getShardIteratorWithContextMutex.RUnlock()
 	argsForCall := fake.getShardIteratorWithContextArgsForCall[i]
@@ -4106,11 +4617,11 @@ func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodRequestReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 context.Context, arg2 *kinesis.IncreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContext(arg1 aws.Context, arg2 *kinesis.IncreaseStreamRetentionPeriodInput, arg3 ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	ret, specificReturn := fake.increaseStreamRetentionPeriodWithContextReturnsOnCall[len(fake.increaseStreamRetentionPeriodWithContextArgsForCall)]
 	fake.increaseStreamRetentionPeriodWithContextArgsForCall = append(fake.increaseStreamRetentionPeriodWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.IncreaseStreamRetentionPeriodInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4133,13 +4644,13 @@ func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextCallCount
 	return len(fake.increaseStreamRetentionPeriodWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextCalls(stub func(context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextCalls(stub func(aws.Context, *kinesis.IncreaseStreamRetentionPeriodInput, ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.Lock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.Unlock()
 	fake.IncreaseStreamRetentionPeriodWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextArgsForCall(i int) (context.Context, *kinesis.IncreaseStreamRetentionPeriodInput, []request.Option) {
+func (fake *FakeKinesisClient) IncreaseStreamRetentionPeriodWithContextArgsForCall(i int) (aws.Context, *kinesis.IncreaseStreamRetentionPeriodInput, []request.Option) {
 	fake.increaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.increaseStreamRetentionPeriodWithContextMutex.RUnlock()
 	argsForCall := fake.increaseStreamRetentionPeriodWithContextArgsForCall[i]
@@ -4300,11 +4811,11 @@ func (fake *FakeKinesisClient) ListShardsRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) ListShardsWithContext(arg1 context.Context, arg2 *kinesis.ListShardsInput, arg3 ...request.Option) (*kinesis.ListShardsOutput, error) {
+func (fake *FakeKinesisClient) ListShardsWithContext(arg1 aws.Context, arg2 *kinesis.ListShardsInput, arg3 ...request.Option) (*kinesis.ListShardsOutput, error) {
 	fake.listShardsWithContextMutex.Lock()
 	ret, specificReturn := fake.listShardsWithContextReturnsOnCall[len(fake.listShardsWithContextArgsForCall)]
 	fake.listShardsWithContextArgsForCall = append(fake.listShardsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListShardsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4327,13 +4838,13 @@ func (fake *FakeKinesisClient) ListShardsWithContextCallCount() int {
 	return len(fake.listShardsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListShardsWithContextCalls(stub func(context.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)) {
+func (fake *FakeKinesisClient) ListShardsWithContextCalls(stub func(aws.Context, *kinesis.ListShardsInput, ...request.Option) (*kinesis.ListShardsOutput, error)) {
 	fake.listShardsWithContextMutex.Lock()
 	defer fake.listShardsWithContextMutex.Unlock()
 	fake.ListShardsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListShardsWithContextArgsForCall(i int) (context.Context, *kinesis.ListShardsInput, []request.Option) {
+func (fake *FakeKinesisClient) ListShardsWithContextArgsForCall(i int) (aws.Context, *kinesis.ListShardsInput, []request.Option) {
 	fake.listShardsWithContextMutex.RLock()
 	defer fake.listShardsWithContextMutex.RUnlock()
 	argsForCall := fake.listShardsWithContextArgsForCall[i]
@@ -4492,11 +5003,11 @@ func (fake *FakeKinesisClient) ListStreamConsumersPagesReturnsOnCall(i int, resu
 	}{result1}
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContext(arg1 aws.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersPagesWithContextReturnsOnCall[len(fake.listStreamConsumersPagesWithContextArgsForCall)]
 	fake.listStreamConsumersPagesWithContextArgsForCall = append(fake.listStreamConsumersPagesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamConsumersInput
 		arg3 func(*kinesis.ListStreamConsumersOutput, bool) bool
 		arg4 []request.Option
@@ -4520,13 +5031,13 @@ func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextCallCount() in
 	return len(fake.listStreamConsumersPagesWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextCalls(stub func(aws.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, ...request.Option) error) {
 	fake.listStreamConsumersPagesWithContextMutex.Lock()
 	defer fake.listStreamConsumersPagesWithContextMutex.Unlock()
 	fake.ListStreamConsumersPagesWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamConsumersPagesWithContextArgsForCall(i int) (aws.Context, *kinesis.ListStreamConsumersInput, func(*kinesis.ListStreamConsumersOutput, bool) bool, []request.Option) {
 	fake.listStreamConsumersPagesWithContextMutex.RLock()
 	defer fake.listStreamConsumersPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersPagesWithContextArgsForCall[i]
@@ -4620,11 +5131,11 @@ func (fake *FakeKinesisClient) ListStreamConsumersRequestReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersWithContext(arg1 context.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 ...request.Option) (*kinesis.ListStreamConsumersOutput, error) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContext(arg1 aws.Context, arg2 *kinesis.ListStreamConsumersInput, arg3 ...request.Option) (*kinesis.ListStreamConsumersOutput, error) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamConsumersWithContextReturnsOnCall[len(fake.listStreamConsumersWithContextArgsForCall)]
 	fake.listStreamConsumersWithContextArgsForCall = append(fake.listStreamConsumersWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamConsumersInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4647,13 +5158,13 @@ func (fake *FakeKinesisClient) ListStreamConsumersWithContextCallCount() int {
 	return len(fake.listStreamConsumersWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersWithContextCalls(stub func(context.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextCalls(stub func(aws.Context, *kinesis.ListStreamConsumersInput, ...request.Option) (*kinesis.ListStreamConsumersOutput, error)) {
 	fake.listStreamConsumersWithContextMutex.Lock()
 	defer fake.listStreamConsumersWithContextMutex.Unlock()
 	fake.ListStreamConsumersWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListStreamConsumersWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamConsumersInput, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamConsumersWithContextArgsForCall(i int) (aws.Context, *kinesis.ListStreamConsumersInput, []request.Option) {
 	fake.listStreamConsumersWithContextMutex.RLock()
 	defer fake.listStreamConsumersWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamConsumersWithContextArgsForCall[i]
@@ -4812,11 +5323,11 @@ func (fake *FakeKinesisClient) ListStreamsPagesReturnsOnCall(i int, result1 erro
 	}{result1}
 }
 
-func (fake *FakeKinesisClient) ListStreamsPagesWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 func(*kinesis.ListStreamsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContext(arg1 aws.Context, arg2 *kinesis.ListStreamsInput, arg3 func(*kinesis.ListStreamsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamsPagesWithContextReturnsOnCall[len(fake.listStreamsPagesWithContextArgsForCall)]
 	fake.listStreamsPagesWithContextArgsForCall = append(fake.listStreamsPagesWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamsInput
 		arg3 func(*kinesis.ListStreamsOutput, bool) bool
 		arg4 []request.Option
@@ -4840,13 +5351,13 @@ func (fake *FakeKinesisClient) ListStreamsPagesWithContextCallCount() int {
 	return len(fake.listStreamsPagesWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListStreamsPagesWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextCalls(stub func(aws.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, ...request.Option) error) {
 	fake.listStreamsPagesWithContextMutex.Lock()
 	defer fake.listStreamsPagesWithContextMutex.Unlock()
 	fake.ListStreamsPagesWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListStreamsPagesWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamsPagesWithContextArgsForCall(i int) (aws.Context, *kinesis.ListStreamsInput, func(*kinesis.ListStreamsOutput, bool) bool, []request.Option) {
 	fake.listStreamsPagesWithContextMutex.RLock()
 	defer fake.listStreamsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamsPagesWithContextArgsForCall[i]
@@ -4940,11 +5451,11 @@ func (fake *FakeKinesisClient) ListStreamsRequestReturnsOnCall(i int, result1 *r
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) ListStreamsWithContext(arg1 context.Context, arg2 *kinesis.ListStreamsInput, arg3 ...request.Option) (*kinesis.ListStreamsOutput, error) {
+func (fake *FakeKinesisClient) ListStreamsWithContext(arg1 aws.Context, arg2 *kinesis.ListStreamsInput, arg3 ...request.Option) (*kinesis.ListStreamsOutput, error) {
 	fake.listStreamsWithContextMutex.Lock()
 	ret, specificReturn := fake.listStreamsWithContextReturnsOnCall[len(fake.listStreamsWithContextArgsForCall)]
 	fake.listStreamsWithContextArgsForCall = append(fake.listStreamsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListStreamsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -4967,13 +5478,13 @@ func (fake *FakeKinesisClient) ListStreamsWithContextCallCount() int {
 	return len(fake.listStreamsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListStreamsWithContextCalls(stub func(context.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)) {
+func (fake *FakeKinesisClient) ListStreamsWithContextCalls(stub func(aws.Context, *kinesis.ListStreamsInput, ...request.Option) (*kinesis.ListStreamsOutput, error)) {
 	fake.listStreamsWithContextMutex.Lock()
 	defer fake.listStreamsWithContextMutex.Unlock()
 	fake.ListStreamsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListStreamsWithContextArgsForCall(i int) (context.Context, *kinesis.ListStreamsInput, []request.Option) {
+func (fake *FakeKinesisClient) ListStreamsWithContextArgsForCall(i int) (aws.Context, *kinesis.ListStreamsInput, []request.Option) {
 	fake.listStreamsWithContextMutex.RLock()
 	defer fake.listStreamsWithContextMutex.RUnlock()
 	argsForCall := fake.listStreamsWithContextArgsForCall[i]
@@ -5134,11 +5645,11 @@ func (fake *FakeKinesisClient) ListTagsForStreamRequestReturnsOnCall(i int, resu
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) ListTagsForStreamWithContext(arg1 context.Context, arg2 *kinesis.ListTagsForStreamInput, arg3 ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContext(arg1 aws.Context, arg2 *kinesis.ListTagsForStreamInput, arg3 ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.listTagsForStreamWithContextReturnsOnCall[len(fake.listTagsForStreamWithContextArgsForCall)]
 	fake.listTagsForStreamWithContextArgsForCall = append(fake.listTagsForStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.ListTagsForStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5161,13 +5672,13 @@ func (fake *FakeKinesisClient) ListTagsForStreamWithContextCallCount() int {
 	return len(fake.listTagsForStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) ListTagsForStreamWithContextCalls(stub func(context.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextCalls(stub func(aws.Context, *kinesis.ListTagsForStreamInput, ...request.Option) (*kinesis.ListTagsForStreamOutput, error)) {
 	fake.listTagsForStreamWithContextMutex.Lock()
 	defer fake.listTagsForStreamWithContextMutex.Unlock()
 	fake.ListTagsForStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) ListTagsForStreamWithContextArgsForCall(i int) (context.Context, *kinesis.ListTagsForStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) ListTagsForStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.ListTagsForStreamInput, []request.Option) {
 	fake.listTagsForStreamWithContextMutex.RLock()
 	defer fake.listTagsForStreamWithContextMutex.RUnlock()
 	argsForCall := fake.listTagsForStreamWithContextArgsForCall[i]
@@ -5328,11 +5839,11 @@ func (fake *FakeKinesisClient) MergeShardsRequestReturnsOnCall(i int, result1 *r
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) MergeShardsWithContext(arg1 context.Context, arg2 *kinesis.MergeShardsInput, arg3 ...request.Option) (*kinesis.MergeShardsOutput, error) {
+func (fake *FakeKinesisClient) MergeShardsWithContext(arg1 aws.Context, arg2 *kinesis.MergeShardsInput, arg3 ...request.Option) (*kinesis.MergeShardsOutput, error) {
 	fake.mergeShardsWithContextMutex.Lock()
 	ret, specificReturn := fake.mergeShardsWithContextReturnsOnCall[len(fake.mergeShardsWithContextArgsForCall)]
 	fake.mergeShardsWithContextArgsForCall = append(fake.mergeShardsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.MergeShardsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5355,13 +5866,13 @@ func (fake *FakeKinesisClient) MergeShardsWithContextCallCount() int {
 	return len(fake.mergeShardsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) MergeShardsWithContextCalls(stub func(context.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)) {
+func (fake *FakeKinesisClient) MergeShardsWithContextCalls(stub func(aws.Context, *kinesis.MergeShardsInput, ...request.Option) (*kinesis.MergeShardsOutput, error)) {
 	fake.mergeShardsWithContextMutex.Lock()
 	defer fake.mergeShardsWithContextMutex.Unlock()
 	fake.MergeShardsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) MergeShardsWithContextArgsForCall(i int) (context.Context, *kinesis.MergeShardsInput, []request.Option) {
+func (fake *FakeKinesisClient) MergeShardsWithContextArgsForCall(i int) (aws.Context, *kinesis.MergeShardsInput, []request.Option) {
 	fake.mergeShardsWithContextMutex.RLock()
 	defer fake.mergeShardsWithContextMutex.RUnlock()
 	argsForCall := fake.mergeShardsWithContextArgsForCall[i]
@@ -5522,11 +6033,11 @@ func (fake *FakeKinesisClient) PutRecordRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) PutRecordWithContext(arg1 context.Context, arg2 *kinesis.PutRecordInput, arg3 ...request.Option) (*kinesis.PutRecordOutput, error) {
+func (fake *FakeKinesisClient) PutRecordWithContext(arg1 aws.Context, arg2 *kinesis.PutRecordInput, arg3 ...request.Option) (*kinesis.PutRecordOutput, error) {
 	fake.putRecordWithContextMutex.Lock()
 	ret, specificReturn := fake.putRecordWithContextReturnsOnCall[len(fake.putRecordWithContextArgsForCall)]
 	fake.putRecordWithContextArgsForCall = append(fake.putRecordWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.PutRecordInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5549,13 +6060,13 @@ func (fake *FakeKinesisClient) PutRecordWithContextCallCount() int {
 	return len(fake.putRecordWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) PutRecordWithContextCalls(stub func(context.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordWithContextCalls(stub func(aws.Context, *kinesis.PutRecordInput, ...request.Option) (*kinesis.PutRecordOutput, error)) {
 	fake.putRecordWithContextMutex.Lock()
 	defer fake.putRecordWithContextMutex.Unlock()
 	fake.PutRecordWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) PutRecordWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordInput, []request.Option) {
+func (fake *FakeKinesisClient) PutRecordWithContextArgsForCall(i int) (aws.Context, *kinesis.PutRecordInput, []request.Option) {
 	fake.putRecordWithContextMutex.RLock()
 	defer fake.putRecordWithContextMutex.RUnlock()
 	argsForCall := fake.putRecordWithContextArgsForCall[i]
@@ -5716,11 +6227,11 @@ func (fake *FakeKinesisClient) PutRecordsRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) PutRecordsWithContext(arg1 context.Context, arg2 *kinesis.PutRecordsInput, arg3 ...request.Option) (*kinesis.PutRecordsOutput, error) {
+func (fake *FakeKinesisClient) PutRecordsWithContext(arg1 aws.Context, arg2 *kinesis.PutRecordsInput, arg3 ...request.Option) (*kinesis.PutRecordsOutput, error) {
 	fake.putRecordsWithContextMutex.Lock()
 	ret, specificReturn := fake.putRecordsWithContextReturnsOnCall[len(fake.putRecordsWithContextArgsForCall)]
 	fake.putRecordsWithContextArgsForCall = append(fake.putRecordsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.PutRecordsInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5743,13 +6254,13 @@ func (fake *FakeKinesisClient) PutRecordsWithContextCallCount() int {
 	return len(fake.putRecordsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) PutRecordsWithContextCalls(stub func(context.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)) {
+func (fake *FakeKinesisClient) PutRecordsWithContextCalls(stub func(aws.Context, *kinesis.PutRecordsInput, ...request.Option) (*kinesis.PutRecordsOutput, error)) {
 	fake.putRecordsWithContextMutex.Lock()
 	defer fake.putRecordsWithContextMutex.Unlock()
 	fake.PutRecordsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) PutRecordsWithContextArgsForCall(i int) (context.Context, *kinesis.PutRecordsInput, []request.Option) {
+func (fake *FakeKinesisClient) PutRecordsWithContextArgsForCall(i int) (aws.Context, *kinesis.PutRecordsInput, []request.Option) {
 	fake.putRecordsWithContextMutex.RLock()
 	defer fake.putRecordsWithContextMutex.RUnlock()
 	argsForCall := fake.putRecordsWithContextArgsForCall[i]
@@ -5778,6 +6289,200 @@ func (fake *FakeKinesisClient) PutRecordsWithContextReturnsOnCall(i int, result1
 	}
 	fake.putRecordsWithContextReturnsOnCall[i] = struct {
 		result1 *kinesis.PutRecordsOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicy(arg1 *kinesis.PutResourcePolicyInput) (*kinesis.PutResourcePolicyOutput, error) {
+	fake.putResourcePolicyMutex.Lock()
+	ret, specificReturn := fake.putResourcePolicyReturnsOnCall[len(fake.putResourcePolicyArgsForCall)]
+	fake.putResourcePolicyArgsForCall = append(fake.putResourcePolicyArgsForCall, struct {
+		arg1 *kinesis.PutResourcePolicyInput
+	}{arg1})
+	stub := fake.PutResourcePolicyStub
+	fakeReturns := fake.putResourcePolicyReturns
+	fake.recordInvocation("PutResourcePolicy", []interface{}{arg1})
+	fake.putResourcePolicyMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyCallCount() int {
+	fake.putResourcePolicyMutex.RLock()
+	defer fake.putResourcePolicyMutex.RUnlock()
+	return len(fake.putResourcePolicyArgsForCall)
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyCalls(stub func(*kinesis.PutResourcePolicyInput) (*kinesis.PutResourcePolicyOutput, error)) {
+	fake.putResourcePolicyMutex.Lock()
+	defer fake.putResourcePolicyMutex.Unlock()
+	fake.PutResourcePolicyStub = stub
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyArgsForCall(i int) *kinesis.PutResourcePolicyInput {
+	fake.putResourcePolicyMutex.RLock()
+	defer fake.putResourcePolicyMutex.RUnlock()
+	argsForCall := fake.putResourcePolicyArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyReturns(result1 *kinesis.PutResourcePolicyOutput, result2 error) {
+	fake.putResourcePolicyMutex.Lock()
+	defer fake.putResourcePolicyMutex.Unlock()
+	fake.PutResourcePolicyStub = nil
+	fake.putResourcePolicyReturns = struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyReturnsOnCall(i int, result1 *kinesis.PutResourcePolicyOutput, result2 error) {
+	fake.putResourcePolicyMutex.Lock()
+	defer fake.putResourcePolicyMutex.Unlock()
+	fake.PutResourcePolicyStub = nil
+	if fake.putResourcePolicyReturnsOnCall == nil {
+		fake.putResourcePolicyReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.PutResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.putResourcePolicyReturnsOnCall[i] = struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequest(arg1 *kinesis.PutResourcePolicyInput) (*request.Request, *kinesis.PutResourcePolicyOutput) {
+	fake.putResourcePolicyRequestMutex.Lock()
+	ret, specificReturn := fake.putResourcePolicyRequestReturnsOnCall[len(fake.putResourcePolicyRequestArgsForCall)]
+	fake.putResourcePolicyRequestArgsForCall = append(fake.putResourcePolicyRequestArgsForCall, struct {
+		arg1 *kinesis.PutResourcePolicyInput
+	}{arg1})
+	stub := fake.PutResourcePolicyRequestStub
+	fakeReturns := fake.putResourcePolicyRequestReturns
+	fake.recordInvocation("PutResourcePolicyRequest", []interface{}{arg1})
+	fake.putResourcePolicyRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequestCallCount() int {
+	fake.putResourcePolicyRequestMutex.RLock()
+	defer fake.putResourcePolicyRequestMutex.RUnlock()
+	return len(fake.putResourcePolicyRequestArgsForCall)
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequestCalls(stub func(*kinesis.PutResourcePolicyInput) (*request.Request, *kinesis.PutResourcePolicyOutput)) {
+	fake.putResourcePolicyRequestMutex.Lock()
+	defer fake.putResourcePolicyRequestMutex.Unlock()
+	fake.PutResourcePolicyRequestStub = stub
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequestArgsForCall(i int) *kinesis.PutResourcePolicyInput {
+	fake.putResourcePolicyRequestMutex.RLock()
+	defer fake.putResourcePolicyRequestMutex.RUnlock()
+	argsForCall := fake.putResourcePolicyRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequestReturns(result1 *request.Request, result2 *kinesis.PutResourcePolicyOutput) {
+	fake.putResourcePolicyRequestMutex.Lock()
+	defer fake.putResourcePolicyRequestMutex.Unlock()
+	fake.PutResourcePolicyRequestStub = nil
+	fake.putResourcePolicyRequestReturns = struct {
+		result1 *request.Request
+		result2 *kinesis.PutResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *kinesis.PutResourcePolicyOutput) {
+	fake.putResourcePolicyRequestMutex.Lock()
+	defer fake.putResourcePolicyRequestMutex.Unlock()
+	fake.PutResourcePolicyRequestStub = nil
+	if fake.putResourcePolicyRequestReturnsOnCall == nil {
+		fake.putResourcePolicyRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kinesis.PutResourcePolicyOutput
+		})
+	}
+	fake.putResourcePolicyRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kinesis.PutResourcePolicyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContext(arg1 aws.Context, arg2 *kinesis.PutResourcePolicyInput, arg3 ...request.Option) (*kinesis.PutResourcePolicyOutput, error) {
+	fake.putResourcePolicyWithContextMutex.Lock()
+	ret, specificReturn := fake.putResourcePolicyWithContextReturnsOnCall[len(fake.putResourcePolicyWithContextArgsForCall)]
+	fake.putResourcePolicyWithContextArgsForCall = append(fake.putResourcePolicyWithContextArgsForCall, struct {
+		arg1 aws.Context
+		arg2 *kinesis.PutResourcePolicyInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.PutResourcePolicyWithContextStub
+	fakeReturns := fake.putResourcePolicyWithContextReturns
+	fake.recordInvocation("PutResourcePolicyWithContext", []interface{}{arg1, arg2, arg3})
+	fake.putResourcePolicyWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContextCallCount() int {
+	fake.putResourcePolicyWithContextMutex.RLock()
+	defer fake.putResourcePolicyWithContextMutex.RUnlock()
+	return len(fake.putResourcePolicyWithContextArgsForCall)
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContextCalls(stub func(aws.Context, *kinesis.PutResourcePolicyInput, ...request.Option) (*kinesis.PutResourcePolicyOutput, error)) {
+	fake.putResourcePolicyWithContextMutex.Lock()
+	defer fake.putResourcePolicyWithContextMutex.Unlock()
+	fake.PutResourcePolicyWithContextStub = stub
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContextArgsForCall(i int) (aws.Context, *kinesis.PutResourcePolicyInput, []request.Option) {
+	fake.putResourcePolicyWithContextMutex.RLock()
+	defer fake.putResourcePolicyWithContextMutex.RUnlock()
+	argsForCall := fake.putResourcePolicyWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContextReturns(result1 *kinesis.PutResourcePolicyOutput, result2 error) {
+	fake.putResourcePolicyWithContextMutex.Lock()
+	defer fake.putResourcePolicyWithContextMutex.Unlock()
+	fake.PutResourcePolicyWithContextStub = nil
+	fake.putResourcePolicyWithContextReturns = struct {
+		result1 *kinesis.PutResourcePolicyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKinesisClient) PutResourcePolicyWithContextReturnsOnCall(i int, result1 *kinesis.PutResourcePolicyOutput, result2 error) {
+	fake.putResourcePolicyWithContextMutex.Lock()
+	defer fake.putResourcePolicyWithContextMutex.Unlock()
+	fake.PutResourcePolicyWithContextStub = nil
+	if fake.putResourcePolicyWithContextReturnsOnCall == nil {
+		fake.putResourcePolicyWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kinesis.PutResourcePolicyOutput
+			result2 error
+		})
+	}
+	fake.putResourcePolicyWithContextReturnsOnCall[i] = struct {
+		result1 *kinesis.PutResourcePolicyOutput
 		result2 error
 	}{result1, result2}
 }
@@ -5910,11 +6615,11 @@ func (fake *FakeKinesisClient) RegisterStreamConsumerRequestReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) RegisterStreamConsumerWithContext(arg1 context.Context, arg2 *kinesis.RegisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContext(arg1 aws.Context, arg2 *kinesis.RegisterStreamConsumerInput, arg3 ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	ret, specificReturn := fake.registerStreamConsumerWithContextReturnsOnCall[len(fake.registerStreamConsumerWithContextArgsForCall)]
 	fake.registerStreamConsumerWithContextArgsForCall = append(fake.registerStreamConsumerWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.RegisterStreamConsumerInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -5937,13 +6642,13 @@ func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextCallCount() int 
 	return len(fake.registerStreamConsumerWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextCalls(stub func(context.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextCalls(stub func(aws.Context, *kinesis.RegisterStreamConsumerInput, ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error)) {
 	fake.registerStreamConsumerWithContextMutex.Lock()
 	defer fake.registerStreamConsumerWithContextMutex.Unlock()
 	fake.RegisterStreamConsumerWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextArgsForCall(i int) (context.Context, *kinesis.RegisterStreamConsumerInput, []request.Option) {
+func (fake *FakeKinesisClient) RegisterStreamConsumerWithContextArgsForCall(i int) (aws.Context, *kinesis.RegisterStreamConsumerInput, []request.Option) {
 	fake.registerStreamConsumerWithContextMutex.RLock()
 	defer fake.registerStreamConsumerWithContextMutex.RUnlock()
 	argsForCall := fake.registerStreamConsumerWithContextArgsForCall[i]
@@ -6104,11 +6809,11 @@ func (fake *FakeKinesisClient) RemoveTagsFromStreamRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContext(arg1 context.Context, arg2 *kinesis.RemoveTagsFromStreamInput, arg3 ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContext(arg1 aws.Context, arg2 *kinesis.RemoveTagsFromStreamInput, arg3 ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	ret, specificReturn := fake.removeTagsFromStreamWithContextReturnsOnCall[len(fake.removeTagsFromStreamWithContextArgsForCall)]
 	fake.removeTagsFromStreamWithContextArgsForCall = append(fake.removeTagsFromStreamWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.RemoveTagsFromStreamInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -6131,13 +6836,13 @@ func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextCallCount() int {
 	return len(fake.removeTagsFromStreamWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextCalls(stub func(context.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextCalls(stub func(aws.Context, *kinesis.RemoveTagsFromStreamInput, ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error)) {
 	fake.removeTagsFromStreamWithContextMutex.Lock()
 	defer fake.removeTagsFromStreamWithContextMutex.Unlock()
 	fake.RemoveTagsFromStreamWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextArgsForCall(i int) (context.Context, *kinesis.RemoveTagsFromStreamInput, []request.Option) {
+func (fake *FakeKinesisClient) RemoveTagsFromStreamWithContextArgsForCall(i int) (aws.Context, *kinesis.RemoveTagsFromStreamInput, []request.Option) {
 	fake.removeTagsFromStreamWithContextMutex.RLock()
 	defer fake.removeTagsFromStreamWithContextMutex.RUnlock()
 	argsForCall := fake.removeTagsFromStreamWithContextArgsForCall[i]
@@ -6298,11 +7003,11 @@ func (fake *FakeKinesisClient) SplitShardRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) SplitShardWithContext(arg1 context.Context, arg2 *kinesis.SplitShardInput, arg3 ...request.Option) (*kinesis.SplitShardOutput, error) {
+func (fake *FakeKinesisClient) SplitShardWithContext(arg1 aws.Context, arg2 *kinesis.SplitShardInput, arg3 ...request.Option) (*kinesis.SplitShardOutput, error) {
 	fake.splitShardWithContextMutex.Lock()
 	ret, specificReturn := fake.splitShardWithContextReturnsOnCall[len(fake.splitShardWithContextArgsForCall)]
 	fake.splitShardWithContextArgsForCall = append(fake.splitShardWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.SplitShardInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -6325,13 +7030,13 @@ func (fake *FakeKinesisClient) SplitShardWithContextCallCount() int {
 	return len(fake.splitShardWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) SplitShardWithContextCalls(stub func(context.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)) {
+func (fake *FakeKinesisClient) SplitShardWithContextCalls(stub func(aws.Context, *kinesis.SplitShardInput, ...request.Option) (*kinesis.SplitShardOutput, error)) {
 	fake.splitShardWithContextMutex.Lock()
 	defer fake.splitShardWithContextMutex.Unlock()
 	fake.SplitShardWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) SplitShardWithContextArgsForCall(i int) (context.Context, *kinesis.SplitShardInput, []request.Option) {
+func (fake *FakeKinesisClient) SplitShardWithContextArgsForCall(i int) (aws.Context, *kinesis.SplitShardInput, []request.Option) {
 	fake.splitShardWithContextMutex.RLock()
 	defer fake.splitShardWithContextMutex.RUnlock()
 	argsForCall := fake.splitShardWithContextArgsForCall[i]
@@ -6492,11 +7197,11 @@ func (fake *FakeKinesisClient) StartStreamEncryptionRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) StartStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StartStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StartStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContext(arg1 aws.Context, arg2 *kinesis.StartStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StartStreamEncryptionOutput, error) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.startStreamEncryptionWithContextReturnsOnCall[len(fake.startStreamEncryptionWithContextArgsForCall)]
 	fake.startStreamEncryptionWithContextArgsForCall = append(fake.startStreamEncryptionWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.StartStreamEncryptionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -6519,13 +7224,13 @@ func (fake *FakeKinesisClient) StartStreamEncryptionWithContextCallCount() int {
 	return len(fake.startStreamEncryptionWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) StartStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextCalls(stub func(aws.Context, *kinesis.StartStreamEncryptionInput, ...request.Option) (*kinesis.StartStreamEncryptionOutput, error)) {
 	fake.startStreamEncryptionWithContextMutex.Lock()
 	defer fake.startStreamEncryptionWithContextMutex.Unlock()
 	fake.StartStreamEncryptionWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) StartStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StartStreamEncryptionInput, []request.Option) {
+func (fake *FakeKinesisClient) StartStreamEncryptionWithContextArgsForCall(i int) (aws.Context, *kinesis.StartStreamEncryptionInput, []request.Option) {
 	fake.startStreamEncryptionWithContextMutex.RLock()
 	defer fake.startStreamEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.startStreamEncryptionWithContextArgsForCall[i]
@@ -6686,11 +7391,11 @@ func (fake *FakeKinesisClient) StopStreamEncryptionRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) StopStreamEncryptionWithContext(arg1 context.Context, arg2 *kinesis.StopStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StopStreamEncryptionOutput, error) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContext(arg1 aws.Context, arg2 *kinesis.StopStreamEncryptionInput, arg3 ...request.Option) (*kinesis.StopStreamEncryptionOutput, error) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.stopStreamEncryptionWithContextReturnsOnCall[len(fake.stopStreamEncryptionWithContextArgsForCall)]
 	fake.stopStreamEncryptionWithContextArgsForCall = append(fake.stopStreamEncryptionWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.StopStreamEncryptionInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -6713,13 +7418,13 @@ func (fake *FakeKinesisClient) StopStreamEncryptionWithContextCallCount() int {
 	return len(fake.stopStreamEncryptionWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) StopStreamEncryptionWithContextCalls(stub func(context.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextCalls(stub func(aws.Context, *kinesis.StopStreamEncryptionInput, ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)) {
 	fake.stopStreamEncryptionWithContextMutex.Lock()
 	defer fake.stopStreamEncryptionWithContextMutex.Unlock()
 	fake.StopStreamEncryptionWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) StopStreamEncryptionWithContextArgsForCall(i int) (context.Context, *kinesis.StopStreamEncryptionInput, []request.Option) {
+func (fake *FakeKinesisClient) StopStreamEncryptionWithContextArgsForCall(i int) (aws.Context, *kinesis.StopStreamEncryptionInput, []request.Option) {
 	fake.stopStreamEncryptionWithContextMutex.RLock()
 	defer fake.stopStreamEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.stopStreamEncryptionWithContextArgsForCall[i]
@@ -6880,11 +7585,11 @@ func (fake *FakeKinesisClient) SubscribeToShardRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) SubscribeToShardWithContext(arg1 context.Context, arg2 *kinesis.SubscribeToShardInput, arg3 ...request.Option) (*kinesis.SubscribeToShardOutput, error) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContext(arg1 aws.Context, arg2 *kinesis.SubscribeToShardInput, arg3 ...request.Option) (*kinesis.SubscribeToShardOutput, error) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	ret, specificReturn := fake.subscribeToShardWithContextReturnsOnCall[len(fake.subscribeToShardWithContextArgsForCall)]
 	fake.subscribeToShardWithContextArgsForCall = append(fake.subscribeToShardWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.SubscribeToShardInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -6907,13 +7612,13 @@ func (fake *FakeKinesisClient) SubscribeToShardWithContextCallCount() int {
 	return len(fake.subscribeToShardWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) SubscribeToShardWithContextCalls(stub func(context.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextCalls(stub func(aws.Context, *kinesis.SubscribeToShardInput, ...request.Option) (*kinesis.SubscribeToShardOutput, error)) {
 	fake.subscribeToShardWithContextMutex.Lock()
 	defer fake.subscribeToShardWithContextMutex.Unlock()
 	fake.SubscribeToShardWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) SubscribeToShardWithContextArgsForCall(i int) (context.Context, *kinesis.SubscribeToShardInput, []request.Option) {
+func (fake *FakeKinesisClient) SubscribeToShardWithContextArgsForCall(i int) (aws.Context, *kinesis.SubscribeToShardInput, []request.Option) {
 	fake.subscribeToShardWithContextMutex.RLock()
 	defer fake.subscribeToShardWithContextMutex.RUnlock()
 	argsForCall := fake.subscribeToShardWithContextArgsForCall[i]
@@ -7074,11 +7779,11 @@ func (fake *FakeKinesisClient) UpdateShardCountRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) UpdateShardCountWithContext(arg1 context.Context, arg2 *kinesis.UpdateShardCountInput, arg3 ...request.Option) (*kinesis.UpdateShardCountOutput, error) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContext(arg1 aws.Context, arg2 *kinesis.UpdateShardCountInput, arg3 ...request.Option) (*kinesis.UpdateShardCountOutput, error) {
 	fake.updateShardCountWithContextMutex.Lock()
 	ret, specificReturn := fake.updateShardCountWithContextReturnsOnCall[len(fake.updateShardCountWithContextArgsForCall)]
 	fake.updateShardCountWithContextArgsForCall = append(fake.updateShardCountWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.UpdateShardCountInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -7101,13 +7806,13 @@ func (fake *FakeKinesisClient) UpdateShardCountWithContextCallCount() int {
 	return len(fake.updateShardCountWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) UpdateShardCountWithContextCalls(stub func(context.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextCalls(stub func(aws.Context, *kinesis.UpdateShardCountInput, ...request.Option) (*kinesis.UpdateShardCountOutput, error)) {
 	fake.updateShardCountWithContextMutex.Lock()
 	defer fake.updateShardCountWithContextMutex.Unlock()
 	fake.UpdateShardCountWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) UpdateShardCountWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateShardCountInput, []request.Option) {
+func (fake *FakeKinesisClient) UpdateShardCountWithContextArgsForCall(i int) (aws.Context, *kinesis.UpdateShardCountInput, []request.Option) {
 	fake.updateShardCountWithContextMutex.RLock()
 	defer fake.updateShardCountWithContextMutex.RUnlock()
 	argsForCall := fake.updateShardCountWithContextArgsForCall[i]
@@ -7268,11 +7973,11 @@ func (fake *FakeKinesisClient) UpdateStreamModeRequestReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeKinesisClient) UpdateStreamModeWithContext(arg1 context.Context, arg2 *kinesis.UpdateStreamModeInput, arg3 ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContext(arg1 aws.Context, arg2 *kinesis.UpdateStreamModeInput, arg3 ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	ret, specificReturn := fake.updateStreamModeWithContextReturnsOnCall[len(fake.updateStreamModeWithContextArgsForCall)]
 	fake.updateStreamModeWithContextArgsForCall = append(fake.updateStreamModeWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.UpdateStreamModeInput
 		arg3 []request.Option
 	}{arg1, arg2, arg3})
@@ -7295,13 +8000,13 @@ func (fake *FakeKinesisClient) UpdateStreamModeWithContextCallCount() int {
 	return len(fake.updateStreamModeWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) UpdateStreamModeWithContextCalls(stub func(context.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextCalls(stub func(aws.Context, *kinesis.UpdateStreamModeInput, ...request.Option) (*kinesis.UpdateStreamModeOutput, error)) {
 	fake.updateStreamModeWithContextMutex.Lock()
 	defer fake.updateStreamModeWithContextMutex.Unlock()
 	fake.UpdateStreamModeWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) UpdateStreamModeWithContextArgsForCall(i int) (context.Context, *kinesis.UpdateStreamModeInput, []request.Option) {
+func (fake *FakeKinesisClient) UpdateStreamModeWithContextArgsForCall(i int) (aws.Context, *kinesis.UpdateStreamModeInput, []request.Option) {
 	fake.updateStreamModeWithContextMutex.RLock()
 	defer fake.updateStreamModeWithContextMutex.RUnlock()
 	argsForCall := fake.updateStreamModeWithContextArgsForCall[i]
@@ -7395,11 +8100,11 @@ func (fake *FakeKinesisClient) WaitUntilStreamExistsReturnsOnCall(i int, result1
 	}{result1}
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamExistsWithContextReturnsOnCall[len(fake.waitUntilStreamExistsWithContextArgsForCall)]
 	fake.waitUntilStreamExistsWithContextArgsForCall = append(fake.waitUntilStreamExistsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}{arg1, arg2, arg3})
@@ -7422,13 +8127,13 @@ func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextCallCount() int {
 	return len(fake.waitUntilStreamExistsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
 	fake.waitUntilStreamExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamExistsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
+func (fake *FakeKinesisClient) WaitUntilStreamExistsWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
 	fake.waitUntilStreamExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamExistsWithContextArgsForCall[i]
@@ -7519,11 +8224,11 @@ func (fake *FakeKinesisClient) WaitUntilStreamNotExistsReturnsOnCall(i int, resu
 	}{result1}
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContext(arg1 context.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContext(arg1 aws.Context, arg2 *kinesis.DescribeStreamInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilStreamNotExistsWithContextReturnsOnCall[len(fake.waitUntilStreamNotExistsWithContextArgsForCall)]
 	fake.waitUntilStreamNotExistsWithContextArgsForCall = append(fake.waitUntilStreamNotExistsWithContextArgsForCall, struct {
-		arg1 context.Context
+		arg1 aws.Context
 		arg2 *kinesis.DescribeStreamInput
 		arg3 []request.WaiterOption
 	}{arg1, arg2, arg3})
@@ -7546,13 +8251,13 @@ func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextCallCount() in
 	return len(fake.waitUntilStreamNotExistsWithContextArgsForCall)
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextCalls(stub func(context.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextCalls(stub func(aws.Context, *kinesis.DescribeStreamInput, ...request.WaiterOption) error) {
 	fake.waitUntilStreamNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilStreamNotExistsWithContextStub = stub
 }
 
-func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextArgsForCall(i int) (context.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
+func (fake *FakeKinesisClient) WaitUntilStreamNotExistsWithContextArgsForCall(i int) (aws.Context, *kinesis.DescribeStreamInput, []request.WaiterOption) {
 	fake.waitUntilStreamNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilStreamNotExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilStreamNotExistsWithContextArgsForCall[i]
@@ -7603,6 +8308,12 @@ func (fake *FakeKinesisClient) Invocations() map[string][][]interface{} {
 	defer fake.decreaseStreamRetentionPeriodRequestMutex.RUnlock()
 	fake.decreaseStreamRetentionPeriodWithContextMutex.RLock()
 	defer fake.decreaseStreamRetentionPeriodWithContextMutex.RUnlock()
+	fake.deleteResourcePolicyMutex.RLock()
+	defer fake.deleteResourcePolicyMutex.RUnlock()
+	fake.deleteResourcePolicyRequestMutex.RLock()
+	defer fake.deleteResourcePolicyRequestMutex.RUnlock()
+	fake.deleteResourcePolicyWithContextMutex.RLock()
+	defer fake.deleteResourcePolicyWithContextMutex.RUnlock()
 	fake.deleteStreamMutex.RLock()
 	defer fake.deleteStreamMutex.RUnlock()
 	fake.deleteStreamRequestMutex.RLock()
@@ -7661,6 +8372,12 @@ func (fake *FakeKinesisClient) Invocations() map[string][][]interface{} {
 	defer fake.getRecordsRequestMutex.RUnlock()
 	fake.getRecordsWithContextMutex.RLock()
 	defer fake.getRecordsWithContextMutex.RUnlock()
+	fake.getResourcePolicyMutex.RLock()
+	defer fake.getResourcePolicyMutex.RUnlock()
+	fake.getResourcePolicyRequestMutex.RLock()
+	defer fake.getResourcePolicyRequestMutex.RUnlock()
+	fake.getResourcePolicyWithContextMutex.RLock()
+	defer fake.getResourcePolicyWithContextMutex.RUnlock()
 	fake.getShardIteratorMutex.RLock()
 	defer fake.getShardIteratorMutex.RUnlock()
 	fake.getShardIteratorRequestMutex.RLock()
@@ -7723,6 +8440,12 @@ func (fake *FakeKinesisClient) Invocations() map[string][][]interface{} {
 	defer fake.putRecordsRequestMutex.RUnlock()
 	fake.putRecordsWithContextMutex.RLock()
 	defer fake.putRecordsWithContextMutex.RUnlock()
+	fake.putResourcePolicyMutex.RLock()
+	defer fake.putResourcePolicyMutex.RUnlock()
+	fake.putResourcePolicyRequestMutex.RLock()
+	defer fake.putResourcePolicyRequestMutex.RUnlock()
+	fake.putResourcePolicyWithContextMutex.RLock()
+	defer fake.putResourcePolicyWithContextMutex.RUnlock()
 	fake.registerStreamConsumerMutex.RLock()
 	defer fake.registerStreamConsumerMutex.RUnlock()
 	fake.registerStreamConsumerRequestMutex.RLock()
