@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-sdk-go/service/kinesis"
+	kinesistypes "github.com/aws/aws-sdk-go-v2/service/kinesis/types"
 	"github.com/phogolabs/theta"
 
 	. "github.com/onsi/ginkgo/v2"
@@ -116,9 +116,9 @@ var _ = Describe("KinesisDispatcher", func() {
 
 	It("streams the event successfully", func() {
 		Expect(handler.HandleContext(context.TODO(), eventArgs)).To(Succeed())
-		Expect(client.PutRecordWithContextCallCount()).To(Equal(1))
+		Expect(client.PutRecordCallCount()).To(Equal(1))
 
-		_, input, _ := client.PutRecordWithContextArgsForCall(0)
+		_, input, _ := client.PutRecordArgsForCall(0)
 		Expect(input.StreamName).To(Equal(&handler.StreamName))
 		Expect(input.PartitionKey).To(Equal(&eventArgs.Event.ID))
 
@@ -129,7 +129,7 @@ var _ = Describe("KinesisDispatcher", func() {
 
 	Context("when the client fails", func() {
 		BeforeEach(func() {
-			client.PutRecordWithContextReturns(nil, fmt.Errorf("oh no"))
+			client.PutRecordReturns(nil, fmt.Errorf("oh no"))
 		})
 
 		It("returns an error", func() {
@@ -151,7 +151,7 @@ var _ = Describe("KinesisCollector", func() {
 		Expect(json.NewEncoder(buffer).Encode(data)).To(Succeed())
 
 		return theta.KinesisRecord{
-			Record: &kinesis.Record{
+			Record: kinesistypes.Record{
 				Data: buffer.Bytes(),
 			},
 		}
@@ -197,7 +197,7 @@ var _ = Describe("KinesisCollector", func() {
 		BeforeEach(func() {
 			scanner.ScanStub = func(ctx context.Context, fn theta.KinesisScanFunc) error {
 				row := &theta.KinesisRecord{
-					Record: &kinesis.Record{
+					Record: kinesistypes.Record{
 						Data: []byte(`{"member_id":`),
 					},
 				}

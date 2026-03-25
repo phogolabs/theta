@@ -8,11 +8,11 @@ import (
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials/stscreds"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/kinesis"
-	"github.com/aws/aws-sdk-go/service/kinesis/kinesisiface"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	awscfg "github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials/stscreds"
+	"github.com/aws/aws-sdk-go-v2/service/kinesis"
+	"github.com/aws/aws-sdk-go-v2/service/sts"
 	consumer "github.com/harlow/kinesis-consumer"
 	"github.com/phogolabs/log"
 )
@@ -115,8 +115,10 @@ func (h *KinesisHandler) decode(data []byte, obj interface{}) error {
 
 //counterfeiter:generate  -o ./fake/kinesis_client.go . KinesisClient
 
-// KinesisClient creates a new client
-type KinesisClient = kinesisiface.KinesisAPI
+// KinesisClient is the Kinesis v2 client interface
+type KinesisClient interface {
+	PutRecord(ctx context.Context, params *kinesis.PutRecordInput, optFns ...func(*kinesis.Options)) (*kinesis.PutRecordOutput, error)
+}
 
 // KinesisDispatcherConfig represents the kinesis dispatcher config
 type KinesisDispatcherConfig struct {
@@ -135,24 +137,21 @@ type KinesisDispatcher struct {
 
 // NewKinesisDispatcher creates a new dispatcher to kinesis
 func NewKinesisDispatcher(config *KinesisDispatcherConfig) *KinesisDispatcher {
-	sess := session.Must(session.NewSession(&aws.Config{
-		CredentialsChainVerboseErrors: aws.Bool(true),
-		Region:                        aws.String(config.Region),
-	}))
-
-	cfg := &aws.Config{}
-
-	if config.RoleArn != "" {
-		cfg = &aws.Config{
-			Credentials: stscreds.NewCredentials(sess, config.RoleArn),
-		}
+	awsCfg, err := awscfg.LoadDefaultConfig(context.Background(),
+		awscfg.WithRegion(config.Region),
+	)
+	if err != nil {
+		panic(err)
 	}
 
-	client := kinesis.New(sess, cfg)
+	if config.RoleArn != "" {
+		stsClient := sts.NewFromConfig(awsCfg)
+		awsCfg.Credentials = stscreds.NewAssumeRoleProvider(stsClient, config.RoleArn)
+	}
 
 	return &KinesisDispatcher{
 		StreamName: config.StreamName,
-		Client:     client,
+		Client:     kinesis.NewFromConfig(awsCfg),
 	}
 }
 
@@ -181,7 +180,7 @@ func (d *KinesisDispatcher) HandleContext(ctx context.Context, args *EventArgs) 
 	}
 
 	logger.Info("dispatching event to kinesis")
-	_, err = d.Client.PutRecordWithContext(ctx, entry)
+	_, err = d.Client.PutRecord(ctx, entry)
 	return err
 }
 
@@ -222,21 +221,20 @@ type KinesisCollector struct {
 
 // NewKinesisCollector creates a new collector to kinesis
 func NewKinesisCollector(config *KinesisCollectorConfig) *KinesisCollector {
-	sess := session.Must(session.NewSession(&aws.Config{
-		CredentialsChainVerboseErrors: aws.Bool(true),
-		Region:                        aws.String(config.Region),
-	}))
-
-	cfg := &aws.Config{}
+	awsCfg, err := awscfg.LoadDefaultConfig(context.Background(),
+		awscfg.WithRegion(config.Region),
+	)
+	if err != nil {
+		panic(err)
+	}
 
 	if config.RoleArn != "" {
-		cfg = &aws.Config{
-			Credentials: stscreds.NewCredentials(sess, config.RoleArn),
-		}
+		stsClient := sts.NewFromConfig(awsCfg)
+		awsCfg.Credentials = stscreds.NewAssumeRoleProvider(stsClient, config.RoleArn)
 	}
 
 	// setup the client
-	client := kinesis.New(sess, cfg)
+	client := kinesis.NewFromConfig(awsCfg)
 
 	// Set the options
 	options := []KinesisCollectorOption{}
@@ -275,8 +273,8 @@ func (h *KinesisCollector) CollectContext(ctx context.Context) error {
 	return h.Scanner.Scan(ctx, func(record *KinesisRecord) error {
 		logger := log.GetContext(ctx).WithFields(
 			log.Map{
-				"kinesis_partition_key":   aws.StringValue(record.PartitionKey),
-				"kinesis_sequence_number": aws.StringValue(record.SequenceNumber),
+				"kinesis_partition_key":   aws.ToString(record.PartitionKey),
+				"kinesis_sequence_number": aws.ToString(record.SequenceNumber),
 			},
 		)
 
