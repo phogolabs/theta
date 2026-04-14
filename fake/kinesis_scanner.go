@@ -5,15 +5,16 @@ import (
 	"context"
 	"sync"
 
+	consumer "github.com/harlow/kinesis-consumer"
 	"github.com/phogolabs/theta"
 )
 
 type FakeKinesisScanner struct {
-	ScanStub        func(context.Context, theta.KinesisScanFunc) error
+	ScanStub        func(context.Context, consumer.ScanFunc) error
 	scanMutex       sync.RWMutex
 	scanArgsForCall []struct {
 		arg1 context.Context
-		arg2 theta.KinesisScanFunc
+		arg2 consumer.ScanFunc
 	}
 	scanReturns struct {
 		result1 error
@@ -25,12 +26,12 @@ type FakeKinesisScanner struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *FakeKinesisScanner) Scan(arg1 context.Context, arg2 theta.KinesisScanFunc) error {
+func (fake *FakeKinesisScanner) Scan(arg1 context.Context, arg2 consumer.ScanFunc) error {
 	fake.scanMutex.Lock()
 	ret, specificReturn := fake.scanReturnsOnCall[len(fake.scanArgsForCall)]
 	fake.scanArgsForCall = append(fake.scanArgsForCall, struct {
 		arg1 context.Context
-		arg2 theta.KinesisScanFunc
+		arg2 consumer.ScanFunc
 	}{arg1, arg2})
 	stub := fake.ScanStub
 	fakeReturns := fake.scanReturns
@@ -51,13 +52,13 @@ func (fake *FakeKinesisScanner) ScanCallCount() int {
 	return len(fake.scanArgsForCall)
 }
 
-func (fake *FakeKinesisScanner) ScanCalls(stub func(context.Context, theta.KinesisScanFunc) error) {
+func (fake *FakeKinesisScanner) ScanCalls(stub func(context.Context, consumer.ScanFunc) error) {
 	fake.scanMutex.Lock()
 	defer fake.scanMutex.Unlock()
 	fake.ScanStub = stub
 }
 
-func (fake *FakeKinesisScanner) ScanArgsForCall(i int) (context.Context, theta.KinesisScanFunc) {
+func (fake *FakeKinesisScanner) ScanArgsForCall(i int) (context.Context, consumer.ScanFunc) {
 	fake.scanMutex.RLock()
 	defer fake.scanMutex.RUnlock()
 	argsForCall := fake.scanArgsForCall[i]

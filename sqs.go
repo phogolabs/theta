@@ -7,9 +7,8 @@ import (
 	"encoding/json"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/sqs"
-	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/phogolabs/log"
 )
 
@@ -72,8 +71,10 @@ func (r *SQSHandler) HandleContext(ctx context.Context, input events.SQSEvent) e
 
 //counterfeiter:generate -o ./fake/sqs_client.go . SQSClient
 
-// SQSClient creates a new client
-type SQSClient = sqsiface.SQSAPI
+// SQSClient is the SQS v2 client interface
+type SQSClient interface {
+	SendMessage(ctx context.Context, params *sqs.SendMessageInput, optFns ...func(*sqs.Options)) (*sqs.SendMessageOutput, error)
+}
 
 var _ EventHandler = &SQSDispatcher{}
 
@@ -110,6 +111,6 @@ func (r *SQSDispatcher) HandleContext(ctx context.Context, args *EventArgs) erro
 	}
 
 	logger.Info("dispatching event to sqs")
-	_, err = r.Client.SendMessageWithContext(ctx, input)
+	_, err = r.Client.SendMessage(ctx, input)
 	return err
 }

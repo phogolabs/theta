@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/phogolabs/theta"
 
 	. "github.com/onsi/ginkgo/v2"
@@ -189,14 +188,14 @@ var _ = Describe("SQSDispatcher", func() {
 	It("streams the event successfully", func() {
 		Expect(handler.HandleContext(context.TODO(), eventArgs)).To(Succeed())
 
-		Expect(client.SendMessageWithContextCallCount()).To(Equal(1))
-		ctx, input, _ := client.SendMessageWithContextArgsForCall(0)
+		Expect(client.SendMessageCallCount()).To(Equal(1))
+		ctx, input, _ := client.SendMessageArgsForCall(0)
 		Expect(ctx).To(Equal(context.TODO()))
-		Expect(input.QueueUrl).To(Equal(aws.String("http://example.com")))
+		Expect(*input.QueueUrl).To(Equal("http://example.com"))
 
 		reader := base64.NewDecoder(
 			base64.StdEncoding,
-			bytes.NewBufferString(aws.StringValue(input.MessageBody)),
+			bytes.NewBufferString(*input.MessageBody),
 		)
 
 		outboundEventArgs := &theta.EventArgs{}
@@ -206,7 +205,7 @@ var _ = Describe("SQSDispatcher", func() {
 
 	Context("when the client fails", func() {
 		BeforeEach(func() {
-			client.SendMessageWithContextReturns(nil, fmt.Errorf("oh no"))
+			client.SendMessageReturns(nil, fmt.Errorf("oh no"))
 		})
 
 		It("returns an error", func() {

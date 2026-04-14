@@ -98,6 +98,8 @@ func (fake *FakeKinesisClient) PutRecordReturnsOnCall(i int, result1 *kinesis.Pu
 func (fake *FakeKinesisClient) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
+	fake.putRecordMutex.RLock()
+	defer fake.putRecordMutex.RUnlock()
 	copiedInvocations := map[string][][]interface{}{}
 	for key, value := range fake.invocations {
 		copiedInvocations[key] = value
